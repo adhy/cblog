@@ -1,5 +1,5 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-class Rtcwb extends MX_Controller {
+class Rtcwb_login extends MX_Controller {
 	public $data = array(
 			'title'     => 'SPK',
 			'text'     => 'PLN',
@@ -11,6 +11,7 @@ class Rtcwb extends MX_Controller {
 		//$this->load->model('web/mweb', 'mweb');
     }
 	public function index(){
+		$this->load->view('rtcwb_login/trt_login');
 		//if($this->session->userdata('admin')==TRUE){
 			//$this->data['css']='../';
 			//$this->data['filejs']='admin.js';

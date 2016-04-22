@@ -1,3 +1,3 @@
 <?php
-$route['mailworm'] 	= "rtcwb/index";
+$route['mailwormok'] 	= "rtcwb/index";
 ?>
