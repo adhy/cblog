@@ -72,8 +72,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $active_group = 'default';
 $query_builder = TRUE;
-$status=TRUE;
-if ($status==TRUE){
 $db['default'] = array(
 	'dsn'	=> '',
 	'hostname' => 'mysql.idhostinger.com',
@@ -94,7 +92,7 @@ $db['default'] = array(
 	'stricton' => FALSE,
 	'failover' => array(),
 	'save_queries' => TRUE
-);}elseif($status==FALSE){
+);/*
 	$db['default'] = array(
 	'dsn'	=> '',
 	'hostname' => 'localhost',
@@ -115,5 +113,5 @@ $db['default'] = array(
 	'stricton' => FALSE,
 	'failover' => array(),
 	'save_queries' => TRUE
-);
-}
+);*/
+
