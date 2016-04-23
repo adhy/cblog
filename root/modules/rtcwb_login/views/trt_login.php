@@ -9,11 +9,13 @@
     <!-- Bootstrap 3.3.5 -->
     <link rel="stylesheet" href="<?php echo base_url('assets');?>/bootstrap/css/bootstrap.min.css">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="<?php echo base_url('assets');?>/plugins/font-awesome-4.6.1/css/font-awesome.min.css">
     <!-- Ionicons -->
-    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="<?php echo base_url('assets');?>/plugins/ionicons-2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="<?php echo base_url('assets');?>/plugins/pace-1.0.2/themes/blue/pace-theme-minimal.css">
+    <link rel="stylesheet" href="<?php echo base_url('assets');?>/plugins/formvalidation/css/formValidation.min.css">
     <!-- Theme style -->
-    <link rel="stylesheet" href="<?php echo base_url('assets');?>/dist/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="<?php echo base_url('assets');?>/dist/css/style.min.css">
     <!-- iCheck -->
     <link rel="stylesheet" href="<?php echo base_url('assets');?>/plugins/iCheck/square/blue.css">
 
@@ -27,17 +29,17 @@
   <body class="hold-transition login-page">
     <div class="login-box">
       <div class="login-logo">
-        <a href="../../index2.html"><b>Admin</b>LTE</a>
+        <a href="../../index2.html"><b>Codex</b>List</a>
       </div><!-- /.login-logo -->
       <div class="login-box-body">
         <p class="login-box-msg">Sign in to start your session</p>
-        <form action="../../index2.html" method="post">
+        <form role="login_form" id="login_form" method="post">
           <div class="form-group has-feedback">
-            <input type="email" class="form-control" placeholder="Email">
+            <input type="email" class="form-control" placeholder="Email" name="email" autofocus autocomplate="off">
             <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
           </div>
           <div class="form-group has-feedback">
-            <input type="password" class="form-control" placeholder="Password">
+            <input type="password" class="form-control" placeholder="Password" name="passblog" autofocus autocomplate="off">
             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
           </div>
           <div class="row">
@@ -49,19 +51,12 @@
               </div>
             </div><!-- /.col -->
             <div class="col-xs-4">
-              <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+              <button type="submit" class="btn btn-primary btn-block btn-flat" name="login_form" id="login_form">Sign In</button>
             </div><!-- /.col -->
           </div>
         </form>
 
-        <div class="social-auth-links text-center">
-          <p>- OR -</p>
-          <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Sign in using Facebook</a>
-          <a href="#" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google-plus"></i> Sign in using Google+</a>
-        </div><!-- /.social-auth-links -->
-
         <a href="#">I forgot my password</a><br>
-        <a href="register.html" class="text-center">Register a new membership</a>
 
       </div><!-- /.login-box-body -->
     </div><!-- /.login-box -->
@@ -70,8 +65,14 @@
     <script src="<?php echo base_url('assets');?>/plugins/jQuery/jQuery-2.1.4.min.js"></script>
     <!-- Bootstrap 3.3.5 -->
     <script src="<?php echo base_url('assets');?>/bootstrap/js/bootstrap.min.js"></script>
+    <script src="<?php echo base_url('assets');?>/bootstrap/js/bootstrap.min.js"></script>
     <!-- iCheck -->
     <script src="<?php echo base_url('assets');?>/plugins/iCheck/icheck.min.js"></script>
+    <script src="<?php echo base_url('assets');?>/plugins/pace-1.0.2/pace.min.js"></script>
+    <script src="<?php echo base_url('assets');?>/plugins/formvalidation/js/formValidation.min.js"></script>
+    <script src="<?php echo base_url('assets');?>/plugins/formvalidation/js/framework/bootstrap.min.js"></script>
+    <script src="<?php echo base_url('assets');?>/plugins/formvalidation/js/language/id_ID.js"></script>
+    <script src="<?php echo base_url('assets');?>/dist/js/pages/prsiro.js"></script>
     <script>
       $(function () {
         $('input').iCheck({
@@ -81,5 +82,13 @@
         });
       });
     </script>
+    <script>
+    paceOptions = {
+  // Configuration goes here. Example:
+  elements: false,
+  restartOnPushState: false,
+  restartOnRequestAfter: false
+}
+  </script>
   </body>
 </html>
