@@ -7,7 +7,10 @@ class Rtcwb_login extends MX_Controller {
 		);
 	public function __construct(){
         parent::__construct();
-
+if(!is_logged_in())  // if you add in constructor no need write each function in above controller. 
+        {
+         redirect('cwblog');
+        }
 		//$this->load->model('web/mweb', 'mweb');
     }
 	public function index(){

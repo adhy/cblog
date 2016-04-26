@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="<?php echo base_url('assets');?>/plugins/ionicons-2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="<?php echo base_url('assets');?>/plugins/pace-1.0.2/themes/blue/pace-theme-minimal.css">
     <link rel="stylesheet" href="<?php echo base_url('assets');?>/plugins/formvalidation/css/formValidation.min.css">
+    <link rel="stylesheet" href="<?php echo base_url('assets');?>/plugins/toastr/build/toastr.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="<?php echo base_url('assets');?>/dist/css/style.min.css">
     <!-- iCheck -->
@@ -51,7 +52,7 @@
               </div>
             </div><!-- /.col -->
             <div class="col-xs-4">
-              <button type="submit" class="btn btn-primary btn-block btn-flat" name="login_form" id="login_form">Sign In</button>
+              <button type="submit" class="btn btn-primary btn-block btn-flat" name="login_form" id="login_form" >Sign In</button>
             </div><!-- /.col -->
           </div>
         </form>
@@ -72,23 +73,11 @@
     <script src="<?php echo base_url('assets');?>/plugins/formvalidation/js/formValidation.min.js"></script>
     <script src="<?php echo base_url('assets');?>/plugins/formvalidation/js/framework/bootstrap.min.js"></script>
     <script src="<?php echo base_url('assets');?>/plugins/formvalidation/js/language/id_ID.js"></script>
+    <script src="<?php echo base_url('assets');?>/plugins/toastr/build/toastr.min.js"></script>
     <script src="<?php echo base_url('assets');?>/dist/js/pages/prsiro.js"></script>
-    <script>
-      $(function () {
-        $('input').iCheck({
-          checkboxClass: 'icheckbox_square-blue',
-          radioClass: 'iradio_square-blue',
-          increaseArea: '20%' // optional
-        });
-      });
-    </script>
-    <script>
-    paceOptions = {
-  // Configuration goes here. Example:
-  elements: false,
-  restartOnPushState: false,
-  restartOnRequestAfter: false
-}
-  </script>
+	<script type="text/javascript">
+		var url = '<?php echo base_url();?>';
+	</script>
+
   </body>
 </html>

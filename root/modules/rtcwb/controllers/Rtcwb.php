@@ -7,7 +7,7 @@ class Rtcwb extends MX_Controller {
 		);
 	public function __construct(){
         parent::__construct();
-
+		
 		//$this->load->model('web/mweb', 'mweb');
     }
 	public function index(){
