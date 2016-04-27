@@ -88,8 +88,8 @@ if ( ! function_exists('form_open'))
 			$attributes .= ' accept-charset="'.strtolower(config_item('charset')).'"';
 		}
 
-		$form = '<form action="'.$action.'"'.$attributes.">\n";
-
+		//$form = '<form action="'.$action.'"'.$attributes.">\n";
+		$form = '<form '.$attributes.">\n";
 		// Add CSRF field if enabled, but leave it out for GET requests and requests to external websites
 		if ($CI->config->item('csrf_protection') === TRUE && strpos($action, $CI->config->base_url()) !== FALSE && ! stripos($form, 'method="get"'))
 		{

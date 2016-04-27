@@ -34,28 +34,66 @@
       </div><!-- /.login-logo -->
       <div class="login-box-body">
         <p class="login-box-msg">Sign in to start your session</p>
-        <form role="login_form" id="login_form" method="post">
+		<?php $attributes = array('role'=>'login_form','id'=>'login_form');
+		echo form_open('',$attributes);?>
+        <!--<form role="login_form" id="login_form" method="post">-->
           <div class="form-group has-feedback">
-            <input type="email" class="form-control" placeholder="Email" name="email" autofocus autocomplate="off">
+		<?php $data = array(
+			'name'          => 'email',
+			'id'            => 'email',
+			'class'         => 'form-control',
+			'type'     		=> 'email',
+			'autocomplate'  => 'off',
+			'placeholder'   => 'Email',
+			'autofocus'     => ''
+			);
+			echo form_input($data);?>
             <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
           </div>
           <div class="form-group has-feedback">
-            <input type="password" class="form-control" placeholder="Password" name="passblog" autofocus autocomplate="off">
+		  <?php $data = array(
+			'name'          => 'passblog',
+			'id'            => 'passblog',
+			'class'         => 'form-control',
+			'type'     		=> 'password',
+			'autocomplate'  => 'off',
+			'placeholder'   => 'Password',
+			'autofocus'     => ''
+			);
+			echo form_input($data);?>
             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
           </div>
           <div class="row">
             <div class="col-xs-8">
               <div class="checkbox icheck">
                 <label>
-                  <input type="checkbox"> Remember Me
+				<?php $data = array(
+					'name'          => 'remember',
+					'id'            => 'remember',
+					'value'         => 'accept',
+					'checked'       => FALSE,
+					'type'         => 'checkbox'
+				);
+
+				echo form_checkbox($data); ?>
+                  Remember Me
                 </label>
               </div>
             </div><!-- /.col -->
             <div class="col-xs-4">
-              <button type="submit" class="btn btn-primary btn-block btn-flat" name="login_form" id="login_form" >Sign In</button>
+				<?php $data = array(
+									'name'          => 'login_form',
+									'id'            => 'login_form',
+									'class'         => 'btn btn-primary btn-block btn-flat',
+									'type'          => 'submit',
+									'content'       => 'Sign In'
+							);
+							echo form_button($data);
+				
+				?>
             </div><!-- /.col -->
           </div>
-        </form>
+        <?php echo form_close(); ?>
 
         <a href="#">I forgot my password</a><br>
 

@@ -61,7 +61,7 @@ $(document).ready(function() {
         // Use Ajax to submit form data
         $.ajax({
             type    : "POST",
-            url     : 'access-acount',
+            url     : 'ServiceLoginAuth',
             data    : $('#login_form').serialize(),
             dataType: 'json',
             success : function(response){
