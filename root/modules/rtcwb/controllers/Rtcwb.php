@@ -13,13 +13,14 @@ class Rtcwb extends MX_Controller {
 		//$this->load->model('web/mweb', 'mweb');
     }
 	public function index(){
+		
 		//if($this->session->userdata('admin')==TRUE){
 			//$this->data['css']='../';
 			//$this->data['filejs']='admin.js';
 			//$view='rtcwb/trt_content';
 			//$this->mlib->template_rt($view,$this->data);
 		//}else if($this->session->userdata('admin')==FALSE){
-		//	redirect('login');
+			redirect('mailworm/dashboard');
 		//}
 	}
 }

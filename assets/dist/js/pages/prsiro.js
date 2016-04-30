@@ -34,8 +34,8 @@ $(document).ready(function() {
                         
                     },
                     stringLength: {
-                        min: 3,
-                        max: 15,
+                        min: 6,
+                        max: 30,
                         
                     }
                 }
@@ -46,8 +46,8 @@ $(document).ready(function() {
                         
                     },
                     stringLength: {
-                        min: 3,
-                        max: 15,
+                        min: 6,
+                        max: 30,
                         
                     }
                 }
@@ -65,11 +65,23 @@ $(document).ready(function() {
             data    : $('#login_form').serialize(),
             dataType: 'json',
             success : function(response){
-                if(response.msg == 'error'){
-                    toastr.error('username atau password yang anda masukkan salah !');
-                }else{
-                    //toastr.success('username atau password yang anda masukkan salah !');
+                if(response.msg == 'success'){
+                    //toastr.success('ok !');
                     window.location.href = 'dashboard.html';
+                }else if(response.msg == 'error'){
+                    toastr.error('username atau password yang anda masukkan salah !');
+                    //toastr.success('username atau password yang anda masukkan salah !');
+                    
+
+                }else if(response.msg == 'info'){
+                    toastr.info('Verifikasi telah dikirim ke email, mohon di periksa kembali !');
+                    //toastr.success('username atau password yang anda masukkan salah !');
+                    //window.location.href = 'dashboard.html';
+
+                }else{
+                    toastr.warning('Akun anda dibekukan, silahkan hubungi Admin !');
+                    //toastr.success('username atau password yang anda masukkan salah !');
+                    //window.location.href = 'dashboard.html';
 
                 }
             }

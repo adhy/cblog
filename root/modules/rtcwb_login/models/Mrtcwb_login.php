@@ -6,8 +6,14 @@ class Mrtcwb_login extends CI_Model {
 		parent::__constuct();  // Call the Model constructor 
 		loader::database();    // Connect to current database setting.
 	}
-	function getusername(){
-		//$this->db->order_by('id_kriteriagroup', 'ASC');
-		//return $this->db->get('tb_kriteriagroup');
+	function getusername($data){
+		$this->db->select('*');
+		$this->db->from('cb_log');
+		$this->db->join('cb_profile', 'cb_log.id_user = cb_profile.id_user');
+		$this->db->where('cb_profile.email', $data['email']);
+		$this->db->where('cb_log.pass_log', $data['password']);
+		$query = $this->db->get();
+		return $query;
 	}
+
 }
