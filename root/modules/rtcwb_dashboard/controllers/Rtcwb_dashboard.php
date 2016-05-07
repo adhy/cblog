@@ -16,7 +16,7 @@ class Rtcwb_dashboard extends MX_Controller {
 		//if($this->session->userdata('admin')==TRUE){
 			//$this->data['css']='../';
 			//$this->data['filejs']='admin.js';
-			$view='cwblog/trt_content';
+			$view='Rtcwb_dashboard/trt_content';
 			$this->mlib->template_rt($view,$this->data);
 		//}else if($this->session->userdata('admin')==FALSE){
 		//	redirect('login');

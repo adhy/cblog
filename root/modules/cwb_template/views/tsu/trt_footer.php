@@ -1,12 +1,23 @@
-<footer class="main-footer">
-        <div class="pull-right hidden-xs">
-          <b>Version</b> 2.3.0
-        </div>
-        <strong>Copyright &copy; 2014-2015 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights reserved.
-      </footer>
+<!-- jQuery -->
+    <script src="<?php echo base_url('assets');?>/plugins/jquery/dist/jquery.min.js"></script>
 
+    <!-- Bootstrap Core JavaScript -->
+    <script src="<?php echo base_url('assets');?>/plugins/bootstrap/dist/js/bootstrap.min.js"></script>
 
-      <!-- Add the sidebar's background. This div must be placed
-           immediately after the control sidebar -->
-      <div class="control-sidebar-bg"></div>
-    </div><!-- ./wrapper -->
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="<?php echo base_url('assets');?>/plugins/metisMenu/dist/metisMenu.min.js"></script>
+    <script src="<?php echo base_url('assets');?>/plugins/pace-1.0.2/pace.min.js"></script>
+    <script src="<?php echo base_url('assets');?>/plugins/formvalidation/js/formValidation.min.js"></script>
+    <script src="<?php echo base_url('assets');?>/plugins/formvalidation/js/framework/bootstrap.min.js"></script>
+    <script src="<?php echo base_url('assets');?>/plugins/formvalidation/js/language/id_ID.js"></script>
+    <script src="<?php echo base_url('assets');?>/plugins/toastr/build/toastr.min.js"></script>
+    <!-- Custom Theme JavaScript -->
+    <script src="<?php echo base_url('assets');?>/dist/js/sb-admin-2.js"></script>
+    <!-- Page-Level Demo Scripts - Notifications - Use for reference -->
+<script type="text/javascript">
+    var url = '<?php echo base_url();?>';
+  </script>
+
+</body>
+
+</html>

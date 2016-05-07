@@ -1,121 +1,139 @@
 <!DOCTYPE html>
-<html>
-  <head>
+<html lang="en">
+
+<head>
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>AdminLTE 2 | Log in</title>
-    <!-- Tell the browser to be responsive to screen width -->
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <!-- Bootstrap 3.3.5 -->
-    <link rel="stylesheet" href="<?php echo base_url('assets');?>/bootstrap/css/bootstrap.min.css">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="<?php echo base_url('assets');?>/plugins/font-awesome-4.6.1/css/font-awesome.min.css">
-    <!-- Ionicons -->
-    <link rel="stylesheet" href="<?php echo base_url('assets');?>/plugins/ionicons-2.0.1/css/ionicons.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>SB Admin 2 - Bootstrap Admin Theme</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="<?php echo base_url('assets');?>/plugins/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="<?php echo base_url('assets');?>/plugins/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
     <link rel="stylesheet" href="<?php echo base_url('assets');?>/plugins/pace-1.0.2/themes/blue/pace-theme-minimal.css">
     <link rel="stylesheet" href="<?php echo base_url('assets');?>/plugins/formvalidation/css/formValidation.min.css">
     <link rel="stylesheet" href="<?php echo base_url('assets');?>/plugins/toastr/build/toastr.css">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="<?php echo base_url('assets');?>/dist/css/style.min.css">
-    <!-- iCheck -->
-    <link rel="stylesheet" href="<?php echo base_url('assets');?>/plugins/iCheck/square/blue.css">
+    <!-- Custom CSS -->
+    <link href="<?php echo base_url('assets');?>/dist/css/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="<?php echo base_url('assets');?>/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-  </head>
-  <body class="hold-transition login-page">
-    <div class="login-box">
-      <div class="login-logo">
-        <a href="../../index2.html"><b>Codex</b>List</a>
-      </div><!-- /.login-logo -->
-      <div class="login-box-body">
-        <p class="login-box-msg">Sign in to start your session</p>
-		<?php $attributes = array('role'=>'login_form','id'=>'login_form');
-		echo form_open('',$attributes);?>
+
+</head>
+
+<body>
+        <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4">
+                <div class="login-panel panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Please Sign In</h3>
+                    </div>
+                    <div class="panel-body">
+		<?php $attributes = array('role'=>'form','id'=>'login_form');
+        echo form_open('',$attributes);
+    echo form_fieldset('');
+    ?>
         <!--<form role="login_form" id="login_form" method="post">-->
-          <div class="form-group has-feedback">
-		<?php $data = array(
-			'name'          => 'email',
-			'id'            => 'email',
-			'class'         => 'form-control',
-			'type'     		=> 'email',
-			'autocomplate'  => 'off',
-			'placeholder'   => 'Email',
-			'autofocus'     => ''
-			);
-			echo form_input($data);?>
-            <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+          <div class="form-group">
+        <?php $data = array(
+            'name'          => 'email',
+            'id'            => 'email',
+            'class'         => 'form-control',
+            'type'          => 'email',
+            'autocomplate'  => 'off',
+            'placeholder'   => 'Email',
+            'autofocus'     => ''
+            );
+            echo form_input($data);?>
           </div>
-          <div class="form-group has-feedback">
-		  <?php $data = array(
-			'name'          => 'passblog',
-			'id'            => 'passblog',
-			'class'         => 'form-control',
-			'type'     		=> 'password',
-			'autocomplate'  => 'off',
-			'placeholder'   => 'Password',
-			'autofocus'     => ''
-			);
-			echo form_input($data);?>
-            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+          <div class="form-group">
+          <?php $data = array(
+            'name'          => 'passblog',
+            'id'            => 'passblog',
+            'class'         => 'form-control',
+            'type'          => 'password',
+            'autocomplate'  => 'off',
+            'placeholder'   => 'Password',
+            'autofocus'     => ''
+            );
+            echo form_input($data);?>
           </div>
           <div class="row">
             <div class="col-xs-8">
-              <div class="checkbox icheck">
+              <div class="checkbox">
                 <label>
-				<?php $data = array(
-					'name'          => 'remember',
-					'id'            => 'remember',
-					'value'         => 'accept',
-					'checked'       => FALSE,
-					'type'         => 'checkbox'
-				);
+                <?php $data = array(
+                    'name'          => 'remember',
+                    'id'            => 'remember',
+                    'value'         => 'accept',
+                    'checked'       => FALSE,
+                    'type'         => 'checkbox'
+                );
 
-				echo form_checkbox($data); ?>
+                echo form_checkbox($data); ?>
                   Remember Me
                 </label>
               </div>
             </div><!-- /.col -->
             <div class="col-xs-4">
-				<?php $data = array(
-									'name'          => 'login_form',
-									'id'            => 'login_form',
-									'class'         => 'btn btn-primary btn-block btn-flat',
-									'type'          => 'submit',
-									'content'       => 'Sign In'
-							);
-							echo form_button($data);
-				
-				?>
+                <?php $data = array(
+                                    'name'          => 'login_form',
+                                    'id'            => 'login_form',
+                                    'class'         => 'btn btn-primary btn-block btn-flat',
+                                    'type'          => 'submit',
+                                    'content'       => 'Sign In'
+                            );
+                            echo form_button($data);
+                
+                ?>
             </div><!-- /.col -->
           </div>
-        <?php echo form_close(); ?>
+        <?php 
+        echo form_fieldset_close();
+        echo form_close(); ?>
 
         <a href="#">I forgot my password</a><br>
 
-      </div><!-- /.login-box-body -->
-    </div><!-- /.login-box -->
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <!-- jQuery 2.1.4 -->
-    <script src="<?php echo base_url('assets');?>/plugins/jQuery/jQuery-2.1.4.min.js"></script>
-    <!-- Bootstrap 3.3.5 -->
-    <script src="<?php echo base_url('assets');?>/bootstrap/js/bootstrap.min.js"></script>
-    <script src="<?php echo base_url('assets');?>/bootstrap/js/bootstrap.min.js"></script>
-    <!-- iCheck -->
-    <script src="<?php echo base_url('assets');?>/plugins/iCheck/icheck.min.js"></script>
+    <!-- jQuery -->
+    <script src="<?php echo base_url('assets');?>/plugins/jquery/dist/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="<?php echo base_url('assets');?>/plugins/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="<?php echo base_url('assets');?>/plugins/metisMenu/dist/metisMenu.min.js"></script>
     <script src="<?php echo base_url('assets');?>/plugins/pace-1.0.2/pace.min.js"></script>
     <script src="<?php echo base_url('assets');?>/plugins/formvalidation/js/formValidation.min.js"></script>
     <script src="<?php echo base_url('assets');?>/plugins/formvalidation/js/framework/bootstrap.min.js"></script>
     <script src="<?php echo base_url('assets');?>/plugins/formvalidation/js/language/id_ID.js"></script>
     <script src="<?php echo base_url('assets');?>/plugins/toastr/build/toastr.min.js"></script>
-    <script src="<?php echo base_url('assets');?>/dist/js/pages/prsiro.js"></script>
-	<script type="text/javascript">
-		var url = '<?php echo base_url();?>';
-	</script>
+    <!-- Custom Theme JavaScript -->
+    <script src="<?php echo base_url('assets');?>/dist/js/sb-admin-2.js"></script>
+    <script src="<?php echo base_url('assets');?>/dist/js/auth.js"></script>
+    <script type="text/javascript">
+    var url = '<?php echo base_url();?>';
+  </script>
+</body>
 
-  </body>
 </html>
+
