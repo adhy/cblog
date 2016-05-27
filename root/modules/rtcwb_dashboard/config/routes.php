@@ -1,3 +1,3 @@
 <?php
-$route['mailworm/dashboard'] 	= "Rtcwb_dashboard/index";
+$route['mailworm/dashboard'] 	= "rtcwb_dashboard/index";
 ?>
