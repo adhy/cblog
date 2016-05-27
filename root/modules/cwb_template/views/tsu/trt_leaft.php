@@ -13,16 +13,19 @@
                             <!-- /input-group -->
                         </li>
                         <li>
-                            <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                            <a href="<?=site_url('mailworm/dashboard')?>"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-table fa-fw"></i> Tables<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="flot.html">Flot Charts</a>
+                                    <a href="<?=site_url('mailworm/categories')?>"><i class="fa fa-th-list fa-fw"></i> Categories</a>
                                 </li>
                                 <li>
-                                    <a href="morris.html">Morris.js Charts</a>
+                                    <a href="<?=site_url('mailworm/tags')?>"><i class="fa fa-tags fa-fw"></i> Tags</a>
+                                </li>
+                                <li>
+                                    <a href="<?=site_url('mailworm/contents')?>"><i class="fa fa-file-text fa-fw"></i> Contents</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
