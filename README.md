@@ -1,2 +1,2 @@
 # stepen
-myblog
+blog
