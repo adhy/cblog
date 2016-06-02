@@ -1,9 +1,10 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 class Rtcwb_login extends MX_Controller {
-	public $data = array(
-			'title'     => 'CodexList',
-			'text'     => 'Blog',
-			'author'    => 'andrei',
+		public $data = array(
+			'title'     => 'CodexList || Login',
+			'header'	=> 'Login',
+			'text'      => 'CL-System',
+			'author'    => 'ADW',
 		);
 	public function __construct(){
         parent::__construct();

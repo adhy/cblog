@@ -1,9 +1,11 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 class Rtcwb_tags extends MX_Controller {
 	public $data = array(
-			'title'     => 'SPK',
-			'text'     => 'PLN',
+			'title'     => 'CL-System || Tags',
+			'header'	=> 'Tags',
+			'text'      => 'CL-System',
 			'author'    => 'ADW',
+			'filejs'	=>	'maintenance.js',
 		);
 	public function __construct(){
         parent::__construct();

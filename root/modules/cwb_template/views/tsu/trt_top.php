@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Bootstrap Admin Theme</title>
+    <title><?php echo $title;?></title>
 
     <!-- Bootstrap Core CSS -->
     <link href="<?php echo base_url('assets');?>/plugins/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -19,6 +19,11 @@
     <link rel="stylesheet" href="<?php echo base_url('assets');?>/plugins/pace-1.0.2/themes/blue/pace-theme-minimal.css">
     <link rel="stylesheet" href="<?php echo base_url('assets');?>/plugins/formvalidation/css/formValidation.min.css">
     <link rel="stylesheet" href="<?php echo base_url('assets');?>/plugins/toastr/build/toastr.css">
+        <!-- DataTables CSS -->
+    <link href="<?php echo base_url('assets');?>/plugins/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet">
+
+    <!-- DataTables Responsive CSS -->
+    <link href="<?php echo base_url('assets');?>/plugins/datatables-responsive/css/dataTables.responsive.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="<?php echo base_url('assets');?>/dist/css/sb-admin-2.css" rel="stylesheet">
 
