@@ -1,0 +1,90 @@
+.view-book {
+    margin-bottom: 0px;
+}
+.form-horizontal .viewdata{
+padding-top: 0px;
+}
+label.viewdata{
+margin-bottom: 0px;
+}
+p.form-control-static {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+}
+hr.line {
+    margin-top: 0px;
+    margin-bottom: 0px;}
+
+
+#addpenduduk .form-control-feedback,#edituser .form-control-feedback,#adduser .form-control-feedback, #editadmin .form-control-feedback,#addsubkriteria .form-control-feedback,#editsubkriteria .form-control-feedback,#editpetugas .form-control-feedback {
+    top: 5;
+    right: -25px;
+}
+.navbar-default {
+    background-color: #FFF;
+    border-color: #FFF;
+}
+.navi {
+    background-color: #F5F5F5;
+    border-color: #F5F5F5;
+	border-radius:2px;
+	
+}
+.cetak{box-shadow:none;border: 0px;}
+a:hover,a:focus{text-decoration: none;}
+.chosen-container-single .chosen-single abbr {
+  top: 10px;}
+.breadcrumb {
+    padding: 8px 15px;
+    margin-bottom: 0px;
+    list-style: outside none none;
+    background-color: #FFF;
+    border-radius: 4px;
+}
+.bootstrap-select.form-control:not([class*="col-"]) {
+  width: auto;
+}
+.box-cn{background-color: #FFF;}
+.cn-box{border: 1px solid rgb(203, 203, 203);}
+.box-icon {
+    float: right;
+    margin-top: 1px;
+}
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+.footer {
+
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+
+}
+
+
+/* Custom page CSS
+-------------------------------------------------- */
+/* Not required for template or sticky footer method. */
+
+
+.container .text-muted {
+  margin: 20px 0;
+}
+
+.footer > .container {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+code {
+  font-size: 80%;
+}
