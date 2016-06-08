@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Mrtcwb_tags extends CI_Model {
+class Mrtcwb_categories extends CI_Model {
 	var $table = 'mailing';
     var $column = array('num','emmail',
     					'name','dt_c','dt_u');

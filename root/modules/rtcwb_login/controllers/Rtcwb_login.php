@@ -14,7 +14,7 @@ class Rtcwb_login extends MX_Controller {
 	public function index(){
 		if(!is_logged_in()){ // if you add in constructor no need write each function in above controller. 
 			
-		$this->load->view('rtcwb_login/trt_login');
+		$this->load->view('rtcwb_login/trt_login', $this->data);
 		//if($this->session->userdata('admin')==TRUE){
 			//$this->data['css']='../';
 			//$this->data['filejs']='admin.js';
