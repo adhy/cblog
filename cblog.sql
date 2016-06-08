@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 03, 2016 at 06:03 AM
+-- Generation Time: Jun 08, 2016 at 02:39 AM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 7.0.5
 
@@ -118,7 +118,7 @@ INSERT INTO `cb_status` (`id_status`, `nm_status`, `c_date`, `u_date`) VALUES
 
 CREATE TABLE `mailing` (
   `num` int(5) NOT NULL,
-  `mail` varchar(255) NOT NULL,
+  `emmail` varchar(255) NOT NULL,
   `name` varchar(255) NOT NULL,
   `dt_c` datetime NOT NULL,
   `dt_u` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
@@ -128,7 +128,7 @@ CREATE TABLE `mailing` (
 -- Dumping data for table `mailing`
 --
 
-INSERT INTO `mailing` (`num`, `mail`, `name`, `dt_c`, `dt_u`) VALUES
+INSERT INTO `mailing` (`num`, `emmail`, `name`, `dt_c`, `dt_u`) VALUES
 (1, 'ary@china-glaze.co.id', 'a', '2016-06-10 03:04:01', '2016-06-03 10:08:56'),
 (2, 'recruitment@elastomix.co.id', 'uu', '2016-06-24 03:11:08', '2016-06-17 11:16:08'),
 (3, 'ary@china-glaze.co.id', 'a', '2016-06-10 03:04:01', '2016-06-03 10:21:43'),
