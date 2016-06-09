@@ -11,7 +11,7 @@ $(document).ready(function() {
             "url": "tags/view-tabel",
             "type": "POST"
         },
-         responsive: true,
+         responsive: false,
         "language": {"sProcessing":   "Sedang memproses...",
     "sLengthMenu":   "Tampilkan _MENU_ entri",
     "sZeroRecords":  "Tidak ditemukan data yang sesuai",

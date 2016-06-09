@@ -1,6 +1,6 @@
 var table;
 $(document).ready(function() {
-    table = $('#tabletags').DataTable( {
+    table = $('#tablecategorie').DataTable( {
         "searching": false,
         "paging":   true,
         "ordering": false,
@@ -8,7 +8,7 @@ $(document).ready(function() {
         "processing": true,
         "serverSide": true,
         "ajax": {
-            "url": "tags/view-tabel",
+            "url": "categories/view-tabel",
             "type": "POST"
         },
          responsive: true,
@@ -49,7 +49,7 @@ function edit_modalt(id) {
                     $("#eweight").val(response.weight);
                     $("#enmkriteria").val(response.rangenilai);
                 }*/
-                $("#edittags").modal("show").on('shown.bs.modal');
+                $("#editcategories").modal("show").on('shown.bs.modal');
            /* }
         });*/
 }

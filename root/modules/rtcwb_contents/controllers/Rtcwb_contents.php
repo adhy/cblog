@@ -44,8 +44,8 @@ class Rtcwb_contents extends MX_Controller {
 	                  <span class="sr-only">Toggle Dropdown</span>
 	                </button>
 	                <ul class="dropdown-menu dropdown-menu-right">
-	                  <li class="drop-menu"><span onclick=javascript:edit_modalt('.$person->num.') ><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit Tag</span></li>
-	                  <li class="drop-menu"><span onclick=javascript:del_t('.$person->num.',"delete-tag")><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Delete Tag</span></li>
+	                  <li ><span class="drop-menu" onclick=javascript:edit_modalt('.$person->num.') ><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit Tag</span></li>
+	                  <li ><span class="drop-menu" onclick=javascript:del_t('.$person->num.',"delete-tag")><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Delete Tag</span></li>
 	                </ul>
 	              </div>  ';
 	 

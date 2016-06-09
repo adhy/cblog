@@ -1,6 +1,6 @@
 var table;
 $(document).ready(function() {
-    table = $('#tabletags').DataTable( {
+    table = $('#tablecontents').DataTable( {
         "searching": false,
         "paging":   true,
         "ordering": false,
@@ -8,7 +8,7 @@ $(document).ready(function() {
         "processing": true,
         "serverSide": true,
         "ajax": {
-            "url": "tags/view-tabel",
+            "url": "contents/view-tabel",
             "type": "POST"
         },
          responsive: true,
