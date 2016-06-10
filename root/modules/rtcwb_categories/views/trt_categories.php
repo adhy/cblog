@@ -16,7 +16,7 @@
                         <div class="panel-heading">
                             <i class="fa fa-user"></i>
                             <span class="break"></span>
-                            DataTables Advanced Tables
+                            Table <?=$header?>
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">

@@ -19,7 +19,7 @@ class Rtcwb_tags extends MX_Controller {
 			//$this->data['css']='../';
 			//$this->data['filejs']='admin.js';
 			$view='rtcwb_tags/trt_tags';
-			$this->mlib->template_rt($view,$this->data);
+			$this->mlib->template_rt($view, $this->data);
 		//}else if($this->session->userdata('admin')==FALSE){
 		//	redirect('login');
 		//}

@@ -49,7 +49,7 @@ function edit_modalt(id) {
                     $("#eweight").val(response.weight);
                     $("#enmkriteria").val(response.rangenilai);
                 }*/
-                $("#edittags").modal("show").on('shown.bs.modal');
+                $("#editcontents").modal("show").on('shown.bs.modal');
            /* }
         });*/
 }

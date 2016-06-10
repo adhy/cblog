@@ -19,7 +19,7 @@ class Rtcwb_categories extends MX_Controller {
 			//$this->data['css']='../';
 			//$this->data['filejs']='admin.js';
 			$view='rtcwb_categories/trt_categories';
-			$this->mlib->template_rt($view,$this->data);
+			$this->mlib->template_rt($view, $this->data);
 		//}else if($this->session->userdata('admin')==FALSE){
 		//	redirect('login');
 		//}

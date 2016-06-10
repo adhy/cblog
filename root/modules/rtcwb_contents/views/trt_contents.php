@@ -16,12 +16,12 @@
                         <div class="panel-heading">
                             <i class="fa fa-user"></i>
                             <span class="break"></span>
-                            DataTables Advanced Tables
+                            Table <?=$header?>
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                             <div class="dataTable_wrapper">
-                                <table class="table table-striped table-bordered table-hover dt-responsive display" id="tablecategories" cellspacing="0" width="100%">
+                                <table class="table table-striped table-bordered table-hover dt-responsive display" id="tablecontents" cellspacing="0" width="100%">
                                     <thead>
                                         <tr>
                                             <th width="10%">No</th>
@@ -56,7 +56,7 @@
     </div>
     <!-- /#wrapper -->
 
-    <div class="modal fade" id="edittags" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal fade" id="editcontents" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">

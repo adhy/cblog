@@ -1,6 +1,6 @@
 var table;
 $(document).ready(function() {
-    table = $('#tablecategorie').DataTable( {
+    table = $('#tablecategories').DataTable( {
         "searching": false,
         "paging":   true,
         "ordering": false,
