@@ -57,7 +57,7 @@ $.extend( true, DataTable.defaults, {
 $.extend( DataTable.ext.classes, {
 	sWrapper:      "dataTables_wrapper form-inline dt-bootstrap",
 	sFilterInput:  "form-control input-sm",
-	sLengthSelect: "form-control input-sm",
+	sLengthSelect: "form-control input-sm selectpicker",
 	sProcessing:   "dataTables_processing panel panel-default"
 } );
 

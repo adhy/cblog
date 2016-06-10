@@ -11,6 +11,8 @@
     <script src="<?php echo base_url('assets');?>/plugins/formvalidation/js/framework/bootstrap.min.js"></script>
     <script src="<?php echo base_url('assets');?>/plugins/formvalidation/js/language/id_ID.js"></script>
     <script src="<?php echo base_url('assets');?>/plugins/toastr/build/toastr.min.js"></script>
+    <script src="<?php echo base_url('assets');?>/plugins/uniform/dist/jquery.uniform.min.js"></script>
+    <script src="<?php echo base_url('assets');?>/plugins/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
         <!-- DataTables JavaScript -->
     <script src="<?php echo base_url('assets');?>/plugins/datatables/media/js/jquery.dataTables.min.js"></script>
     <script src="<?php echo base_url('assets');?>/plugins/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
@@ -22,6 +24,7 @@
 <script type="text/javascript">
     var url = '<?php echo base_url();?>';
   </script>
+  <?php echo $this->session->flashdata('notif');?>
 
 
 </body>

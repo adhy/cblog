@@ -20,6 +20,10 @@
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
+                        <p>
+                                <button type="button" class="btn btn-sm btn-primary" onclick=javascript:add_modalsiswa()><i class="fa fa-plus fa-fw"></i> Tambah</button>
+                                <a target="_blank" class="btn btn-sm btn-primary" href="<?php echo site_url('cetak'); ?>"><i class="fa fa-print fa-fw"></i> Cetak</a>
+                            </p>
                             <div class="dataTable_wrapper">
                                 <table class="table table-striped table-bordered table-hover dt-responsive display" id="tablecontents" cellspacing="0" width="100%">
                                     <thead>

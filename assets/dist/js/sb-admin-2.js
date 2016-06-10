@@ -1,3 +1,4 @@
+$("input:checkbox, input:radio, input:file").not('[data-no-uniform="true"],#uniform-is-ajax').uniform();
     $('.tooltip-demo').tooltip({
         selector: "[data-toggle=tooltip]",
         container: "body"

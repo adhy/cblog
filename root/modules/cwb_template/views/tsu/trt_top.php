@@ -21,7 +21,8 @@
     <link rel="stylesheet" href="<?php echo base_url('assets');?>/plugins/toastr/build/toastr.css">
         <!-- DataTables CSS -->
     <link href="<?php echo base_url('assets');?>/plugins/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet">
-
+    <link href="<?php echo base_url('assets');?>/plugins/uniform/themes/default/css/uniform.default.min.css" rel="stylesheet">
+    <link href="<?php echo base_url('assets');?>/plugins/bootstrap-select/dist/css/bootstrap-select.css" rel="stylesheet">
     <!-- DataTables Responsive CSS -->
     <link href="<?php echo base_url('assets');?>/plugins/datatables-responsive/css/dataTables.responsive.css" rel="stylesheet">
     <!-- Custom CSS -->

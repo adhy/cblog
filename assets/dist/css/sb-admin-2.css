@@ -372,3 +372,6 @@ table.dataTable thead .sorting:after {
     text-decoration: none;
     background-color: #f5f5f5;
 }
+.bootstrap-select.form-control:not([class*="col-"]) {
+    width: auto;
+}
