@@ -1,8 +1,25 @@
 $("input:checkbox, input:radio, input:file").not('[data-no-uniform="true"],#uniform-is-ajax').uniform();
-    $('.tooltip-demo').tooltip({
+   /* $('.tooltip').tooltip({
         selector: "[data-toggle=tooltip]",
         container: "body"
-    })
+    })*/
+    $(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();  
+    $('#tooltip').tooltip({
+    'show': false,
+        'placement': 'top',
+        'title': "Hidde/Show"
+});
+
+$('#tooltip').tooltip('hide'); 
+    $("#panel").on("show.bs.collapse", function(){
+      $(".btn").html('<i class="fa fa-chevron-up fa-fw"></i>');
+    });
+    $("#panel").on("hide.bs.collapse", function(){
+      $(".btn").html('<i class="fa fa-chevron-down fa-fw"></i>');
+
+    });
+});
 
     // popover demo
     $("[data-toggle=popover]")
@@ -72,4 +89,5 @@ paceOptions = {
   restartOnPushState: false,
   restartOnRequestAfter: false
 }
+
 

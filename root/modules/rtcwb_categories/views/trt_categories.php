@@ -17,9 +17,14 @@
                             <i class="fa fa-user"></i>
                             <span class="break"></span>
                             Table <?=$header?>
+                             <div class="pull-right">
+                                <a href="<?=site_url('mailworm/contents/add')?>" class="btn btn-default btn-header" data-toggle="tooltip" data-placement="top" title="Add Categories !"><i class="fa fa-plus"></i></a>
+                                <button id="tooltip" class="btn btn-default btn-header" data-toggle="collapse" data-target="#panel"><i class="fa fa-chevron-up fa-fw"></i></button>
+                                
+                            </div>
                         </div>
                         <!-- /.panel-heading -->
-                        <div class="panel-body">
+                        <div id="panel" class="panel-body collapse in">
                             <div class="dataTable_wrapper">
                                 <table class="table table-striped table-bordered table-hover dt-responsive display" id="tablecategories" cellspacing="0" width="100%">
                                     <thead>

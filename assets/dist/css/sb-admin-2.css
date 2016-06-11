@@ -11,7 +11,9 @@ body {
 #wrapper {
     width: 100%;
 }
-
+a{
+text-decoration: none !important;
+}
 #page-wrapper {
     padding: 0 15px;
     min-height: 568px;
@@ -374,4 +376,21 @@ table.dataTable thead .sorting:after {
 }
 .bootstrap-select.form-control:not([class*="col-"]) {
     width: auto;
+}
+.actco{
+    color: #fff !important;
+}
+.actco:hover{
+    color: #23527c !important;
+}
+.btn-header {
+    width: 20px;
+    height: 20px;
+    padding:0px 0;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 12px;
+    line-height: 1.428571429;
+    text-decoration: none;
+    display: inline-block;
 }

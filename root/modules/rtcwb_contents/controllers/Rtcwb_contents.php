@@ -62,4 +62,14 @@ class Rtcwb_contents extends MX_Controller {
 	        echo json_encode($output);
 	    
     }
+    public function adcon(){
+		//if($this->session->userdata('admin')==TRUE){
+			//$this->data['css']='../';
+			//$this->data['filejs']='admin.js';
+			$view='rtcwb_contents/trt_addcontents';
+			$this->mlib->template_rt($view,$this->data);
+		//}else if($this->session->userdata('admin')==FALSE){
+		//	redirect('login');
+		//}
+	}
 }
