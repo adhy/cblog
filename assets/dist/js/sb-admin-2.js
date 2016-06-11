@@ -5,18 +5,20 @@ $("input:checkbox, input:radio, input:file").not('[data-no-uniform="true"],#unif
     })*/
     $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip();  
-    $('#tooltip').tooltip({
+   /* $('#tooltip').tooltip({
     'show': false,
         'placement': 'top',
         'title': "Hidde/Show"
-});
-
-$('#tooltip').tooltip('hide'); 
+});*/
+$('[rel="tooltip"]').tooltip();
+ 
     $("#panel").on("show.bs.collapse", function(){
-      $(".btn").html('<i class="fa fa-chevron-up fa-fw"></i>');
+      $("#tooltip").html('<i class="fa fa-chevron-up fa-fw"></i>');
+      $("#tooltip").attr("data-original-title", "Hide");
     });
     $("#panel").on("hide.bs.collapse", function(){
-      $(".btn").html('<i class="fa fa-chevron-down fa-fw"></i>');
+      $("#tooltip").html('<i class="fa fa-chevron-down fa-fw"></i>');
+      $("#tooltip").attr("data-original-title", "Show");
 
     });
 });

@@ -19,7 +19,7 @@
                             Table <?=$header?>
                             <div class="pull-right">
                                 <a href="<?=site_url('mailworm/contents/add')?>" class="btn btn-default btn-header" data-toggle="tooltip" data-placement="top" title="Add Tag !"><i class="fa fa-plus"></i></a>
-                                <button id="tooltip" class="btn btn-default btn-header" data-toggle="collapse" data-target="#panel"><i class="fa fa-chevron-up fa-fw"></i></button>
+                                <span id="tooltip" class="btn btn-default btn-header" data-toggle="collapse" data-target="#panel" rel="tooltip" title="Hide"><i class="fa fa-chevron-up fa-fw" ></i></span>
                                 
                             </div>
                         </div>

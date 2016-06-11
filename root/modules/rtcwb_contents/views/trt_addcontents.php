@@ -19,7 +19,7 @@
                             <span class="break"></span>
                             Add <?=$header?>
                             <div class="pull-right">
-                                <button id="tooltip" class="btn btn-default btn-header" data-toggle="collapse" data-target="#panel"><i class="fa fa-chevron-up fa-fw"></i></button>
+                                <span id="tooltip" class="btn btn-default btn-header" data-toggle="collapse" data-target="#panel" rel="tooltip" title="Hide"><i class="fa fa-chevron-up fa-fw" ></i></span>
                                 
                             </div>
                         </div>
