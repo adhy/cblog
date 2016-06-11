@@ -25,6 +25,7 @@
     <link href="<?php echo base_url('assets');?>/plugins/bootstrap-select/dist/css/bootstrap-select.css" rel="stylesheet">
     <!-- DataTables Responsive CSS -->
     <link href="<?php echo base_url('assets');?>/plugins/datatables-responsive/css/dataTables.responsive.css" rel="stylesheet">
+    <link href="<?php echo base_url('assets');?>/plugins/chosen/chosen.min.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="<?php echo base_url('assets');?>/dist/css/sb-admin-2.css" rel="stylesheet">
 
