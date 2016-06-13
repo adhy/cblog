@@ -12,18 +12,19 @@
     <title><?php echo $title;?></title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="<?php echo base_url('assets');?>/plugins/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo base_url('assets');?>/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- MetisMenu CSS -->
-    <link href="<?php echo base_url('assets');?>/plugins/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="<?php echo base_url('assets');?>/plugins/pace-1.0.2/themes/blue/pace-theme-minimal.css">
-    <link rel="stylesheet" href="<?php echo base_url('assets');?>/plugins/formvalidation/css/formValidation.min.css">
-    <link rel="stylesheet" href="<?php echo base_url('assets');?>/plugins/toastr/build/toastr.css">
+    <link href="<?php echo base_url('assets');?>/css/metisMenu.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="<?php echo base_url('assets');?>/css/thepa/blue/pace-theme-minimal.css">
+    <link rel="stylesheet" href="<?php echo base_url('assets');?>/css/formValidation.min.css">
+    <link rel="stylesheet" href="<?php echo base_url('assets');?>/css/toastr.css">
+    <link href="<?php echo base_url('assets');?>/css/thesu/default/css/uniform.default.min.css" rel="stylesheet">
     <!-- Custom CSS -->
-    <link href="<?php echo base_url('assets');?>/dist/css/sb-admin-2.css" rel="stylesheet">
+    <link href="<?php echo base_url('assets');?>/css/sb-admin-2.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="<?php echo base_url('assets');?>/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="<?php echo base_url('assets');?>/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -34,13 +35,13 @@
 
 </head>
 
-<body>
+<body class="bg-log">
         <div class="container">
         <div class="row">
             <div class="col-md-4 col-md-offset-4">
-                <div class="login-panel panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Please Sign In</h3>
+                <div class="login-panel panel panel-default panlog">
+                    <div class="panel-heading pnhed">
+                        <h3 class="panel-title" style="text-align: center">-: Please Sign In :-</h3>
                     </div>
                     <div class="panel-body">
 		<?php $attributes = array('role'=>'form','id'=>'login_form');
@@ -52,7 +53,7 @@
         <?php $data = array(
             'name'          => 'email',
             'id'            => 'email',
-            'class'         => 'form-control',
+            'class'         => 'form-control froco',
             'type'          => 'email',
             'autocomplate'  => 'off',
             'placeholder'   => 'Email',
@@ -64,7 +65,7 @@
           <?php $data = array(
             'name'          => 'passblog',
             'id'            => 'passblog',
-            'class'         => 'form-control',
+            'class'         => 'form-control froco',
             'type'          => 'password',
             'autocomplate'  => 'off',
             'placeholder'   => 'Password',
@@ -75,13 +76,14 @@
           <div class="row">
             <div class="col-xs-8">
               <div class="checkbox">
-                <label>
+                <label class="reme">
                 <?php $data = array(
                     'name'          => 'remember',
                     'id'            => 'remember',
                     'value'         => 'accept',
                     'checked'       => FALSE,
-                    'type'         => 'checkbox'
+                    'type'          => 'checkbox',
+                    'class'         => 'froco'
                 );
 
                 echo form_checkbox($data); ?>
@@ -115,21 +117,22 @@
     </div>
 
     <!-- jQuery -->
-    <script src="<?php echo base_url('assets');?>/plugins/jquery/dist/jquery.min.js"></script>
+    <script src="<?php echo base_url('assets');?>/js/jquery.min.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="<?php echo base_url('assets');?>/plugins/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="<?php echo base_url('assets');?>/js/bootstrap.min.js"></script>
 
     <!-- Metis Menu Plugin JavaScript -->
-    <script src="<?php echo base_url('assets');?>/plugins/metisMenu/dist/metisMenu.min.js"></script>
-    <script src="<?php echo base_url('assets');?>/plugins/pace-1.0.2/pace.min.js"></script>
-    <script src="<?php echo base_url('assets');?>/plugins/formvalidation/js/formValidation.min.js"></script>
-    <script src="<?php echo base_url('assets');?>/plugins/formvalidation/js/framework/bootstrap.min.js"></script>
-    <script src="<?php echo base_url('assets');?>/plugins/formvalidation/js/language/id_ID.js"></script>
-    <script src="<?php echo base_url('assets');?>/plugins/toastr/build/toastr.min.js"></script>
+    <script src="<?php echo base_url('assets');?>/js/metisMenu.min.js"></script>
+    <script src="<?php echo base_url('assets');?>/js/pace.min.js"></script>
+    <script src="<?php echo base_url('assets');?>/js/formValidation.min.js"></script>
+    <script src="<?php echo base_url('assets');?>/js/framework/bootstrap.min.js"></script>
+    <script src="<?php echo base_url('assets');?>/js/language/id_ID.js"></script>
+    <script src="<?php echo base_url('assets');?>/js/toastr.min.js"></script>
+    <script src="<?php echo base_url('assets');?>/js/jquery.uniform.min.js"></script>
     <!-- Custom Theme JavaScript -->
-    <script src="<?php echo base_url('assets');?>/dist/js/sb-admin-2.js"></script>
-    <script src="<?php echo base_url('assets');?>/dist/js/auth.js"></script>
+    <script src="<?php echo base_url('assets');?>/js/sb-admin-2.js"></script>
+    <script src="<?php echo base_url('assets');?>/js/auth.js"></script>
     <script type="text/javascript">
     var url = '<?php echo base_url();?>';
   </script>

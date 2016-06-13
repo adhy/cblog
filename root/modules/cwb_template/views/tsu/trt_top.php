@@ -12,25 +12,25 @@
     <title><?php echo $title;?></title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="<?php echo base_url('assets');?>/plugins/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo base_url('assets');?>/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- MetisMenu CSS -->
-    <link href="<?php echo base_url('assets');?>/plugins/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="<?php echo base_url('assets');?>/plugins/pace-1.0.2/themes/blue/pace-theme-minimal.css">
-    <link rel="stylesheet" href="<?php echo base_url('assets');?>/plugins/formvalidation/css/formValidation.min.css">
-    <link rel="stylesheet" href="<?php echo base_url('assets');?>/plugins/toastr/build/toastr.css">
+    <link href="<?php echo base_url('assets');?>/css/metisMenu.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="<?php echo base_url('assets');?>/css/thepa/blue/pace-theme-minimal.css">
+    <link rel="stylesheet" href="<?php echo base_url('assets');?>/css/formValidation.min.css">
+    <link rel="stylesheet" href="<?php echo base_url('assets');?>/css/toastr.css">
         <!-- DataTables CSS -->
-    <link href="<?php echo base_url('assets');?>/plugins/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet">
-    <link href="<?php echo base_url('assets');?>/plugins/uniform/themes/default/css/uniform.default.min.css" rel="stylesheet">
-    <link href="<?php echo base_url('assets');?>/plugins/bootstrap-select/dist/css/bootstrap-select.css" rel="stylesheet">
+    <link href="<?php echo base_url('assets');?>/css/dataTables.bootstrap.css" rel="stylesheet">
+    <link href="<?php echo base_url('assets');?>/css/thesu/default/css/uniform.default.min.css" rel="stylesheet">
+    <link href="<?php echo base_url('assets');?>/css/bootstrap-select.css" rel="stylesheet">
     <!-- DataTables Responsive CSS -->
-    <link href="<?php echo base_url('assets');?>/plugins/datatables-responsive/css/dataTables.responsive.css" rel="stylesheet">
-    <link href="<?php echo base_url('assets');?>/plugins/chosen/chosen.min.css" rel="stylesheet">
+    <link href="<?php echo base_url('assets');?>/css/dataTables.responsive.css" rel="stylesheet">
+    <link href="<?php echo base_url('assets');?>/css/chosen.min.css" rel="stylesheet">
     <!-- Custom CSS -->
-    <link href="<?php echo base_url('assets');?>/dist/css/sb-admin-2.css" rel="stylesheet">
+    <link href="<?php echo base_url('assets');?>/css/sb-admin-2.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="<?php echo base_url('assets');?>/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="<?php echo base_url('assets');?>/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
