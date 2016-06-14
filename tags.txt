@@ -1,0 +1,7 @@
+tags Typeahead => http://bootstrap-tagsinput.github.io/bootstrap-tagsinput/examples/
+github =>https://github.com/bootstrap-tagsinput/bootstrap-tagsinput
+			https://github.com/bassjobsen/Bootstrap-3-Typeahead
+			http://formvalidation.io/examples/select2/
+			http://formvalidation.io/examples/bootstrap-tagsinput/
+			http://formvalidation.io/examples/chosen/
+			http://formvalidation.io/examples/typeahead/
