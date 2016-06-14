@@ -5,3 +5,4 @@ github =>https://github.com/bootstrap-tagsinput/bootstrap-tagsinput
 			http://formvalidation.io/examples/bootstrap-tagsinput/
 			http://formvalidation.io/examples/chosen/
 			http://formvalidation.io/examples/typeahead/
+tinymce=>	http://formvalidation.io/examples/tinymce/
