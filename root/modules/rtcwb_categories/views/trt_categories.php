@@ -30,9 +30,10 @@
                                     <thead>
                                         <tr>
                                             <th width="10%">No</th>
-                                            <th>Name</th>
-                                            <th>Email</th>
+                                            <th>Category</th>
+                                            <th>Slug</th>
                                             <th >Create</th>
+                                            <th >Update</th>
                                             <th width="20%">Action</th>
                                         </tr>
                                     </thead>
@@ -66,7 +67,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">Modal title</h4>
+        <h4 class="modal-title">Add <?=$header?></h4>
       </div>
       <div id="tampil"></div>
       

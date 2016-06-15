@@ -13,3 +13,32 @@ https://forum.backbox.org/announcements/backbox-linux-4-6-released/msg9852/#msg9
 *Using data returned by validator ===> http://formvalidation.io/examples/using-data-returned-validator/
 *Adding warning validation state ===> http://formvalidation.io/examples/adding-warning-validation-state/ 
 *remote ===> http://formvalidation.io/validators/remote/
+
+
+
+info = [];
+info[0] = 'hi';
+info[1] = 'hello';
+
+
+$.ajax({
+   type: "POST",
+   data: {info:info},
+   url: "index.php",
+   success: function(msg){
+     $('.answer').html(msg);
+   }
+});
+
+http://stackoverflow.com/questions/8890524/pass-array-to-ajax-request-in-ajax
+
+
+$.ajax({
+    type: "POST",
+    url: "index.php",
+    dataType: "json",
+    data: JSON.stringify({ paramName: info }),
+    success: function(msg){
+        $('.answer').html(msg);
+    }
+});

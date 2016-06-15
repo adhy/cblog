@@ -32,9 +32,10 @@ class Rtcwb_categories extends MX_Controller {
 	            
 	            $row = array();
 	            $row[] = $no++;
-	            $row[] = $person->name;
-	            $row[] = $person->emmail;
-	            $row[] = $person->dt_c;
+	            $row[] = $person->nm_c;
+	            $row[] = $person->slg_c;
+	            $row[] = $person->c_date;
+	            $row[] = $person->u_date;
 	 
 	            //add html for action
 	            $row[] = '<div class="btn-group">
@@ -44,8 +45,8 @@ class Rtcwb_categories extends MX_Controller {
 	                  <span class="sr-only">Toggle Dropdown</span>
 	                </button>
 	                <ul class="dropdown-menu dropdown-menu-right">
-	                  <li ><span class="drop-menu" onclick=javascript:edit_modalt('.$person->num.') ><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit Tag</span></li>
-	                  <li ><span class="drop-menu" onclick=javascript:del_t('.$person->num.',"delete-tag")><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Delete Tag</span></li>
+	                  <li ><span class="drop-menu" onclick=javascript:edit_modalt('.$person->id.') ><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit Tag</span></li>
+	                  <li ><span class="drop-menu" onclick=javascript:del_t('.$person->id.',"delete-tag")><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Delete Tag</span></li>
 	                </ul>
 	              </div>  ';
 	 
@@ -64,5 +65,37 @@ class Rtcwb_categories extends MX_Controller {
     }
     function addcategories(){
 			$msg=$this->load->view('rtcwb_categories/trt_addcategories',$this->data);
+	}
+	function cek_categories(){
+		$nm_c=$this->input->post('categories', TRUE);
+		foreach ($nm_c as $row) {
+			$this->data['nm_c'] = $row;
+			$ceknis=$this->categories->getcat($this->data);
+			if($ceknis->num_rows()>0){
+				$msg = false;
+			}else{
+				$msg = true;
+			}	
+		}
+		echo json_encode(array('valid'=>$msg));			
+	}
+
+	function save_categories(){
+		$cat = array();
+		$this->form_validation->set_rules('categories', '', 'required');
+		$msg    = "error";
+		if ($this->form_validation->run() == TRUE){
+			$nm_c=$this->input->post('categories', TRUE);
+			foreach ($nm_c as $row) {
+				$cat []= $row;
+				$insert = $this->db->insert('cb_categories',$row);
+				if($insert){
+	                $msg    = "success";
+            	}else{
+            		$msg    = "error";
+            	}
+			}
+			echo json_encode(array('msg'=>$msg,'cat'=> $cat));
+		}
 	}
 }

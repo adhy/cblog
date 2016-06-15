@@ -1,10 +1,10 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Mrtcwb_categories extends CI_Model {
-	var $table = 'mailing';
-    var $column = array('num','emmail',
-    					'name','dt_c','dt_u');
-    var $order = array('emmail' => 'asc');
+	var $table = 'cb_categories';
+    var $column = array('id','nm_c','sl_c',
+    					'c_date','u_date');
+    var $order = array('nm_c' => 'asc');
 	function __constuct()
 	{
 		parent::__constuct();  // Call the Model constructor 
@@ -47,6 +47,10 @@ class Mrtcwb_categories extends CI_Model {
     function count_all(){	
         $this->db->from($this->table);
         return $this->db->count_all_results();
+    }
+    function getcat($data){
+        $this->db->where('nm_c',$data['nm_c']);
+        return $this->db->get($this->table);
     }
 
 }
