@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
+-- version 4.5.2
 -- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: Jun 08, 2016 at 02:39 AM
+-- Host: localhost
+-- Generation Time: Jun 15, 2016 at 06:14 PM
 -- Server version: 10.1.13-MariaDB
--- PHP Version: 7.0.5
+-- PHP Version: 7.0.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -19,6 +19,27 @@ SET time_zone = "+00:00";
 --
 -- Database: `cblog`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cb_categories`
+--
+
+CREATE TABLE `cb_categories` (
+  `id` int(5) NOT NULL,
+  `nm_c` varchar(255) NOT NULL,
+  `slg_c` varchar(255) NOT NULL,
+  `c_date` datetime NOT NULL,
+  `u_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `cb_categories`
+--
+
+INSERT INTO `cb_categories` (`id`, `nm_c`, `slg_c`, `c_date`, `u_date`) VALUES
+(1, 'php', 'php', '2016-06-15 01:03:05', '2016-06-15 20:09:38');
 
 -- --------------------------------------------------------
 
@@ -214,6 +235,12 @@ INSERT INTO `mailing` (`num`, `emmail`, `name`, `dt_c`, `dt_u`) VALUES
 --
 
 --
+-- Indexes for table `cb_categories`
+--
+ALTER TABLE `cb_categories`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `cb_level`
 --
 ALTER TABLE `cb_level`
@@ -250,6 +277,11 @@ ALTER TABLE `mailing`
 -- AUTO_INCREMENT for dumped tables
 --
 
+--
+-- AUTO_INCREMENT for table `cb_categories`
+--
+ALTER TABLE `cb_categories`
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `cb_level`
 --
