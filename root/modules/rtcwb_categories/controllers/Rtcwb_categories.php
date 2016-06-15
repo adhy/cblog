@@ -62,4 +62,7 @@ class Rtcwb_categories extends MX_Controller {
 	        echo json_encode($output);
 	    
     }
+    function addcategories(){
+			$msg=$this->load->view('rtcwb_categories/trt_addcategories',$this->data);
+	}
 }

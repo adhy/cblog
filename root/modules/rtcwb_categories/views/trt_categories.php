@@ -18,7 +18,7 @@
                             <span class="break"></span>
                             Table <?=$header?>
                              <div class="pull-right">
-                                <a href="<?=site_url('mailworm/contents/add')?>" class="btn btn-default btn-header" data-toggle="tooltip" data-placement="top" title="Add Categories !"><i class="fa fa-plus"></i></a>
+                                <button id="addca" class="btn btn-default btn-header" data-toggle="tooltip" data-placement="top" title="Add Categories !" ><i class="fa fa-plus"></i></button>
                                 <span id="tooltip" class="btn btn-default btn-header" data-toggle="collapse" data-target="#panel" rel="tooltip" title="Hide"><i class="fa fa-chevron-up fa-fw" ></i></span>
                                 
                             </div>
@@ -61,7 +61,21 @@
     </div>
     <!-- /#wrapper -->
 
-    <div class="modal fade" id="editcategories" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+<div id="maddca" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Modal title</h4>
+      </div>
+      <div id="tampil"></div>
+      
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+    <div class="modal fade" id="medica" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">

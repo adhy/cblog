@@ -40,3 +40,21 @@ function edit_modalt(id) {
            /* }
         });*/
 }
+function resetForm(){
+    $('#maddcafo').trigger("reset");
+    //$("#maddcafo")[0].reset();
+    //$('#maddcafo').reset();
+}
+$('#addca').click(function(){
+    resetForm();
+    $.ajax({
+            type    : "POST",
+            url     : 'categories/addform',
+            dataType: 'html',
+            success : function(response){
+                $("#maddca").modal("show").on('shown.bs.modal');
+                $('#tampil').html(response);
+            }
+        });
+});
+

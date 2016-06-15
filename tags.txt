@@ -6,3 +6,10 @@ github =>https://github.com/bootstrap-tagsinput/bootstrap-tagsinput
 			http://formvalidation.io/examples/chosen/
 			http://formvalidation.io/examples/typeahead/
 tinymce=>	http://formvalidation.io/examples/tinymce/
+
+https://forum.backbox.org/announcements/backbox-linux-4-6-released/msg9852/#msg9852
+*Building a password strength meter with Dropbox's zxcvbn libary ===> http://formvalidation.io/examples/building-password-strength-meter/
+*Getting notified while field is being validated ===> http://formvalidation.io/examples/getting-notified-field-being-validated/
+*Using data returned by validator ===> http://formvalidation.io/examples/using-data-returned-validator/
+*Adding warning validation state ===> http://formvalidation.io/examples/adding-warning-validation-state/ 
+*remote ===> http://formvalidation.io/validators/remote/

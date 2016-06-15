@@ -75,21 +75,7 @@
           </div>
           <div class="row">
             <div class="col-xs-8">
-              <div class="checkbox">
-                <label class="reme">
-                <?php $data = array(
-                    'name'          => 'remember',
-                    'id'            => 'remember',
-                    'value'         => 'accept',
-                    'checked'       => FALSE,
-                    'type'          => 'checkbox',
-                    'class'         => 'froco'
-                );
-
-                echo form_checkbox($data); ?>
-                  Remember Me
-                </label>
-              </div>
+                <?=anchor('mailworm','I forgot my password'); ?>
             </div><!-- /.col -->
             <div class="col-xs-4">
                 <?php $data = array(
@@ -108,7 +94,7 @@
         echo form_fieldset_close();
         echo form_close(); ?>
 
-        <a href="#">I forgot my password</a><br>
+       
 
                   </div>
                 </div>
