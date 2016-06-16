@@ -14,7 +14,7 @@
             <!-- The categories field template containing an categories field and a Remove button -->
             <div class="form-group hide" id="optionTemplate">
                 <div class="col-xs-offset-3 col-xs-5">
-                    <input id="addall" class="form-control" type="hide" name="categories[]" autofocus=""/>
+                    <input class="form-control" type="hidden" name="catgor" autofocus="" disabled="disabled"/>
                 </div>
                 <div class="col-xs-4">
                     <button type="button" class="btn btn-default removeButton"><i class="fa fa-minus"></i></button>
@@ -33,7 +33,23 @@
            $(document).ready(function() {
     // The maximum number of options
     var MAX_OPTIONS = 5;
-
+	var categoriesv = {
+            row: '.col-xs-5',   // The title is placed inside a <div class="col-xs-4"> element
+            validators: {
+                notEmpty: {
+                    //message: 'The title is required'
+                },
+				stringLength: {
+                            max: 100,
+                            //message: 'The option must be less than 100 characters long'
+                        },
+				remote: {
+					url: 'categories/catauth',
+					type: 'POST'
+				}
+            }
+        },
+		bookIndex = 0;
     $('#maddcafo')
         .formValidation({
             framework: 'bootstrap',
@@ -43,21 +59,7 @@
                 validating: 'glyphicon glyphicon-refresh'
             },
             fields: {
-                'categories[]': {
-                    validators: {
-                        notEmpty: {
-                            //message: 'The option required and cannot be empty'
-                        },
-                        stringLength: {
-                            max: 100,
-                            //message: 'The option must be less than 100 characters long'
-                        },
-                        remote: {
-                            url: 'categories/catauth',
-                            type: 'POST'
-                        }
-                    }
-                }
+                'categories[]': categoriesv
             }
         })
 
@@ -68,11 +70,11 @@
                                 .clone()
                                 .removeClass('hide')
                                 .removeAttr('id')
-                                .insertBefore($template),
-                $categories   = $clone.find('[name="categories[]"]');
+                                .insertBefore($template);
+                $clone.find('[name="catgor"]').attr({name : 'categories[]',type: 'text'}).removeAttr("disabled").end();
 
             // Add new field
-            $('#maddcafo').formValidation('addField', $categories);
+            $('#maddcafo').formValidation('addField','categories[]', categoriesv);
         })
 
         // Remove button click handler
@@ -81,10 +83,11 @@
                 $categories = $row.find('[name="categories[]"]');
 
             // Remove element containing the categories
-            $row.remove();
+            
 
             // Remove field
-            $('#maddcafo').formValidation('removeField', $categories);
+            $('#maddcafo').formValidation('removeField','categories[]', categoriesv);
+			$row.remove();
         })
 
         // Called after adding new field
@@ -111,10 +114,16 @@
         .on('success.form.fv', function(e) {
         e.preventDefault();
         // Use Ajax to submit form data
+		//var arr = [];
+		//var cat = $('[name="categories[]"]').val();
+		
         $.ajax({
             type    : "POST",
             url     : 'categories/procadd',
             data    : $('#maddcafo').serialize(),
+			//data 	: 	{ categories []: arr.push(cat)
+			//	
+			//			},
             dataType: 'json',
             success : function(response){
                if(response.msg == 'success'){

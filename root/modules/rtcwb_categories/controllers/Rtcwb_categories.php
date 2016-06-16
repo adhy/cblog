@@ -67,7 +67,8 @@ class Rtcwb_categories extends MX_Controller {
 			$msg=$this->load->view('rtcwb_categories/trt_addcategories',$this->data);
 	}
 	function cek_categories(){
-		$nm_c=$this->input->post('categories', TRUE);
+		//$nm_c=$this->input->post('categories', TRUE);
+		$nm_c=$this->db->escape_str($this->input->post('categories',TRUE));
 		foreach ($nm_c as $row) {
 			$this->data['nm_c'] = $row;
 			$ceknis=$this->categories->getcat($this->data);
@@ -82,20 +83,29 @@ class Rtcwb_categories extends MX_Controller {
 
 	function save_categories(){
 		$cat = array();
-		$this->form_validation->set_rules('categories', '', 'required');
-		$msg    = "error";
-		if ($this->form_validation->run() == TRUE){
+		//$this->form_validation->set_rules('categories', '', 'strip_tags|xss_clean');
+		//$msg    = "error1";
+		//if ($this->form_validation->run() == TRUE){
+			//$nm_c=$this->db->escape_str($this->input->post('categories',TRUE));
 			$nm_c=$this->input->post('categories', TRUE);
 			foreach ($nm_c as $row) {
 				$cat []= $row;
-				$insert = $this->db->insert('cb_categories',$row);
+				$toslg = str_replace(' ','-', $row);
+				$slg   = strtolower($toslg);
+				
+				$input = array(
+							'nm_c' => $row,
+							'slg_c'=> $slg,
+							'c_date' =>  date('Y-m-d H:i:s')
+						);
+				$insert = $this->db->insert('cb_categories',$input);
 				if($insert){
 	                $msg    = "success";
             	}else{
             		$msg    = "error";
             	}
 			}
-			echo json_encode(array('msg'=>$msg,'cat'=> $cat));
-		}
+		//}
+		echo json_encode(array('msg'=>$msg,'cat'=> $cat));
 	}
 }
