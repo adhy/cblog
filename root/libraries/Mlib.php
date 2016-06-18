@@ -34,6 +34,36 @@ class Mlib {
         $decrypttext = mcrypt_decrypt(MCRYPT_RIJNDAEL_256, $this->skey, $crypttext, MCRYPT_MODE_ECB, $iv);
         return trim($decrypttext);
     }
+
+
+
+    public  function safe_hexc($string) {
+        $data = bin2hex($string);
+        return $data;
+    }
+ 
+    public function safe_hexd($string) {
+        $data=hex2bin($string);
+        return $data;
+    }
+    
+    public  function enhex($value){ 
+        if(!$value){return false;}
+        $text = $value;
+        $iv_size = mcrypt_get_iv_size(MCRYPT_RC2, MCRYPT_MODE_ECB);
+        $iv = mcrypt_create_iv($iv_size, MCRYPT_RAND);
+        $crypttext = mcrypt_encrypt(MCRYPT_RC2, $this->skey, $text, MCRYPT_MODE_ECB);
+        return trim($this->safe_hexc($crypttext)); 
+    }
+    
+    public function dehex($value){
+        if(!$value){return false;}
+        $crypttext = $this->safe_hexd($value); 
+        $iv_size = mcrypt_get_iv_size(MCRYPT_RC2, MCRYPT_MODE_ECB);
+        $iv = mcrypt_create_iv($iv_size, MCRYPT_RAND);
+        $decrypttext = mcrypt_decrypt(MCRYPT_RC2, $this->skey, $crypttext, MCRYPT_MODE_ECB);
+        return trim($decrypttext);
+    }
     
     public function templatelogin($view=null,$data=null){
         $zeroview =& get_instance();

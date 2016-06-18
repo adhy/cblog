@@ -16,7 +16,7 @@
                         <div class="panel-heading">
                             <i class="fa fa-user"></i>
                             <span class="break"></span>
-                            Table <?=$header?>
+                            Table <?=$header?> 
                              <div class="pull-right">
                                 <button id="addca" class="btn btn-default btn-header" data-toggle="tooltip" data-placement="top" title="Add Categories !" ><i class="fa fa-plus"></i></button>
                                 <span id="tooltip" class="btn btn-default btn-header" data-toggle="collapse" data-target="#panel" rel="tooltip" title="Hide"><i class="fa fa-chevron-up fa-fw" ></i></span>

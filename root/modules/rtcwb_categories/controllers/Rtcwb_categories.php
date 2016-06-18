@@ -34,21 +34,38 @@ class Rtcwb_categories extends MX_Controller {
 	            $row[] = $no++;
 	            $row[] = $person->nm_c;
 	            $row[] = $person->slg_c;
-	            $row[] = $person->c_date;
-	            $row[] = $person->u_date;
-	 
+	            $datec  = date('d M Y [H:i:s]', strtotime($person->c_date));
+	            $dateu  = date('d M Y [H:i:s]', strtotime($person->u_date));
+	            $row[] = $datec ;
+	            $row[] = $dateu;
+	 			$id    = $this->mlib->enhex($person->id);
+	 			//$id2    = $this->mlib->dehex($id);
 	            //add html for action
+	            if ($person->status == 1){
 	            $row[] = '<div class="btn-group">
-	                <button type="button" class="btn btn-sm btn-success">Option</button>
-	                <button type="button" class="btn btn-sm btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	                <button data-target='.$id.' type="button" class="btn btn-sm btn-success" onclick=over("'.$id.'")>Show</button>
+	                <button data-target="dr'.$id.'" type="button" class="btn btn-sm btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 	                  <span class="caret"></span>&nbsp;
 	                  <span class="sr-only">Toggle Dropdown</span>
 	                </button>
 	                <ul class="dropdown-menu dropdown-menu-right">
-	                  <li ><span class="drop-menu" onclick=javascript:edit_modalt('.$person->id.') ><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit Tag</span></li>
-	                  <li ><span class="drop-menu" onclick=javascript:del_t('.$person->id.',"delete-tag")><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Delete Tag</span></li>
+	                  <li ><span data-target="ed'.$id.'" class="drop-menu" onclick=javascript:edit_modalt("'.$id.'") ><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit Category</span></li>
+	                  <li ><span data-target="del'.$id.'" class="drop-menu" onclick=javascript:del_t("'.$id.'","delete-tag")><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Delete Category</span></li>
+	                </ul>
+	              </div>  ';}else{
+	              	$row[] = '<div class="btn-group">
+	                <button data-target='.$id.' type="button" class="btn btn-sm btn-danger" onclick=over("'.$id.'")>Show</button>
+	                <button data-target="dr'.$id.'" type="button" class="btn btn-sm btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	                  <span class="caret"></span>&nbsp;
+	                  <span class="sr-only">Toggle Dropdown</span>
+	                </button>
+	                <ul class="dropdown-menu dropdown-menu-right">
+	                  <li ><span data-target="ed'.$id.'" class="drop-menu" onclick=javascript:edit_modalt("'.$id.'") ><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit Category</span></li>
+	                  <li ><span data-target="del'.$id.'" class="drop-menu" onclick=javascript:del_t("'.$id.'","delete-tag")><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Delete Category</span></li>
 	                </ul>
 	              </div>  ';
+
+	              }
 	 
 	            $data[] = $row;
 	        }
@@ -96,7 +113,9 @@ class Rtcwb_categories extends MX_Controller {
 				$input = array(
 							'nm_c' => $row,
 							'slg_c'=> $slg,
-							'c_date' =>  date('Y-m-d H:i:s')
+							'c_date' =>  date('Y-m-d H:i:s',now()),
+							'u_date' =>  date('Y-m-d H:i:s',now()),
+							'status' => '0'
 						);
 				$insert = $this->db->insert('cb_categories',$input);
 				if($insert){
@@ -107,5 +126,22 @@ class Rtcwb_categories extends MX_Controller {
 			}
 		//}
 		echo json_encode(array('msg'=>$msg,'cat'=> $cat));
+	}
+	function sh_categories(){
+		//$nm_c=$this->input->post('categories', TRUE);
+		$id_c=$this->db->escape_str($this->input->post('take',TRUE));
+		$this->data['id']    = $this->mlib->dehex($id_c);		
+        $cek=$this->db->where('id',$this->data['id'])->get('cb_categories');
+        if($cek->num_rows() > 0){
+            $row=$cek->row();
+			$status = 0;
+			$msg    = 'Disable';
+			if($row->status == 0){
+				$status = 1;
+				$msg    = 'Enable';
+			}
+            $this->db->set('status',$status)->where('id',$row->id)->update('cb_categories');
+            echo json_encode(array('msg'=>$msg,'over'=>$status));	
+        }		
 	}
 }

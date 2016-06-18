@@ -3,7 +3,7 @@
 class Mrtcwb_categories extends CI_Model {
 	var $table = 'cb_categories';
     var $column = array('id','nm_c','sl_c',
-    					'c_date','u_date');
+    					'c_date','u_date','status');
     var $order = array('nm_c' => 'asc');
 	function __constuct()
 	{
