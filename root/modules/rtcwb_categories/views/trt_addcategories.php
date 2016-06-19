@@ -129,9 +129,9 @@
                if(response.msg == 'success'){
                      $('#maddca').modal('hide').on('hidden.bs.modal');
                     reload_table();
-                    toastr.success('Berhasil menambahkan categories : '+response.cat+'');
+                    toastr.success('Successfully add a category '+response.cat+'');
                 }else{
-                    toastr.error('Kesalahan pada pengisian data categories !');
+                    toastr.error('Error occurred in adding categories, please try again !');
                     //window.location.href = 'dashboard.html';
                 }
             }

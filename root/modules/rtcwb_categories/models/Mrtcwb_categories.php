@@ -52,5 +52,8 @@ class Mrtcwb_categories extends CI_Model {
         $this->db->where('nm_c',$data['nm_c']);
         return $this->db->get($this->table);
     }
-
+    function getcatid($data){
+        $this->db->where('id',$data['id']);
+        return $this->db->get($this->table);
+    }
 }

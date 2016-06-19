@@ -82,9 +82,21 @@ $('#addca').click(function(){
         });
 });
 function edit_modalt(id){
-   alert ('ini '+id);
-    //$("#maddcafo")[0].reset();
-    //$('#maddcafo').reset();
+    //$('#update').attr('onclick', 'proch("'+id+'")');
+    $('#meditca').find('form')[0].reset();
+    $('#meditcafo').formValidation('resetForm', true);
+        $.ajax({
+            type    : "POST",
+            url     : 'categories/change',
+            data    : {change:id},
+            dataType: 'json',
+            success : function(response){
+                if(response.msg == 'success'){
+                    $("#enmc").val(response.category);
+                }
+                $("#meditca").modal("show").on('shown.bs.modal');
+            }
+        });
 }
 function over(ot){
         $.ajax({
@@ -94,15 +106,67 @@ function over(ot){
             dataType: 'json',
             success : function(response){
                 if(response.msg == 'Enable'){
-                    toastr.success(response.msg+' Category !');
+                    toastr.success(response.msg+' Category '+response.cat+' !');
                     $('[data-target='+ot+']').attr('class','btn btn-sm btn-success');
+                    $('[data-target='+ot+']').html('Enable');
                     $('[data-target=dr'+ot+']').attr('class','btn btn-sm btn-success');
                 }else{
-                    toastr.error(response.msg+' Category !');
+                    toastr.error(response.msg+' Category '+response.cat+' !');
                     $('[data-target='+ot+']').attr('class','btn btn-sm btn-danger');
+                    $('[data-target='+ot+']').html('Disable');
                     $('[data-target=dr'+ot+']').attr('class','btn btn-sm btn-danger');
                 }
             }
         });
 }
+$(document).ready(function() {
+    $('#meditcafo').formValidation({
+        framework: 'bootstrap',
+        excluded: ':disabled',
+        icon: {
+            valid: '',
+            invalid: '',
+            validating: ''
+        },
+        locale: 'id_ID',
+        fields: {
+                category: {
+                validators: {
+                    notEmpty: {
+                    //message: 'The title is required'
+                    },
+                    stringLength: {
+                                max: 100,
+                                //message: 'The option must be less than 100 characters long'
+                            },
+                    remote: {
+                        url: 'categories/catauths',
+                        type: 'POST'
+                    }
+                }
+            }
+        }
+    })
+    .on('success.form.fv', function(e) {
+        // Prevent form submission
+        e.preventDefault();
+        // Use Ajax to submit form data
+        $.ajax({
+            type    : "POST",
+            url     : 'categories/proch',
+            data    : $('#meditcafo').serialize(),
+            dataType: 'json',
+            success : function(response){
+                if(response.msg == 'success'){
+                    toastr.success('Change Success ! ');
+                    reload_table();
+                    $('#meditca').modal('hide');
+                }else{
+                    toastr.error('Change Error !');
+                    //window.location.href = 'dashboard.html';
+                }
+            }
+        });
+    });
+});
 

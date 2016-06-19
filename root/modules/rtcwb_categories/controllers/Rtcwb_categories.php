@@ -43,7 +43,7 @@ class Rtcwb_categories extends MX_Controller {
 	            //add html for action
 	            if ($person->status == 1){
 	            $row[] = '<div class="btn-group">
-	                <button data-target='.$id.' type="button" class="btn btn-sm btn-success" onclick=over("'.$id.'")>Show</button>
+	                <button data-target='.$id.' type="button" class="btn btn-sm btn-success" onclick=over("'.$id.'")>Enable</button>
 	                <button data-target="dr'.$id.'" type="button" class="btn btn-sm btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 	                  <span class="caret"></span>&nbsp;
 	                  <span class="sr-only">Toggle Dropdown</span>
@@ -54,7 +54,7 @@ class Rtcwb_categories extends MX_Controller {
 	                </ul>
 	              </div>  ';}else{
 	              	$row[] = '<div class="btn-group">
-	                <button data-target='.$id.' type="button" class="btn btn-sm btn-danger" onclick=over("'.$id.'")>Show</button>
+	                <button data-target='.$id.' type="button" class="btn btn-sm btn-danger" onclick=over("'.$id.'")>Disable</button>
 	                <button data-target="dr'.$id.'" type="button" class="btn btn-sm btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 	                  <span class="caret"></span>&nbsp;
 	                  <span class="sr-only">Toggle Dropdown</span>
@@ -88,14 +88,43 @@ class Rtcwb_categories extends MX_Controller {
 		$nm_c=$this->db->escape_str($this->input->post('categories',TRUE));
 		foreach ($nm_c as $row) {
 			$this->data['nm_c'] = $row;
-			$ceknis=$this->categories->getcat($this->data);
-			if($ceknis->num_rows()>0){
+			$cekidc=$this->categories->getcat($this->data);
+			if($cekidc->num_rows()>0){
 				$msg = false;
 			}else{
 				$msg = true;
 			}	
 		}
 		echo json_encode(array('valid'=>$msg));			
+	}
+	function cek_categoriess(){
+		//$nm_c=$this->input->post('categories', TRUE);
+		$this->data['nm_c'] =$this->db->escape_str($this->input->post('category',TRUE));
+			$cekidc=$this->categories->getcat($this->data);
+			if($cekidc->num_rows()>0){
+				$msg = false;
+			}else{
+				$msg = true;
+			}	
+		
+		echo json_encode(array('valid'=>$msg));			
+	}
+	function cek_catedit(){
+		//$nm_c=$this->input->post('categories', TRUE);
+		$id_c					=$this->db->escape_str($this->input->post('change',TRUE));
+		$this->data['id']    = $this->mlib->dehex($id_c);
+		$cekidc=$this->categories->getcatid($this->data);
+			if($cekidc->num_rows()>0){
+				$msg = true;
+				$sess_data['id_cat']	=	$this->data['id'] ;
+        		$this->session->set_userdata($sess_data);
+				$send=$cekidc->row();
+				$sendnm=$send->nm_c;
+			}else{
+				$msg = false;
+				$$sendnm='error';
+			}	
+		echo json_encode(array('valid'=>$msg,'category'=>$sendnm));			
 	}
 
 	function save_categories(){
@@ -136,12 +165,35 @@ class Rtcwb_categories extends MX_Controller {
             $row=$cek->row();
 			$status = 0;
 			$msg    = 'Disable';
+			$cat 	= $row->nm_c;
 			if($row->status == 0){
 				$status = 1;
 				$msg    = 'Enable';
 			}
             $this->db->set('status',$status)->where('id',$row->id)->update('cb_categories');
-            echo json_encode(array('msg'=>$msg,'over'=>$status));	
+            echo json_encode(array('msg'=>$msg,'over'=>$status,'cat'=>$cat));	
         }		
+	}
+	function proc_update(){
+			$this->form_validation->set_rules('category', '', 'required');
+			$msg    = "error1";
+			if ($this->form_validation->run() == TRUE){
+				$this->data['category']	=	$this->db->escape_str($this->input->post('category', TRUE));
+				$toslg = str_replace(' ','-', $this->data['category']);
+				$slg   = strtolower($toslg);
+				$data_edit = array(
+							'nm_c' => $this->data['category'],
+							'slg_c'=> $slg,
+							'u_date' =>  date('Y-m-d H:i:s',now()),
+							'status' => '0'
+						);
+				$update = $this->db->where("id",$this->session->userdata('id_cat'))->update('cb_categories',$data_edit);
+				if($update){
+	                $msg    = "success";
+            	}else{
+            		$msg    = "error";
+            	}
+			}
+            echo json_encode(array("msg"=>$msg));
 	}
 }

@@ -76,19 +76,30 @@
 </div><!-- /.modal -->
 
 
-    <div class="modal fade" id="medica" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModalLabel">Ubah Siswa</h4>
+<div id="meditca" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Edit <?=$header?></h4>
+      </div>
+      <form id="meditcafo" method="post" class="form-horizontal">
+      <div class="modal-body">
+        
+            <div class="form-group">
+                <label class="col-xs-3 control-label">Category</label>
+                <div class="col-xs-5">
+                    <input id="enmc" type="text" class="form-control" name="category" autofocus="" value="" />
+                </div>
             </div>
-            <div id="editsiswa">
-                <form id="form_editsis"></form>
-
-            </div>
-        </div>
-        <!-- /.modal-content -->
-    </div>
-    <!-- /.modal-dialog -->
-</div>
+           
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button id="update" type="submit" class="btn btn-primary">Save changes</button>
+      </div>
+       </form> 
+      
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
