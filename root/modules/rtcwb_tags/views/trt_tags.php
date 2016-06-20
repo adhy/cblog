@@ -18,7 +18,7 @@
                             <span class="break"></span>
                             Table <?=$header?>
                             <div class="pull-right">
-                                <a href="<?=site_url('mailworm/contents/add')?>" class="btn btn-default btn-header" data-toggle="tooltip" data-placement="top" title="Add Tag !"><i class="fa fa-plus"></i></a>
+                                <button id="addta" class="btn btn-default btn-header" data-toggle="tooltip" data-placement="top" title="Add Tags !" ><i class="fa fa-plus"></i></button>
                                 <span id="tooltip" class="btn btn-default btn-header" data-toggle="collapse" data-target="#panel" rel="tooltip" title="Hide"><i class="fa fa-chevron-up fa-fw" ></i></span>
                                 
                             </div>
@@ -30,9 +30,10 @@
                                     <thead>
                                         <tr>
                                             <th width="10%">No</th>
-                                            <th>Name</th>
-                                            <th>Email</th>
+                                            <th>Category</th>
+                                            <th>Slug</th>
                                             <th >Create</th>
+                                            <th >Update</th>
                                             <th width="20%">Action</th>
                                         </tr>
                                     </thead>
@@ -61,19 +62,44 @@
     </div>
     <!-- /#wrapper -->
 	
-<div class="modal fade" id="editcontents" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				<h4 class="modal-title" id="myModalLabel">Ubah Siswa</h4>
-			</div>
-			<div id="editsiswa">
-				<form id="form_editsis"></form>
+<div id="maddta" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Add <?=$header?></h4>
+      </div>
+      <div id="tampil"></div>
+      
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 
-			</div>
-		</div>
-		<!-- /.modal-content -->
-	</div>
-	<!-- /.modal-dialog -->
-</div>
+
+<div id="meditta" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Edit <?=$header?></h4>
+      </div>
+      <form id="medittafo" method="post" class="form-horizontal">
+      <div class="modal-body">
+        
+            <div class="form-group">
+                <label class="col-xs-3 control-label">Tag</label>
+                <div class="col-xs-5">
+                    <input id="enmc" type="text" class="form-control" name="tag" autofocus="" value="" />
+                </div>
+            </div>
+           
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button id="update" type="submit" class="btn btn-primary">Save changes</button>
+      </div>
+       </form> 
+      
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

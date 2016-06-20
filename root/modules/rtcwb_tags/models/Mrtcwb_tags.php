@@ -1,10 +1,10 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Mrtcwb_tags extends CI_Model {
-	var $table = 'mailing';
-    var $column = array('num','emmail',
-    					'name','dt_c','dt_u');
-    var $order = array('emmail' => 'asc');
+    var $table = 'cb_tags';
+    var $column = array('id','nm_t','sl_c',
+                        'c_date','u_date','status');
+    var $order = array('nm_t' => 'asc');
 	function __constuct()
 	{
 		parent::__constuct();  // Call the Model constructor 
@@ -47,6 +47,14 @@ class Mrtcwb_tags extends CI_Model {
     function count_all(){	
         $this->db->from($this->table);
         return $this->db->count_all_results();
+    }
+    function gettag($data){
+        $this->db->where('nm_t',$data['nm_t']);
+        return $this->db->get($this->table);
+    }
+    function gettagid($data){
+        $this->db->where('id',$data['id']);
+        return $this->db->get($this->table);
     }
 
 }

@@ -5,7 +5,7 @@ class Rtcwb_categories extends MX_Controller {
 			'header'	=> 'Categories',
 			'text'      => 'CL-System',
 			'author'    => 'ADW',
-			'filejs'	=>	'categories.js',
+			'filejs'	=>	'categories.min.js',
 		);
 	public function __construct(){
         parent::__construct();
