@@ -449,3 +449,11 @@ background-position:center;
 .dropdown-menu > li > a {
     padding: 3px 16px !important;
 }
+.delete{
+    background-color: rgb(255, 0, 0);
+    color: rgb(255, 255, 255);
+}
+.btn-danger {
+  background-color: #ff0700 !important;
+  border-color: #ed0700 !important;
+}

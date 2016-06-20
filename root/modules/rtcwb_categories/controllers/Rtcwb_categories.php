@@ -39,29 +39,30 @@ class Rtcwb_categories extends MX_Controller {
 	            $row[] = $datec ;
 	            $row[] = $dateu;
 	 			$id    = $this->mlib->enhex($person->id);
+	 			$nm_c  = str_replace(' ','-', $person->nm_c);
 	 			//$id2    = $this->mlib->dehex($id);
 	            //add html for action
 	            if ($person->status == 1){
 	            $row[] = '<div class="btn-group">
-	                <button data-target='.$id.' type="button" class="btn btn-sm btn-success" onclick=over("'.$id.'")>Enable</button>
+	                <button data-target='.$id.' type="button" class="btn btn-sm btn-success" onclick=over("'.$id.'")>Disable</button>
 	                <button data-target="dr'.$id.'" type="button" class="btn btn-sm btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 	                  <span class="caret"></span>&nbsp;
 	                  <span class="sr-only">Toggle Dropdown</span>
 	                </button>
 	                <ul class="dropdown-menu dropdown-menu-right">
 	                  <li ><span data-target="ed'.$id.'" class="drop-menu" onclick=javascript:edit_modalt("'.$id.'") ><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit Category</span></li>
-	                  <li ><span data-target="del'.$id.'" class="drop-menu" onclick=javascript:del_t("'.$id.'","delete-tag")><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Delete Category</span></li>
+	                  <li ><span data-target="del'.$id.'" class="drop-menu" onclick=javascript:del_t("'.$id.'")><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Delete Category</span></li>
 	                </ul>
 	              </div>  ';}else{
 	              	$row[] = '<div class="btn-group">
-	                <button data-target='.$id.' type="button" class="btn btn-sm btn-danger" onclick=over("'.$id.'")>Disable</button>
+	                <button data-target='.$id.' type="button" class="btn btn-sm btn-danger" onclick=over("'.$id.'")>Enable</button>
 	                <button data-target="dr'.$id.'" type="button" class="btn btn-sm btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 	                  <span class="caret"></span>&nbsp;
 	                  <span class="sr-only">Toggle Dropdown</span>
 	                </button>
 	                <ul class="dropdown-menu dropdown-menu-right">
 	                  <li ><span data-target="ed'.$id.'" class="drop-menu" onclick=javascript:edit_modalt("'.$id.'") ><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit Category</span></li>
-	                  <li ><span data-target="del'.$id.'" class="drop-menu" onclick=javascript:del_t("'.$id.'","delete-tag")><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Delete Category</span></li>
+	                  <li ><span data-target="del'.$id.'" class="drop-menu" onclick=javascript:del_t("'.$id.'")><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Delete Category</span></li>
 	                </ul>
 	              </div>  ';
 
@@ -115,18 +116,36 @@ class Rtcwb_categories extends MX_Controller {
 		$this->data['id']    = $this->mlib->dehex($id_c);
 		$cekidc=$this->categories->getcatid($this->data);
 			if($cekidc->num_rows()>0){
-				$msg = true;
+				$msg = 'true';
 				$sess_data['id_cat']	=	$this->data['id'] ;
         		$this->session->set_userdata($sess_data);
 				$send=$cekidc->row();
 				$sendnm=$send->nm_c;
 			}else{
-				$msg = false;
-				$$sendnm='error';
+				$msg = 'false';
+				$sendnm='error';
 			}	
-		echo json_encode(array('valid'=>$msg,'category'=>$sendnm));			
+		echo json_encode(array('msg'=>$msg,'category'=>$sendnm));			
 	}
-
+	function proc_delete(){
+		//$nm_c=$this->input->post('categories', TRUE);
+		$id_c					=$this->db->escape_str($this->input->post('delete',TRUE));
+		$this->data['id']    = $this->mlib->dehex($id_c);
+		$cekidc=$this->categories->getcatid($this->data);
+			if($cekidc->num_rows()>0){
+				$cekidc=$cekidc->row();
+				$cat 	= $cekidc->nm_c;
+				$delete=$this->db->where_in('id',$this->data['id'])->delete('cb_categories');
+				if($delete){
+	                $msg    = "success";
+            	}else{
+            		$msg    = "error";
+            	}
+			}else{
+				$msg = 'false';
+			}	
+		echo json_encode(array('msg'=>$msg,'cat'=>$cat));			
+	}
 	function save_categories(){
 		$cat = array();
 		//$this->form_validation->set_rules('categories', '', 'strip_tags|xss_clean');

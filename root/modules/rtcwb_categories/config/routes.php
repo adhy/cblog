@@ -8,6 +8,7 @@ $route['mailworm/categories/procadd'] 	= "rtcwb_categories/save_categories";
 $route['mailworm/categories/over'] 	= "rtcwb_categories/sh_categories";
 $route['mailworm/categories/change'] 	= "rtcwb_categories/cek_catedit";
 $route['mailworm/categories/proch'] 	= "rtcwb_categories/proc_update";
+$route['mailworm/categories/prodel'] 	= "rtcwb_categories/proc_delete";
 
 
 ?>

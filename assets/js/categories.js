@@ -35,39 +35,14 @@ $(document).ready(function() {
         "sSortDescending": ": activate to sort column descending"
     }
 }
-
-        /*{
-            "url": url+"assets/js/i18n/English.lang"
-        }*/
     } );
  
 } );
 function reload_table(){
-      table.ajax.reload(null,false); //reload datatable ajax
-}
-function edit_modalt(id) {
-    /*$('#update').attr('onclick', 'javascript:updatek("'+link+'","'+id+'")');
-    
-    $('#form_edit').formValidation('resetForm', true);
-        $.ajax({
-            type    : "POST",
-            url     : 'ambil-nomer',
-            data    : {nomer:id},
-            dataType: 'json',
-            success : function(response){
-                $('#editmodal').find('form')[0].reset();
-                if(response.msg == 'success'){            
-                    $("#eweight").val(response.weight);
-                    $("#enmkriteria").val(response.rangenilai);
-                }*/
-                $("#editcategories").modal("show").on('shown.bs.modal');
-           /* }
-        });*/
+      table.ajax.reload(null,false);
 }
 function resetForm(){
     $('#maddcafo').trigger("reset");
-    //$("#maddcafo")[0].reset();
-    //$('#maddcafo').reset();
 }
 $('#addca').click(function(){
     resetForm();
@@ -81,8 +56,44 @@ $('#addca').click(function(){
             }
         });
 });
+function del_t(idc){
+    $.ajax({
+            type    : "POST",
+            url     : 'categories/change',
+            data    : {change:idc},
+            dataType: 'json',
+            success : function(response){
+                if(response.msg == 'true'){
+                    $('#h4text').html('<i class="fa fa-question-circle"> Delete '+response.category+'</i>');
+                    $('.yes').attr('data-target',idc)
+                    $('#confdel').modal('show').on('shown.bs.modal');
+                }else{
+                    toastr.error('Data '+response.msg+' !');
+                }
+                
+            }
+        });
+}
+$('.yes').click(function(){
+    var target = $(this).data("target");
+    $.ajax({
+            type    : "POST",
+            url     : 'categories/prodel',
+             data    : {delete:target},
+            dataType: 'json',
+            success : function(response){
+                if(response.msg == 'success'){
+                    $("#confdel").modal("hide").on('shown.bs.modal');
+                    toastr.success('Category "'+response.cat+'"" has been deleted !');
+                    reload_table();
+                }else{
+                    toastr.error('An error occured, please try again !');
+                }
+               
+            }
+        });
+});
 function edit_modalt(id){
-    //$('#update').attr('onclick', 'proch("'+id+'")');
     $('#meditca').find('form')[0].reset();
     $('#meditcafo').formValidation('resetForm', true);
         $.ajax({
@@ -91,10 +102,13 @@ function edit_modalt(id){
             data    : {change:id},
             dataType: 'json',
             success : function(response){
-                if(response.msg == 'success'){
+                if(response.msg == 'true'){
                     $("#enmc").val(response.category);
+                    $("#meditca").modal("show").on('shown.bs.modal');
+                }else{
+                    toastr.error('Data '+response.msg+' !');
                 }
-                $("#meditca").modal("show").on('shown.bs.modal');
+                
             }
         });
 }
@@ -108,12 +122,12 @@ function over(ot){
                 if(response.msg == 'Enable'){
                     toastr.success(response.msg+' Category '+response.cat+' !');
                     $('[data-target='+ot+']').attr('class','btn btn-sm btn-success');
-                    $('[data-target='+ot+']').html('Enable');
+                    $('[data-target='+ot+']').html('Disable');
                     $('[data-target=dr'+ot+']').attr('class','btn btn-sm btn-success');
                 }else{
                     toastr.error(response.msg+' Category '+response.cat+' !');
                     $('[data-target='+ot+']').attr('class','btn btn-sm btn-danger');
-                    $('[data-target='+ot+']').html('Disable');
+                    $('[data-target='+ot+']').html('Enable');
                     $('[data-target=dr'+ot+']').attr('class','btn btn-sm btn-danger');
                 }
             }
@@ -133,11 +147,9 @@ $(document).ready(function() {
                 category: {
                 validators: {
                     notEmpty: {
-                    //message: 'The title is required'
                     },
                     stringLength: {
                                 max: 100,
-                                //message: 'The option must be less than 100 characters long'
                             },
                     remote: {
                         url: 'categories/catauths',
@@ -148,9 +160,7 @@ $(document).ready(function() {
         }
     })
     .on('success.form.fv', function(e) {
-        // Prevent form submission
         e.preventDefault();
-        // Use Ajax to submit form data
         $.ajax({
             type    : "POST",
             url     : 'categories/proch',
@@ -163,7 +173,6 @@ $(document).ready(function() {
                     $('#meditca').modal('hide');
                 }else{
                     toastr.error('Change Error !');
-                    //window.location.href = 'dashboard.html';
                 }
             }
         });
