@@ -10,7 +10,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default pull-left no" data-dismiss="modal">No</button>
-        <button type="button" class="btn btn-danger pull-right yes" >Yes</button>
+        <button type="button" class="btn btn-danger pull-right yes">Yes</button>
       </div>    
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->

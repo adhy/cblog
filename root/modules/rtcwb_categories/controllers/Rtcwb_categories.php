@@ -50,8 +50,8 @@ class Rtcwb_categories extends MX_Controller {
 	                  <span class="sr-only">Toggle Dropdown</span>
 	                </button>
 	                <ul class="dropdown-menu dropdown-menu-right">
-	                  <li ><span data-target="ed'.$id.'" class="drop-menu" onclick=javascript:edit_modalt("'.$id.'") ><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit Category</span></li>
-	                  <li ><span data-target="del'.$id.'" class="drop-menu" onclick=javascript:del_t("'.$id.'")><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Delete Category</span></li>
+	                  <li ><span class="drop-menu" onclick=javascript:edit_modalt("'.$id.'") ><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit Category</span></li>
+	                  <li ><span class="drop-menu" onclick=javascript:del_t("'.$id.'")><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Delete Category</span></li>
 	                </ul>
 	              </div>  ';}else{
 	              	$row[] = '<div class="btn-group">
@@ -61,8 +61,8 @@ class Rtcwb_categories extends MX_Controller {
 	                  <span class="sr-only">Toggle Dropdown</span>
 	                </button>
 	                <ul class="dropdown-menu dropdown-menu-right">
-	                  <li ><span data-target="ed'.$id.'" class="drop-menu" onclick=javascript:edit_modalt("'.$id.'") ><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit Category</span></li>
-	                  <li ><span data-target="del'.$id.'" class="drop-menu" onclick=javascript:del_t("'.$id.'")><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Delete Category</span></li>
+	                  <li ><span class="drop-menu" onclick=javascript:edit_modalt("'.$id.'") ><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit Category</span></li>
+	                  <li ><span class="drop-menu" onclick=javascript:del_t("'.$id.'")><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Delete Category</span></li>
 	                </ul>
 	              </div>  ';
 
@@ -143,6 +143,7 @@ class Rtcwb_categories extends MX_Controller {
             	}
 			}else{
 				$msg = 'false';
+				$cat = $id_c;
 			}	
 		echo json_encode(array('msg'=>$msg,'cat'=>$cat));			
 	}

@@ -5,7 +5,7 @@ class Rtcwb_tags extends MX_Controller {
 			'header'	=> 'Tags',
 			'text'      => 'CL-System',
 			'author'    => 'ADW',
-			'filejs'	=>	'tags.js',
+			'filejs'	=>	'tags.min.js',
 		);
 	public function __construct(){
         parent::__construct();
@@ -42,8 +42,8 @@ class Rtcwb_tags extends MX_Controller {
 	                  <span class="sr-only">Toggle Dropdown</span>
 	                </button>
 	                <ul class="dropdown-menu dropdown-menu-right">
-	                  <li ><span data-target="ed'.$id.'" class="drop-menu" onclick=javascript:edit_modalt("'.$id.'") ><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit Tag</span></li>
-	                  <li ><span data-target="del'.$id.'" class="drop-menu" onclick=javascript:del_t("'.$id.'")><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Delete Tag</span></li>
+	                  <li ><span class="drop-menu" onclick=javascript:edit_modalt("'.$id.'") ><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit Tag</span></li>
+	                  <li ><span class="drop-menu" onclick=javascript:del_t("'.$id.'")><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Delete Tag</span></li>
 	                </ul>
 	              </div>  ';}else{
 	              	$row[] = '<div class="btn-group">
@@ -53,8 +53,8 @@ class Rtcwb_tags extends MX_Controller {
 	                  <span class="sr-only">Toggle Dropdown</span>
 	                </button>
 	                <ul class="dropdown-menu dropdown-menu-right">
-	                  <li ><span data-target="ed'.$id.'" class="drop-menu" onclick=javascript:edit_modalt("'.$id.'") ><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit Tag</span></li>
-	                  <li ><span data-target="del'.$id.'" class="drop-menu" onclick=javascript:del_t("'.$id.'")><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Delete Tag</span></li>
+	                  <li ><span class="drop-menu" onclick=javascript:edit_modalt("'.$id.'") ><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit Tag</span></li>
+	                  <li ><span class="drop-menu" onclick=javascript:del_t("'.$id.'")><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Delete Tag</span></li>
 	                </ul>
 	              </div>  ';
 

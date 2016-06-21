@@ -65,7 +65,7 @@ function del_t(idc){
             success : function(response){
                 if(response.msg == 'true'){
                     $('#h4text').html('<i class="fa fa-question-circle"> Delete '+response.tag+'</i>');
-                    $('.yes').attr('data-target',idc)
+                    $('div.modal-footer .yes').attr('onclick','prodel("'+idc+'")');
                     $('#confdel').modal('show').on('shown.bs.modal');
                 }else{
                     toastr.error('Data '+response.msg+' !');
@@ -74,17 +74,16 @@ function del_t(idc){
             }
         });
 }
-$('.yes').click(function(){
-    var target = $(this).data("target");
-    $.ajax({
+function prodel(myid) {
+         $.ajax({
             type    : "POST",
             url     : 'tags/prodel',
-             data    : {delete:target},
+             data    : {delete:myid},
             dataType: 'json',
             success : function(response){
                 if(response.msg == 'success'){
                     $("#confdel").modal("hide").on('shown.bs.modal');
-                    toastr.success('tag "'+response.tag+'"" has been deleted !');
+                    toastr.success('Tags '+response.tag+' has been deleted !');
                     reload_table();
                 }else{
                     toastr.error('An error occured, please try again !');
@@ -92,7 +91,7 @@ $('.yes').click(function(){
                
             }
         });
-});
+}
 function edit_modalt(id){
     $('#meditta').find('form')[0].reset();
     $('#medittafo').formValidation('resetForm', true);

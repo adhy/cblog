@@ -91,5 +91,11 @@ paceOptions = {
   restartOnPushState: false,
   restartOnRequestAfter: false
 }
+function handleKeyPress(e,b,c){
+ var key=e.keyCode || e.which;
+  if (key==13){
+     b(c);
+  }
+}
 
 
