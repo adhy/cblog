@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 15, 2016 at 06:14 PM
+-- Generation Time: Jun 21, 2016 at 06:32 PM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 7.0.6
 
@@ -30,16 +30,75 @@ CREATE TABLE `cb_categories` (
   `id` int(5) NOT NULL,
   `nm_c` varchar(255) NOT NULL,
   `slg_c` varchar(255) NOT NULL,
-  `c_date` datetime NOT NULL,
-  `u_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `c_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `u_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `status` varchar(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `cb_categories`
 --
 
-INSERT INTO `cb_categories` (`id`, `nm_c`, `slg_c`, `c_date`, `u_date`) VALUES
-(1, 'php', 'php', '2016-06-15 01:03:05', '2016-06-15 20:09:38');
+INSERT INTO `cb_categories` (`id`, `nm_c`, `slg_c`, `c_date`, `u_date`, `status`) VALUES
+(6, 'okk', 'okk', '2016-06-18 10:11:52', '2016-06-19 08:33:11', '0'),
+(7, 'oksa', 'oksa', '0000-00-00 00:00:00', '2016-06-19 08:34:22', '0'),
+(8, 'w', 'w', '2016-06-18 10:16:04', '2016-06-18 16:13:00', '1'),
+(9, 'ok', 'ok', '2016-06-18 10:18:07', '2016-06-19 12:43:28', '1'),
+(10, 'okkk', 'okkk', '2016-06-19 14:43:38', '2016-06-19 08:34:39', '0');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cb_catrelation`
+--
+
+CREATE TABLE `cb_catrelation` (
+  `id` int(5) NOT NULL,
+  `id_c` int(5) NOT NULL,
+  `id_cont` int(5) NOT NULL,
+  `c_date` datetime NOT NULL,
+  `u_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `status` int(5) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cb_contents`
+--
+
+CREATE TABLE `cb_contents` (
+  `id` int(5) NOT NULL,
+  `id_imgheader` int(5) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `slug` varchar(255) NOT NULL,
+  `meta_content` text NOT NULL,
+  `content` text NOT NULL,
+  `c_date` datetime NOT NULL,
+  `u_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `status` varchar(5) NOT NULL,
+  `creator` int(5) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cb_imgheader`
+--
+
+CREATE TABLE `cb_imgheader` (
+  `id` int(5) NOT NULL,
+  `img` varchar(255) NOT NULL,
+  `c_date` datetime NOT NULL,
+  `status` varchar(5) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `cb_imgheader`
+--
+
+INSERT INTO `cb_imgheader` (`id`, `img`, `c_date`, `status`) VALUES
+(1, 'j', '2016-06-21 05:00:00', '1');
 
 -- --------------------------------------------------------
 
@@ -98,6 +157,7 @@ CREATE TABLE `cb_profile` (
   `nm_user` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `alamat` varchar(255) NOT NULL,
+  `img` int(5) NOT NULL,
   `c_date` datetime NOT NULL,
   `u_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -106,8 +166,8 @@ CREATE TABLE `cb_profile` (
 -- Dumping data for table `cb_profile`
 --
 
-INSERT INTO `cb_profile` (`id_user`, `nm_user`, `email`, `alamat`, `c_date`, `u_date`) VALUES
-(1, 'epona', 'mailworm@andrei.com', 'anonymous', '2016-04-30 00:00:00', '2016-04-30 11:36:32');
+INSERT INTO `cb_profile` (`id_user`, `nm_user`, `email`, `alamat`, `img`, `c_date`, `u_date`) VALUES
+(1, 'epona', 'mailworm@andrei.com', 'anonymous', 1, '2016-04-30 00:00:00', '2016-04-30 11:36:32');
 
 -- --------------------------------------------------------
 
@@ -130,6 +190,46 @@ INSERT INTO `cb_status` (`id_status`, `nm_status`, `c_date`, `u_date`) VALUES
 (1, 'banned', '2016-04-30 00:00:00', '2016-04-30 11:38:03'),
 (2, 'active verification', '2016-04-30 00:00:00', '2016-04-30 11:39:12'),
 (3, 'ok', '2016-04-30 00:00:00', '2016-04-30 11:39:12');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cb_tags`
+--
+
+CREATE TABLE `cb_tags` (
+  `id` int(5) NOT NULL,
+  `nm_t` varchar(255) NOT NULL,
+  `slg_t` varchar(255) NOT NULL,
+  `c_date` datetime NOT NULL,
+  `u_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `status` varchar(5) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `cb_tags`
+--
+
+INSERT INTO `cb_tags` (`id`, `nm_t`, `slg_t`, `c_date`, `u_date`, `status`) VALUES
+(8, '34', '34', '2016-06-20 09:49:45', '2016-06-19 19:49:45', '0'),
+(9, '44', '44', '2016-06-20 09:49:45', '2016-06-19 19:49:45', '0'),
+(10, 'Satu semua', 'satu-semua', '2016-06-20 09:57:23', '2016-06-19 19:57:23', '0'),
+(11, 'Semua Satu A K Jj Jkk', 'semua-satu-a-k-jj-jkk', '2016-06-20 09:57:23', '2016-06-21 13:04:50', '0');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cb_tagsrelation`
+--
+
+CREATE TABLE `cb_tagsrelation` (
+  `id` int(5) NOT NULL,
+  `id_tag` int(5) NOT NULL,
+  `id_cont` int(5) NOT NULL,
+  `c_date` datetime NOT NULL,
+  `u_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `status` varchar(5) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -241,6 +341,28 @@ ALTER TABLE `cb_categories`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `cb_catrelation`
+--
+ALTER TABLE `cb_catrelation`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_c` (`id_c`,`id_cont`),
+  ADD KEY `cb_catrelation_ibfk_2` (`id_cont`);
+
+--
+-- Indexes for table `cb_contents`
+--
+ALTER TABLE `cb_contents`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_imgheader` (`id_imgheader`),
+  ADD KEY `creator` (`creator`);
+
+--
+-- Indexes for table `cb_imgheader`
+--
+ALTER TABLE `cb_imgheader`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `cb_level`
 --
 ALTER TABLE `cb_level`
@@ -259,13 +381,28 @@ ALTER TABLE `cb_log`
 -- Indexes for table `cb_profile`
 --
 ALTER TABLE `cb_profile`
-  ADD PRIMARY KEY (`id_user`);
+  ADD PRIMARY KEY (`id_user`),
+  ADD KEY `img` (`img`);
 
 --
 -- Indexes for table `cb_status`
 --
 ALTER TABLE `cb_status`
   ADD PRIMARY KEY (`id_status`);
+
+--
+-- Indexes for table `cb_tags`
+--
+ALTER TABLE `cb_tags`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `cb_tagsrelation`
+--
+ALTER TABLE `cb_tagsrelation`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_tag` (`id_tag`,`id_cont`),
+  ADD KEY `id_cont` (`id_cont`);
 
 --
 -- Indexes for table `mailing`
@@ -281,6 +418,21 @@ ALTER TABLE `mailing`
 -- AUTO_INCREMENT for table `cb_categories`
 --
 ALTER TABLE `cb_categories`
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+--
+-- AUTO_INCREMENT for table `cb_catrelation`
+--
+ALTER TABLE `cb_catrelation`
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `cb_contents`
+--
+ALTER TABLE `cb_contents`
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `cb_imgheader`
+--
+ALTER TABLE `cb_imgheader`
   MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `cb_level`
@@ -303,6 +455,16 @@ ALTER TABLE `cb_profile`
 ALTER TABLE `cb_status`
   MODIFY `id_status` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
+-- AUTO_INCREMENT for table `cb_tags`
+--
+ALTER TABLE `cb_tags`
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+--
+-- AUTO_INCREMENT for table `cb_tagsrelation`
+--
+ALTER TABLE `cb_tagsrelation`
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT for table `mailing`
 --
 ALTER TABLE `mailing`
@@ -312,12 +474,39 @@ ALTER TABLE `mailing`
 --
 
 --
+-- Constraints for table `cb_catrelation`
+--
+ALTER TABLE `cb_catrelation`
+  ADD CONSTRAINT `cb_catrelation_ibfk_1` FOREIGN KEY (`id_c`) REFERENCES `cb_categories` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
+  ADD CONSTRAINT `cb_catrelation_ibfk_2` FOREIGN KEY (`id_cont`) REFERENCES `cb_contents` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `cb_contents`
+--
+ALTER TABLE `cb_contents`
+  ADD CONSTRAINT `cb_contents_ibfk_2` FOREIGN KEY (`creator`) REFERENCES `cb_profile` (`id_user`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `cb_contents_ibfk_3` FOREIGN KEY (`id_imgheader`) REFERENCES `cb_imgheader` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
 -- Constraints for table `cb_log`
 --
 ALTER TABLE `cb_log`
   ADD CONSTRAINT `cb_log_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `cb_profile` (`id_user`) ON DELETE CASCADE ON UPDATE NO ACTION,
   ADD CONSTRAINT `cb_log_ibfk_2` FOREIGN KEY (`id_level`) REFERENCES `cb_level` (`id_level`) ON DELETE NO ACTION ON UPDATE CASCADE,
   ADD CONSTRAINT `cb_log_ibfk_3` FOREIGN KEY (`id_status`) REFERENCES `cb_status` (`id_status`) ON DELETE NO ACTION ON UPDATE CASCADE;
+
+--
+-- Constraints for table `cb_profile`
+--
+ALTER TABLE `cb_profile`
+  ADD CONSTRAINT `cb_profile_ibfk_1` FOREIGN KEY (`img`) REFERENCES `cb_imgheader` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `cb_tagsrelation`
+--
+ALTER TABLE `cb_tagsrelation`
+  ADD CONSTRAINT `cb_tagsrelation_ibfk_1` FOREIGN KEY (`id_tag`) REFERENCES `cb_tags` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
+  ADD CONSTRAINT `cb_tagsrelation_ibfk_2` FOREIGN KEY (`id_cont`) REFERENCES `cb_contents` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
