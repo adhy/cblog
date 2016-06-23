@@ -35,6 +35,7 @@
     <script src="<?php echo base_url('assets');?>/js/dataTables.bootstrap.min.js"></script>
     <script src="<?php echo base_url('assets');?>/js/dataTables.responsive.js"></script>
     <script src="<?php echo base_url('assets');?>/js/chosen.jquery.min.js"></script>
+    <script src="<?php echo base_url('assets');?>/js/tinymce/tinymce.min.js"></script>
     <!-- Custom Theme JavaScript -->
     <script src="<?php echo base_url('assets');?>/js/sb-admin-2.js"></script>
     <script src="<?php echo base_url('assets');?>/js/<?php echo $filejs;?>"></script>

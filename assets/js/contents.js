@@ -1,7 +1,7 @@
 var table;
 $(document).ready(function() {
     table = $('#tablecontents').DataTable( {
-        "searching": false,
+        "searching": true,
         "paging":   true,
         "ordering": false,
         "info":     false,
@@ -13,8 +13,28 @@ $(document).ready(function() {
         },
          responsive: true,
         "language": {
-            "url": url+"assets/js/i18n/English.lang"
-        }
+    "sEmptyTable":     "No data available in table",
+    "sInfo":           "Showing _START_ to _END_ of _TOTAL_ entries",
+    "sInfoEmpty":      "Showing 0 to 0 of 0 entries",
+    "sInfoFiltered":   "(filtered from _MAX_ total entries)",
+    "sInfoPostFix":    "",
+    "sInfoThousands":  ",",
+    "sLengthMenu":     "Show _MENU_ entries",
+    "sLoadingRecords": "Loading...",
+    "sProcessing":     "Processing...",
+    "sSearch":         "Search:",
+    "sZeroRecords":    "No matching records found",
+    "oPaginate": {
+        "sFirst":    "First",
+        "sLast":     "Last",
+        "sNext":     "Next",
+        "sPrevious": "Previous"
+    },
+    "oAria": {
+        "sSortAscending":  ": activate to sort column ascending",
+        "sSortDescending": ": activate to sort column descending"
+    }
+}
     } );
  
 } );
@@ -41,14 +61,44 @@ function edit_modalt(id) {
         });*/
 }
 $(document).ready(function() {
+    tinymce.init({
+        selector: '[name="content"]',
+        skin: 'lightgray',
+        max_height: 500,
+        max_width: 500,
+        min_height: 100,
+        min_width: 400,
+theme: 'modern',
+  plugins: [
+    'advlist autolink lists link image charmap print preview hr anchor pagebreak',
+    'searchreplace wordcount visualblocks visualchars code fullscreen',
+    'insertdatetime media nonbreaking save table contextmenu directionality',
+    'emoticons template paste textcolor colorpicker textpattern imagetools'
+  ],
+  toolbar1: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
+  toolbar2: 'print preview media | forecolor backcolor emoticons',
+  image_advtab: true,
+  templates: [
+    { title: 'Test template 1', content: 'Test 1' },
+    { title: 'Test template 2', content: 'Test 2' }
+  ],
+        setup: function(editor) {
+            editor.on('keyup', function(e) {
+                // Revalidate the hobbies field
+                $('#contents').formValidation('revalidateField', 'content');
+            });
+        }
+    });
     $('#contents')
-        .find('[name="colors"]')
-            .chosen({
-                width: '100%'
+        
+        .find('[name="tags"]').chosen({width: '100%',no_results_text: "Oops, nothing found!"})
+        .change(function(e) {
+                $('#contents').formValidation('revalidateField', 'tags');
             })
-            // Revalidate the color when it is changed
+            .end()
+            .find('[name="category"]').chosen({width: '100%',no_results_text: "Oops, nothing found!",allow_single_deselect: true})
             .change(function(e) {
-                $('#contents').formValidation('revalidateField', 'colors');
+                $('#contents').formValidation('revalidateField', 'category');
             })
             .end()
         .formValidation({
@@ -62,32 +112,58 @@ $(document).ready(function() {
                 validating: 'glyphicon glyphicon-refresh'
             },
             fields: {
-                fullName: {
+                title: {
                     validators: {
                         notEmpty: {
                             //message: 'The full name is required'
                         }
                     }
                 },
-                company: {
+                category: {
                     validators: {
                         notEmpty: {
                             //message: 'The company name is required'
                         }
                     }
                 },
-                address: {
+                tags: {
                     validators: {
                         notEmpty: {
                             //message: 'The address is required'
                         }
                     }
                 },
-                colors: {
+                img: {
                     validators: {
                         notEmpty: {
                             //message: 'The city is required'
                         }
+                    }
+                },
+                metad: {
+                    validators: {
+                        notEmpty: {
+                            //message: 'The city is required'
+                        }
+                    }
+                },
+                content: {
+                    validators: {
+                        notEmpty: {
+                            //message: 'The city is required'
+                        },
+                        callback: {
+                            message: 'The hobbies must be between 5 and 200 characters long',
+                            callback: function(value, validator, $field) {
+                                // Get the plain text without HTML
+                                var text = tinyMCE.activeEditor.getContent({
+                                    format: 'text'
+                                });
+
+                                return text.length <= 200 && text.length >= 5;
+                            }
+                        }
+
                     }
                 }
             }

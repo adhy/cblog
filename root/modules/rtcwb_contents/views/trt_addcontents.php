@@ -26,55 +26,26 @@
                         <!-- /.panel-heading -->
                         <div id="panel" class="panel-body collapse in">
                             <ul class="nav nav-tabs">
-    <li class="active"><a href="#info-tab" data-toggle="tab">Information <i class="fa"></i></a></li>
-    <li><a href="#address-tab" data-toggle="tab">Address <i class="fa"></i></a></li>
+    <li class="active"><a href="#step-1" data-toggle="tab">Step 1 <i class="fa"></i></a></li>
+    <li><a href="#step-2" data-toggle="tab">Step 2 <i class="fa"></i></a></li>
 </ul>
 
 <form id="contents" method="post" class="form-horizontal formtabs">
     <div class="tab-content">
-        <div class="tab-pane active" id="info-tab">
+        <div class="tab-pane active" id="step-1">
             <div class="form-group">
-                <label class="col-xs-3 control-label">Full name</label>
+                <label class="col-xs-3 control-label">Title</label>
                 <div class="col-xs-5">
-                    <input type="text" class="form-control" name="fullName" />
+                    <input type="text" class="form-control" name="title" />
+                    <span>url</span>
                 </div>
             </div>
 
             <div class="form-group">
-                <label class="col-xs-3 control-label">Company</label>
-                <div class="col-xs-5">
-                    <input type="text" class="form-control" name="company" />
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="col-xs-3 control-label">Job title</label>
-                <div class="col-xs-5">
-                    <input type="text" class="form-control" name="jobTitle" />
-                </div>
-            </div>
-        </div>
-
-        <div class="tab-pane" id="address-tab">
-            <div class="form-group">
-                <label class="col-xs-3 control-label">Address</label>
-                <div class="col-xs-5">
-                    <input type="text" class="form-control" name="address" />
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="col-xs-3 control-label">City</label>
-                <div class="col-xs-5">
-                    <input type="text" class="form-control" name="city" />
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="col-xs-3 control-label">Favorite color</label>
-                    <div class="col-sm-4 chosenContainer">
-                        <select class="form-control chosen-select" name="colors">
-                            <option value="" disabled selected>-- Select a menu --</option>
+                <label class="col-xs-3 control-label">Category</label>
+                    <div class="col-xs-5 chosenContainer">
+                        <select class="form-control chosen-select" name="category" data-placeholder="-- Select a Category --">
+                            <option></option>
                             <option value="black">Black</option>
                             <option value="blue">Blue</option>
                             <option value="green">Green</option>
@@ -85,6 +56,46 @@
                         </select>
                     </div>
             </div>
+
+            <div class="form-group">
+                <label class="col-xs-3 control-label">Tags</label>
+                    <div class="col-xs-5 chosenContainer">
+                        <select class="form-control chosen-select" name="tags" multiple="multiple" data-placeholder="-- Select a tags --">
+                            <option value="black">Black</option>
+                            <option value="blue">Blue</option>
+                            <option value="green">Green</option>
+                            <option value="orange">Orange</option>
+                            <option value="red">Red</option>
+                            <option value="yellow">Yellow</option>
+                            <option value="white">White</option>
+                        </select>
+                    </div>
+            </div>
+        </div>
+
+        <div class="tab-pane" id="step-2">
+            <div class="form-group">
+                <label class="col-xs-3 control-label">Image Header</label>
+                <div class="col-xs-5">
+                    <input type="text" class="form-control" name="img" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-xs-3 control-label">Meta Description</label>
+                <div class="col-xs-5">
+                    <textarea class="form-control" name="metad" rows="7"></textarea>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-xs-3 control-label">content</label>
+                <div class="col-xs-5">
+                     <textarea class="form-control" name="content" rows="7"></textarea>
+                </div>
+            </div>
+
+
         </div>
     </div>
 
