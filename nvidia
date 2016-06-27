@@ -1,0 +1,69 @@
+open a terminal (ctrr+alt+t) and type:
+
+##  sudo apt-get remove nvidia*
+
+##  sudo apt-get autoremove
+
+update and download a few tools that we will need:
+
+##  sudo apt-get update
+
+##  sudo apt-get install dkms build-essential linux-headers-generic
+
+Now its time to blacklist the nouveau driver.
+
+##  sudo nano /etc/modprobe.d/blacklist-nouveau.conf
+
+and add the following lines:
+
+##  blacklist nouveau
+##  blacklist lbm-nouveau
+##  options nouveau modeset=0
+##  alias nouveau off
+##  alias lbm-nouveau off
+
+Disable the Kernel nouveau by typing the following commands:
+
+##  echo options nouveau modeset=0 | sudo tee -a /etc/modprobe.d/nouveau-kms.conf
+
+##  sudo update-initramfs -u
+
+Now go to nvidia.com and download the driver for your graphic card.
+
+The file name should be something like that "NVIDIA-Linux-x86_64-352.21.run" depends on the architecture of your machine and the version of the driver.
+
+Reboot your computer and at login screen press "ctrl+alt+F1″. That will redirect you to one of the active terminals. Login with your credentials and navigate to your Downloads directory
+
+##  cd ~/Downloads/
+
+##  chmod +x NVIDIA-Linux-x86_64-352.21.run
+
+Replace "NVIDIA-Linux-x86_64-352.21.run" with the name of the file that you Download in the previous step.
+
+Stop the X-server:
+
+##  sudo /etc/init.d/lightdm stop
+
+execute the installation:
+
+##  sudo ./ NVIDIA-Linux-x86_64-352.21.run
+
+follow the instructions on the screen:
+
+At that point you might get a warning that " The distribution-provided pre-install script failed! are you sure that you want to continue?" You can select continue on this one.
+
+Next it will ask you to register the kernel module source with DKMS. Select "yes"
+
+If you dont have 32 bit compatibility the you will get a warning. Just select ok.
+
+You might get a few more steps depends on the hardware and driver version but just before the installation finish it will ask you if you want to let the installation to run the nvidia-xconfig for you. Please let this one run unless you want and you know how to do that manually.
+
+once you finish reboot your computer:
+
+reboot
+
+In case that the graphics are not as they suppose to be, open a command line and type the following:
+
+sudo nvidia-xconfig
+
+And then reboot again

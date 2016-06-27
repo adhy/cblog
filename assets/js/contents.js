@@ -61,7 +61,7 @@ function edit_modalt(id) {
         });*/
 }
 $(document).ready(function() {
-    tinymce.init({
+    /*tinymce.init({
         selector: '[name="content"]',
         skin: 'lightgray',
         max_height: 500,
@@ -88,7 +88,36 @@ theme: 'modern',
                 $('#contents').formValidation('revalidateField', 'content');
             });
         }
-    });
+    });*/
+    tinymce.init({
+    selector: '[name="content"]',
+        skin: 'lightgray',
+        max_height: 500,
+        max_width: 500,
+        min_height: 100,
+        min_width: 400,
+        theme: 'modern',
+    plugins: [
+         'advlist autolink link image lists charmap print preview hr anchor pagebreak',
+         'searchreplace wordcount visualblocks visualchars insertdatetime media nonbreaking',
+         'table contextmenu directionality emoticons paste textcolor responsivefilemanager code'
+   ],
+   toolbar1: 'undo redo | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | styleselect',
+   toolbar2: '| responsivefilemanager | link unlink anchor | image media | forecolor backcolor  | print preview code ',
+   image_advtab: true ,
+   
+   external_filemanager_path:url+'/filemanager/',
+   filemanager_title:'Responsive Filemanager' ,
+   external_plugins: { 'filemanager' : url+'/filemanager/plugin.min.js'},
+   setup: function(editor) {
+            editor.on('keyup', function(e) {
+                // Revalidate the hobbies field
+                $('#contents').formValidation('revalidateField', 'content');
+            });
+        }
+ });
+
+
     $('#contents')
         
         .find('[name="tags"]').chosen({width: '100%',no_results_text: "Oops, nothing found!"})
