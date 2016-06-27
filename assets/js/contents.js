@@ -199,7 +199,7 @@ theme: 'modern',
                         }
                     }
                 },
-                img: {
+                fieldID: {
                     validators: {
                         notEmpty: {
                             //message: 'The city is required'
