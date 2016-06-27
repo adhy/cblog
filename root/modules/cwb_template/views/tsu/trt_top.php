@@ -26,6 +26,7 @@
     <!-- DataTables Responsive CSS -->
     <link href="<?php echo base_url('assets');?>/css/dataTables.responsive.css" rel="stylesheet">
     <link href="<?php echo base_url('assets');?>/css/bootstrap-chosen.css" rel="stylesheet">
+    <link href="<?php echo base_url('assets');?>/css/jquery.fancybox.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="<?php echo base_url('assets');?>/css/sb-admin-2.css" rel="stylesheet">
 

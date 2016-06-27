@@ -41,6 +41,35 @@ $(document).ready(function() {
 function reload_table(){
       table.ajax.reload(null,false); //reload datatable ajax
 }
+jQuery(document).ready(function ($) {
+      $('.iframe-btn').fancybox({
+      'width'   : 880,
+      'height'  : 570,
+      'type'    : 'iframe',
+      'autoScale'   : false
+      });
+      
+      $('#fieldID').on('change',function(){
+          alert('changed');
+      });
+      
+      $('#download-button').on('click', function() {
+        ga('send', 'event', 'button', 'click', 'download-buttons');      
+      });
+      $('.toggle').click(function(){
+        var _this=$(this);
+        $('#'+_this.data('ref')).toggle(200);
+        var i=_this.find('i');
+        if (i.hasClass('icon-plus')) {
+          i.removeClass('icon-plus');
+          i.addClass('icon-minus');
+        }else{
+          i.removeClass('icon-minus');
+          i.addClass('icon-plus');
+        }
+      });
+});
+
 function edit_modalt(id) {
     /*$('#update').attr('onclick', 'javascript:updatek("'+link+'","'+id+'")');
     
@@ -89,14 +118,14 @@ theme: 'modern',
             });
         }
     });*/
-    tinymce.init({
+  tinymce.init({
     selector: '[name="content"]',
         skin: 'lightgray',
-        max_height: 500,
-        max_width: 500,
-        min_height: 100,
-        min_width: 400,
+        max_height: 800,
+        min_height: 600,
         theme: 'modern',
+        relative_urls : false,
+        remove_script_host: false,
     plugins: [
          'advlist autolink link image lists charmap print preview hr anchor pagebreak',
          'searchreplace wordcount visualblocks visualchars insertdatetime media nonbreaking',
@@ -116,7 +145,15 @@ theme: 'modern',
             });
         }
  });
-
+/*tinymce.init({
+        selector: '#isinya',
+        setup: function(editor) {
+            editor.on('keyup', function(e) {
+                // Revalidate the hobbies field
+                $('#contents').formValidation('revalidateField', 'content');
+            });
+        }
+    });*/
 
     $('#contents')
         
@@ -176,12 +213,9 @@ theme: 'modern',
                         }
                     }
                 },
-                content: {
+                /*content: {
                     validators: {
-                        notEmpty: {
-                            //message: 'The city is required'
-                        },
-                        callback: {
+                         callback: {
                             message: 'The hobbies must be between 5 and 200 characters long',
                             callback: function(value, validator, $field) {
                                 // Get the plain text without HTML
@@ -189,12 +223,11 @@ theme: 'modern',
                                     format: 'text'
                                 });
 
-                                return text.length <= 200 && text.length >= 5;
+                                return text.length <= 20000000000000000 && text.length >= 5;
                             }
                         }
-
                     }
-                }
+                }*/
             }
         })
         // Called when a field is invalid

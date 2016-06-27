@@ -58,7 +58,7 @@ $config = array(
 	| without final / (DON'T TOUCH)
 	|
 	*/
-	'base_url' => ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] && ! in_array(strtolower($_SERVER['HTTPS']), array( 'off', 'no' ))) ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST'],
+	'base_url' => ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] && ! in_array(strtolower($_SERVER['HTTPS']), array( 'off', 'no' ))) ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST'].'/cblog',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -68,7 +68,7 @@ $config = array(
 	| with start and final /
 	|
 	*/
-	'upload_dir' => '/source/',
+	'upload_dir' => '/assets/img/',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -78,7 +78,7 @@ $config = array(
 	| with final /
 	|
 	*/
-	'current_path' => '../source/',
+	'current_path' => '../assets/img/',
 
 	/*
 	|--------------------------------------------------------------------------

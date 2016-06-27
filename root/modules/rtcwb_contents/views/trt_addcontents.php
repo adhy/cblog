@@ -76,8 +76,14 @@
         <div class="tab-pane" id="step-2">
             <div class="form-group">
                 <label class="col-xs-3 control-label">Image Header</label>
-                <div class="col-xs-5">
-                    <input type="text" class="form-control" name="img" />
+                <div class="col-xs-3">
+                <div class="input-group">
+                    <input id="fieldID" type="text" value="" placeholder="Upload Image ..." class="form-control">
+                    <span class="input-group-btn">
+                    <a href="<?=base_url()?>filemanager/dialog.php?type=1&field_id=fieldID&relative_url=1" class="btn iframe-btn btn-default" type="button"><i class="fa fa-folder-open"></i></a>
+                    <!--<a href="<?=base_url()?>filemanager/dialog.php?type=1&amp;field_id=backgroundName" class="btn iframe-btn btn-default" type="button"><i class="fa fa-folder-open"></i></a>!-->
+                    </span>
+                </div>
                 </div>
             </div>
 
@@ -90,7 +96,7 @@
 
             <div class="form-group">
                 <label class="col-xs-3 control-label">content</label>
-                <div class="col-xs-5">
+                <div class="col-xs-8">
                      <textarea class="form-control" name="content" rows="7"></textarea>
                 </div>
             </div>
