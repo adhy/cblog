@@ -455,3 +455,6 @@ background-position:center;
   background-color: #ff0700 !important;
   border-color: #ed0700 !important;
 }
+.masonry>div.col-md-2{
+    padding:2px !important;
+}
