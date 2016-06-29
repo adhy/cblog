@@ -458,3 +458,11 @@ background-position:center;
 .masonry>div.col-md-2{
     padding:2px !important;
 }
+.sizer,.item {
+  width: 20%;
+  float: left;
+}
+.item img {
+  display: block;
+  width: 100%;
+}

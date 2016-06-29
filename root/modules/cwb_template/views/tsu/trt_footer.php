@@ -46,6 +46,7 @@
     <!-- Page-Level Demo Scripts - Notifications - Use for reference -->
 <script type="text/javascript">
     var url = '<?php echo base_url();?>';
+    var weburi = window.location.origin;
   </script>
   <?php echo $this->session->flashdata('notif');?>
 
