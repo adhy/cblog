@@ -18,5 +18,8 @@ class Rtcwb_gal extends MX_Controller {
 			$view='rtcwb_gal/trt_gal';
 			$this->mlib->template_rt($view, $this->data);
 	}
+	public function disim(){
+
+	}
 	
 }

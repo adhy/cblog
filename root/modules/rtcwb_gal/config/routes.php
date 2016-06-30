@@ -1,5 +1,6 @@
 <?php
 $route['mailworm/gallery'] 	        = "rtcwb_gal/index";
+$route['mailworm/gallery/view'] 	        = "rtcwb_gal/disim";
  //$route['mailworm/tags/view-tabel'] 	= "rtcwb_tags/ajax_list";
 $route['mailworm/gallery/proup'] 	= "rtcwb_gal/addgal";
 $route['mailworm/gallery/delfil'] 	= "rtcwb_gal/cek_gal";

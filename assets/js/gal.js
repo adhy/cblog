@@ -1,10 +1,9 @@
-
 $(document).ready(function () {
 
   var $container = $('.masonry').masonry({
     itemSelector: '.item',
     percentPosition: true,
-	columnWidth: '.grid-sizer',
+  columnWidth: '.grid-sizer',
     columnWidth: 1
   });
 
@@ -45,30 +44,42 @@ function randomInt( min, max ) {
 function getItem() {
   var width = randomInt( 150, 400 );
   var height = randomInt( 150, 250 );
-  var item = '<div class="item col-md-2">'+
+ /* var item = '<div class="item col-md-2">'+
     '<img class="img-responsive" src="http://lorempixel.com/' + 
       width + '/' + height + '/nature" /></div>';
-  return item;
-}
+  return item;*/
 
-function getItems() {
-  var items = '';
-  for ( var i=0; i < 12; i++ ) {
-    items += getItem();
-  }
-  // return jQuery object
-  return $( items );
-}
-$(document).ready(function () {
-var folder = "assets/img";
+var folder = url+"assets/img/";
 
 $.ajax({
     url : folder,
     success: function (data) {
         $(data).find("a").attr("href", function (i, val) {
             if( val.match(/\.(jpe?g|png|gif)$/) ) { 
-                $("masonry").append( "<img src='"+val +"'>" );
+               var item= $(".masonry").append( "<div class='item col-md-2'><a href='#' data-toggle='modal' onclick=nextimage('"+val+"') class=''><img class='img-responsive' src='"+ folder + val +"'></img></a></div>" );
             } 
+            return item;
         });
     }
-});});
+});
+}
+
+
+
+
+
+function getItems() {
+  var items = '';
+  for ( var i=0; i < 1; i++ ) {
+    items += getItem();
+  }
+  // return jQuery object
+  return $( items );
+}
+function nextimage(image){
+  var folder = url+"assets/img/";
+  $('#light').attr('src',folder+image);
+  $('#imageshow').modal('show').on('shown.bs.modal');
+  $('h4#text').text(image);
+
+}

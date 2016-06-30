@@ -25,6 +25,7 @@
                         </div>
                         <!-- /.panel-heading -->
                         <div id="panel" class="panel-body collapse in">
+                        <link href="<?php echo base_url('assets');?>/css/imageload.css" rel="stylesheet">
                             <div class="masonry">
                             </div>                            
                         </div>
@@ -40,3 +41,16 @@
 
     </div>
     <!-- /#wrapper -->
+        <div id="imageshow" class="modal gal-container gal-item box fade" tabindex="-1" role="dialog">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+              <div class="modal-body">
+                <img id="light">
+              </div>
+                <div class="col-md-12 description">
+                  <h4 id="text"></h4>
+                </div>
+            </div>
+          </div>
+        </div>
