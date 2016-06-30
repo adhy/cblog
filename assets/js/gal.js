@@ -56,7 +56,7 @@ $.ajax({
     success: function (data) {
         $(data).find("a").attr("href", function (i, val) {
             if( val.match(/\.(jpe?g|png|gif)$/) ) { 
-               var item= $(".masonry").append( "<div class='item col-md-2'><a href='#' data-toggle='modal' onclick=nextimage('"+val+"') class=''><img class='img-responsive' src='"+ folder + val +"'></img></a></div>" );
+               var item= $(".masonry").append( "<div class='item col-md-2 gal-item box'><a href='#' data-toggle='modal' onclick=nextimage('"+val+"') class=''><img class='img-responsive' src='"+ folder + val +"'></img></a></div>" );
             } 
             return item;
         });
