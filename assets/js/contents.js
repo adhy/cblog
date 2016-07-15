@@ -69,7 +69,63 @@ jQuery(document).ready(function ($) {
         }
       });
 });
-
+function over(ot){
+        $.ajax({
+            type    : "POST",
+            url     : 'contents/over',
+            data    : {take:ot},
+            dataType: 'json',
+            success : function(response){
+                if(response.msg == 'Enable'){
+                    toastr.success(response.msg+' Category '+response.cot+' !');
+                    $('[data-target='+ot+']').attr('class','btn btn-sm btn-success');
+                    $('[data-target='+ot+']').html('Disable');
+                    $('[data-target=dr'+ot+']').attr('class','btn btn-sm btn-success');
+                }else{
+                    toastr.error(response.msg+' Category '+response.cot+' !');
+                    $('[data-target='+ot+']').attr('class','btn btn-sm btn-danger');
+                    $('[data-target='+ot+']').html('Enable');
+                    $('[data-target=dr'+ot+']').attr('class','btn btn-sm btn-danger');
+                }
+            }
+        });
+}
+function del_t(idc){
+    $.ajax({
+            type    : "POST",
+            url     : 'contents/change',
+            data    : {change:idc},
+            dataType: 'json',
+            success : function(response){
+                if(response.msg == 'true'){
+                    $('#h4text').html('<i class="fa fa-question-circle"> Delete '+response.content+'</i>');
+                     $('div.modal-footer .yes').attr('onclick','prodel("'+idc+'")');
+                    $('#confdel').modal('show').on('shown.bs.modal');
+                }else{
+                    toastr.error('Data '+response.msg+' !');
+                }
+                
+            }
+        });
+}
+function prodel(myid) {
+         $.ajax({
+            type    : "POST",
+            url     : 'contents/prodel',
+             data    : {delete:myid},
+            dataType: 'json',
+            success : function(response){
+                if(response.msg == 'success'){
+                    $("#confdel").modal("hide").on('shown.bs.modal');
+                    toastr.success('Category '+response.cat+' has been deleted !');
+                    reload_table();
+                }else{
+                    toastr.error('An error occured, please try again !');
+                }
+               
+            }
+        });
+}
 function edit_modalt(id) {
     /*$('#update').attr('onclick', 'javascript:updatek("'+link+'","'+id+'")');
     

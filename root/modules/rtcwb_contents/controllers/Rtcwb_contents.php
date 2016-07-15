@@ -32,22 +32,38 @@ class Rtcwb_contents extends MX_Controller {
 	            
 	            $row = array();
 	            $row[] = $no++;
-	            $row[] = $person->name;
-	            $row[] = $person->emmail;
-	            $row[] = $person->dt_c;
-	 
+	            $row[] = $person->title;
+	            $datec  = date('d M Y [H:i:s]', strtotime($person->c_date));
+	            $dateu  = date('d M Y [H:i:s]', strtotime($person->u_date));
+	            $row[] = $datec ;
+	            $row[] = $dateu;
+	 			$id    = $this->mlib->enhex($person->id);
 	            //add html for action
+	            if ($person->status == 1){
 	            $row[] = '<div class="btn-group">
-	                <button type="button" class="btn btn-sm btn-success">Option</button>
-	                <button type="button" class="btn btn-sm btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	                <button data-target='.$id.' type="button" class="btn btn-sm btn-success" onclick=over("'.$id.'")>Disable</button>
+	                <button data-target="dr'.$id.'" type="button" class="btn btn-sm btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 	                  <span class="caret"></span>&nbsp;
 	                  <span class="sr-only">Toggle Dropdown</span>
 	                </button>
 	                <ul class="dropdown-menu dropdown-menu-right">
-	                  <li ><span class="drop-menu" onclick=javascript:edit_modalt('.$person->num.') ><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit Tag</span></li>
-	                  <li ><span class="drop-menu" onclick=javascript:del_t('.$person->num.',"delete-tag")><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Delete Tag</span></li>
+	                  <li ><span class="drop-menu" onclick=javascript:edit_modalt("'.$id.'") ><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit Content</span></li>
+	                  <li ><span class="drop-menu" onclick=javascript:del_t("'.$id.'")><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Delete Content</span></li>
+	                </ul>
+	              </div>  ';}else{
+	              	$row[] = '<div class="btn-group">
+	                <button data-target='.$id.' type="button" class="btn btn-sm btn-danger" onclick=over("'.$id.'")>Enable</button>
+	                <button data-target="dr'.$id.'" type="button" class="btn btn-sm btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	                  <span class="caret"></span>&nbsp;
+	                  <span class="sr-only">Toggle Dropdown</span>
+	                </button>
+	                <ul class="dropdown-menu dropdown-menu-right">
+	                  <li ><span class="drop-menu" onclick=javascript:edit_modalt("'.$id.'") ><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit Content</span></li>
+	                  <li ><span class="drop-menu" onclick=javascript:del_t("'.$id.'")><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Delete Content</span></li>
 	                </ul>
 	              </div>  ';
+
+	              }
 	 
 	            $data[] = $row;
 	        }
@@ -71,5 +87,60 @@ class Rtcwb_contents extends MX_Controller {
 		//}else if($this->session->userdata('admin')==FALSE){
 		//	redirect('login');
 		//}
+	}
+	function sh_contents(){
+		//$nm_c=$this->input->post('contents', TRUE);
+		$id_c=$this->db->escape_str($this->input->post('take',TRUE));
+		$this->data['id']    = $this->mlib->dehex($id_c);		
+        $cek=$this->db->where('id',$this->data['id'])->get('cb_contents');
+        if($cek->num_rows() > 0){
+            $row=$cek->row();
+			$status = 0;
+			$msg    = 'Disable';
+			$cont 	= $row->title;
+			if($row->status == 0){
+				$status = 1;
+				$msg    = 'Enable';
+			}
+            $this->db->set('status',$status)->where('id',$row->id)->update('cb_contents');
+            echo json_encode(array('msg'=>$msg,'over'=>$status,'cont'=>$cont));	
+        }		
+	}
+	function cek_catedit(){
+		//$nm_c=$this->input->post('contents', TRUE);
+		$id_co					=$this->db->escape_str($this->input->post('change',TRUE));
+		$this->data['id']    = $this->mlib->dehex($id_co);
+		$cekidc=$this->contents->getcatid($this->data);
+			if($cekidc->num_rows()>0){
+				$msg = 'true';
+				$sess_data['id_cont']	=	$this->data['id'] ;
+        		$this->session->set_userdata($sess_data);
+				$send=$cekidc->row();
+				$sendnm=$send->title;
+			}else{
+				$msg = 'false';
+				$sendnm='error';
+			}	
+		echo json_encode(array('msg'=>$msg,'content'=>$sendnm));			
+	}
+	function proc_delete(){
+		//$nm_c=$this->input->post('contents', TRUE);
+		$id_c					=$this->db->escape_str($this->input->post('delete',TRUE));
+		$this->data['id']    = $this->mlib->dehex($id_c);
+		$cekidc=$this->contents->getcatid($this->data);
+			if($cekidc->num_rows()>0){
+				$cekidc=$cekidc->row();
+				$cont 	= $cekidc->title;
+				$delete=$this->db->where_in('id',$this->data['id'])->delete('cb_contents');
+				if($delete){
+	                $msg    = "success";
+            	}else{
+            		$msg    = "error";
+            	}
+			}else{
+				$msg = 'false';
+				$cont = $id_c;
+			}	
+		echo json_encode(array('msg'=>$msg,'cont'=>$cont));			
 	}
 }

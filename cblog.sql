@@ -1,9 +1,9 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.2
+-- version 4.5.1
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: Jun 21, 2016 at 06:32 PM
+-- Host: 127.0.0.1
+-- Generation Time: Jul 15, 2016 at 05:14 AM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 7.0.6
 
@@ -44,7 +44,9 @@ INSERT INTO `cb_categories` (`id`, `nm_c`, `slg_c`, `c_date`, `u_date`, `status`
 (7, 'oksa', 'oksa', '0000-00-00 00:00:00', '2016-06-19 08:34:22', '0'),
 (8, 'w', 'w', '2016-06-18 10:16:04', '2016-06-18 16:13:00', '1'),
 (9, 'ok', 'ok', '2016-06-18 10:18:07', '2016-06-19 12:43:28', '1'),
-(10, 'okkk', 'okkk', '2016-06-19 14:43:38', '2016-06-19 08:34:39', '0');
+(10, 'okkk', 'okkk', '2016-06-19 14:43:38', '2016-06-19 08:34:39', '0'),
+(11, 'muk', 'muk', '2016-06-27 05:56:58', '2016-06-26 22:56:58', '0'),
+(12, 'masuk', 'masuk', '2016-06-27 05:57:08', '2016-06-26 22:57:08', '0');
 
 -- --------------------------------------------------------
 
@@ -69,7 +71,7 @@ CREATE TABLE `cb_catrelation` (
 
 CREATE TABLE `cb_contents` (
   `id` int(5) NOT NULL,
-  `id_imgheader` int(5) NOT NULL,
+  `imgheader` text NOT NULL,
   `title` varchar(255) NOT NULL,
   `slug` varchar(255) NOT NULL,
   `meta_content` text NOT NULL,
@@ -83,10 +85,10 @@ CREATE TABLE `cb_contents` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cb_imgheader`
+-- Table structure for table `cb_img`
 --
 
-CREATE TABLE `cb_imgheader` (
+CREATE TABLE `cb_img` (
   `id` int(5) NOT NULL,
   `img` varchar(255) NOT NULL,
   `c_date` datetime NOT NULL,
@@ -94,10 +96,10 @@ CREATE TABLE `cb_imgheader` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `cb_imgheader`
+-- Dumping data for table `cb_img`
 --
 
-INSERT INTO `cb_imgheader` (`id`, `img`, `c_date`, `status`) VALUES
+INSERT INTO `cb_img` (`id`, `img`, `c_date`, `status`) VALUES
 (1, 'j', '2016-06-21 05:00:00', '1');
 
 -- --------------------------------------------------------
@@ -214,7 +216,7 @@ INSERT INTO `cb_tags` (`id`, `nm_t`, `slg_t`, `c_date`, `u_date`, `status`) VALU
 (8, '34', '34', '2016-06-20 09:49:45', '2016-06-19 19:49:45', '0'),
 (9, '44', '44', '2016-06-20 09:49:45', '2016-06-19 19:49:45', '0'),
 (10, 'Satu semua', 'satu-semua', '2016-06-20 09:57:23', '2016-06-19 19:57:23', '0'),
-(11, 'Semua Satu A K Jj Jkk', 'semua-satu-a-k-jj-jkk', '2016-06-20 09:57:23', '2016-06-21 13:04:50', '0');
+(11, 'Semua Satu A K Jj Jkk', 'semua-satu-a-k-jj-jkk', '2016-06-20 09:57:23', '2016-06-22 06:39:34', '0');
 
 -- --------------------------------------------------------
 
@@ -353,13 +355,12 @@ ALTER TABLE `cb_catrelation`
 --
 ALTER TABLE `cb_contents`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `id_imgheader` (`id_imgheader`),
   ADD KEY `creator` (`creator`);
 
 --
--- Indexes for table `cb_imgheader`
+-- Indexes for table `cb_img`
 --
-ALTER TABLE `cb_imgheader`
+ALTER TABLE `cb_img`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -418,7 +419,7 @@ ALTER TABLE `mailing`
 -- AUTO_INCREMENT for table `cb_categories`
 --
 ALTER TABLE `cb_categories`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT for table `cb_catrelation`
 --
@@ -428,11 +429,11 @@ ALTER TABLE `cb_catrelation`
 -- AUTO_INCREMENT for table `cb_contents`
 --
 ALTER TABLE `cb_contents`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
--- AUTO_INCREMENT for table `cb_imgheader`
+-- AUTO_INCREMENT for table `cb_img`
 --
-ALTER TABLE `cb_imgheader`
+ALTER TABLE `cb_img`
   MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `cb_level`
@@ -484,8 +485,7 @@ ALTER TABLE `cb_catrelation`
 -- Constraints for table `cb_contents`
 --
 ALTER TABLE `cb_contents`
-  ADD CONSTRAINT `cb_contents_ibfk_2` FOREIGN KEY (`creator`) REFERENCES `cb_profile` (`id_user`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `cb_contents_ibfk_3` FOREIGN KEY (`id_imgheader`) REFERENCES `cb_imgheader` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `cb_contents_ibfk_2` FOREIGN KEY (`creator`) REFERENCES `cb_profile` (`id_user`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `cb_log`
@@ -499,7 +499,7 @@ ALTER TABLE `cb_log`
 -- Constraints for table `cb_profile`
 --
 ALTER TABLE `cb_profile`
-  ADD CONSTRAINT `cb_profile_ibfk_1` FOREIGN KEY (`img`) REFERENCES `cb_imgheader` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `cb_profile_ibfk_1` FOREIGN KEY (`img`) REFERENCES `cb_img` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `cb_tagsrelation`

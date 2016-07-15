@@ -1,10 +1,10 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Mrtcwb_contents extends CI_Model {
-	var $table = 'mailing';
-    var $column = array('num','emmail',
-    					'name','dt_c','dt_u');
-    var $order = array('emmail' => 'asc');
+	var $table = 'cb_contents';
+    var $column = array('id','imgheader',
+    					'title','slug','meta_content','content','c_date','u_date','status','creator');
+    var $order = array('title' => 'asc');
 	function __constuct()
 	{
 		parent::__constuct();  // Call the Model constructor 
@@ -47,6 +47,10 @@ class Mrtcwb_contents extends CI_Model {
     function count_all(){	
         $this->db->from($this->table);
         return $this->db->count_all_results();
+    }
+    function getcatid($data){
+        $this->db->where('id',$data['id']);
+        return $this->db->get($this->table);
     }
 
 }

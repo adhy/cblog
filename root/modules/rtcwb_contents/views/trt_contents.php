@@ -30,9 +30,9 @@
                                     <thead>
                                         <tr>
                                             <th width="10%">No</th>
-                                            <th>Name</th>
-                                            <th>Email</th>
-                                            <th >Create</th>
+                                            <th>Title</th>
+                                            <th>Data Create</th>
+                                            <th >Data Update</th>
                                             <th width="20%">Action</th>
                                         </tr>
                                     </thead>
