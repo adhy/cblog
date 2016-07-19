@@ -52,5 +52,17 @@ class Mrtcwb_contents extends CI_Model {
         $this->db->where('id',$data['id']);
         return $this->db->get($this->table);
     }
+    function getcategories($data){    
+        $this->db->where('status',$data);
+        return $this->db->get('cb_categories');
+    } 
+    function gettags($data){    
+        $this->db->where('status',$data);
+        return $this->db->get('cb_tags');
+    }
+    function getcontent($data){    
+        $this->db->where('title',$data['title']);
+        return $this->db->get('cb_contents');
+    }
 
 }

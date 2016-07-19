@@ -41,6 +41,11 @@ $(document).ready(function() {
 function reload_table(){
       table.ajax.reload(null,false); //reload datatable ajax
 }
+$('[name="title"]').keyup(function(){
+    var isi=$(this).val();
+    var res = isi.replace(/([.*+?^=!:${}()|\[\]\/\\\$\#\@\`\~\;\"\'>\<\,\_\ ])/g, "-");
+    $(".url").css({"color": "rgb(255, 0, 0)", "font-style": "italic"}).html(res);
+});
 jQuery(document).ready(function ($) {
       $('.iframe-btn').fancybox({
       'width'   : 880,
@@ -218,7 +223,7 @@ theme: 'modern',
                 $('#contents').formValidation('revalidateField', 'tags');
             })
             .end()
-            .find('[name="category"]').chosen({width: '100%',no_results_text: "Oops, nothing found!",allow_single_deselect: true})
+            .find('[name="category"]').chosen()
             .change(function(e) {
                 $('#contents').formValidation('revalidateField', 'category');
             })
@@ -238,6 +243,10 @@ theme: 'modern',
                     validators: {
                         notEmpty: {
                             //message: 'The full name is required'
+                        },
+                        remote: {
+                        url: 'title-auths',
+                        type: 'POST'
                         }
                     }
                 },

@@ -79,14 +79,45 @@ class Rtcwb_contents extends MX_Controller {
 	    
     }
     public function adcon(){
-		//if($this->session->userdata('admin')==TRUE){
-			//$this->data['css']='../';
-			//$this->data['filejs']='admin.js';
-			$view='rtcwb_contents/trt_addcontents';
-			$this->mlib->template_rt($view,$this->data);
-		//}else if($this->session->userdata('admin')==FALSE){
-		//	redirect('login');
-		//}
+    	$this->data['categories']=$this->contents->getcategories(1);	
+    	$this->data['tags']=$this->contents->gettags(1);	
+		$view='rtcwb_contents/trt_addcontents';
+		$this->mlib->template_rt($view,$this->data);
+
+	}    
+	public function adconsave(){
+		$this->form_validation->set_rules('title', '', 'required');
+		$this->form_validation->set_rules('category', '', 'required');
+		$this->form_validation->set_rules('tags', '', 'required');		
+		$this->form_validation->set_rules('headimg', '', '');
+		$this->form_validation->set_rules('metad', '', 'required');
+		$this->form_validation->set_rules('content', '', '');
+		$msg    = "error1";
+		if ($this->form_validation->run() == TRUE){
+			$this->data['title']	=	$this->db->escape_str($this->input->post('title', TRUE));
+			$this->data['category']	=	$this->db->escape_str($this->input->post('category', TRUE));
+			$this->data['tags']	=	$this->db->escape_str($this->input->post('tags', TRUE));
+			$this->data['headimg']	=	$this->db->escape_str($this->input->post('headimg', TRUE));
+			$this->data['metad']	=	$this->db->escape_str($this->input->post('metad', TRUE));
+			$this->data['content']	=	$this->db->escape_str($this->input->post('content', TRUE));
+			$replace = array('.','*','+','?','^','=','!',':','$','{','}','(',')','|','[',']','/','$','\','#','@','`','~',';',''',''','>','<',',','_',' ');
+			$toslg = str_replace(' ','-', $this->data['category']);
+			$slg   = strtolower($toslg);
+			$data_edit = array(
+						'nm_c' => $this->data['category'],
+						'slg_c'=> $slg,
+						'u_date' =>  date('Y-m-d H:i:s',now()),
+						'status' => '0'
+					);
+			$update = $this->db->where("id",$this->session->userdata('id_cat'))->update('cb_categories',$data_edit);
+			if($update){
+                $msg    = "success";
+        	}else{
+        		$msg    = "error";
+        	}
+		}
+        echo json_encode(array("msg"=>$msg));
+	}
 	}
 	function sh_contents(){
 		//$nm_c=$this->input->post('contents', TRUE);
@@ -106,6 +137,19 @@ class Rtcwb_contents extends MX_Controller {
             echo json_encode(array('msg'=>$msg,'over'=>$status,'cont'=>$cont));	
         }		
 	}
+	function cek_title(){
+		//$nm_t=$this->input->post('tags', TRUE);
+		$this->data['title'] =$this->db->escape_str($this->input->post('title',TRUE));
+		$cekidt=$this->contents->getcontent($this->data);
+		if($cekidt->num_rows()>0){
+			$msg = false;
+		}else{
+			$msg = true;
+		}	
+		
+		echo json_encode(array('valid'=>$msg));			
+	}
+
 	function cek_catedit(){
 		//$nm_c=$this->input->post('contents', TRUE);
 		$id_co					=$this->db->escape_str($this->input->post('change',TRUE));

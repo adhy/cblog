@@ -466,3 +466,7 @@ background-position:center;
   display: block;
   width: 100%;
 }
+.url{
+    color:rgb(255, 0, 0);
+    font-style: italic !important;
+}

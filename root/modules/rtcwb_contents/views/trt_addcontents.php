@@ -37,7 +37,7 @@
                 <label class="col-xs-3 control-label">Title</label>
                 <div class="col-xs-5">
                     <input type="text" class="form-control" name="title" />
-                    <span>url</span>
+                    <span>url :</span> <span class="url"></span>
                 </div>
             </div>
 
@@ -46,13 +46,9 @@
                     <div class="col-xs-5 chosenContainer">
                         <select class="form-control chosen-select" name="category" data-placeholder="-- Select a Category --">
                             <option></option>
-                            <option value="black">Black</option>
-                            <option value="blue">Blue</option>
-                            <option value="green">Green</option>
-                            <option value="orange">Orange</option>
-                            <option value="red">Red</option>
-                            <option value="yellow">Yellow</option>
-                            <option value="white">White</option>
+                            <?php foreach($categories->result() as $row):                                                                          
+                               echo '<option value="'.$row->id.'">'.$row->nm_c.'</option>';
+                           endforeach; ?>
                         </select>
                     </div>
             </div>
@@ -61,13 +57,9 @@
                 <label class="col-xs-3 control-label">Tags</label>
                     <div class="col-xs-5 chosenContainer">
                         <select class="form-control chosen-select" name="tags" multiple="multiple" data-placeholder="-- Select a tags --">
-                            <option value="black">Black</option>
-                            <option value="blue">Blue</option>
-                            <option value="green">Green</option>
-                            <option value="orange">Orange</option>
-                            <option value="red">Red</option>
-                            <option value="yellow">Yellow</option>
-                            <option value="white">White</option>
+                            <?php foreach($tags->result() as $row):                                                                          
+                               echo '<option value="'.$row->id.'">'.$row->nm_t.'</option>';
+                           endforeach; ?>
                         </select>
                     </div>
             </div>
@@ -78,7 +70,7 @@
                 <label class="col-xs-3 control-label">Image Header</label>
                 <div class="col-xs-3">
                 <div class="input-group">
-                    <input id="fieldID" type="text" value="" placeholder="Upload Image ..." class="form-control">
+                    <input id="fieldID" type="text" value="" placeholder="Upload Image ..." class="form-control" name="headimg">
                     <span class="input-group-btn">
                     <a href="<?=base_url()?>filemanager/dialog.php?type=1&field_id=fieldID&relative_url=1" class="btn iframe-btn btn-default" type="button"><i class="fa fa-folder-open"></i></a>
                     <!--<a href="<?=base_url()?>filemanager/dialog.php?type=1&amp;field_id=backgroundName" class="btn iframe-btn btn-default" type="button"><i class="fa fa-folder-open"></i></a>!-->
@@ -107,7 +99,7 @@
 
     <div class="form-group" style="margin-top: 15px;">
         <div class="col-xs-5 col-xs-offset-3">
-            <button type="submit" class="btn btn-default">Validate</button>
+            <button type="submit" class="btn btn-primary">Save</button>
         </div>
     </div>
 </form>
