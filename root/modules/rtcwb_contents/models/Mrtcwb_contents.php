@@ -64,5 +64,9 @@ class Mrtcwb_contents extends CI_Model {
         $this->db->where('title',$data['title']);
         return $this->db->get('cb_contents');
     }
+    function getidcont($data){
+        $this->db->where('slug',$data);
+        return $this->db->get('cb_contents');
+    }
 
 }

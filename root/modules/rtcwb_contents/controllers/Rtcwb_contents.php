@@ -88,7 +88,7 @@ class Rtcwb_contents extends MX_Controller {
 	public function adconsave(){
 		$this->form_validation->set_rules('title', '', 'required');
 		$this->form_validation->set_rules('category', '', 'required');
-		$this->form_validation->set_rules('tags', '', 'required');		
+		//$this->form_validation->set_rules('tags', '', 'required');		
 		$this->form_validation->set_rules('headimg', '', '');
 		$this->form_validation->set_rules('metad', '', 'required');
 		$this->form_validation->set_rules('content', '', '');
@@ -96,29 +96,71 @@ class Rtcwb_contents extends MX_Controller {
 		if ($this->form_validation->run() == TRUE){
 			$this->data['title']	=	$this->db->escape_str($this->input->post('title', TRUE));
 			$this->data['category']	=	$this->db->escape_str($this->input->post('category', TRUE));
-			$this->data['tags']	=	$this->db->escape_str($this->input->post('tags', TRUE));
+			$tags	=	$this->input->post('tags', TRUE);
 			$this->data['headimg']	=	$this->db->escape_str($this->input->post('headimg', TRUE));
 			$this->data['metad']	=	$this->db->escape_str($this->input->post('metad', TRUE));
 			$this->data['content']	=	$this->db->escape_str($this->input->post('content', TRUE));
-			$replace = array('.','*','+','?','^','=','!',':','$','{','}','(',')','|','[',']','/','$','\','#','@','`','~',';',''',''','>','<',',','_',' ');
-			$toslg = str_replace(' ','-', $this->data['category']);
+			$toslg = preg_replace("/[^a-zA-Z0-9]/", "-", $this->data['title']);
+			$metahead=substr($this->data['metad'],0,200);
+			//$toslg = str_replace(' ','-', $this->data['category']);
 			$slg   = strtolower($toslg);
-			$data_edit = array(
-						'nm_c' => $this->data['category'],
-						'slg_c'=> $slg,
+			$data_ico = array(
+						'title' => $this->data['title'],
+						'slug'=> $slg,
+						'meta_content'=> $metahead,
+						'content' =>  $this->data['content'],
+						'c_date' =>  date('Y-m-d H:i:s',now()),
 						'u_date' =>  date('Y-m-d H:i:s',now()),
-						'status' => '0'
+						'status' => '0',
+						'creator' => $this->session->userdata('wormood')
 					);
-			$update = $this->db->where("id",$this->session->userdata('id_cat'))->update('cb_categories',$data_edit);
-			if($update){
+			$insert = $this->db->insert('cb_contents',$data_ico);
+			if($insert){
                 $msg    = "success";
         	}else{
-        		$msg    = "error";
+        		$msg    = "error insert to table content";
         	}
+        	$id_content= $this->contents->getidcont($slg);
+        	$getidcont=$id_content->row();
+			$idc 	= $getidcont->id;
+			       	$datacatrel= array(
+				    'id_c' => $this->data['category'],
+				    'id_cont' => $idc,
+				    'c_date' =>  date('Y-m-d H:i:s',now()),
+					'u_date' =>  date('Y-m-d H:i:s',now()),
+					'status' => '0',
+				);
+			 $datacatrel=  $this->db->insert('cb_catrelation', $datacatrel);
+			  if($datacatrel){
+                $msg    = "success";
+        	}else{
+        		$msg    = "error insert to table tag relation";
+        	}
+
+        	foreach($tags as $row) {
+				$datatagrel= array(
+				    'id_tag' => $row,
+				    'id_cont' => $idc,
+				    'c_date' =>  date('Y-m-d H:i:s',now()),
+					'u_date' =>  date('Y-m-d H:i:s',now()),
+					'status' => '0',
+				);
+			  $datagrel=  $this->db->insert('cb_tagsrelation', $datatagrel);
+		    }
+		    		    if($datagrel){
+                $msg    = "success";
+        	}else{
+        		$msg    = "error insert to table tag relation";
+        	}
+			 
+
+ 
+        	$title=$this->data['title'];
+
 		}
-        echo json_encode(array("msg"=>$msg));
+        echo json_encode(array("msg"=>$msg, "title"=>$title));
 	}
-	}
+	
 	function sh_contents(){
 		//$nm_c=$this->input->post('contents', TRUE);
 		$id_c=$this->db->escape_str($this->input->post('take',TRUE));

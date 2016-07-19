@@ -56,7 +56,7 @@
             <div class="form-group">
                 <label class="col-xs-3 control-label">Tags</label>
                     <div class="col-xs-5 chosenContainer">
-                        <select class="form-control chosen-select" name="tags" multiple="multiple" data-placeholder="-- Select a tags --">
+                        <select class="form-control chosen-select" name="tags[]" multiple="multiple" data-placeholder="-- Select a tags --">
                             <?php foreach($tags->result() as $row):                                                                          
                                echo '<option value="'.$row->id.'">'.$row->nm_t.'</option>';
                            endforeach; ?>

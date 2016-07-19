@@ -43,8 +43,9 @@ function reload_table(){
 }
 $('[name="title"]').keyup(function(){
     var isi=$(this).val();
-    var res = isi.replace(/([.*+?^=!:${}()|\[\]\/\\\$\#\@\`\~\;\"\'>\<\,\_\ ])/g, "-");
-    $(".url").css({"color": "rgb(255, 0, 0)", "font-style": "italic"}).html(res);
+    var res = isi.replace(/[^\w ~%.:\\&-]/gi, "-");
+    var akh = res.replace(/([\&\%\ \_\.\\\:\~])/gi, "-");
+    $(".url").css({"color": "rgb(255, 0, 0)", "font-style": "italic"}).html(akh);
 });
 jQuery(document).ready(function ($) {
       $('.iframe-btn').fancybox({
@@ -218,9 +219,9 @@ theme: 'modern',
 
     $('#contents')
         
-        .find('[name="tags"]').chosen({width: '100%',no_results_text: "Oops, nothing found!"})
+        .find('[name="tags[]"]').chosen({width: '100%',no_results_text: "Oops, nothing found!"})
         .change(function(e) {
-                $('#contents').formValidation('revalidateField', 'tags');
+                $('#contents').formValidation('revalidateField', 'tags[]');
             })
             .end()
             .find('[name="category"]').chosen()
@@ -257,7 +258,7 @@ theme: 'modern',
                         }
                     }
                 },
-                tags: {
+                'tags[]': {
                     validators: {
                         notEmpty: {
                             //message: 'The address is required'
@@ -325,5 +326,21 @@ theme: 'modern',
             if (isValidTab !== null) {
                 $icon.addClass(isValidTab ? 'fa-check' : 'fa-times');
             }
+        })
+        .on('success.form.fv', function(e) {
+        e.preventDefault();
+        $.ajax({
+            type    : "POST",
+            url     : 'proc-add',
+            data    : $('#contents').serialize(),
+            dataType: 'json',
+            success : function(response){
+                if(response.msg == 'success'){
+                    toastr.success('Save '+response.title+' Success ! ');
+                }else{
+                    toastr.error('Save '+response.title+' Error !');
+                }
+            }
         });
+    });
 });
