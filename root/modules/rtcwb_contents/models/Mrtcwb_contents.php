@@ -68,5 +68,13 @@ class Mrtcwb_contents extends CI_Model {
         $this->db->where('slug',$data);
         return $this->db->get('cb_contents');
     }
+    function getselecttags($data){
+        $this->db->where('id_cont',$data['id']);
+        return $this->db->get('cb_tagsrelation');
+    }
+    function getselectcategories($data){
+        $this->db->where('id_cont',$data['id']);
+        return $this->db->get('cb_catrelation');
+    }
 
 }

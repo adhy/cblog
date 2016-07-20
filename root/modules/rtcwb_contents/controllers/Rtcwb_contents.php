@@ -192,7 +192,7 @@ class Rtcwb_contents extends MX_Controller {
 		echo json_encode(array('valid'=>$msg));			
 	}
 
-	function cek_catedit(){
+	function cek_contedit(){
 		//$nm_c=$this->input->post('contents', TRUE);
 		$id_co					=$this->db->escape_str($this->input->post('change',TRUE));
 		$this->data['id']    = $this->mlib->dehex($id_co);
@@ -228,5 +228,19 @@ class Rtcwb_contents extends MX_Controller {
 				$cont = $id_c;
 			}	
 		echo json_encode(array('msg'=>$msg,'cont'=>$cont));			
+	}
+	function id_auth(){
+
+	}
+	function view_edit(){
+		$id_co					=$this->db->escape_str($this->input->post('change',TRUE));
+		$this->data['id']    = $this->mlib->dehex($id_co);
+		$this->data['edcont'] = $this->contents->getcatid($this->data);
+		$this->data['categories']=$this->contents->getcategories(1);
+		$this->data['selectcategories']=$this->contents->getselectcategories($this->data);
+    	$this->data['tags']=$this->contents->gettags(1);	
+    	$this->data['selecttags']=$this->contents->getselecttags($this->data);	
+		$view='rtcwb_contents/trt_editcontents';
+		$this->mlib->template_rt($view,$this->data);
 	}
 }

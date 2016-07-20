@@ -133,23 +133,24 @@ function prodel(myid) {
         });
 }
 function edit_modalt(id) {
-    /*$('#update').attr('onclick', 'javascript:updatek("'+link+'","'+id+'")');
+    //$('#update').attr('onclick', 'javascript:updatek("'+link+'","'+id+'")');
     
-    $('#form_edit').formValidation('resetForm', true);
+    //$('#form_edit').formValidation('resetForm', true);
         $.ajax({
             type    : "POST",
-            url     : 'ambil-nomer',
-            data    : {nomer:id},
+            url     : 'contents/change',
+            data    : {change:id},
             dataType: 'json',
             success : function(response){
-                $('#editmodal').find('form')[0].reset();
-                if(response.msg == 'success'){            
-                    $("#eweight").val(response.weight);
-                    $("#enmkriteria").val(response.rangenilai);
-                }*/
-                $("#editcontents").modal("show").on('shown.bs.modal');
-           /* }
-        });*/
+                //$('#editmodal').find('form')[0].reset();
+                if(response.msg == 'true'){            
+                    window.location.href = url+'mailworm/contents/edit-content.html';
+                }else{
+                    toastr.error('An error occured, please try again !');
+                }
+                //$("#editcontents").modal("show").on('shown.bs.modal');
+            }
+        });
 }
 $(document).ready(function() {
     /*tinymce.init({
@@ -247,7 +248,8 @@ theme: 'modern',
                         },
                         remote: {
                         url: 'title-auths',
-                        type: 'POST'
+                        type: 'POST',
+                        delay: 3000
                         }
                     }
                 },

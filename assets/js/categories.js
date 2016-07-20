@@ -153,7 +153,8 @@ $(document).ready(function() {
                             },
                     remote: {
                         url: 'categories/catauths',
-                        type: 'POST'
+                        type: 'POST',
+                        delay: 3000
                     }
                 }
             }

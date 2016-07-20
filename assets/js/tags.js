@@ -152,7 +152,8 @@ $(document).ready(function() {
                             },
                     remote: {
                         url: 'tags/tagauths',
-                        type: 'POST'
+                        type: 'POST',
+                        delay: 3000
                     }
                 }
             }
