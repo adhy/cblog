@@ -33,23 +33,40 @@
 <form id="contents" method="post" class="form-horizontal formtabs">
     <div class="tab-content">
         <div class="tab-pane active" id="step-1">
+
+         <?php 
+         if ($edcont->num_rows>0){
+            echo "ada";
+         }else{
+            echo "0";
+         }
+
+         foreach ($edcont->result() as $row){ ?>
             <div class="form-group">
                 <label class="col-xs-3 control-label">Title</label>
                 <div class="col-xs-5">
-                    <input type="text" class="form-control" name="title" value=""/>
+                    <input type="text" class="form-control" name="title" value="<?=$row->title?>"/>
                     <span>url :</span> <span class="url"></span>
                 </div>
             </div>
-
+           
             <div class="form-group">
                 <label class="col-xs-3 control-label">Category</label>
                     <div class="col-xs-5 chosenContainer">
                         <select class="form-control chosen-select" name="category" data-placeholder="-- Select a Category --">
                             <option></option>
-                            <?php foreach($categories->result() as $row):                                                                          
-                               echo '<option value="'.$row->id.'">'.$row->nm_c.'</option>';
-                               
-                           endforeach; ?>
+                            <?php if($selcategories->num_rows()>0){
+                                foreach ($selcategories->result() as $rows){
+                                    foreach($categories->result() as $row):?>
+                                    <option  value="<?php echo $row->id;?>"<?=$rows->id_c==$row->id ? ' selected="selected"' : '';?>><?php echo $row->nm_c; ?></option>
+                                   <?php endforeach;
+                                }
+                            }else{
+                                foreach($categories->result() as $row):                                                                          
+                                echo '<option value="'.$row->id.'">'.$row->nm_c.'</option>';
+                                endforeach;
+                            }
+                             ?>
                         </select>
                     </div>
             </div>
@@ -97,7 +114,7 @@
 
         </div>
     </div>
-
+    <?php } ?>
     <div class="form-group" style="margin-top: 15px;">
         <div class="col-xs-5 col-xs-offset-3">
             <button type="submit" class="btn btn-primary">Save</button>

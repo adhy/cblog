@@ -235,11 +235,11 @@ class Rtcwb_contents extends MX_Controller {
 	function view_edit(){
 		$id_co					=$this->db->escape_str($this->input->post('change',TRUE));
 		$this->data['id']    = $this->mlib->dehex($id_co);
-		$this->data['edcont'] = $this->contents->getcatid($this->data);
+		$this->data['edcont'] = $this->contents->editcontent($this->data);
 		$this->data['categories']=$this->contents->getcategories(1);
-		$this->data['selectcategories']=$this->contents->getselectcategories($this->data);
+		$this->data['selcategories']=$this->contents->getselectcategories($this->data);
     	$this->data['tags']=$this->contents->gettags(1);	
-    	$this->data['selecttags']=$this->contents->getselecttags($this->data);	
+    	$this->data['seltags']=$this->contents->getselecttags($this->data);	
 		$view='rtcwb_contents/trt_editcontents';
 		$this->mlib->template_rt($view,$this->data);
 	}
