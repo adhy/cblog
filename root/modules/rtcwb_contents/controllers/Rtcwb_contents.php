@@ -108,6 +108,7 @@ class Rtcwb_contents extends MX_Controller {
 						'title' => $this->data['title'],
 						'slug'=> $slg,
 						'meta_content'=> $metahead,
+						'imgheader'=> $this->data['headimg'],
 						'content' =>  $this->data['content'],
 						'c_date' =>  date('Y-m-d H:i:s',now()),
 						'u_date' =>  date('Y-m-d H:i:s',now()),
@@ -233,8 +234,7 @@ class Rtcwb_contents extends MX_Controller {
 
 	}
 	function view_edit(){
-		$id_co					=$this->db->escape_str($this->input->post('change',TRUE));
-		$this->data['id']    = $this->mlib->dehex($id_co);
+		$this->data['id']  =  $this->session->userdata('id_cont');
 		$this->data['edcont'] = $this->contents->editcontent($this->data);
 		$this->data['categories']=$this->contents->getcategories(1);
 		$this->data['selcategories']=$this->contents->getselectcategories($this->data);

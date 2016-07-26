@@ -35,17 +35,11 @@
         <div class="tab-pane active" id="step-1">
 
          <?php 
-         if ($edcont->num_rows>0){
-            echo "ada";
-         }else{
-            echo "0";
-         }
-
          foreach ($edcont->result() as $row){ ?>
             <div class="form-group">
                 <label class="col-xs-3 control-label">Title</label>
                 <div class="col-xs-5">
-                    <input type="text" class="form-control" name="title" value="<?=$row->title?>"/>
+                    <?php echo '<input type="text" class="form-control" name="title" value="'.$row->title.'"/>';?>
                     <span>url :</span> <span class="url"></span>
                 </div>
             </div>
@@ -57,13 +51,13 @@
                             <option></option>
                             <?php if($selcategories->num_rows()>0){
                                 foreach ($selcategories->result() as $rows){
-                                    foreach($categories->result() as $row):?>
-                                    <option  value="<?php echo $row->id;?>"<?=$rows->id_c==$row->id ? ' selected="selected"' : '';?>><?php echo $row->nm_c; ?></option>
+                                    foreach($categories->result() as $rowc):?>
+                                    <option  value="<?php echo $rowc->id;?>"<?=$rows->id_c==$rowc->id ? ' selected="selected"' : '';?>><?php echo $rowc->nm_c; ?></option>
                                    <?php endforeach;
                                 }
                             }else{
-                                foreach($categories->result() as $row):                                                                          
-                                echo '<option value="'.$row->id.'">'.$row->nm_c.'</option>';
+                                foreach($categories->result() as $rowc):                                                                          
+                                echo '<option value="'.$rowc->id.'">'.$rowc->nm_c.'</option>';
                                 endforeach;
                             }
                              ?>
@@ -75,9 +69,18 @@
                 <label class="col-xs-3 control-label">Tags</label>
                     <div class="col-xs-5 chosenContainer">
                         <select class="form-control chosen-select" name="tags[]" multiple="multiple" data-placeholder="-- Select a tags --">
-                            <?php foreach($tags->result() as $row):                                                                          
-                               echo '<option value="'.$row->id.'">'.$row->nm_t.'</option>';
-                           endforeach; ?>
+                        <?php if($seltags->num_rows()>0){
+                                foreach ($seltags->result() as $rows){
+                                    foreach($tags->result() as $rowt):?>
+                                    <option  value="<?php echo $rowt->id;?>"<?=$rows->id_tag==$rowt->id ? ' selected="selected"' : '';?>><?php echo $rowt->nm_t; ?></option>
+                                   <?php endforeach;
+                                }
+                            }else{
+                                foreach($tags->result() as $rowt):                                                                          
+                               echo '<option value="'.$rowt->id.'">'.$rowt->nm_t.'</option>';
+                           endforeach;
+                            }
+                             ?>
                         </select>
                     </div>
             </div>
@@ -88,7 +91,7 @@
                 <label class="col-xs-3 control-label">Image Header</label>
                 <div class="col-xs-3">
                 <div class="input-group">
-                    <input id="fieldID" type="text" value="" placeholder="Upload Image ..." class="form-control" name="headimg">
+                    <?php echo '<input id="fieldID" type="text" value="'.$row->imgheader.'" placeholder="Upload Image ..." class="form-control" name="headimg">';?>
                     <span class="input-group-btn">
                     <a href="<?=base_url()?>filemanager/dialog.php?type=1&field_id=fieldID&relative_url=1" class="btn iframe-btn btn-default" type="button"><i class="fa fa-folder-open"></i></a>
                     <!--<a href="<?=base_url()?>filemanager/dialog.php?type=1&amp;field_id=backgroundName" class="btn iframe-btn btn-default" type="button"><i class="fa fa-folder-open"></i></a>!-->
@@ -100,14 +103,14 @@
             <div class="form-group">
                 <label class="col-xs-3 control-label">Meta Description</label>
                 <div class="col-xs-5">
-                    <textarea class="form-control" name="metad" rows="7"></textarea>
+                    <?php echo '<textarea class="form-control" name="metad" rows="7">'.$row->meta_content.'</textarea>';?>
                 </div>
             </div>
 
             <div class="form-group">
                 <label class="col-xs-3 control-label">content</label>
                 <div class="col-xs-8">
-                     <textarea class="form-control" name="content" rows="7"></textarea>
+                     <?php echo '<textarea class="form-control" name="content" rows="7">'.$row->content.'</textarea>';?>
                 </div>
             </div>
 
