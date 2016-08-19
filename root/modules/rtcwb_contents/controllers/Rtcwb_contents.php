@@ -118,6 +118,7 @@ class Rtcwb_contents extends MX_Controller {
 			$insert = $this->db->insert('cb_contents',$data_ico);
 			if($insert){
                 $msg    = "success";
+                $this->session->set_flashdata('notif','<script>toastr.success("Save '.$this->data['title'].' success !");</script>');
         	}else{
         		$msg    = "error insert to table content";
         	}

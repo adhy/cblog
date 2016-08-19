@@ -103,7 +103,8 @@
             <div class="form-group">
                 <label class="col-xs-3 control-label">Meta Description</label>
                 <div class="col-xs-5">
-                    <?php echo '<textarea class="form-control" name="metad" rows="7">'.$row->meta_content.'</textarea>';?>
+                    <?php //echo '<textarea class="form-control" name="metad" rows="7">'.$row->meta_content.'</textarea>';?>
+                    <?php echo ' <input type="text" class="form-control" name="metad" value="'.$row->meta_content.'"/>';?>
                 </div>
             </div>
 

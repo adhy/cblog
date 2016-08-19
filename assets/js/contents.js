@@ -45,7 +45,7 @@ $('[name="title"]').keyup(function(){
     var isi=$(this).val();
     var res = isi.replace(/[^\w ~%.:\\&-]/gi, "-");
     var akh = res.replace(/([\&\%\ \_\.\\\:\~])/gi, "-");
-    $(".url").css({"color": "rgb(255, 0, 0)", "font-style": "italic"}).html(akh);
+    $(".url").css({"color": "rgb(255, 0, 0)", "font-style": "italic"}).html('.../'+akh+'.html');
 });
 jQuery(document).ready(function ($) {
       $('.iframe-btn').fancybox({
@@ -83,12 +83,12 @@ function over(ot){
             dataType: 'json',
             success : function(response){
                 if(response.msg == 'Enable'){
-                    toastr.success(response.msg+' Category '+response.cot+' !');
+                    toastr.success(response.msg+' Category '+response.cont+' !');
                     $('[data-target='+ot+']').attr('class','btn btn-sm btn-success');
                     $('[data-target='+ot+']').html('Disable');
                     $('[data-target=dr'+ot+']').attr('class','btn btn-sm btn-success');
                 }else{
-                    toastr.error(response.msg+' Category '+response.cot+' !');
+                    toastr.error(response.msg+' Category '+response.cont+' !');
                     $('[data-target='+ot+']').attr('class','btn btn-sm btn-danger');
                     $('[data-target='+ot+']').html('Enable');
                     $('[data-target=dr'+ot+']').attr('class','btn btn-sm btn-danger');
@@ -123,7 +123,7 @@ function prodel(myid) {
             success : function(response){
                 if(response.msg == 'success'){
                     $("#confdel").modal("hide").on('shown.bs.modal');
-                    toastr.success('Category '+response.cat+' has been deleted !');
+                    toastr.success('Content '+response.cont+' has been deleted !');
                     reload_table();
                 }else{
                     toastr.error('An error occured, please try again !');
@@ -160,6 +160,8 @@ $(document).ready(function() {
         max_width: 500,
         min_height: 100,
         min_width: 400,
+        relative_urls : false,
+        remove_script_host: false,
 theme: 'modern',
   plugins: [
     'advlist autolink lists link image charmap print preview hr anchor pagebreak',
@@ -196,7 +198,7 @@ theme: 'modern',
    ],
    toolbar1: 'undo redo | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | styleselect',
    toolbar2: '| responsivefilemanager | link unlink anchor | image media | forecolor backcolor  | print preview code ',
-   image_advtab: true ,
+   image_advtab: false,
    
    external_filemanager_path:url+'/filemanager/',
    filemanager_title:'Responsive Filemanager' ,
@@ -209,7 +211,13 @@ theme: 'modern',
         }
  });
 /*tinymce.init({
-        selector: '#isinya',
+                selector: 'textarea',
+        plugins: [
+        "advlist autolink lists link image charmap print preview anchor",
+        "searchreplace visualblocks code fullscreen",
+        "insertdatetime media table contextmenu paste"
+    ],
+    toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | fontselect fontsizeselect",
         setup: function(editor) {
             editor.on('keyup', function(e) {
                 // Revalidate the hobbies field
@@ -281,9 +289,9 @@ theme: 'modern',
                         }
                     }
                 },
-                /*content: {
+                content: {
                     validators: {
-                         callback: {
+                         /*callback: {
                             message: 'The hobbies must be between 5 and 200 characters long',
                             callback: function(value, validator, $field) {
                                 // Get the plain text without HTML
@@ -291,11 +299,12 @@ theme: 'modern',
                                     format: 'text'
                                 });
 
-                                return text.length <= 20000000000000000 && text.length >= 5;
+                                return text.length >= 5;
                             }
-                        }
+                        },*/
+                        
                     }
-                }*/
+                }
             }
         })
         // Called when a field is invalid
@@ -328,8 +337,8 @@ theme: 'modern',
             if (isValidTab !== null) {
                 $icon.addClass(isValidTab ? 'fa-check' : 'fa-times');
             }
-        })
-        .on('success.form.fv', function(e) {
+        });
+        /*.on('success.form.fv', function(e) {
         e.preventDefault();
         $.ajax({
             type    : "POST",
@@ -338,11 +347,12 @@ theme: 'modern',
             dataType: 'json',
             success : function(response){
                 if(response.msg == 'success'){
-                    toastr.success('Save '+response.title+' Success ! ');
+                    //window.location.href = url+'mailworm/contents.html';
+                    //toastr.success('Save '+response.title+' Success ! ');
                 }else{
                     toastr.error('Save '+response.title+' Error !');
                 }
             }
         });
-    });
+    });*/
 });
