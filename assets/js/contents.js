@@ -337,9 +337,10 @@ theme: 'modern',
             if (isValidTab !== null) {
                 $icon.addClass(isValidTab ? 'fa-check' : 'fa-times');
             }
-        });
-        /*.on('success.form.fv', function(e) {
+        })
+        .on('success.form.fv', function(e) {
         e.preventDefault();
+        tinyMCE.triggerSave();
         $.ajax({
             type    : "POST",
             url     : 'proc-add',
@@ -347,12 +348,12 @@ theme: 'modern',
             dataType: 'json',
             success : function(response){
                 if(response.msg == 'success'){
-                    //window.location.href = url+'mailworm/contents.html';
+                    window.location.href = url+'mailworm/contents.html';
                     //toastr.success('Save '+response.title+' Success ! ');
                 }else{
                     toastr.error('Save '+response.title+' Error !');
                 }
             }
         });
-    });*/
+    });
 });

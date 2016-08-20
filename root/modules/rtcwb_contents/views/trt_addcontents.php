@@ -30,7 +30,8 @@
     <li><a href="#step-2" data-toggle="tab">Step 2 <i class="fa"></i></a></li>
 </ul>
 
-<?php echo '<form id="contents" method="post" class="form-horizontal formtabs" action="'.base_url().'mailworm/contents/proc-add">';?>
+<?php //echo '<form id="contents" method="post" class="form-horizontal formtabs" action="'.base_url().'mailworm/contents/proc-add">';?>
+<form id="contents" method="post" class="form-horizontal formtabs"">
     <div class="tab-content">
         <div class="tab-pane active" id="step-1">
             <div class="form-group">
@@ -82,8 +83,8 @@
             <div class="form-group">
                 <label class="col-xs-3 control-label">Meta Description</label>
                 <div class="col-xs-5">
-                    <!--<textarea class="form-control" name="metad" rows="7"></textarea>!-->
-                    <input type="text" class="form-control" name="metad" />
+                    <textarea class="form-control" name="metad" rows="7"></textarea>
+                    <!--<input type="text" class="form-control" name="metad" />!-->
 
                 </div>
             </div>
