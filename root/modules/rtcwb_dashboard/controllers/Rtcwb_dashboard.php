@@ -3,7 +3,7 @@ class Rtcwb_dashboard extends MX_Controller {
 	public $data = array(
 			'title'     => 'CL-System || Dashboard',
 			'header'	=> 'Dashboard',
-			'text'      => 'PLN',
+			'text'      => 'CL-System',
 			'author'    => 'ADW',
 			'filejs'	=>	'maintenance.js',
 		);

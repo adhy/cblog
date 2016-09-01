@@ -30,7 +30,7 @@
     <li><a href="#step-2" data-toggle="tab">Step 2 <i class="fa"></i></a></li>
 </ul>
 
-<form id="contents" method="post" class="form-horizontal formtabs">
+<form id="edcontents" method="post" class="form-horizontal formtabs">
     <div class="tab-content">
         <div class="tab-pane active" id="step-1">
 
@@ -39,8 +39,8 @@
             <div class="form-group">
                 <label class="col-xs-3 control-label">Title</label>
                 <div class="col-xs-5">
-                    <?php echo '<input type="text" class="form-control" name="title" value="'.$row->title.'"/>';?>
-                    <span>url :</span> <span class="url"></span>
+                    <?php echo '<input type="text" class="form-control ipt-prof" name="title" value="'.$row->title.'"/>';?>
+                    <span>url :</span> <span class="url" style="color": rgb(255, 0, 0); font-style: italic;">.../<?=$row->title?>.html</span>
                 </div>
             </div>
            
@@ -69,17 +69,27 @@
                 <label class="col-xs-3 control-label">Tags</label>
                     <div class="col-xs-5 chosenContainer">
                         <select class="form-control chosen-select" name="tags[]" multiple="multiple" data-placeholder="-- Select a tags --">
-                        <?php if($seltags->num_rows()>0){
-                                foreach ($seltags->result() as $rows){
-                                    foreach($tags->result() as $rowt):?>
-                                    <option  value="<?php echo $rowt->id;?>"<?=$rows->id_tag==$rowt->id ? ' selected="selected"' : '';?>><?php echo $rowt->nm_t; ?></option>
-                                   <?php endforeach;
-                                }
+                        <?php 
+                                    foreach ($tags->result() as $rowt){
+                                    $i=0;
+                                    if(!empty($seltags)){
+                                    foreach($seltags->result() as $rows):
+                                        if($rowt->id==$rows->id_tag){
+                                            echo '<option value="'.$rowt->id.'" selected="selected">'.$rowt->nm_t.'</option>';
+                                            $i=1;
+                                            break;
+                                        }
+                                    endforeach;
+                                    if($i==0){
+                                        echo '<option value="'.$rowt->id.'">'.$rowt->nm_t.'</option>';
+                                    }
+                                
                             }else{
-                                foreach($tags->result() as $rowt):                                                                          
+                                                                                                      
                                echo '<option value="'.$rowt->id.'">'.$rowt->nm_t.'</option>';
-                           endforeach;
+                          
                             }
+                        }
                              ?>
                         </select>
                     </div>
@@ -103,15 +113,27 @@
             <div class="form-group">
                 <label class="col-xs-3 control-label">Meta Description</label>
                 <div class="col-xs-5">
-                    <?php //echo '<textarea class="form-control" name="metad" rows="7">'.$row->meta_content.'</textarea>';?>
-                    <?php echo ' <input type="text" class="form-control" name="metad" value="'.$row->meta_content.'"/>';?>
+                    <?php 
+                    //$order   = array("\r\n", "\n", "\r");
+                   //$meta = preg_replace( "/\r|\n/", "", $row->meta_content );
+                    $meta = str_replace('\r\n','',$row->meta_content);
+                    $meta = str_replace('\\','',$meta);
+
+                    echo '<textarea class="form-control" name="metaed" rows="7">'.$meta.'</textarea>';?>
+                    <?php //echo ' <input type="text" class="form-control" name="metad" value="'.$row->meta_content.'"/>';?>
                 </div>
             </div>
 
             <div class="form-group">
                 <label class="col-xs-3 control-label">content</label>
                 <div class="col-xs-8">
-                     <?php echo '<textarea class="form-control" name="content" rows="7">'.$row->content.'</textarea>';?>
+                     <?php 
+                     $content = str_replace('\"','"',$row->content);
+                     $content = str_replace('\r',' ',$content);
+                     $content = str_replace('\n',' ',$content);
+
+
+                     echo '<textarea class="form-control" name="edcontent" rows="7">'.$content.'</textarea>';?>
                 </div>
             </div>
 

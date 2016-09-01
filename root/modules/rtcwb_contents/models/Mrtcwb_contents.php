@@ -64,14 +64,22 @@ class Mrtcwb_contents extends CI_Model {
         $this->db->where('title',$data['title']);
         return $this->db->get('cb_contents');
     }
+    function getcontentedit($data){    
+        $this->db->where('id',$data['id']);
+        return $this->db->get('cb_contents');
+    }
     function getidcont($data){
         $this->db->where('slug',$data);
         return $this->db->get('cb_contents');
     }
     function getselecttags($data){
-        $this->db->where('id_cont',$data['id']);
-        return $this->db->get('cb_tagsrelation');
+         $this->db->select('cb_tagsrelation.id_tag,cb_tags.id,cb_tags.nm_t');
+         $this->db->join('cb_tagsrelation','cb_tagsrelation.id_tag=cb_tags.id');
+        $this->db->where('cb_tagsrelation.id_cont',$data['id']);
+        return $this->db->get('cb_tags');
     }
+
+
     function getselectcategories($data){
         $this->db->where('id_cont',$data['id']);
         return $this->db->get('cb_catrelation');

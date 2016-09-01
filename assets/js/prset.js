@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    $('#login_form').formValidation({
+    $('#edprof').formValidation({
         //message: 'This value is not valid',
         framework: 'bootstrap',
        // live: 'enable',
@@ -8,16 +8,22 @@ $(document).ready(function() {
             //invalid: 'glyphicon glyphicon-remove',
             validating: 'glyphicon glyphicon-refresh'
         },
+        row: {
+        valid: 'field-success',
+        invalid: 'field-error'
+    },
         locale: 'id_ID',
         fields: {
-            email: {
+            mynm: {
                 validators: {
                     notEmpty: {
                         
-                    },
-                    stringLength: {
-                        min: 6,
-                        max: 30,
+                    }
+                }
+            },
+            email: {
+                validators: {
+                    notEmpty: {
                         
                     },
                     emailAddress: {
@@ -28,22 +34,9 @@ $(document).ready(function() {
                         
                     }
                 }
-            },
-            passblog: {
-                validators: {
-                    notEmpty: {
-                        
-                    },
-                    stringLength: {
-                        min: 6,
-                        max: 30,
-                        
-                    }
-                }
             }
         }
     })
-
         .on('err.validator.fv', function(e, data) {
             // data.bv        --> The FormValidation.Base instance
             // data.field     --> The field name
@@ -59,9 +52,9 @@ $(document).ready(function() {
                     // Show only message associated with current validator
                     .filter('[data-fv-validator="' + data.validator + '"]').show();
             }
-        })
+        });
     
-       .on('success.form.fv', function(e) {
+       /*.on('success.form.fv', function(e) {
         // Prevent form submission
         e.preventDefault();
         // Use Ajax to submit form data
@@ -92,6 +85,6 @@ $(document).ready(function() {
                 }
             }
         });
-    });
+    });*/
     
 });
