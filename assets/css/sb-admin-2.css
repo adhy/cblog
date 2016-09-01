@@ -587,5 +587,9 @@ background-position:center;
     box-shadow: none;
     color: #3c763d;
 }
+.setpr{
+    background-color: #fff;
+    border: 1px solid #337ab7;
+}
 
 

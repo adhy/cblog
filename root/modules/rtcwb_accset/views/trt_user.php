@@ -39,7 +39,7 @@
                         </div>
                     </div>
 
-                        <div class="col-lg-12 well btn-prof">
+                        <div class="col-lg-12 well btn-prof setpr">
                       <div class="tab-content">
                         <div class="tab-pane fade in active" id="tab1">
                             <form id="edprof" method="post" class="form-horizontal">
