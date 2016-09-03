@@ -14,5 +14,10 @@ class Mrtcwb_accset extends CI_Model {
 		$query = $this->db->get();
 		return $query;
 	}
+	function get_passid($data){
+		$this->db->where('id_user',$data['id']);
+		$this->db->where('pass_log',$data['cupass']);
+		return $this->db->get('cb_log');
+	}
 
 }

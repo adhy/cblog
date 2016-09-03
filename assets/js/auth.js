@@ -8,6 +8,10 @@ $(document).ready(function() {
             //invalid: 'glyphicon glyphicon-remove',
             validating: 'glyphicon glyphicon-refresh'
         },
+        row: {
+            valid: 'field-success',
+            invalid: 'field-error'
+        },
         locale: 'id_ID',
         fields: {
             email: {

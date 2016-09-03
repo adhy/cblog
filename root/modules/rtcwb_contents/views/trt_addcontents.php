@@ -15,7 +15,7 @@
                 <div class="col-lg-12">
                     <div  class="panel panel-primary">
                         <div class="panel-heading">
-                            <i class="fa fa-user"></i>
+                            <i class="fa fa-file-text"></i>
                             <span class="break"></span>
                             Add <?=$header?>
                             <div class="pull-right">
@@ -71,9 +71,9 @@
                 <label class="col-xs-3 control-label">Image Header</label>
                 <div class="col-xs-3">
                 <div class="input-group">
-                    <input id="fieldID" type="text" value="" placeholder="Upload Image ..." class="form-control" name="headimg">
+                    <input id="fieldID" type="text" value="" placeholder="Upload Image ..." class="form-control ipt-prof" name="headimg">
                     <span class="input-group-btn">
-                    <a href="<?=base_url()?>filemanager/dialog.php?type=1&field_id=fieldID&relative_url=1" class="btn iframe-btn btn-default" type="button"><i class="fa fa-folder-open"></i></a>
+                    <a href="<?=base_url()?>filemanager/dialog.php?type=1&field_id=fieldID&relative_url=1" class="btn iframe-btn btn-default ipt-prof" type="button"><i class="fa fa-folder-open"></i></a>
                     <!--<a href="<?=base_url()?>filemanager/dialog.php?type=1&amp;field_id=backgroundName" class="btn iframe-btn btn-default" type="button"><i class="fa fa-folder-open"></i></a>!-->
                     </span>
                 </div>

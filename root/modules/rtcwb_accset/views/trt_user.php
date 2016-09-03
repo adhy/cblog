@@ -20,7 +20,7 @@
                         <div class="useravatar col-lg-10 col-lg-offset-1">
                             <img id="imgprof" alt="" class="preview-image" style="cursor: pointer;" src="<?=base_url($row->img)?>">
                             <div class="col-xs-3" style="display: none">
-                            <form id="form1" runat="server">
+                            <form id="form1" method="post" class="form-horizontal">
                                 <div class="input-group">
                                 <input id="fieldID" type="text" value="" placeholder="Upload Image ..." class="form-control" name="headimg" style="display: none">
                                 <span class="input-group-btn">
@@ -33,6 +33,7 @@
                         </div>
                         <div class="card-info"> <span class="card-title"><?=ucwords($row->nm_user)?></span> </div>
                     </div>
+                    <?php }?>
                     <div class="btn-pref btn-group btn-group-justified btn-group-lg" role="group" aria-label="...">
                         <div class="btn-group btn-prof" role="group">
                             <button type="button" id="stars" class="btn btn-primary btn-prof" href="#tab1" data-toggle="tab"><span class="fa fa-user" aria-hidden="true"></span>
@@ -55,6 +56,7 @@
                       <div class="tab-content">
                         <div class="tab-pane fade in active" id="tab1">
                             <form id="edprof" method="post" class="form-horizontal">
+                             <?php foreach ($profile->result() as $row){ ?>
                               <div class="form-group">
                                 <label class="col-xs-2 control-label">Name</label>
                                 <div class="col-xs-5">
@@ -73,6 +75,15 @@
                                     <?php echo '<input type="text" class="form-control ipt-prof fg-gg" name="adde" value="'.$row->alamat.'"/>';?>
                                 </div>                                
                               </div>
+                              <div class="form-group">
+                                <label class="col-xs-2 control-label">Description</label>
+                                <div class="col-xs-5">
+                                    <textarea class="form-control ipt-prof" name="desc" rows="5" value="<?=$row->decript?>"></textarea>
+                                    <!--<input type="text" class="form-control" name="metad" />!-->
+
+                                </div>
+                            </div>
+                            <?php }?>
                               <div class="form-group" style="margin-top: 15px;">
                                 <div class="col-xs-5 col-xs-offset-5">
                                     <button type="submit" class="btn btn-primary">Update</button>
@@ -112,7 +123,7 @@
                         </div>
                       </div>
                     </div>
-                <?php }?>
+                
                 </div>
             
     

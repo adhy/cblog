@@ -53,7 +53,7 @@
         <?php $data = array(
             'name'          => 'email',
             'id'            => 'email',
-            'class'         => 'form-control froco',
+            'class'         => 'form-control froco ipt-prof',
             'type'          => 'email',
             'autocomplate'  => 'off',
             'placeholder'   => 'Email',
@@ -65,7 +65,7 @@
           <?php $data = array(
             'name'          => 'passblog',
             'id'            => 'passblog',
-            'class'         => 'form-control froco',
+            'class'         => 'form-control froco ipt-prof',
             'type'          => 'password',
             'autocomplate'  => 'off',
             'placeholder'   => 'Password',

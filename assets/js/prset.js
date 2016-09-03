@@ -51,7 +51,7 @@ function sendfile(uploadfile,link){
             success : function(response){
                 if(response.msg == 'success'){
                     toastr.success('Update success');
-                }else if(response.msg == 'error'){
+                }else{
                     toastr.error('Update error');
                     //toastr.success('username atau password yang anda masukkan salah !');
                     
@@ -60,33 +60,7 @@ function sendfile(uploadfile,link){
             }
         });
       }
-/*
-    function readURL(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-            
-            reader.onload = function (e) {
-                $('#imgprof').attr('src', e.target.result);
-            }
-            
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
-    
-    $("#fieldID").change(function(){
-        readURL(this);
-    });
-$('.form-control').on('change', function(){
-    var inputVal = $(this).val();
-    $('.preview-image').attr('src', inputVal).fadeIn();
-})
 
-
-$('#oncha').on('click', function(){
-    var href = $('#oncha').attr('href');
-    $('.form-control').val(href).trigger('change');
-    return false;
-})*/
 
 $(document).ready(function() {
     $('#edprof').formValidation({
@@ -132,6 +106,13 @@ $(document).ready(function() {
                     }
                 }
             },
+            desc: {
+                validators: {
+                    notEmpty: {
+                        
+                    }
+                }
+            }
         }
     })
         .on('err.validator.fv', function(e, data) {
@@ -149,40 +130,28 @@ $(document).ready(function() {
                     // Show only message associated with current validator
                     .filter('[data-fv-validator="' + data.validator + '"]').show();
             }
-        });
+        })
     
-       /*.on('success.form.fv', function(e) {
+       .on('success.form.fv', function(e) {
         // Prevent form submission
         e.preventDefault();
         // Use Ajax to submit form data
         $.ajax({
             type    : "POST",
-            url     : 'ServiceLoginAuth',
-            data    : $('#login_form').serialize(),
+            url     : 'update-profil',
+            data    : $('#edprof').serialize(),
             dataType: 'json',
             success : function(response){
                 if(response.msg == 'success'){
-                    //toastr.success('ok !');
-                    window.location.href = 'dashboard.html';
-                }else if(response.msg == 'error'){
-                    toastr.error('username atau password yang anda masukkan salah !');
-                    //toastr.success('username atau password yang anda masukkan salah !');
-                    
-
-                }else if(response.msg == 'info'){
-                    toastr.info('Verifikasi telah dikirim ke email, mohon di periksa kembali !');
-                    //toastr.success('username atau password yang anda masukkan salah !');
-                    //window.location.href = 'dashboard.html';
-
+                    toastr.success('Update Profile success !');
+                    if (response.text.length!=0)
+                    $('.card-title').html(response.text);
                 }else{
-                    toastr.warning('Akun anda dibekukan, silahkan hubungi Admin !');
-                    //toastr.success('username atau password yang anda masukkan salah !');
-                    //window.location.href = 'dashboard.html';
-
+                    toastr.error('Update Profile Failed!');
                 }
             }
         });
-    });*/
+    });
     
 });
 $(document).ready(function() {
@@ -249,39 +218,25 @@ $(document).ready(function() {
                 $('#enableForm').formValidation('validateField', 'nepass')
                                 .formValidation('validateField', 'copass');
             }
-        });
+        })
     
-       /*.on('success.form.fv', function(e) {
-        // Prevent form submission
-        e.preventDefault();
-        // Use Ajax to submit form data
-        $.ajax({
-            type    : "POST",
-            url     : 'ServiceLoginAuth',
-            data    : $('#login_form').serialize(),
-            dataType: 'json',
-            success : function(response){
-                if(response.msg == 'success'){
-                    //toastr.success('ok !');
-                    window.location.href = 'dashboard.html';
-                }else if(response.msg == 'error'){
-                    toastr.error('username atau password yang anda masukkan salah !');
-                    //toastr.success('username atau password yang anda masukkan salah !');
-                    
-
-                }else if(response.msg == 'info'){
-                    toastr.info('Verifikasi telah dikirim ke email, mohon di periksa kembali !');
-                    //toastr.success('username atau password yang anda masukkan salah !');
-                    //window.location.href = 'dashboard.html';
-
-                }else{
-                    toastr.warning('Akun anda dibekukan, silahkan hubungi Admin !');
-                    //toastr.success('username atau password yang anda masukkan salah !');
-                    //window.location.href = 'dashboard.html';
-
+     .on('success.form.fv', function(e) {
+            // Prevent form submission
+            e.preventDefault();
+            // Use Ajax to submit form data
+            $.ajax({
+                type    : "POST",
+                url     : 'update-password',
+                data    : $('#edpassprof').serialize(),
+                dataType: 'json',
+                success : function(response){
+                    if(response.msg == 'success'){
+                        toastr.success('Update Password success !');
+                    }else{
+                        toastr.error('Update Password Failed!');
+                    }
                 }
-            }
+            });
         });
-    });*/
     
 });

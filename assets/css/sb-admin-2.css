@@ -444,7 +444,7 @@ background-position:center;
     border-bottom: 2px solid rgba(0, 0, 0, 0.43) !important;
 }
 .froco{
-    background-color: rgba(0, 0, 0, 0.19) !important;
+    /*background-color: rgba(0, 0, 0, 0.19) !important;*/
     color: #E6E3E3 !important;
 }
 .dropdown-menu > li > a {
@@ -564,15 +564,18 @@ background-position:center;
 }
 .ipt-prof{
     border-bottom: 1px solid #66afe9;
-    border-top:0px;
-    border-left:0px;
-    border-right:0px;
+    border-top:0px !important;
+    border-left:0px !important;
+    border-right:0px !important;
     background-color: transparent;
-    box-shadow: none;
+    box-shadow: none !important;
     border-radius: 0px;
 }
 .ipt-prof:focus{
     box-shadow: none;
+}
+.nobor{
+    border-radius: 0px;
 }
 
 .field-error .control-label,

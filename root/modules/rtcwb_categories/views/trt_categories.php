@@ -14,7 +14,7 @@
                 <div class="col-lg-12">
                     <div  class="panel panel-primary">
                         <div class="panel-heading">
-                            <i class="fa fa-user"></i>
+                            <i class="fa fa-th-list"></i>
                             <span class="break"></span>
                             Table <?=$header?> 
                              <div class="pull-right">
