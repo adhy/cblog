@@ -141,6 +141,10 @@ $(document).ready(function() {
             invalid: '',
             validating: ''
         },
+        row: {
+                valid: 'field-success',
+                invalid: 'field-error'
+            },
         locale: 'id_ID',
         fields: {
                 tag: {

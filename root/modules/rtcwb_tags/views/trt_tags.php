@@ -83,7 +83,7 @@
             <div class="form-group">
                 <label class="col-xs-3 control-label">Tag</label>
                 <div class="col-xs-5">
-                    <input id="enmc" type="text" class="form-control" name="tag" autofocus="" value="" />
+                    <input id="enmc" type="text" class="form-control ipt-prof" name="tag" autofocus="" value="" />
                 </div>
             </div>
            

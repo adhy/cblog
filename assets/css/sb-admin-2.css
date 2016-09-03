@@ -502,8 +502,7 @@ background-position:center;
     padding-top: 0;
     overflow: hidden;
     text-align: center;
-    background-color: #fff;
-    background-color: rgba(255, 255, 255, 1);
+    background-color: transparent;
 }
 .card.hovercard .card-background {
     height: 130px;
@@ -539,20 +538,22 @@ background-position:center;
     bottom: 14px;
     left: 0;
     right: 0;
+
 }
 .card.hovercard .card-info .card-title {
     padding:0 5px;
-    font-size: 20px;
+    font-size: 24px;
     line-height: 1;
-    color: #262626;
-    background-color: rgba(251, 251, 251, 0.23);
+    color: #fff;
 }
 .card.hovercard .card-info {
     overflow: hidden;
     font-size: 12px;
     line-height: 20px;
-    color: #737373;
+    color: #fff;
     text-overflow: ellipsis;
+    text-rendering: optimizelegibility;
+    text-shadow: 0 0 3px rgba(0,0,0,.8);
 }
 .card.hovercard .bottom {
     padding: 0 20px;
@@ -591,5 +592,12 @@ background-position:center;
     background-color: #fff;
     border: 1px solid #337ab7;
 }
+.cardb{
+    box-shadow: 10px 10px 5px rgba(0,0,0,1);
+    -webkit-box-shadow: inset -3px -91px 61px -67px rgba(0,0,0,1);
+    -moz-box-shadow: inset -3px -91px 61px -67px rgba(0,0,0,1);
+    box-shadow: inset -3px -91px 61px -67px rgba(0,0,0,1);
+}
+
 
 

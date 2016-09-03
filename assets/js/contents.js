@@ -249,6 +249,10 @@ theme: 'modern',
                 //invalid: 'glyphicon glyphicon-remove',
                 validating: 'glyphicon glyphicon-refresh'
             },
+            row: {
+                valid: 'field-success',
+                invalid: 'field-error'
+            },
             fields: {
                 title: {
                     validators: {
@@ -410,6 +414,10 @@ remove_script_host:false,
                 //valid: 'glyphicon glyphicon-ok',
                 //invalid: 'glyphicon glyphicon-remove',
                 validating: 'glyphicon glyphicon-refresh'
+            },
+            row: {
+                valid: 'field-success',
+                invalid: 'field-error'
             },
             fields: {
                 title: {

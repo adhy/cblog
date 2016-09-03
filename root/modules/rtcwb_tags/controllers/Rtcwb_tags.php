@@ -5,7 +5,7 @@ class Rtcwb_tags extends MX_Controller {
 			'header'	=> 'Tags',
 			'text'      => 'CL-System',
 			'author'    => 'ADW',
-			'filejs'	=>	'tags.min.js',
+			'filejs'	=>	'tags.js',
 		);
 	public function __construct(){
         parent::__construct();

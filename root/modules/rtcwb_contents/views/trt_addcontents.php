@@ -37,7 +37,7 @@
             <div class="form-group">
                 <label class="col-xs-3 control-label">Title</label>
                 <div class="col-xs-5">
-                    <input type="text" class="form-control" name="title" />
+                    <input type="text" class="form-control ipt-prof" name="title" />
                     <span>url :</span> <span class="url"></span>
                 </div>
             </div>
@@ -45,7 +45,7 @@
             <div class="form-group">
                 <label class="col-xs-3 control-label">Category</label>
                     <div class="col-xs-5 chosenContainer">
-                        <select class="form-control chosen-select" name="category" data-placeholder="-- Select a Category --">
+                        <select class="form-control chosen-select ipt-prof" name="category" data-placeholder="-- Select a Category --">
                             <option></option>
                             <?php foreach($categories->result() as $row):                                                                          
                                echo '<option value="'.$row->id.'">'.$row->nm_c.'</option>';
@@ -57,7 +57,7 @@
             <div class="form-group">
                 <label class="col-xs-3 control-label">Tags</label>
                     <div class="col-xs-5 chosenContainer">
-                        <select class="form-control chosen-select" name="tags[]" multiple="multiple" data-placeholder="-- Select a tags --">
+                        <select class="form-control chosen-select ipt-prof" name="tags[]" multiple="multiple" data-placeholder="-- Select a tags --">
                             <?php foreach($tags->result() as $row):                                                                          
                                echo '<option value="'.$row->id.'">'.$row->nm_t.'</option>';
                            endforeach; ?>
@@ -83,7 +83,7 @@
             <div class="form-group">
                 <label class="col-xs-3 control-label">Meta Description</label>
                 <div class="col-xs-5">
-                    <textarea class="form-control" name="metad" rows="7"></textarea>
+                    <textarea class="form-control ipt-prof" name="metad" rows="7"></textarea>
                     <!--<input type="text" class="form-control" name="metad" />!-->
 
                 </div>
@@ -92,7 +92,7 @@
             <div class="form-group">
                 <label class="col-xs-3 control-label">content</label>
                 <div class="col-xs-8">
-                     <textarea class="form-control" id="content" name="content" rows="7"></textarea>
+                     <textarea class="form-control ipt-prof" id="content" name="content" rows="7"></textarea>
                 </div>
             </div>
 

@@ -39,7 +39,7 @@
             <div class="form-group">
                 <label class="col-xs-3 control-label">Title</label>
                 <div class="col-xs-5">
-                    <?php echo '<input type="text" class="form-control" name="title" value="'.$row->title.'"/>';?>
+                    <?php echo '<input type="text" class="form-control ipt-prof" name="title" value="'.$row->title.'"/>';?>
                     <span>url :</span> <span class="url" style="color": rgb(255, 0, 0); font-style: italic;">.../<?=$row->title?>.html</span>
                 </div>
             </div>
@@ -119,7 +119,7 @@
                     $meta = str_replace('\r\n','',$row->meta_content);
                     $meta = str_replace('\\','',$meta);
 
-                    echo '<textarea class="form-control" name="metaed" rows="7">'.$meta.'</textarea>';?>
+                    echo '<textarea class="form-control ipt-prof" name="metaed" rows="7">'.$meta.'</textarea>';?>
                     <?php //echo ' <input type="text" class="form-control" name="metad" value="'.$row->meta_content.'"/>';?>
                 </div>
             </div>

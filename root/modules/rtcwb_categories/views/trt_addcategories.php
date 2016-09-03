@@ -4,7 +4,7 @@
             <div class="form-group">
                 <label class="col-xs-3 control-label">Category</label>
                 <div class="col-xs-5">
-                    <input type="text" class="form-control" name="categories[]" autofocus="" />
+                    <input type="text" class="form-control ipt-prof" name="categories[]" autofocus="" />
                 </div>
                 <div class="col-xs-4">
                     <button type="button" class="btn btn-default addButton"><i class="fa fa-plus"></i></button>
@@ -14,7 +14,7 @@
             <!-- The categories field template containing an categories field and a Remove button -->
             <div class="form-group hide" id="optionTemplate">
                 <div class="col-xs-offset-3 col-xs-5">
-                    <input class="form-control" type="hidden" name="catgor" autofocus="" disabled="disabled"/>
+                    <input class="form-control ipt-prof" type="hidden" name="catgor" autofocus="" disabled="disabled"/>
                 </div>
                 <div class="col-xs-4">
                     <button type="button" class="btn btn-default removeButton"><i class="fa fa-minus"></i></button>
@@ -58,6 +58,10 @@
                 //invalid: 'glyphicon glyphicon-remove',
                 validating: 'glyphicon glyphicon-refresh'
             },
+            row: {
+            valid: 'field-success',
+            invalid: 'field-error'
+        },
             fields: {
                 'categories[]': categoriesv
             }
