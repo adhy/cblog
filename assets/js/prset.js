@@ -24,8 +24,24 @@
             sendfile(uploadfile,link);
 
         });
+      });    
+      $('#download-button').on('click', function() {
+        ga('send', 'event', 'button', 'click', 'download-buttons');      
       });
-      function sendfile(uploadfile){
+      $('.toggle').click(function(){
+        var _this=$(this);
+        $('#'+_this.data('ref')).toggle(200);
+        var i=_this.find('i');
+        if (i.hasClass('icon-plus')) {
+          i.removeClass('icon-plus');
+          i.addClass('icon-minus');
+        }else{
+          i.removeClass('icon-minus');
+          i.addClass('icon-plus');
+        }
+      });
+}); 
+function sendfile(uploadfile,link){
         var val = uploadfile;
       $.ajax({
             type    : "POST",
@@ -44,24 +60,7 @@
             }
         });
       }
-      
-      
-      $('#download-button').on('click', function() {
-        ga('send', 'event', 'button', 'click', 'download-buttons');      
-      });
-      $('.toggle').click(function(){
-        var _this=$(this);
-        $('#'+_this.data('ref')).toggle(200);
-        var i=_this.find('i');
-        if (i.hasClass('icon-plus')) {
-          i.removeClass('icon-plus');
-          i.addClass('icon-minus');
-        }else{
-          i.removeClass('icon-minus');
-          i.addClass('icon-plus');
-        }
-      });
-}); /*
+/*
     function readURL(input) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();
