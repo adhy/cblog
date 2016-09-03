@@ -37,12 +37,14 @@ class Rtcwb_accset extends MX_Controller {
 	}
 	function get_profil(){
 		$this->data['mynm']=$this->db->escape_str($this->input->post('mynm',TRUE));
+		$this->data['mophon']=$this->db->escape_str($this->input->post('mophon',TRUE));
 		$this->data['email']=$this->db->escape_str($this->input->post('email',TRUE));
 		$this->data['adde']=$this->db->escape_str($this->input->post('adde',TRUE));
 		$this->data['desc']=$this->db->escape_str($this->input->post('desc',TRUE));
 		$this->data['id']  =  $this->session->userdata('wormood');
 		$input = array(
 							'nm_user' => $this->data['mynm'],
+							'mopho'=> $this->data['mophon'],
 							'email'=> $this->data['email'],
 							'alamat' =>  $this->data['adde'],
 							'decript' =>  $this->data['desc'],

@@ -64,6 +64,12 @@
                                 </div>                                
                               </div>
                               <div class="form-group">
+                                <label class="col-xs-2 control-label">Mobile Phone</label>
+                                <div class="col-xs-5">
+                                    <?php echo '<input type="text" class="form-control ipt-prof fg-gg" name="mophon" value="'.$row->mopho.'"/>';?>
+                                </div>                                
+                              </div>
+                              <div class="form-group">
                                 <label class="col-xs-2 control-label">E-mail</label>
                                 <div class="col-xs-5">
                                     <?php echo '<input type="text" class="form-control ipt-prof fg-gg" name="email" value="'.$row->email.'"/>';?>
@@ -78,7 +84,7 @@
                               <div class="form-group">
                                 <label class="col-xs-2 control-label">Description</label>
                                 <div class="col-xs-5">
-                                    <textarea class="form-control ipt-prof" name="desc" rows="5" value="<?=$row->decript?>"></textarea>
+                                    <textarea class="form-control ipt-prof" name="desc" rows="5" ><?=$row->decript?></textarea>
                                     <!--<input type="text" class="form-control" name="metad" />!-->
 
                                 </div>
