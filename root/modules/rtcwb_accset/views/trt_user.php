@@ -14,8 +14,22 @@
                             <img class="card-bkimg" alt="" src="<?=base_url($row->img)?>">
                             <!-- http://lorempixel.com/850/280/people/9/ -->
                         </div>
-                        <div class="useravatar">
-                            <img alt="" src="<?=base_url($row->img)?>">
+                        <div class="">
+
+                        </div>
+                        <div class="useravatar col-lg-10 col-lg-offset-1">
+                            <img id="imgprof" alt="" class="preview-image" style="cursor: pointer;" src="<?=base_url($row->img)?>">
+                            <div class="col-xs-3" style="display: none">
+                            <form id="form1" runat="server">
+                                <div class="input-group">
+                                <input id="fieldID" type="text" value="" placeholder="Upload Image ..." class="form-control" name="headimg" style="display: none">
+                                <span class="input-group-btn">
+                                <a id="oncha" style="display: none" href="<?=base_url()?>filemanager/dialog.php?type=1&field_id=fieldID&relative_url=1" class="btn iframe-btn btn-default" type="button"><i class="fa fa-folder-open"></i></a>
+                    <!--<a href="<?=base_url()?>filemanager/dialog.php?type=1&amp;field_id=backgroundName" class="btn iframe-btn btn-default" type="button"><i class="fa fa-folder-open"></i></a>!-->
+                                </span>
+                                </div>
+                            </form>
+                            </div>
                         </div>
                         <div class="card-info"> <span class="card-title"><?=ucwords($row->nm_user)?></span> </div>
                     </div>

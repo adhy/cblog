@@ -20,4 +20,15 @@ class Rtcwb_accset extends MX_Controller {
 		$view='rtcwb_accset/trt_user';
 		$this->mlib->template_rt($view,$this->data);
 	}
+	function imagelive(){
+		$this->data['imgurl']=$this->db->escape_str($this->input->post('val',TRUE));
+		$this->data['id']  =  $this->session->userdata('wormood');
+		$update=$this->db->set('img',$this->data['imgurl'])->where('id_user',$this->data['id'])->update('cb_profile');
+		if($update){
+                $msg    = "success";
+        	}else{
+        		$msg    = "error Update to table content";
+        	}
+        echo json_encode(array('msg'=>$msg,'text'=>$this->data['imgurl']));
+	}
 }

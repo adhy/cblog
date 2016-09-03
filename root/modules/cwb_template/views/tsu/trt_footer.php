@@ -38,6 +38,7 @@
     <script src="<?php echo base_url('assets');?>/js/chosen.jquery.min.js"></script>
     <script src="<?php echo base_url('assets');?>/js/jquery.mousewheel-3.0.6.pack.js"></script>
     <script src="<?php echo base_url('assets');?>/js/jquery.fancybox.pack.js"></script>
+    <script src="<?php echo base_url('assets');?>/js/jquery.observe_field.js"></script>
     <script src="<?php echo base_url('assets');?>/js/tinymce/tinymce.min.js"></script>
     <script src="<?php echo base_url('assets');?>/js/masonry.pkgd.min.js"></script>
     <script src="<?php echo base_url('assets');?>/js/imagesloaded.pkgd.min.js"></script>
