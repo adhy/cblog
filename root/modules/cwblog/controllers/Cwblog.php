@@ -13,8 +13,9 @@ class Cwblog extends MX_Controller {
 		//$this->load->model('web/mweb', 'mweb');
     }
 	public function index(){
-		$view='cwblog/trt_content';
-		$this->mlib->template_rt($view,$this->data);
+		$this->load->view('cwblog/trt_page', $this->data);
+		//$view='cwblog/trt_content';
+		//$this->mlib->template_rt($view,$this->data);
 		//redirect('mailworm/dashboard');
 		//if($this->session->userdata('admin')==TRUE){
 			//$this->data['css']='../';
