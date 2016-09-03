@@ -41,7 +41,7 @@
             <div class="col-md-4 col-md-offset-4">
                 <div class="login-panel panel panel-default panlog">
                     <div class="panel-heading pnhed">
-                        <h3 class="panel-title" style="text-align: center">-: Please Sign In :-</h3>
+                        <h3 class="panel-title fa fa-rocket" style="text-align: center"> Please Sign In </h3>
                     </div>
                     <div class="panel-body">
 		<?php $attributes = array('role'=>'form','id'=>'login_form');
