@@ -248,12 +248,12 @@
                         <div class="sidebar-item tag-cloud">
                             <h3>Tag Cloud</h3>
                             <ul class="nav nav-pills">
-                                <li><a href="#"><i class="fa fa-tag pr-5"> </i> Corporate</a></li>
-                                <li><a href="#"><i class="fa fa-tag pr-5"> </i> Joomla</a></li>
-                                <li><a href="#"><i class="fa fa-tag pr-5"> </i> Abstract</a></li>
-                                <li><a href="#"><i class="fa fa-tag pr-5"> </i> Creae</a></li>
-                                <li><a href="#"><i class="fa fa-tag pr-5"> </i> Busis</a></li>
-                                <li><a href="#"><i class="fa fa-tag pr-5"> </i> Product</a></li>
+                                <li><a href="#"><i class="fa fa-tags  pr-5"> </i> Corporate</a></li>
+                                <li><a href="#"><i class="fa fa-tags pr-5"> </i> Joomla</a></li>
+                                <li><a href="#"><i class="fa fa-tags pr-5"> </i> Abstract</a></li>
+                                <li><a href="#"><i class="fa fa-tags pr-5"> </i> Creae</a></li>
+                                <li><a href="#"><i class="fa fa-tags pr-5"> </i> Busis</a></li>
+                                <li><a href="#"><i class="fa fa-tags pr-5"> </i> Product</a></li>
                             </ul>
                         </div>
                         <div class="sidebar-item popular">

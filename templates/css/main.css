@@ -1349,13 +1349,14 @@ Portfolio with right sidebar
   font-size: 14px;
   font-weight: 300;
   padding: 5px 15px;
-  background: #bbbbbb;
-  color: #fff;
+  /*background: #bbbbbb;*/
+  color: #bbbbbb;
   border-radius: 3px;
 }
 
 .tag-cloud .nav-pills li a:hover{
-  background: #0099AE;
+  /*background: #0099AE;*/
+  color:#0099AE;
 }
 
 .popular ul.gallery {
