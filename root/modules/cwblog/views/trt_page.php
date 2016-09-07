@@ -73,9 +73,9 @@
                         </li>                    
                         <li class="dropdown active"><a href="blog.html">Blog <i class="fa fa-angle-down"></i></a>
                             <ul role="menu" class="sub-menu">
-                                <li><a href="blog.html">Blog Default</a></li>
+                                <li><a class="active" href="blog.html">Blog Default</a></li>
                                 <li><a href="blogtwo.html">Timeline Blog</a></li>
-                                <li><a class="active" href="blogone.html">2 Columns + Right Sidebar</a></li>
+                                <li><a href="blogone.html">2 Columns + Right Sidebar</a></li>
                                 <li><a href="blogthree.html">1 Column + Left Sidebar</a></li>
                                 <li><a href="blogfour.html">Blog Masonary</a></li>
                                 <li><a href="blogdetails.html">Blog Details</a></li>

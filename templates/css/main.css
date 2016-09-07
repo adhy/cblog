@@ -1201,14 +1201,22 @@ ul.elements li > i{
 }
 
 .pagination li a:hover,
-.pagination .active a, 
+/*.pagination .active a, 
 .pagination a:active, 
 .pagination .active a:hover,
-.pagination .active a:focus, 
+.pagination .active a:focus, */
 .pagination a:focus {
   background: transparent;
   border-color: #C03035;
   color: #C03035;
+}
+.pagination .active a,
+.pagination a:active,
+.pagination .active a:hover,
+.pagination .active a:focus {
+  background: #C03035;
+  border-color: #C03035;
+  color: #d5d5d5;	
 }
 
 
@@ -1350,7 +1358,7 @@ Portfolio with right sidebar
   font-weight: 300;
   padding: 5px 15px;
   /*background: #bbbbbb;*/
-  color: #bbbbbb;
+  color: #6a6a6a;
   border-radius: 3px;
 }
 
