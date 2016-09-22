@@ -92,9 +92,15 @@ class Rtcwb_tags extends MX_Controller {
 	function cek_tagss(){
 		//$nm_t=$this->input->post('tags', TRUE);
 		$this->data['nm_t'] =$this->db->escape_str($this->input->post('tag',TRUE));
+		$this->data['id']=$this->session->userdata('id_tag');
 			$cekidt=$this->tags->gettag($this->data);
 			if($cekidt->num_rows()>0){
-				$msg = false;
+				$cekidt=$this->tags->gettagedit($this->data);
+				if($cekidt->num_rows()>0){
+					$msg = true;
+				}else{
+					$msg = false;
+				}
 			}else{
 				$msg = true;
 			}	

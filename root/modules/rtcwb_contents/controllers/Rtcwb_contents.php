@@ -231,9 +231,7 @@ class Rtcwb_contents extends MX_Controller {
 			}	
 		echo json_encode(array('msg'=>$msg,'cont'=>$cont));			
 	}
-	function id_auth(){
 
-	}
 	function view_edit(){
 		$this->data['id']  =  $this->session->userdata('id_cont');
 		$this->data['edcont'] = $this->contents->editcontent($this->data);

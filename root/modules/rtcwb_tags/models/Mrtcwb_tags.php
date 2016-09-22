@@ -56,5 +56,10 @@ class Mrtcwb_tags extends CI_Model {
         $this->db->where('id',$data['id']);
         return $this->db->get($this->table);
     }
+    function gettagedit($data){
+        $this->db->where('id',$data['id']);
+        $this->db->where('nm_t',$data['nm_t']);
+        return $this->db->get($this->table);
+    }
 
 }

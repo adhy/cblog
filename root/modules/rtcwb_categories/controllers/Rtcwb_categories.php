@@ -101,9 +101,15 @@ class Rtcwb_categories extends MX_Controller {
 	function cek_categoriess(){
 		//$nm_c=$this->input->post('categories', TRUE);
 		$this->data['nm_c'] =$this->db->escape_str($this->input->post('category',TRUE));
+		$this->data['id']=$this->session->userdata('id_cat');
 			$cekidc=$this->categories->getcat($this->data);
 			if($cekidc->num_rows()>0){
-				$msg = false;
+				$cekidc=$this->categories->getcatidedit($this->data);
+				if($cekidc->num_rows()>0){
+					$msg = true;
+				}else{
+					$msg = false;
+				}
 			}else{
 				$msg = true;
 			}	
