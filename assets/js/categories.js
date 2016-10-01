@@ -95,6 +95,7 @@ function prodel(myid) {
 
 function edit_modalt(id){
     $('#meditca').find('form')[0].reset();
+    
     $('#meditcafo').formValidation('resetForm', true);
         $.ajax({
             type    : "POST",
@@ -104,11 +105,13 @@ function edit_modalt(id){
             success : function(response){
                 if(response.msg == 'true'){
                     $("#enmc").val(response.category);
-                    $("#nmpar").val(response.parent);
+                    $("[name='parent']").append(response.parent).trigger('chosen:updated');
+
                     $("#meditca").modal("show").on('shown.bs.modal');
                 }else{
                     toastr.error('Data '+response.msg+' !');
                 }
+                $("[name='parent']").chosen({ width: "100%" });
                 
             }
         });
@@ -135,7 +138,13 @@ function over(ot){
         });
 }
 $(document).ready(function() {
-    $('#meditcafo').formValidation({
+    $('#meditcafo')
+    .find('[name="parent"]').chosen({ width: "100%" })
+            .change(function(e) {
+                $('#meditcafo').formValidation('revalidateField', 'parent');
+            })
+            .end()
+    .formValidation({
         framework: 'bootstrap',
         excluded: ':disabled',
         icon: {
@@ -162,6 +171,9 @@ $(document).ready(function() {
                         delay: 3000
                     }
                 }
+            },
+            parent:{
+
             }
         }
     })

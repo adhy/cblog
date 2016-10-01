@@ -5,7 +5,7 @@
             <div class="form-group">
                 <label class="col-xs-3 control-label">Category</label>
                 <div class="col-xs-5">
-                    <input id="enmc" type="text" class="form-control ipt-prof" name="category" autofocus="" value="" />
+                    <input id="enmc" type="text" class="form-control ipt-prof" name="category" autofocus="" value="<?=$sendnm?>" />
                 </div>
             </div>
              <div class="form-group">

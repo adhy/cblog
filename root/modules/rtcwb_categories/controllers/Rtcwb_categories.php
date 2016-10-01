@@ -118,7 +118,7 @@ class Rtcwb_categories extends MX_Controller {
 	}
 	function cek_catedit(){
 		//$nm_c=$this->input->post('categories', TRUE);
-		$selectparent= '<option></option>';
+		$selectparent= array();
 		$id_c					=$this->db->escape_str($this->input->post('change',TRUE));
 		$goexpl   = $this->mlib->dehex($id_c);
 		$fromexpl = explode(',',$goexpl);;
@@ -134,17 +134,24 @@ class Rtcwb_categories extends MX_Controller {
 				$sendnm=$send->nm_c;
 				$cekidparzero=$this->categories->getcatidpar();
 				$cekidparnoze=$this->categories->getcatidparnoze($this->data);
-				if($cekidparnoze->num_rows()>0){
-					//foreach ($cekidpar->result() as $rows){
+				 if($cekidparnoze->num_rows()>0){
+          foreach ($cekidc->result() as $rows){
                         foreach($cekidparzero->result() as $rowc):
-                        $selectparent= " <option></option><option  value=".$rowc->id."'".$send->id==$rowc->id_parent ? ' selected="selected"' : ''.">".$rowc->nm_c."</option>";
+                        	$select="";
+                        	if($rows->id_parent==$rowc->id){
+                        		$select="selected='selected'";
+                        	}
+                        	$id    = $this->mlib->enhex($rowc->id);
+                        $selectparent[]= '<option value="'.$id.'"'.$select.'>'.$rowc->nm_c.'</option>';
+    //$selectparent[]= "<option  value='".$rowc->id."'".$rows->id==$rowc->id_parent ? ."selected='selected'". : ."''".">".$rowc->nm_c."</option>";
                        endforeach;
-                  // }                   
+                  }                   
                 }else{
                     foreach($cekidparzero->result() as $rowc):                                                                          
-                    $selectparent=' <option></option><option value="'.$rowc->id.'">'.$rowc->nm_c.'</option>';
-                	endforeach;
+                    $selectparent[]='<option value="'.$rowc->id.'">'.$rowc->nm_c.'</option>';
+                  endforeach;
                 }
+				
 			}else{
 				
 				$msg = 'false';
@@ -225,10 +232,13 @@ class Rtcwb_categories extends MX_Controller {
 			$msg    = "error1";
 			if ($this->form_validation->run() == TRUE){
 				$this->data['category']	=	$this->db->escape_str($this->input->post('category', TRUE));
+				$id_p	=	$this->db->escape_str($this->input->post('parent', TRUE));
+				$this->data['parent']   = $this->mlib->dehex($id_p);
 				$toslg=$this->mlib->slugify($this->data['category']);
 				//$toslg=url_title($this->data['category'],'dash',TRUE);
 				$data_edit = array(
 							'nm_c' => $this->data['category'],
+							'id_parent'=> $this->data['parent'],
 							'slg_c'=> $toslg,
 							'u_date' =>  date('Y-m-d H:i:s',now()),
 							'status' => '0'

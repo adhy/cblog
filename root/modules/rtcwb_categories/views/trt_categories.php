@@ -77,7 +77,8 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title">Edit <?=$header?></h4>
       </div>
-      <form id="meditcafo" method="post" class="form-horizontal">
+
+                      <form id="meditcafo" method="post" class="form-horizontal">
       <div class="modal-body">
         
             <div class="form-group">
@@ -90,7 +91,9 @@
                 <label class="col-xs-3 control-label">Parent</label>
                     <div class="col-xs-5 chosenContainer">
                         <select class="form-control chosen-select" name="parent" data-placeholder="-- Select a Parent --">
-                          <div id="nmpar" ></div>
+                          <option></option>
+                          <div id="masuk"></div>
+                          
                         </select>
                     </div>
             </div>
