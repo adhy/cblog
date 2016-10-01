@@ -41,10 +41,10 @@
             <div class="col-md-4 col-md-offset-4">
                 <div class="login-panel panel panel-default panlog">
                     <div class="panel-heading pnhed">
-                        <h3 class="panel-title fa fa-rocket" style="text-align: center"> Please Sign In </h3>
+                        <h3 class="panel-title fa fa-rocket" style="text-align: center"> To reset your password, please enter your email address</h3>
                     </div>
                     <div class="panel-body">
-		<?php $attributes = array('role'=>'form','id'=>'login_form');
+		<?php $attributes = array('role'=>'form','id'=>'reset_form');
         echo form_open('',$attributes);
     echo form_fieldset('');
     ?>
@@ -61,21 +61,9 @@
             );
             echo form_input($data);?>
           </div>
-          <div class="form-group">
-          <?php $data = array(
-            'name'          => 'passblog',
-            'id'            => 'passblog',
-            'class'         => 'form-control froco ipt-prof',
-            'type'          => 'password',
-            'autocomplate'  => 'off',
-            'placeholder'   => 'Password',
-            'autofocus'     => ''
-            );
-            echo form_input($data);?>
-          </div>
           <div class="row">
             <div class="col-xs-8">
-                <?=anchor('mailworm/reset','I forgot my password'); ?>
+                <?=anchor('mailworm/login','Login'); ?>
             </div><!-- /.col -->
             <div class="col-xs-4">
                 <?php $data = array(
