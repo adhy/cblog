@@ -569,10 +569,14 @@ background-position:center;
     border-right:0px !important;
     background-color: transparent;
     box-shadow: none !important;
-    border-radius: 0px;
+    border-radius: 0px !important;
 }
 .ipt-prof:focus{
     box-shadow: none;
+}
+.ipt-prof:focus, .ipt-prof:hover, .ipt-prof:active{
+    box-shadow: none !important;
+    background-color: transparent !important;
 }
 .nobor{
     border-radius: 0px;

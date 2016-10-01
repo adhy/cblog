@@ -86,6 +86,14 @@
                     <input id="enmc" type="text" class="form-control ipt-prof" name="category" autofocus="" value="" />
                 </div>
             </div>
+             <div class="form-group">
+                <label class="col-xs-3 control-label">Parent</label>
+                    <div class="col-xs-5 chosenContainer">
+                        <select class="form-control chosen-select" name="parent" data-placeholder="-- Select a Parent --">
+                          <div id="nmpar" ></div>
+                        </select>
+                    </div>
+            </div>
            
       </div>
       <div class="modal-footer">

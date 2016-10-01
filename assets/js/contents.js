@@ -43,10 +43,19 @@ function reload_table(){
 }
 $('[name="title"]').keyup(function(){
     var isi=$(this).val();
-    var res = isi.replace(/[^\w ~%.:\\&-]/gi, "-");
-    var akh = res.replace(/([\&\%\ \_\.\\\:\~])/gi, "-");
+    //var res = isi.replace(/[^\w ~%.:\\&-]/gi, "-");
+    //var akh = res.replace(/([\&\%\ \_\.\\\:\~])/gi, "-");
+    var akh = isi.toLowerCase().replace(/-+/g, '-').replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
     $(".url").css({"color": "rgb(255, 0, 0)", "font-style": "italic"}).html('.../'+akh+'.html');
 });
+function slugify(text){
+  return text.toString().toLowerCase()
+    .replace(/\s+/g, '-')           // Replace spaces with -
+    .replace(/[^\w\-]+/g, '')       // Remove all non-word chars
+    .replace(/\-\-+/g, '-')         // Replace multiple - with single -
+    .replace(/^-+/, '')             // Trim - from start of text
+    .replace(/-+$/, '');            // Trim - from end of text
+}
 jQuery(document).ready(function ($) {
       $('.iframe-btn').fancybox({
       'width'   : 880,
@@ -499,6 +508,7 @@ remove_script_host:false,
             success : function(response){
                 if(response.msg == 'success'){
                     window.location.href = url+'mailworm/contents.html';
+                    //toastr.success('Save '+response.title+' Success ! ');
                 }else{
                     toastr.error('Save '+response.title+' Error !');
                 }

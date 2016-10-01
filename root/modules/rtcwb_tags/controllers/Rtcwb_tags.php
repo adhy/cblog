@@ -150,12 +150,12 @@ class Rtcwb_tags extends MX_Controller {
 		//$this->form_validation->set_rules('tags', '', 'strip_tags|xss_clean');
 		//$msg    = "error1";
 		//if ($this->form_validation->run() == TRUE){
-			//$nm_t=$this->db->escape_str($this->input->post('tags',TRUE));
-			$nm_t=$this->input->post('tags', TRUE);
+			$nm_t=$this->db->escape_str($this->input->post('tags',TRUE));
+			//$nm_t=$this->input->post('tags', TRUE);
 			foreach ($nm_t as $row) {
 				$tag []= $row;
-				$toslg = str_replace(' ','-', $row);
-				$slg   = strtolower($toslg);
+				$slg=$this->mlib->slugify($row);
+				//$slg=url_title($row,'dash',TRUE);
 				
 				$input = array(
 							'nm_t' => $row,
@@ -197,8 +197,9 @@ class Rtcwb_tags extends MX_Controller {
 			$msg    = "error1";
 			if ($this->form_validation->run() == TRUE){
 				$this->data['tag']	=	$this->db->escape_str($this->input->post('tag', TRUE));
-				$toslg = str_replace(' ','-', $this->data['tag']);
-				$slg   = strtolower($toslg);
+				$slg = $this->mlib->slugify($this->data['tag']);
+				//$slg = url_title($toslg,'dash',TRUE);
+				//$slg   = strtolower($toslg);
 				$data_edit = array(
 							'nm_t' => $this->data['tag'],
 							'slg_t'=> $slg,
@@ -212,6 +213,6 @@ class Rtcwb_tags extends MX_Controller {
             		$msg    = "error";
             	}
 			}
-            echo json_encode(array("msg"=>$msg));
+            echo json_encode(array("msg"=>$msg,"pesan"=>$this->data['tag']));
 	}
 }

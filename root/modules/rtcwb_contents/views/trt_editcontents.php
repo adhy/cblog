@@ -40,7 +40,7 @@
                 <label class="col-xs-3 control-label">Title</label>
                 <div class="col-xs-5">
                     <?php echo '<input type="text" class="form-control ipt-prof" name="title" value="'.$row->title.'"/>';?>
-                    <span>url :</span> <span class="url" style="color": rgb(255, 0, 0); font-style: italic;">.../<?=$row->title?>.html</span>
+                    <span>url :</span> <span class="url" style="color": rgb(255, 0, 0); font-style: italic;">.../<?=$row->slug?>.html</span>
                 </div>
             </div>
            

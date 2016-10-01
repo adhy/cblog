@@ -38,7 +38,7 @@ class Rtcwb_categories extends MX_Controller {
 	            $dateu  = date('d M Y [H:i:s]', strtotime($person->u_date));
 	            $row[] = $datec ;
 	            $row[] = $dateu;
-	 			$id    = $this->mlib->enhex($person->id);
+	 			$id    = $this->mlib->enhex($person->id.','.$person->id_parent);
 	 			$nm_c  = str_replace(' ','-', $person->nm_c);
 	 			//$id2    = $this->mlib->dehex($id);
 	            //add html for action
@@ -118,20 +118,39 @@ class Rtcwb_categories extends MX_Controller {
 	}
 	function cek_catedit(){
 		//$nm_c=$this->input->post('categories', TRUE);
+		$selectparent= '<option></option>';
 		$id_c					=$this->db->escape_str($this->input->post('change',TRUE));
-		$this->data['id']    = $this->mlib->dehex($id_c);
-		$cekidc=$this->categories->getcatid($this->data);
+		$goexpl   = $this->mlib->dehex($id_c);
+		$fromexpl = explode(',',$goexpl);;
+		$this->data['id']    = $fromexpl[0];
+		$this->data['id_parent']    = $fromexpl[1];
+		$cekidc=$this->categories->getcatidchange($this->data);
+		$cekidparzero=$this->categories->getcatidpar();
 			if($cekidc->num_rows()>0){
 				$msg = 'true';
 				$sess_data['id_cat']	=	$this->data['id'] ;
         		$this->session->set_userdata($sess_data);
 				$send=$cekidc->row();
 				$sendnm=$send->nm_c;
+				$cekidparzero=$this->categories->getcatidpar();
+				$cekidparnoze=$this->categories->getcatidparnoze($this->data);
+				if($cekidparnoze->num_rows()>0){
+					//foreach ($cekidpar->result() as $rows){
+                        foreach($cekidparzero->result() as $rowc):
+                        $selectparent= " <option></option><option  value=".$rowc->id."'".$send->id==$rowc->id_parent ? ' selected="selected"' : ''.">".$rowc->nm_c."</option>";
+                       endforeach;
+                  // }                   
+                }else{
+                    foreach($cekidparzero->result() as $rowc):                                                                          
+                    $selectparent=' <option></option><option value="'.$rowc->id.'">'.$rowc->nm_c.'</option>';
+                	endforeach;
+                }
 			}else{
+				
 				$msg = 'false';
 				$sendnm='error';
 			}	
-		echo json_encode(array('msg'=>$msg,'category'=>$sendnm));			
+		echo json_encode(array('msg'=>$msg,'category'=>$sendnm,'parent'=>$selectparent));			
 	}
 	function proc_delete(){
 		//$nm_c=$this->input->post('categories', TRUE);
@@ -158,16 +177,17 @@ class Rtcwb_categories extends MX_Controller {
 		//$this->form_validation->set_rules('categories', '', 'strip_tags|xss_clean');
 		//$msg    = "error1";
 		//if ($this->form_validation->run() == TRUE){
-			//$nm_c=$this->db->escape_str($this->input->post('categories',TRUE));
-			$nm_c=$this->input->post('categories', TRUE);
+			$nm_c=$this->db->escape_str($this->input->post('categories',TRUE));
+			//$nm_c=$this->input->post('categories', TRUE);
 			foreach ($nm_c as $row) {
 				$cat []= $row;
-				$toslg = str_replace(' ','-', $row);
-				$slg   = strtolower($toslg);
+				$toslg = $this->mlib->slugify($row);
+				//$toslg=url_title($row,'dash',TRUE);
 				
 				$input = array(
 							'nm_c' => $row,
-							'slg_c'=> $slg,
+							'slg_c'=> $toslg,
+							'id_parent'=>'0',
 							'c_date' =>  date('Y-m-d H:i:s',now()),
 							'u_date' =>  date('Y-m-d H:i:s',now()),
 							'status' => '0'
@@ -205,11 +225,11 @@ class Rtcwb_categories extends MX_Controller {
 			$msg    = "error1";
 			if ($this->form_validation->run() == TRUE){
 				$this->data['category']	=	$this->db->escape_str($this->input->post('category', TRUE));
-				$toslg = str_replace(' ','-', $this->data['category']);
-				$slg   = strtolower($toslg);
+				$toslg=$this->mlib->slugify($this->data['category']);
+				//$toslg=url_title($this->data['category'],'dash',TRUE);
 				$data_edit = array(
 							'nm_c' => $this->data['category'],
-							'slg_c'=> $slg,
+							'slg_c'=> $toslg,
 							'u_date' =>  date('Y-m-d H:i:s',now()),
 							'status' => '0'
 						);

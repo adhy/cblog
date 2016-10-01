@@ -100,10 +100,9 @@ class Rtcwb_contents extends MX_Controller {
 			$this->data['headimg']	=	$this->db->escape_str($this->input->post('headimg', TRUE));
 			$this->data['metad']	=	$this->db->escape_str($this->input->post('metad', TRUE));
 			$this->data['content']	=	$this->db->escape_str($this->input->post('content',FALSE));
-			$toslg = preg_replace("/[^a-zA-Z0-9]/", "-", $this->data['title']);
+			$slg = $this->mlib->slugify($this->data['title']);
+			//$slg = url_title($this->data['title'],'dash',TRUE);
 			$metahead=substr($this->data['metad'],0,200);
-			//$toslg = str_replace(' ','-', $this->data['category']);
-			$slg   = strtolower($toslg);
 			$data_ico = array(
 						'title' => $this->data['title'],
 						'slug'=> $slg,
@@ -275,10 +274,9 @@ class Rtcwb_contents extends MX_Controller {
 			$this->data['headimg']	=	$this->db->escape_str($this->input->post('headimg', TRUE));
 			$this->data['metad']	=	$this->db->escape_str($this->input->post('metaed', TRUE));
 			$this->data['content']	=	$this->db->escape_str($this->input->post('edcontent',FALSE));
-			$toslg = preg_replace("/[^a-zA-Z0-9]/", "-", $this->data['title']);
+			$slg = $this->mlib->slugify($this->data['title']);
+			//$slg = url_title($this->data['title'],'dash',TRUE);
 			$metahead=substr($this->data['metad'],0,200);
-			//$toslg = str_replace(' ','-', $this->data['category']);
-			$slg   = strtolower($toslg);
 			$data_ico = array(
 						'title' => $this->data['title'],
 						'slug'=> $slg,
@@ -297,7 +295,7 @@ class Rtcwb_contents extends MX_Controller {
         	}else{
         		$msg    = "error Update to table content";
         	}
-        	//$delete=$this->db->where_in('id',$this->data['id'])->delete('cat_relation');
+
 			       	$datacatrel= array(
 				    'id_c' => $this->data['category'],
 				    'c_date' =>  date('Y-m-d H:i:s',now()),

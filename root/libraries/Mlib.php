@@ -7,6 +7,38 @@ class Mlib {
         $data = str_replace(array('+','/','='),array('-','_',''),$data);
         return $data;
     }
+    public function set_permalink($title){
+        $karakter = array ('{','}',')','(','|','`','~','!','@','%','$','^','&','*','=','?','+','-','/','\\',',','.','#',':',';','\'','"','[',']');
+        $hapus_karakter_aneh = strtolower(str_replace($karakter,'',$title));
+        $link_akhir = strtolower(str_replace(' ', '-', $hapus_karakter_aneh));
+        //$link_akhir = $id.'-'.$tambah_strip;
+        return $link_akhir;
+    }
+    public function slugify($text){
+      // replace non letter or digits by -
+      $text = preg_replace('~[^\pL\d]+~u', '-', $text);
+
+      // transliterate
+      $text = iconv('utf-8', 'us-ascii//TRANSLIT', $text);
+
+      // remove unwanted characters
+      $text = preg_replace('~[^-\w]+~', '', $text);
+
+      // trim
+      $text = trim($text, '-');
+
+      // remove duplicate -
+      $text = preg_replace('~-+~', '-', $text);
+
+      // lowercase
+      $text = strtolower($text);
+
+      if (empty($text)) {
+        return 'n-a';
+      }
+
+      return $text;
+}
  
     public function safe_b64decode($string) {
         $data = str_replace(array('-','_'),array('+','/'),$string);

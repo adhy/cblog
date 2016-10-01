@@ -104,6 +104,7 @@ function edit_modalt(id){
             success : function(response){
                 if(response.msg == 'true'){
                     $("#enmc").val(response.category);
+                    $("#nmpar").val(response.parent);
                     $("#meditca").modal("show").on('shown.bs.modal');
                 }else{
                     toastr.error('Data '+response.msg+' !');

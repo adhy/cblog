@@ -2,7 +2,7 @@
 
 class Mrtcwb_categories extends CI_Model {
 	var $table = 'cb_categories';
-    var $column = array('id','nm_c','sl_c',
+    var $column = array('id','nm_c','sl_c','id_parent',
     					'c_date','u_date','status');
     var $order = array('nm_c' => 'asc');
 	function __constuct()
@@ -56,9 +56,23 @@ class Mrtcwb_categories extends CI_Model {
         $this->db->where('id',$data['id']);
         return $this->db->get($this->table);
     }
+    function getcatidchange($data){
+        $this->db->where('id',$data['id']);
+        $this->db->where('id_parent',$data['id_parent']);
+        return $this->db->get($this->table);
+    }
     function getcatidedit($data){
         $this->db->where('id',$data['id']);
         $this->db->where('nm_c',$data['nm_c']);
+        return $this->db->get($this->table);
+    }
+    function getcatidpar(){
+        $this->db->where('id_parent','0');
+        return $this->db->get($this->table);
+    }
+    function getcatidparnoze($data){
+        $this->db->where('id',$data['id']);
+        $this->db->where('id_parent !=','0');
         return $this->db->get($this->table);
     }
 }
