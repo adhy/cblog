@@ -13,16 +13,7 @@ class Rtcwb_reset extends MX_Controller {
     }
 	public function index(){
 		if(!is_logged_in()){ // if you add in constructor no need write each function in above controller. 
-			
 		$this->load->view('rtcwb_reset/trt_resetsend', $this->data);
-		//if($this->session->userdata('admin')==TRUE){
-			//$this->data['css']='../';
-			//$this->data['filejs']='admin.js';
-			//$view='rtcwb/trt_content';
-			//$this->mlib->template_rt($view,$this->data);
-		//}else if($this->session->userdata('admin')==FALSE){
-		//	redirect('login');
-		//}
 		}else{
 			redirect('mailworm');
 		}
@@ -37,66 +28,15 @@ class Rtcwb_reset extends MX_Controller {
 		if ($this->form_validation->run() == TRUE){
 			$this->data['email']    		= $this->db->escape_str($this->input->post('email',TRUE));
 			$query=$this->mrtcwb_reset->getemail($this->data);
+			$psuc = '<script>toastr.success("Silahan buka notifikasi pada email");</script>';
+			$pro   = '<script>toastr.error("Pesan Gagal dikirim");</script>';
 			if($query->num_rows()>0){
-				send_email($this->data['email']);
-				 /*$config = array();
-   $config['charset'] = 'utf-8';
-   $config['useragent'] = 'Codeigniter'; //bebas sesuai keinginan kamu
-   $config['protocol']= "smtp";
-   $config['mailtype']= "html";
-   $config['smtp_host']= "ssl://smtp.gmail.com";
-   $config['smtp_port']= "465";
-   $config['smtp_timeout']= "5";
-   $config['smtp_user']= "emailkamudisini@xxx.com";//isi dengan email kamu
-   $config['smtp_pass']= "passwordkamudisini"; // isi dengan password kamu
-   $config['crlf']="\r\n"; 
-   $config['newline']="\r\n"; 
-   
-   $config['wordwrap'] = TRUE;
-   $this->email->initialize($config);
-    $this->email->from($this->input->post('from'));
-   $this->email->to($this->input->post('to'));
-   $this->email->subject($this->input->post('subject'));
-   $this->email->message($this->input->post('isi'));
-   if($this->email->send())
-   {
-    echo "berhasil mengirim email";
-   }else
-   {
-    echo "gagal mengirim email";
-   }
-
-
-   lain
-
-
-   $config = Array(
-    'protocol' => 'smtp',
-    'smtp_host' => 'ssl://smtp.googlemail.com',
-    'smtp_port' => 465,
-    'smtp_user' => 'usercoba',
-    'smtp_pass' => 'passcoba',
-    'mailtype'  => 'html',
-    'charset'   => 'iso-8859-1'
-);
- 
-$this->load->library('email', $config);
-$this->email->set_newline("\r\n");
- 
-$mail = $this->email;
- 
-$mail->from('your@example.com', 'Your Name');
-$mail->to('someone@example.com'); 
-$mail->cc('another@another-example.com'); 
-$mail->bcc('them@their-example.com'); 
- 
-$mail->subject('Mail Test');
-$mail->message('Testing the mail class.');	
- 
-$mail->send();
- 
-echo $mail->print_debugger();*/
-				$this->session->set_flashdata('notif','<script>toastr.success("Silahan buka notifikasi pada email");</script>');
+				$msg    = "success";
+				$judul='Reset Password';
+				$tujuan=$this->data['email'] ;
+				$pesan= '';
+				$snma=$this->mlib->send_email($pesan,$judul,$tujuan,$psuc,$pro);
+				$this->session->set_flashdata('notif',$snma);
 			}else{
 				$msg    = "error";
 			}
@@ -105,10 +45,6 @@ echo $mail->print_debugger();*/
 		}else{
 			redirect('mailworm');
 		}
-	}
-
-	private function send_mail($mail){
-
 	}
 	public function process_logout(){
 		if(!is_logged_in()){ // if you add in constructor no need write each function in above controller. 

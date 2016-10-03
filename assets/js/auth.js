@@ -167,9 +167,9 @@ $(document).ready(function() {
             success : function(response){
                 if(response.msg == 'success'){
                     //toastr.success('ok !');
-                    window.location.href = 'login.html';
+                   window.location.href = 'login.html';
                 }else{
-                    toastr.warning('AkuEmail Yang Anda Masukkan Salah !');
+                    toastr.warning('Email Yang Anda Masukkan Salah !');
                     //toastr.success('username atau password yang anda masukkan salah !');
                     //window.location.href = 'dashboard.html';
 

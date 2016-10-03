@@ -71,7 +71,7 @@
                                     'id'            => 'login_form',
                                     'class'         => 'btn btn-primary btn-block btn-flat',
                                     'type'          => 'submit',
-                                    'content'       => 'Sign In'
+                                    'content'       => 'Send'
                             );
                             echo form_button($data);
                 

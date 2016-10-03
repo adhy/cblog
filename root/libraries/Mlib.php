@@ -126,5 +126,34 @@ class Mlib {
         $zeroview->load->view('pln_template/template_super/template_bottom',$data);
         
     }
+
+    public function send_email($pesan=null,$judul=null,$tujuan=null,$psuc=null,$pro=null){
+        $sendmail =& get_instance();
+        $config = array();
+        $config['charset'] = 'utf-8';
+        $config['useragent'] = 'Codeigniter'; //bebas sesuai keinginan kamu
+        $config['protocol']= "smtp";
+        $config['mailtype']= "html";
+        $config['smtp_host']= "ssl://smtp.gmail.com";
+        $config['smtp_port']= "465";
+        $config['smtp_timeout']= "5";
+        $config['smtp_user']= "emailkamudisini@xxx.com";//isi dengan email kamu
+        $config['smtp_pass']= "passwordkamudisini"; // isi dengan password kamu
+        $config['crlf']="\r\n"; 
+        $config['newline']="\r\n"; 
+
+        $config['wordwrap'] = TRUE;
+        $sendmail->email->initialize($config);
+        $sendmail->email->from('your@example.com', 'Your Name');
+        $sendmail->email->to($tujuan);
+        $sendmail->email->subject($judul);
+        $sendmail->email->message($pesan);
+        if($sendmail->email->send()){
+        $msg = $psuc;
+        }else{
+        $msg = $pro;
+        }
+        return $msg;
+    }
 }
 ?>
