@@ -137,14 +137,14 @@ class Mlib {
         $config['smtp_host']= "ssl://smtp.gmail.com";
         $config['smtp_port']= "465";
         $config['smtp_timeout']= "5";
-        $config['smtp_user']= "emailkamudisini@xxx.com";//isi dengan email kamu
-        $config['smtp_pass']= "passwordkamudisini"; // isi dengan password kamu
+        $config['smtp_user']= "adhytsa18@gmail.com";//isi dengan email kamu
+        $config['smtp_pass']= "#%#%)(katana"; // isi dengan password kamu
         $config['crlf']="\r\n"; 
         $config['newline']="\r\n"; 
 
         $config['wordwrap'] = TRUE;
         $sendmail->email->initialize($config);
-        $sendmail->email->from('your@example.com', 'Your Name');
+        $sendmail->email->from('1st3rben@mail.ru', '1st34b3n');
         $sendmail->email->to($tujuan);
         $sendmail->email->subject($judul);
         $sendmail->email->message($pesan);

@@ -34,7 +34,7 @@ class Rtcwb_reset extends MX_Controller {
 				$msg    = "success";
 				$judul='Reset Password';
 				$tujuan=$this->data['email'] ;
-				$pesan= '';
+				$pesan= 'ini pesan';
 				$snma=$this->mlib->send_email($pesan,$judul,$tujuan,$psuc,$pro);
 				$this->session->set_flashdata('notif',$snma);
 			}else{
