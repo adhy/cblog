@@ -122,6 +122,7 @@
     <script type="text/javascript">
     var url = '<?php echo base_url();?>';
   </script>
+  <?php echo $this->session->flashdata('notif');?>
 </body>
 
 </html>
