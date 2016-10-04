@@ -137,12 +137,13 @@ class Mlib {
         $config['smtp_host']= "ssl://smtp.gmail.com";
         $config['smtp_port']= "465";
         $config['smtp_timeout']= "5";
-        $config['smtp_user']= "adhytsa18@gmail.com";//isi dengan email kamu
-        $config['smtp_pass']= "#%#%)(katana"; // isi dengan password kamu
+        $config['smtp_user']= "353emperor@gmail.com";//isi dengan email kamu
+        $config['smtp_pass']= "%)(%)(katana"; // isi dengan password kamu
         $config['crlf']="\r\n"; 
         $config['newline']="\r\n"; 
 
         $config['wordwrap'] = TRUE;
+//        $sendmail->load->library('email', $config);
         $sendmail->email->initialize($config);
         $sendmail->email->from('1st3rben@mail.ru', '1st34b3n');
         $sendmail->email->to($tujuan);
@@ -151,7 +152,7 @@ class Mlib {
         if($sendmail->email->send()){
         $msg = $psuc;
         }else{
-        $msg = $pro;
+        $msg = show_error($sendmail->email->print_debugger()); 
         }
         return $msg;
     }

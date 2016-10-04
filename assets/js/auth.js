@@ -166,7 +166,7 @@ $(document).ready(function() {
             dataType: 'json',
             success : function(response){
                 if(response.msg == 'success'){
-                    toastr.success('ok !');
+                    //toastr.success('ok !');
                    //window.location.href = 'login.html';
                 }else{
                     toastr.warning('Email Yang Anda Masukkan Salah !');
