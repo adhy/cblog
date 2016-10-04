@@ -39,9 +39,10 @@ class Rtcwb_reset extends MX_Controller {
 				$this->session->set_flashdata('notif',$snma);
 			}else{
 				$msg    = "error";
+				$snma = "email salah";
 			}
 		}
-		echo json_encode(array("msg"=>$msg));
+		echo json_encode(array("msg"=>$msg,"pesan"=>$snma));
 		}else{
 			redirect('mailworm');
 		}

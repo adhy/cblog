@@ -130,7 +130,7 @@ class Mlib {
     public function send_email($pesan=null,$judul=null,$tujuan=null,$psuc=null,$pro=null){
         $sendmail =& get_instance();
         $config = array();
-        $config['charset'] = 'utf-8';
+        $config['charset'] = 'iso-8859-1';
         $config['useragent'] = 'Codeigniter'; //bebas sesuai keinginan kamu
         $config['protocol']= "smtp";
         $config['mailtype']= "html";
