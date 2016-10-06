@@ -19,7 +19,9 @@ class Rtcwb_login extends MX_Controller {
 		$this->data['fr_password']=$this->mrtcwb_login->fr_input($n='passblog',$p='&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;',$t='password');
 		$this->data['fr_but']=$this->mrtcwb_login->fr_but($n='login_form',$c='Sign In');
 		$this->data['js_fott']=$this->mrtcwb_login->js_fot();
-		$this->load->view('rtcwb_login/trt_login', $this->data);
+		$this->data['css_top']=$this->mrtcwb_login->css_top();
+		$view='rtcwb_login/trt_login';
+		$this->mlib->templatelogin($view, $this->data);
 		}else{
 			redirect('mailworm');
 		}

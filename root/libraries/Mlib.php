@@ -99,11 +99,9 @@ class Mlib {
     
     public function templatelogin($view=null,$data=null){
         $zeroview =& get_instance();
-        $zeroview->load->view('pln_template/template_login/template_top',$data);
-
+        $zeroview->load->view('cwb_template/tsu_lg/trt_top',$data);
         $zeroview->load->view($view,$data);
-
-        $zeroview->load->view('pln_template/template_login/template_bottom',$data);
+        $zeroview->load->view('cwb_template/tsu_lg/trt_footer',$data);
         
     }
     public function template_rt($view=null,$data=null){

@@ -145,6 +145,11 @@ class Mrtcwb_login extends CI_Model {
                             			"formValidation.min.js","framework/bootstrap.min.js","language/id_ID.js",
                             			"toastr.min.js","jquery.uniform.min.js","sb-admin-2.js");
     }
+    function css_top(){
+		       return $jquery =array("	bootstrap.min.css", "metisMenu.min.css","thepa/blue/pace-theme-minimal.css","formValidation.min.css",
+                            			"toastr.css","thesu/default/css/uniform.default.min.css","sb-admin-2.css",
+                            			"font-awesome.min.css");
+    }
 	
 
 
