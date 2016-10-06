@@ -13,16 +13,13 @@ class Rtcwb_login extends MX_Controller {
     }
 	public function index(){
 		if(!is_logged_in()){ // if you add in constructor no need write each function in above controller. 
-			
+		//$this->data['jQuery']=$this->mlib->folog();	
+		$this->data['js_frlogin']=$this->mrtcwb_login->js_frlogin();
+		$this->data['fr_email']=$this->mrtcwb_login->fr_input($n='email',$p='email@mail.com',$t='email');
+		$this->data['fr_password']=$this->mrtcwb_login->fr_input($n='passblog',$p='&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;',$t='password');
+		$this->data['fr_but']=$this->mrtcwb_login->fr_but($n='login_form',$c='Sign In');
+		$this->data['js_fott']=$this->mrtcwb_login->js_fot();
 		$this->load->view('rtcwb_login/trt_login', $this->data);
-		//if($this->session->userdata('admin')==TRUE){
-			//$this->data['css']='../';
-			//$this->data['filejs']='admin.js';
-			//$view='rtcwb/trt_content';
-			//$this->mlib->template_rt($view,$this->data);
-		//}else if($this->session->userdata('admin')==FALSE){
-		//	redirect('login');
-		//}
 		}else{
 			redirect('mailworm');
 		}
