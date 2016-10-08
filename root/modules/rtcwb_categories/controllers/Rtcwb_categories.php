@@ -147,8 +147,9 @@ class Rtcwb_categories extends MX_Controller {
                        endforeach;
                   }                   
                 }else{
-                    foreach($cekidparzero->result() as $rowc):                                                                          
-                    $selectparent[]='<option></option><option value="'.$rowc->id.'">'.$rowc->nm_c.'</option>';
+                    foreach($cekidparzero->result() as $rowc):        
+                    $id    = $this->mlib->enhex($rowc->id);                                                                  
+                    $selectparent[]='<option></option><option value="'.$id.'">'.$rowc->nm_c.'</option>';
                   endforeach;
                 }
 				

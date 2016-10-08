@@ -281,17 +281,20 @@ $(document).ready(function() {
 
 return $js_frlogin;
     }
-    function end_modit(){
+    function end_modit($data){
         $enmc=$this->template->fr_input($n='category',$p='category',$t='text');
+        $parent=$this->template->form_dropdown($n='parent',$dp='-- Select a Parent --');
+        $attributes = array('role'=>'form','id'=>'meditcafo','class'=>'form-horizontal');
         return $end_modit='<div id="meditca" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">Edit <?=$header?></h4>
+        <h4 class="modal-title">Edit '.$data['header'].'</h4>
       </div>
+      '.form_open('',$attributes).'
 
-                      <form id="meditcafo" method="post" class="form-horizontal">
+                      
       <div class="modal-body">
         
             <div class="form-group">
@@ -303,9 +306,7 @@ return $js_frlogin;
              <div class="form-group">
                 <label class="col-xs-3 control-label">Parent</label>
                     <div class="col-xs-5 chosenContainer">
-                        <select class="form-control chosen-select" name="parent" data-placeholder="-- Select a Parent --">
-                          
-                        </select>
+                              '.$parent.'
                     </div>
             </div>
            
@@ -314,7 +315,7 @@ return $js_frlogin;
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         <button id="update" type="submit" class="btn btn-primary">Save changes</button>
       </div>
-       </form> 
+      '.form_close().' 
       
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->

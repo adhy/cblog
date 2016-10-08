@@ -18,6 +18,14 @@ class Mrtcwb_template extends CI_Model {
             );
         return form_input($data) ;
 	}
+    function form_dropdown($n=null,$dp=null){
+        $data=array(
+            'id' =>$n ,
+            'class' => 'form-control chosen-select',
+            'data-placeholder'=>$dp );
+        $options= array();
+        return form_dropdown($n, $options, '', $data);
+    }
 	function fr_but($n=null,$c=null){
 		$data = array(
                 'name'          => $n,
