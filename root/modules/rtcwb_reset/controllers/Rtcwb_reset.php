@@ -6,20 +6,26 @@ class Rtcwb_reset extends MX_Controller {
 			'text'      => 'CL-System',
 			'author'    => 'ADW',
 		);
-	public function __construct(){
+	function __construct(){
         parent::__construct();
 		
 		$this->load->model('rtcwb_reset/mrtcwb_reset', 'mrtcwb_reset');
     }
-	public function index(){
-		if(!is_logged_in()){ // if you add in constructor no need write each function in above controller. 
-		$this->load->view('rtcwb_reset/trt_resetsend', $this->data);
+	function index(){
+		if(!is_logged_in()){ 
+		$this->data['js_frlogin']=$this->mrtcwb_reset->js_frlogin();
+		$this->data['fr_email']=$this->mrtcwb_reset->fr_input($n='email',$p='email@mail.com',$t='email');
+		$this->data['fr_but']=$this->mrtcwb_reset->fr_but($n='reset_form',$c='Send');
+		$this->data['js_fott']=$this->template->js_fot();
+		$this->data['css_top']=$this->template->css_top();
+		$view='rtcwb_reset/trt_resetsend';
+		$this->mlib->templatelogin($view, $this->data);
 		}else{
 			redirect('mailworm');
 		}
 	}
 	
-	public function mail(){
+	function mail(){
 		if(!is_logged_in()){ // if you add in constructor no need write each function in above controller. 
 			
 		$this->form_validation->set_rules('email', '', 'required');
@@ -45,22 +51,6 @@ class Rtcwb_reset extends MX_Controller {
 		echo json_encode(array("msg"=>$msg,"pesan"=>$snma));
 		}else{
 			redirect('mailworm');
-		}
-	}
-	public function process_logout(){
-		if(!is_logged_in()){ // if you add in constructor no need write each function in above controller. 
-			redirect('mailworm');
-        }else{
-			$array_items = array('superworm' 	=> FALSE, 
-								  'wormood' 	=> '',
-								  'wormname' 	=> '');
-			$this->session->unset_userdata($array_items);
-			$this->session->sess_destroy();
-			$this->output->set_header('Last-Modified:'.gmdate('D, d M Y H:i:s').'GMT');
-			$this->output->set_header('Cache-Control: no-store, no-cache,must-revalidate');
-			$this->output->set_header('Cache-Control: post-check=0,pre-check=0',false);
-			$this->output->set_header('Pragma:no-cache');
-			redirect('mailworm/login');
 		}
 	}
 }

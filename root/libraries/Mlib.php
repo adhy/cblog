@@ -115,16 +115,6 @@ class Mlib {
         
     }
 
-    public function template_super($view=null,$data=null){
-        $zeroview =& get_instance();
-        $zeroview->load->view('pln_template/template_super/template_top',$data);
-        $zeroview->load->view('pln_template/template_super/template_navigation',$data);
-        $zeroview->load->view($view,$data);
-        $zeroview->load->view('pln_template/template_super/template_footer',$data);
-        $zeroview->load->view('pln_template/template_super/template_bottom',$data);
-        
-    }
-
     public function send_email($pesan=null,$judul=null,$tujuan=null,$psuc=null,$pro=null){
         $sendmail =& get_instance();
         $config = array();
@@ -153,19 +143,6 @@ class Mlib {
         $msg = show_error($sendmail->email->print_debugger()); 
         }
         return $msg;
-    }
-
-    function folog(){
-       return $jquery =     "<script src='".base_url('assets')."/js/jquery.min.js'></script>
-                            <script src='".base_url('assets')."/js/bootstrap.min.js'></script>
-                            <script src='".base_url('assets')."/js/metisMenu.min.js'></script>
-                            <script src='".base_url('assets')."/js/pace.min.js'></script>
-                            <script src='".base_url('assets')."/js/formValidation.min.js'></script>
-                            <script src='".base_url('assets')."/js/framework/bootstrap.min.js'></script>
-                            <script src='".base_url('assets')."/js/language/id_ID.js'></script>
-                            <script src='".base_url('assets')."/js/toastr.min.js'></script>
-                            <script src='".base_url('assets')."/js/jquery.uniform.min.js'></script>
-                            <script src='".base_url('assets')."/js/sb-admin-2.js'></script>";
     }
 }
 ?>
