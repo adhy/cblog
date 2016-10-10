@@ -26,6 +26,14 @@
                         <!-- /.panel-heading -->
                         <div id="panel" class="panel-body collapse in">
                             <div class="dataTable_wrapper">
+                           <?php $this->load->library('table');
+                           $cell = array('data' => 'Blue', 'width' => '10%');
+
+
+$this->table->set_heading($cell, 'Color', 'Size');
+
+echo $this->table->generate(); ?>
+contoh
                                 <table class="table table-striped table-bordered table-hover dt-responsive display" id="tablecategories" cellspacing="0" width="100%">
                                     <thead>
                                         <tr>
@@ -37,9 +45,7 @@
                                             <th width="20%">Action</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        
-                                    </tbody>
+                                   
                                 </table>
                             </div>
                         </div>

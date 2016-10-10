@@ -43,9 +43,46 @@
                             max: 100,
                             //message: 'The option must be less than 100 characters long'
                         },
+                callback: {
+                            callback: function(value, validator, $field) {
+                                var $category          = validator.getFieldElements('categories[]'),
+                                    numCategory        = $category.length,
+                                    notEmptyCount    = 0,
+                                    obj              = {},
+                                    duplicateRemoved = [];
+
+                                for (var i = 0; i < numCategory; i++) {
+                                    var v = $category.eq(i).val();
+                                    if (v !== '') {
+                                        obj[v] = 0;
+                                        notEmptyCount++;
+                                    }
+                                }
+
+                                for (i in obj) {
+                                    duplicateRemoved.push(obj[i]);
+                                }
+
+                                if (duplicateRemoved.length === 0) {
+                                    return {
+                                        valid: false,
+                                        message: 'You must fill at least one category'
+                                    };
+                                } else if (duplicateRemoved.length !== notEmptyCount) {
+                                    return {
+                                        valid: false,
+                                        message: 'The category must be unique'
+                                    };
+                                }
+
+                                validator.updateStatus('categories[]', validator.STATUS_VALID, 'callback');
+                                return true;
+                            }
+                        },
 				remote: {
 					url: 'categories/catauth',
-					type: 'POST'
+					type: 'POST',
+                    delay: 3000
 				}
             }
         },

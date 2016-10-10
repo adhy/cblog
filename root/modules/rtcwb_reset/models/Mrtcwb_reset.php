@@ -1,7 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Mrtcwb_reset extends CI_Model {
-<<<<<<< HEAD
 	var $table = 'cb_profile';
     var $column = array('id','nm_c','sl_c','id_parent',
     					'c_date','u_date','status');

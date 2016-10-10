@@ -15,8 +15,8 @@ class Rtcwb_login extends MX_Controller {
 		if(!is_logged_in()){ // if you add in constructor no need write each function in above controller. 
 		//$this->data['jQuery']=$this->mlib->folog();	
 		$this->data['js_frlogin']=$this->mrtcwb_login->js_frlogin();
-		$this->data['fr_email']=$this->mrtcwb_login->fr_input($n='email',$p='email@mail.com',$t='email');
-		$this->data['fr_password']=$this->mrtcwb_login->fr_input($n='passblog',$p='&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;',$t='password');
+		$this->data['fr_email']=$this->template->fr_input($n='email',$p='email@mail.com',$t='email');
+		$this->data['fr_password']=$this->template->fr_input($n='passblog',$p='&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;',$t='password');
 		$this->data['fr_but']=$this->mrtcwb_login->fr_but($n='login_form',$c='Sign In');
 		$this->data['js_fott']=$this->mrtcwb_login->js_fot();
 		$this->data['css_top']=$this->mrtcwb_login->css_top();
