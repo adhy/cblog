@@ -115,16 +115,6 @@ class Mlib {
         
     }
 
-    public function template_super($view=null,$data=null){
-        $zeroview =& get_instance();
-        $zeroview->load->view('pln_template/template_super/template_top',$data);
-        $zeroview->load->view('pln_template/template_super/template_navigation',$data);
-        $zeroview->load->view($view,$data);
-        $zeroview->load->view('pln_template/template_super/template_footer',$data);
-        $zeroview->load->view('pln_template/template_super/template_bottom',$data);
-        
-    }
-
     public function send_email($pesan=null,$judul=null,$tujuan=null,$psuc=null,$pro=null){
         $sendmail =& get_instance();
         $config = array();

@@ -5,7 +5,7 @@ class Rtcwb_categories extends MX_Controller {
 			'header'	=> 'Categories',
 			'text'      => 'CL-System',
 			'author'    => 'ADW',
-			'filejs'	=>	'categories.js',
+			'add'	=>	'maddca',
 		);
 	public function __construct(){
         parent::__construct();
@@ -15,14 +15,14 @@ class Rtcwb_categories extends MX_Controller {
 		$this->load->model('rtcwb_categories/mrtcwb_categories', 'categories');
     }
 	public function index(){
-		//if($this->session->userdata('admin')==TRUE){
-			//$this->data['css']='../';
-			//$this->data['filejs']='admin.js';
-			$view='rtcwb_categories/trt_categories';
-			$this->mlib->template_rt($view, $this->data);
-		//}else if($this->session->userdata('admin')==FALSE){
-		//	redirect('login');
-		//}
+		$this->data['js_from']=$this->categories->js_frcategor();
+		$this->data['css_topp']=$this->template->css_toprot();
+		$this->data['js_fott']=$this->template->js_fotrot();
+		$this->data['end_model']=$this->template->end_model();
+		$this->data['end_modadd']=$this->template->end_modadd($this->data);
+		$this->data['end_modit']=$this->categories->end_modit($this->data);
+		$view='rtcwb_categories/trt_categories';
+		$this->mlib->template_rt($view, $this->data);
 	}
 	function ajax_list() {
 	        $list = $this->categories->get_datatables();
@@ -142,13 +142,14 @@ class Rtcwb_categories extends MX_Controller {
                         		$select="selected='selected'";
                         	}
                         	$id    = $this->mlib->enhex($rowc->id);
-                        $selectparent[]= '<option value="'.$id.'"'.$select.'>'.$rowc->nm_c.'</option>';
+                        $selectparent[]= '<option></option><option value="'.$id.'"'.$select.'>'.$rowc->nm_c.'</option>';
     //$selectparent[]= "<option  value='".$rowc->id."'".$rows->id==$rowc->id_parent ? ."selected='selected'". : ."''".">".$rowc->nm_c."</option>";
                        endforeach;
                   }                   
                 }else{
-                    foreach($cekidparzero->result() as $rowc):                                                                          
-                    $selectparent[]='<option value="'.$rowc->id.'">'.$rowc->nm_c.'</option>';
+                    foreach($cekidparzero->result() as $rowc):        
+                    $id    = $this->mlib->enhex($rowc->id);                                                                  
+                    $selectparent[]='<option></option><option value="'.$id.'">'.$rowc->nm_c.'</option>';
                   endforeach;
                 }
 				

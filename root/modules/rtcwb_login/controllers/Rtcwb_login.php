@@ -6,12 +6,12 @@ class Rtcwb_login extends MX_Controller {
 			'text'      => 'CL-System',
 			'author'    => 'ADW',
 		);
-	public function __construct(){
+	function __construct(){
         parent::__construct();
 		
 		$this->load->model('rtcwb_login/mrtcwb_login', 'mrtcwb_login');
     }
-	public function index(){
+	function index(){
 		if(!is_logged_in()){ // if you add in constructor no need write each function in above controller. 
 		//$this->data['jQuery']=$this->mlib->folog();	
 		$this->data['js_frlogin']=$this->mrtcwb_login->js_frlogin();
@@ -27,7 +27,7 @@ class Rtcwb_login extends MX_Controller {
 		}
 	}
 	
-	public function mailsing_in(){
+	function mailsing_in(){
 		if(!is_logged_in()){ // if you add in constructor no need write each function in above controller. 
 			
 		$this->form_validation->set_rules('email', '', 'required');
@@ -65,7 +65,7 @@ class Rtcwb_login extends MX_Controller {
 			redirect('mailworm');
 		}
 	}
-	public function process_logout(){
+	function process_logout(){
 		if(!is_logged_in()){ // if you add in constructor no need write each function in above controller. 
 			redirect('mailworm');
         }else{

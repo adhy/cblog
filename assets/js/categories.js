@@ -1,38 +1,38 @@
 var table;
 $(document).ready(function() {
     table = $('#tablecategories').DataTable( {
-        "searching": false,
-        "paging":   true,
-        "ordering": false,
-        "info":     false,
-        "processing": true,
-        "serverSide": true,
-        "ajax": {
-            "url": "categories/view-tabel",
-            "type": "POST"
+        'searching': false,
+        'paging':   true,
+        'ordering': false,
+        'info':     false,
+        'processing': true,
+        'serverSide': true,
+        'ajax': {
+            'url': 'categories/view-tabel',
+            'type': 'POST'
         },
          responsive: true,
-        "language": {
-    "sEmptyTable":     "No data available in table",
-    "sInfo":           "Showing _START_ to _END_ of _TOTAL_ entries",
-    "sInfoEmpty":      "Showing 0 to 0 of 0 entries",
-    "sInfoFiltered":   "(filtered from _MAX_ total entries)",
-    "sInfoPostFix":    "",
-    "sInfoThousands":  ",",
-    "sLengthMenu":     "Show _MENU_ entries",
-    "sLoadingRecords": "Loading...",
-    "sProcessing":     "Processing...",
-    "sSearch":         "Search:",
-    "sZeroRecords":    "No matching records found",
-    "oPaginate": {
-        "sFirst":    "First",
-        "sLast":     "Last",
-        "sNext":     "Next",
-        "sPrevious": "Previous"
+        'language': {
+    'sEmptyTable':     'No data available in table',
+    'sInfo':           'Showing _START_ to _END_ of _TOTAL_ entries',
+    'sInfoEmpty':      'Showing 0 to 0 of 0 entries',
+    'sInfoFiltered':   '(filtered from _MAX_ total entries)',
+    'sInfoPostFix':    '',
+    'sInfoThousands':  ',',
+    'sLengthMenu':     'Show _MENU_ entries',
+    'sLoadingRecords': 'Loading...',
+    'sProcessing':     'Processing...',
+    'sSearch':         'Search:',
+    'sZeroRecords':    'No matching records found',
+    'oPaginate': {
+        'sFirst':    'First',
+        'sLast':     'Last',
+        'sNext':     'Next',
+        'sPrevious': 'Previous'
     },
-    "oAria": {
-        "sSortAscending":  ": activate to sort column ascending",
-        "sSortDescending": ": activate to sort column descending"
+    'oAria': {
+        'sSortAscending':  ': activate to sort column ascending',
+        'sSortDescending': ': activate to sort column descending'
     }
 }
     } );
@@ -42,23 +42,23 @@ function reload_table(){
       table.ajax.reload(null,false);
 }
 function resetForm(){
-    $('#maddcafo').trigger("reset");
+    $('#maddcafo').trigger('reset');
 }
 $('#addca').click(function(){
     resetForm();
     $.ajax({
-            type    : "POST",
+            type    : 'POST',
             url     : 'categories/addform',
             dataType: 'html',
             success : function(response){
-                $("#maddca").modal("show").on('shown.bs.modal');
+                $('#maddca').modal('show').on('shown.bs.modal');
                 $('#tampil').html(response);
             }
         });
 });
 function del_t(idc){
     $.ajax({
-            type    : "POST",
+            type    : 'POST',
             url     : 'categories/change',
             data    : {change:idc},
             dataType: 'json',
@@ -76,13 +76,13 @@ function del_t(idc){
 }
 function prodel(myid) {
          $.ajax({
-            type    : "POST",
+            type    : 'POST',
             url     : 'categories/prodel',
              data    : {delete:myid},
             dataType: 'json',
             success : function(response){
                 if(response.msg == 'success'){
-                    $("#confdel").modal("hide").on('shown.bs.modal');
+                    $('#confdel').modal('hide').on('shown.bs.modal');
                     toastr.success('Category '+response.cat+' has been deleted !');
                     reload_table();
                 }else{
@@ -98,16 +98,16 @@ function edit_modalt(id){
     
     $('#meditcafo').formValidation('resetForm', true);
         $.ajax({
-            type    : "POST",
+            type    : 'POST',
             url     : 'categories/change',
             data    : {change:id},
             dataType: 'json',
             success : function(response){
                 if(response.msg == 'true'){
-                    $("#enmc").val(response.category);
+                    $('#enmc').val(response.category);
                     $("[name='parent']").append(response.parent).trigger('chosen:updated');
 
-                    $("#meditca").modal("show").on('shown.bs.modal');
+                    $('#meditca').modal("show").on('shown.bs.modal');
                 }else{
                     toastr.error('Data '+response.msg+' !');
                 }
@@ -118,7 +118,7 @@ function edit_modalt(id){
 }
 function over(ot){
         $.ajax({
-            type    : "POST",
+            type    : 'POST',
             url     : 'categories/over',
             data    : {take:ot},
             dataType: 'json',
@@ -139,7 +139,7 @@ function over(ot){
 }
 $(document).ready(function() {
     $('#meditcafo')
-    .find('[name="parent"]').chosen({ width: "100%" })
+    .find('[name="parent"]').chosen({ width: '100%' })
             .change(function(e) {
                 $('#meditcafo').formValidation('revalidateField', 'parent');
             })
@@ -180,7 +180,7 @@ $(document).ready(function() {
     .on('success.form.fv', function(e) {
         e.preventDefault();
         $.ajax({
-            type    : "POST",
+            type    : 'POST',
             url     : 'categories/proch',
             data    : $('#meditcafo').serialize(),
             dataType: 'json',
