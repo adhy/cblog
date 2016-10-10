@@ -13,7 +13,14 @@ class Rtcwb_reset extends MX_Controller {
     }
 	public function index(){
 		if(!is_logged_in()){ // if you add in constructor no need write each function in above controller. 
-		$this->load->view('rtcwb_reset/trt_resetsend', $this->data);
+		//$this->load->view('rtcwb_reset/trt_resetsend', $this->data);
+		$this->data['js_frlogin']=$this->mrtcwb_login->js_frlogin();
+		$this->data['fr_email']=$this->mrtcwb_login->fr_input($n='email',$p='email@mail.com',$t='email');
+		$this->data['fr_but']=$this->mrtcwb_login->fr_but($n='login_form',$c='Sign In');
+		$this->data['js_fott']=$this->mrtcwb_login->js_fot();
+		$this->data['css_top']=$this->mrtcwb_login->css_top();
+		$view='rtcwb_reset/trt_resetsend';
+		$this->mlib->templatelogin($view, $this->data);
 		}else{
 			redirect('mailworm');
 		}
