@@ -14,7 +14,7 @@ class Rtcwb_reset extends MX_Controller {
 	function index(){
 		if(!is_logged_in()){ 
 		$this->data['js_frlogin']=$this->mrtcwb_reset->js_frlogin();
-		$this->data['fr_email']=$this->template->fr_input($n='email',$p='email@mail.com',$t='email');
+		$this->data['fr_email']=$this->template->fr_input($n='email',$p='email@mail.com',$t='email',$s='froco');
 		$this->data['fr_but']=$this->template->fr_but($n='reset_form',$c='Send');
 		$this->data['js_fott']=$this->template->js_fot();
 		$this->data['css_top']=$this->template->css_top();

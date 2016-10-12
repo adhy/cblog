@@ -17,7 +17,9 @@ class Mrtcwb_login extends CI_Model {
 		return $query;
 	}
 	function js_frlogin(){
-		return $script = "$(document).ready(function() {
+		return $script = "
+
+        $(document).ready(function() {
     $('#login_form').formValidation({
         //message: 'This value is not valid',
         framework: 'bootstrap',

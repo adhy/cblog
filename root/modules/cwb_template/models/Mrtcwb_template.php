@@ -6,15 +6,15 @@ class Mrtcwb_template extends CI_Model {
 		parent::__constuct();  // Call the Model constructor 
 		loader::database();    // Connect to current database setting.froco
 	}
-	function fr_input($n=null,$p=null,$t=null){
+	function fr_input($n=null,$p=null,$t=null,$s=null){
 		$data = array(
             'name'          => $n,
             'id'            => $n,
-            'class'         => 'form-control ipt-prof',
+            'class'         => 'form-control '.$s.' ipt-prof',
             'type'          => $t,
             'autocomplate'  => 'off',
             'placeholder'   => $p,
-            'autofocus'     => ''
+            'autofocus'     => '',
             );
         return form_input($data) ;
 	}
