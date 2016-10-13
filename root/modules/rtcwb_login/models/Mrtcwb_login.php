@@ -95,21 +95,25 @@ class Mrtcwb_login extends CI_Model {
             url     : 'ServiceLoginAuth',
             data    : $('#login_form').serialize(),
             dataType: 'json',
+            async: true,
             success : function(response){
                 if(response.msg == 'success'){
                     //toastr.success('ok !');
                     window.location.href = 'dashboard.html';
                 }else if(response.msg == 'error'){
+                    $('[name=\"st3rben\"]').val(response.st3rben);
                     toastr.error('username atau password yang anda masukkan salah !');
                     //toastr.success('username atau password yang anda masukkan salah !');
                     
 
                 }else if(response.msg == 'info'){
+                    $('[name=\"st3rben\"]').val(response.st3rben);
                     toastr.info('Verifikasi telah dikirim ke email, mohon di periksa kembali !');
                     //toastr.success('username atau password yang anda masukkan salah !');
                     //window.location.href = 'dashboard.html';
 
                 }else{
+                    $('[name=\"st3rben\"]').val(response.st3rben);
                     toastr.warning('Akun anda dibekukan, silahkan hubungi Admin !');
                     //toastr.success('username atau password yang anda masukkan salah !');
                     //window.location.href = 'dashboard.html';
