@@ -18,6 +18,15 @@ class Mrtcwb_template extends CI_Model {
             );
         return form_input($data) ;
 	}
+    function view_table($data=null){
+        $template = array(
+                            'table_open' => '<table class="table table-striped table-bordered table-hover dt-responsive display" id="'.$data['idt'].'" cellspacing="0" width="100%">'
+        );
+
+        $this->table->set_template($template);
+        $this->table->set_heading($data['table']);
+        return $this->table->generate();
+    }
     function form_dropdown($n=null,$dp=null){
         $data=array(
             'id' =>$n ,

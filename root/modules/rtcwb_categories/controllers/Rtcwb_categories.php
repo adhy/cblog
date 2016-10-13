@@ -6,6 +6,7 @@ class Rtcwb_categories extends MX_Controller {
 			'text'      => 'CL-System',
 			'author'    => 'ADW',
 			'add'	=>	'maddca',
+			'idt'	=>	'tablecategories'
 		);
 	public function __construct(){
         parent::__construct();
@@ -15,9 +16,11 @@ class Rtcwb_categories extends MX_Controller {
 		$this->load->model('rtcwb_categories/mrtcwb_categories', 'categories');
     }
 	public function index(){
+		$this->data['table']= array( array('data'=>'No', 'width' => '10%'),'Category','Slug','Create','Update',array('data'=>'Action', 'width' => '20%') );
 		$this->data['js_from']=$this->categories->js_frcategor();
 		$this->data['css_topp']=$this->template->css_toprot();
 		$this->data['js_fott']=$this->template->js_fotrot();
+		$this->data['end_table']=$this->template->view_table($this->data);
 		$this->data['end_model']=$this->template->end_model();
 		$this->data['end_modadd']=$this->template->end_modadd($this->data);
 		$this->data['end_modit']=$this->categories->end_modit($this->data);
