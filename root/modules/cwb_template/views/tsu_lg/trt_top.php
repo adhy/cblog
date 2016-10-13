@@ -13,6 +13,10 @@
                 'content' => 'My 1st3rben'
         ),
         array(
+                'name' => 'csrf-token',
+                'content' => $this->security->get_csrf_hash()
+        ),
+        array(
                 'name' => 'viewport',
                 'content' => 'width=device-width, initial-scale=1'
         ),
@@ -26,7 +30,7 @@
         ),
         array(
                 'name' => 'X-UA-Compatible',
-                'content' => 'text/html; charset=utf-8', 'type' => 'equiv'
+                'content' => 'IE=9', 'type' => 'equiv'
         )
 );
 echo meta($meta);?>

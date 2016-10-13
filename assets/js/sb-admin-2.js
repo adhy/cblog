@@ -22,6 +22,11 @@ $('[rel="tooltip"]').tooltip();
 
     });
 });
+$.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN':  $('meta[name="csrf-token"]').attr('content')
+                }
+            });
 
     // popover demo
     $("[data-toggle=popover]")

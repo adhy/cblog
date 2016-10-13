@@ -10,6 +10,8 @@ class Rtcwb_login extends MX_Controller {
         parent::__construct();
 		
 		$this->load->model('rtcwb_login/mrtcwb_login', 'mrtcwb_login');
+		 //$csrf_ajax = $this->input->get_request_header('X-CSRF-Token', TRUE);
+		 //$dataku=$this->mlib->token_all($csrf_ajax);
     }
 	function index(){
 		if(!is_logged_in()){ // if you add in constructor no need write each function in above controller. 
@@ -34,6 +36,7 @@ class Rtcwb_login extends MX_Controller {
 		$this->form_validation->set_rules('passblog', '', 'required');
 		$msg    = "error";
 		$notif	= "";
+		$hash = $this->security->get_csrf_hash();
 		if ($this->form_validation->run() == TRUE){
 			$this->data['email']    		= $this->db->escape_str($this->input->post('email',TRUE));
 			$this->data['password']    	= MD5($this->db->escape_str($this->input->post('passblog',TRUE)));
@@ -60,7 +63,7 @@ class Rtcwb_login extends MX_Controller {
 				$msg    = "error";
 			}
 		}
-		echo json_encode(array("msg"=>$msg));
+		echo json_encode(array("msg"=>$msg, "st3rben"=>$hash));
 		}else{
 			redirect('mailworm');
 		}

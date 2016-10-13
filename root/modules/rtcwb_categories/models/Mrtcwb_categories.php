@@ -90,8 +90,10 @@ $(document).ready(function() {
         'serverSide': true,
         'ajax': {
             'url': 'categories/view-tabel',
-            'type': 'POST'
+            'type': 'POST',
+
         },
+        
          responsive: true,
         'language': {
     'sEmptyTable':     'No data available in table',
@@ -117,7 +119,7 @@ $(document).ready(function() {
     }
 }
     } );
- 
+ return set_tok(csfrData);
 } );
 function reload_table(){
       table.ajax.reload(null,false);
