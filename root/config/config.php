@@ -443,7 +443,7 @@ $config['csrf_token_name'] = 'st3rben';
 $config['csrf_cookie_name'] = 'epona';
 $config['csrf_expire'] = 7200;
 $config['csrf_regenerate'] = FALSE;
-$config['csrf_exclude_uris'] = array('mailworm/categories/view-tabel');
+$config['csrf_exclude_uris'] = array();
 
 /*
 |--------------------------------------------------------------------------

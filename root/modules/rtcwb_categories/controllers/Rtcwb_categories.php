@@ -146,7 +146,6 @@ class Rtcwb_categories extends MX_Controller {
                         	}
                         	$id    = $this->mlib->enhex($rowc->id);
                         $selectparent[]= '<option></option><option value="'.$id.'"'.$select.'>'.$rowc->nm_c.'</option>';
-    //$selectparent[]= "<option  value='".$rowc->id."'".$rows->id==$rowc->id_parent ? ."selected='selected'". : ."''".">".$rowc->nm_c."</option>";
                        endforeach;
                   }                   
                 }else{
@@ -155,9 +154,7 @@ class Rtcwb_categories extends MX_Controller {
                     $selectparent[]='<option></option><option value="'.$id.'">'.$rowc->nm_c.'</option>';
                   endforeach;
                 }
-				
 			}else{
-				
 				$msg = 'false';
 				$sendnm='error';
 			}	
@@ -185,16 +182,10 @@ class Rtcwb_categories extends MX_Controller {
 	}
 	function save_categories(){
 		$cat = array();
-		//$this->form_validation->set_rules('categories', '', 'strip_tags|xss_clean');
-		//$msg    = "error1";
-		//if ($this->form_validation->run() == TRUE){
 			$nm_c=$this->db->escape_str($this->input->post('categories',TRUE));
-			//$nm_c=$this->input->post('categories', TRUE);
 			foreach ($nm_c as $row) {
 				$cat []= $row;
-				$toslg = $this->mlib->slugify($row);
-				//$toslg=url_title($row,'dash',TRUE);
-				
+				$toslg = $this->mlib->slugify($row);	
 				$input = array(
 							'nm_c' => $row,
 							'slg_c'=> $toslg,
@@ -210,7 +201,6 @@ class Rtcwb_categories extends MX_Controller {
             		$msg    = "error";
             	}
 			}
-		//}
 		echo json_encode(array('msg'=>$msg,'cat'=> $cat));
 	}
 	function sh_categories(){

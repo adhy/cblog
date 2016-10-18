@@ -68,6 +68,7 @@ class Mrtcwb_categories extends CI_Model {
     }
     function getcatidpar(){
         $this->db->where('id_parent','0');
+        $this->db->where('status','1');
         return $this->db->get($this->table);
     }
     function getcatidparnoze($data){
@@ -77,7 +78,7 @@ class Mrtcwb_categories extends CI_Model {
     }
 //%%%%
     function js_frcategor(){
-        $js_frlogin="
+        $js_frcategor="
 
 var table;
 $(document).ready(function() {
@@ -281,7 +282,7 @@ $(document).ready(function() {
 });
 ";
 
-return $js_frlogin;
+return $js_frcategor;
     }
     function end_modit($data){
         $enmc=$this->template->fr_input($n='category',$p='category',$t='text');

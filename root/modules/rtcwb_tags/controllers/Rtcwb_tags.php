@@ -5,7 +5,8 @@ class Rtcwb_tags extends MX_Controller {
 			'header'	=> 'Tags',
 			'text'      => 'CL-System',
 			'author'    => 'ADW',
-			'filejs'	=>	'tags.js',
+			'add'	=>	'maddta',
+			'idt'	=>	'tabletags'
 		);
 	public function __construct(){
         parent::__construct();
@@ -14,9 +15,17 @@ class Rtcwb_tags extends MX_Controller {
         }
 		$this->load->model('rtcwb_tags/mrtcwb_tags', 'tags');
     }
-	public function index(){
-			$view='rtcwb_tags/trt_tags';
-			$this->mlib->template_rt($view, $this->data);
+	function index(){
+		$this->data['table']= array( array('data'=>'No', 'width' => '10%'),'Tag','Slug','Create','Update',array('data'=>'Action', 'width' => '20%') );
+		$this->data['js_from']=$this->tags->js_frtags();
+		$this->data['css_topp']=$this->template->css_toprot();
+		$this->data['js_fott']=$this->template->js_fotrot();
+		$this->data['end_table']=$this->template->view_table($this->data);
+		$this->data['end_model']=$this->template->end_model();
+		$this->data['end_modadd']=$this->template->end_modadd($this->data);
+		$this->data['end_modit']=$this->tags->end_modit($this->data);
+		$view='rtcwb_tags/trt_tags';
+		$this->mlib->template_rt($view, $this->data);
 	}
 	function ajax_list() {
 	        $list = $this->tags->get_datatables();
