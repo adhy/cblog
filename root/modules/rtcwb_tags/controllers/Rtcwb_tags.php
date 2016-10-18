@@ -164,11 +164,12 @@ class Rtcwb_tags extends MX_Controller {
 			//$nm_t=$this->input->post('tags', TRUE);
 			foreach ($nm_t as $row) {
 				$tag []= $row;
+				$clear=str_replace('\\','', $row);
 				$slg=$this->mlib->slugify($row);
 				//$slg=url_title($row,'dash',TRUE);
 				
 				$input = array(
-							'nm_t' => $row,
+							'nm_t' => $clear,
 							'slg_t'=> $slg,
 							'c_date' =>  date('Y-m-d H:i:s',now()),
 							'u_date' =>  date('Y-m-d H:i:s',now()),

@@ -26,20 +26,7 @@
                         <!-- /.panel-heading -->
                         <div id="panel" class="panel-body collapse in">
                             <div class="dataTable_wrapper">
-                                <table class="table table-striped table-bordered table-hover dt-responsive display" id="tablecontents" cellspacing="0" width="100%">
-                                    <thead>
-                                        <tr>
-                                            <th width="10%">No</th>
-                                            <th>Title</th>
-                                            <th>Data Create</th>
-                                            <th >Data Update</th>
-                                            <th width="20%">Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        
-                                    </tbody>
-                                </table>
+                            <?=$end_table?>
                             </div>
                         </div>
                         <!-- /.panel-body -->
@@ -54,20 +41,3 @@
 
     </div>
     <!-- /#wrapper -->
-
-    <div class="modal fade" id="editcontents" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModalLabel">Ubah Siswa</h4>
-            </div>
-            <div id="editsiswa">
-                <form id="form_editsis"></form>
-
-            </div>
-        </div>
-        <!-- /.modal-content -->
-    </div>
-    <!-- /.modal-dialog -->
-</div>

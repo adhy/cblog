@@ -1,3 +1,4 @@
+
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 class Rtcwb_contents extends MX_Controller {
 	public $data = array(
@@ -5,7 +6,7 @@ class Rtcwb_contents extends MX_Controller {
 			'header'	=> 'Contents',
 			'text'     	=> 'CL-System',
 			'author'    => 'ADW',
-			'filejs'	=>	'contents.js',
+			'idt'	=>	'tablecontents'
 		);
 	public function __construct(){
         parent::__construct();
@@ -15,14 +16,14 @@ class Rtcwb_contents extends MX_Controller {
 		$this->load->model('rtcwb_contents/mrtcwb_contents', 'contents');
     }
 	public function index(){
-		//if($this->session->userdata('admin')==TRUE){
-			//$this->data['css']='../';
-			//$this->data['filejs']='admin.js';
-			$view='rtcwb_contents/trt_contents';
-			$this->mlib->template_rt($view,$this->data);
-		//}else if($this->session->userdata('admin')==FALSE){
-		//	redirect('login');
-		//}
+		$this->data['table']= array( array('data'=>'No', 'width' => '10%'),'Title','Create','Update',array('data'=>'Action', 'width' => '20%') );
+		$this->data['js_from']=$this->contents->js_frcont();
+		$this->data['css_topp']=$this->template->css_toprot();
+		$this->data['js_fott']=$this->template->js_fotrot();
+		$this->data['end_table']=$this->template->view_table($this->data);
+		$this->data['end_model']=$this->template->end_model();
+		$view='rtcwb_contents/trt_contents';
+		$this->mlib->template_rt($view,$this->data);
 	}
 	function ajax_list() {
 	        $list = $this->contents->get_datatables();
@@ -79,6 +80,8 @@ class Rtcwb_contents extends MX_Controller {
 	    
     }
     public function adcon(){
+    	$this->data['css_topp']=$this->template->css_toprot();
+		$this->data['js_fott']=$this->template->js_fotrot();
     	$this->data['categories']=$this->contents->getcategories(1);	
     	$this->data['tags']=$this->contents->gettags(1);	
 		$view='rtcwb_contents/trt_addcontents';
@@ -232,6 +235,8 @@ class Rtcwb_contents extends MX_Controller {
 	}
 
 	function view_edit(){
+		$this->data['css_topp']=$this->template->css_toprot();
+		$this->data['js_fott']=$this->template->js_fotrot();
 		$this->data['id']  =  $this->session->userdata('id_cont');
 		$this->data['edcont'] = $this->contents->editcontent($this->data);
 		$this->data['categories']=$this->contents->getcategories(1);

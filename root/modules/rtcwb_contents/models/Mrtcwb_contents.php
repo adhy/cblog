@@ -88,7 +88,168 @@ class Mrtcwb_contents extends CI_Model {
     function editcontent ($data){
         $this->db->where('id', $data['id']);
         return $this->db->get('cb_contents');
-        
     }
+    function js_frcont(){
+        $js_frcont="var table;
+$(document).ready(function() {
+    table = $('#tablecontents').DataTable( {
+        'searching': true,
+        'paging':   true,
+        'ordering': false,
+        'info':     false,
+        'processing': true,
+        'serverSide': true,
+        'ajax': {
+            'url': 'contents/view-tabel',
+            'type': 'POST'
+        },
+         responsive: true,
+        'language': {
+    'sEmptyTable':     'No data available in table',
+    'sInfo':           'Showing _START_ to _END_ of _TOTAL_ entries',
+    'sInfoEmpty':      'Showing 0 to 0 of 0 entries',
+    'sInfoFiltered':   '(filtered from _MAX_ total entries)',
+    'sInfoPostFix':    '',
+    'sInfoThousands':  ',',
+    'sLengthMenu':     'Show _MENU_ entries',
+    'sLoadingRecords': 'Loading...',
+    'sProcessing':     'Processing...',
+    'sSearch':         'Search:',
+    'sZeroRecords':    'No matching records found',
+    'oPaginate': {
+        'sFirst':    'First',
+        'sLast':     'Last',
+        'sNext':     'Next',
+        'sPrevious': 'Previous'
+    },
+    'oAria': {
+        'sSortAscending':  ': activate to sort column ascending',
+        'sSortDescending': ': activate to sort column descending'
+    }
+}
+    } );
+ 
+} );
+function reload_table(){
+      table.ajax.reload(null,false); //reload datatable ajax
+}
+$('[name=\"title\"]').keyup(function(){
+    var isi=$(this).val();
+    var akh = isi.toLowerCase().replace(/-+/g, '-').replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+    $('.url').css({'color': 'rgb(255, 0, 0)', 'font-style': 'italic'}).html('.../'+akh+'.html');
+});
+function slugify(text){
+  return text.toString().toLowerCase()
+    .replace(/\s+/g, '-')           // Replace spaces with -
+    .replace(/[^\w\-]+/g, '')       // Remove all non-word chars
+    .replace(/\-\-+/g, '-')         // Replace multiple - with single -
+    .replace(/^-+/, '')             // Trim - from start of text
+    .replace(/-+$/, '');            // Trim - from end of text
+}
+jQuery(document).ready(function ($) {
+      $('.iframe-btn').fancybox({
+      'width'   : 880,
+      'height'  : 570,
+      'type'    : 'iframe',
+      'autoScale'   : false
+      });
+      
+      $('#fieldID').on('change',function(){
+          alert('changed');
+      });
+      
+      $('#download-button').on('click', function() {
+        ga('send', 'event', 'button', 'click', 'download-buttons');      
+      });
+      $('.toggle').click(function(){
+        var _this=$(this);
+        $('#'+_this.data('ref')).toggle(200);
+        var i=_this.find('i');
+        if (i.hasClass('icon-plus')) {
+          i.removeClass('icon-plus');
+          i.addClass('icon-minus');
+        }else{
+          i.removeClass('icon-minus');
+          i.addClass('icon-plus');
+        }
+      });
+});
+function over(ot){
+        $.ajax({
+            type    : 'POST',
+            url     : 'contents/over',
+            data    : {take:ot},
+            dataType: 'json',
+            success : function(response){
+                if(response.msg == 'Enable'){
+                    toastr.success(response.msg+' Category '+response.cont+' !');
+                    $('[data-target='+ot+']').attr('class','btn btn-sm btn-success');
+                    $('[data-target='+ot+']').html('Disable');
+                    $('[data-target=dr'+ot+']').attr('class','btn btn-sm btn-success');
+                }else{
+                    toastr.error(response.msg+' Category '+response.cont+' !');
+                    $('[data-target='+ot+']').attr('class','btn btn-sm btn-danger');
+                    $('[data-target='+ot+']').html('Enable');
+                    $('[data-target=dr'+ot+']').attr('class','btn btn-sm btn-danger');
+                }
+            }
+        });
+}
+function del_t(idc){
+    $.ajax({
+            type    : 'POST',
+            url     : 'contents/change',
+            data    : {change:idc},
+            dataType: 'json',
+            success : function(response){
+                if(response.msg == 'true'){
+                    $('#h4text').html('<i class=\"fa fa-question-circle\"> Delete '+response.content+'</i>');
+                     $('div.modal-footer .yes').attr('onclick','prodel(\"'+idc+'\")');
+                    $('#confdel').modal('show').on('shown.bs.modal');
+                }else{
+                    toastr.error('Data '+response.msg+' !');
+                }
+                
+            }
+        });
+}
+function prodel(myid) {
+         $.ajax({
+            type    : 'POST',
+            url     : 'contents/prodel',
+             data    : {delete:myid},
+            dataType: 'json',
+            success : function(response){
+                if(response.msg == 'success'){
+                    $('#confdel').modal('hide').on('shown.bs.modal');
+                    toastr.success('Content '+response.cont+' has been deleted !');
+                    reload_table();
+                }else{
+                    toastr.error('An error occured, please try again !');
+                }
+               
+            }
+        });
+}
+function edit_modalt(id) {
+    //$('#update').attr('onclick', 'javascript:updatek(\"'+link+'\",\"'+id+'\")');
+    
+    //$('#form_edit').formValidation('resetForm', true);
+        $.ajax({
+            type    : 'POST',
+            url     : 'contents/change',
+            data    : {change:id},
+            dataType: 'json',
+            success : function(response){
+                //$('#editmodal').find('form')[0].reset();
+                if(response.msg == 'true'){            
+                    window.location.href = url+'mailworm/contents/edit-content.html';
+                }else{
+                    toastr.error('An error occured, please try again !');
+                }
+            }
+        });
+}";
+   return $js_frcont; }
 
 }

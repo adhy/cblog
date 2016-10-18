@@ -114,7 +114,7 @@
                                 .removeClass('hide')
                                 .removeAttr('id')
                                 .insertBefore($template);
-                $clone.find('[name="catgor"]').attr({name : 'categories[]',type: 'text',,placeholder:'category'}).removeAttr("disabled").end();
+                $clone.find('[name="catgor"]').attr({name : 'categories[]',type: 'text',placeholder:'category'}).removeAttr("disabled").end();
 
             // Add new field
             $('#maddcafo').formValidation('addField','categories[]', categoriesv);
