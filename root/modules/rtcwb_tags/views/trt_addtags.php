@@ -1,10 +1,12 @@
-<form id="maddtafo" method="post" class="form-horizontal">
+ <?php $attributes = array('role'=>'form','id'=>'maddtafo','class'=>'form-horizontal');
+ echo form_open('',$attributes);
+ ?>
       <div class="modal-body">
         
             <div class="form-group">
                 <label class="col-xs-3 control-label">Tag</label>
                 <div class="col-xs-5">
-                    <input type="text" class="form-control ipt-prof" name="tags[]" autofocus="" />
+                    <?=$tags?>
                 </div>
                 <div class="col-xs-4">
                     <button type="button" class="btn btn-default addButton"><i class="fa fa-plus"></i></button>
@@ -28,7 +30,7 @@
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         <button type="submit" class="btn btn-primary">Save changes</button>
       </div>
-       </form> 
+       <?php echo form_close(); ?>
        <script>
            $(document).ready(function() {
     // The maximum number of options
@@ -112,7 +114,7 @@
                                 .removeClass('hide')
                                 .removeAttr('id')
                                 .insertBefore($template);
-                $clone.find('[name="tag"]').attr({name : 'tags[]',type: 'text'}).removeAttr("disabled").end();
+                $clone.find('[name="tag"]').attr({name : 'tags[]',type: 'text',placeholder:'tags'}).removeAttr("disabled").end();
 
             // Add new field
             $('#maddtafo').formValidation('addField','tags[]', tagsv);

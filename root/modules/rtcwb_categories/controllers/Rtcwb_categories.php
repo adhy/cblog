@@ -85,7 +85,8 @@ class Rtcwb_categories extends MX_Controller {
 	    
     }
     function addcategories(){
-			$msg=$this->load->view('rtcwb_categories/trt_addcategories',$this->data);
+    	$this->data['categories']=$this->template->fr_input($n='categories[]',$p='category',$t='text');
+		$msg=$this->load->view('rtcwb_categories/trt_addcategories',$this->data);
 	}
 	function cek_categories(){
 		//$nm_c=$this->input->post('categories', TRUE);

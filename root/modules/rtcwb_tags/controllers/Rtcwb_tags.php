@@ -82,7 +82,8 @@ class Rtcwb_tags extends MX_Controller {
 	    
     }
     function addtags(){
-			$msg=$this->load->view('rtcwb_tags/trt_addtags',$this->data);
+    	$this->data['tags']=$this->template->fr_input($n='tags[]',$p='tags',$t='text');
+		$msg=$this->load->view('rtcwb_tags/trt_addtags',$this->data);
 	}
 	function cek_tags(){
 		//$nm_t=$this->input->post('tags', TRUE);
