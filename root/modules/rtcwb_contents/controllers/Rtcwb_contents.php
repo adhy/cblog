@@ -82,6 +82,7 @@ class Rtcwb_contents extends MX_Controller {
     public function adcon(){
     	$this->data['css_topp']=$this->template->css_toprot();
 		$this->data['js_fott']=$this->template->js_fotrot();
+		$this->data['js_from']=$this->contents->js_add();
     	$this->data['categories']=$this->contents->getcategories(1);	
     	$this->data['tags']=$this->contents->gettags(1);	
 		$view='rtcwb_contents/trt_addcontents';
