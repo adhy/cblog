@@ -238,6 +238,7 @@ class Rtcwb_contents extends MX_Controller {
 	function view_edit(){
 		$this->data['css_topp']=$this->template->css_toprot();
 		$this->data['js_fott']=$this->template->js_fotrot();
+		$this->data['js_from']=$this->contents->js_edit();
 		$this->data['id']  =  $this->session->userdata('id_cont');
 		$this->data['edcont'] = $this->contents->editcontent($this->data);
 		$this->data['categories']=$this->contents->getcategories(1);
