@@ -5,7 +5,6 @@ class Rtcwb_gal extends MX_Controller {
 			'header'	=> 'Gallery',
 			'text'      => 'CL-System',
 			'author'    => 'ADW',
-			'filejs'	=>	'gal.js',
 		);
 	public function __construct(){
         parent::__construct();
@@ -15,8 +14,11 @@ class Rtcwb_gal extends MX_Controller {
 		$this->load->model('rtcwb_gal/mrtcwb_gal', 'gallery');
     }
 	public function index(){
-			$view='rtcwb_gal/trt_gal';
-			$this->mlib->template_rt($view, $this->data);
+		$this->data['css_topp']=$this->template->css_toprot();
+		$this->data['js_fott']=$this->template->js_fotrot();
+		$this->data['js_from']=$this->gallery->js_gallery();
+		$view='rtcwb_gal/trt_gal';
+		$this->mlib->template_rt($view, $this->data);
 	}
 	public function disim(){
 
