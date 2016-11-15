@@ -17,6 +17,9 @@ class Rtcwb_accset extends MX_Controller {
 	public function index(){
 		$this->data['id']  =  $this->session->userdata('wormood');
 		$this->data['profile']  =  $this->accset->getpro($this->data);
+		$this->data['css_topp']=$this->template->css_toprot();
+		$this->data['js_fott']=$this->template->js_fotrot();
+		$this->data['js_from']=$this->accset->js_accset();
 		$view='rtcwb_accset/trt_user';
 		$this->mlib->template_rt($view,$this->data);
 	}

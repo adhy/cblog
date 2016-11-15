@@ -120,7 +120,7 @@
                     $meta = str_replace('\r\n','',$row->meta_content);
                     $meta = str_replace('\\','',$meta);
 
-                    echo '<textarea class="form-control ipt-prof" name="metaed" rows="7">'.$meta.'</textarea>';?>
+                    echo '<textarea class="form-control ipt-prof" name="metaed" rows="2">'.$meta.'</textarea>';?>
                     <?php //echo ' <input type="text" class="form-control" name="metad" value="'.$row->meta_content.'"/>';?>
                 </div>
             </div>
@@ -161,7 +161,11 @@
         <!-- /#page-wrapper -->
 
     </div>
+<<<<<<< HEAD
     <!-- /#wrapper -->
     <script type="text/javascript">
        
     </script>
+=======
+    <!-- /#wrapper -->
+>>>>>>> 55b7faa8bc1039d88cb10fd9d59963e4a5c177bd

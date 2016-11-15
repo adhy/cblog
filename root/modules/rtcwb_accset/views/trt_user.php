@@ -55,7 +55,9 @@
                         <div class="col-xs-12 well btn-prof setpr">
                       <div class="tab-content">
                         <div class="tab-pane fade in active" id="tab1">
-                            <form id="edprof" method="post" class="form-horizontal">
+                         <?php $attributes = array('role'=>'form','id'=>'edprof','class'=>'form-horizontal');
+                         echo form_open('',$attributes);
+                         ?>
                              <?php foreach ($profile->result() as $row){ ?>
                               <div class="form-group">
                                 <label class="col-xs-2 control-label">Name</label>
