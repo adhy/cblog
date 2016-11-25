@@ -414,6 +414,7 @@ $('[name=\"title\"]').keyup(function(){
     });
 });";
   return  $js_add; }
+
   function js_edit(){
     $js_edit = " 
 jQuery(document).ready(function ($) {
