@@ -1,4 +1,4 @@
-     <?php foreach($js_fott as $urljs){echo "<script src='".base_url('assets')."private/js/".$urljs."'></script>";}?>
+     <?php foreach($js_fott as $urljs){echo "<script src='".base_url('assets')."/private/js/".$urljs."'></script>";}?>
     <script type="text/javascript">
     var url = '<?php echo base_url();?>';
     var csfrData = {};

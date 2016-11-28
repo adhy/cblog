@@ -9,16 +9,23 @@
             <div class="row trcen">
                 <div class="col-lg-12">
                 <?php foreach ($profile->result() as $row){ ?>
+
+                <?php if(file_exists($row->img))
+                      $image = "$artist_name.jpg";
+                      else
+                      $image = "assets/img/not-available.png";
+                      ?>
                     <div class="card hovercard cardb">
                         <div class="card-background">
-                            <img class="card-bkimg" alt="" src="<?=base_url($row->img)?>">
+                            <img class="card-bkimg" alt="" src="<?=base_url($image)?>">
                             <!-- http://lorempixel.com/850/280/people/9/ -->
                         </div>
                         <div class="">
 
                         </div>
                         <div class="useravatar col-lg-10 col-lg-offset-1">
-                            <img id="imgprof" alt="" class="preview-image" style="cursor: pointer;" src="<?=base_url($row->img)?>">
+                        
+                            <img id="imgprof" alt="" class="preview-image" style="cursor: pointer;" src="<?=base_url($image)?>">
                             <div class="col-xs-3" style="display: none">
                             <?php $attributes = array('role'=>'form','id'=>'form1','class'=>'form-horizontal');
                          echo form_open('',$attributes);
