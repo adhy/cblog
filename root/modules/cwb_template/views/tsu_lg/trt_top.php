@@ -34,7 +34,7 @@
         )
 );
 echo meta($meta);?>
-<?php foreach($css_top as $urlcss){echo link_tag('assets/css/'.$urlcss);}?>
+<?php foreach($css_top as $urlcss){echo link_tag('assets/private/css/'.$urlcss);}?>
 <?=link_tag('assets/private/css/img/emoticon-devil-512.png', 'shortcut icon', 'image/ico')?>
 </head>
 <body class="bg-log">
