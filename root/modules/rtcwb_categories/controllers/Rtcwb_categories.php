@@ -129,14 +129,14 @@ class Rtcwb_categories extends MX_Controller {
 		$this->data['id']    = $fromexpl[0];
 		$this->data['id_parent']    = $fromexpl[1];
 		$cekidc=$this->categories->getcatidchange($this->data);
-		$cekidparzero=$this->categories->getcatidpar();
+		//$cekidparzero=$this->categories->getcatidpar();
 			if($cekidc->num_rows()>0){
 				$msg = 'true';
 				$sess_data['id_cat']	=	$this->data['id'] ;
         		$this->session->set_userdata($sess_data);
 				$send=$cekidc->row();
 				$sendnm=$send->nm_c;
-				$cekidparzero=$this->categories->getcatidpar();
+				$cekidparzero=$this->categories->getcatidpar($this->data);
 				$cekidparnoze=$this->categories->getcatidparnoze($this->data);
 				 if($cekidparnoze->num_rows()>0){
           foreach ($cekidc->result() as $rows){

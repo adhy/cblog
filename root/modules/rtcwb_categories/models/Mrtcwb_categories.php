@@ -66,9 +66,10 @@ class Mrtcwb_categories extends CI_Model {
         $this->db->where('nm_c',$data['nm_c']);
         return $this->db->get($this->table);
     }
-    function getcatidpar(){
+    function getcatidpar($data=null){
         $this->db->where('id_parent','0');
         $this->db->where('status','1');
+        $this->db->where_not_in('id',$data['id']);
         return $this->db->get($this->table);
     }
     function getcatidparnoze($data){
@@ -178,8 +179,7 @@ function prodel(myid) {
 }
 
 function edit_modalt(id){
-   // $('#meditca').find('form')[0].reset();
-    
+    $('#meditca').find('form')[0].reset();
     $('#meditcafo').formValidation('resetForm', true);
         $.ajax({
             type    : 'POST',
@@ -187,15 +187,17 @@ function edit_modalt(id){
             data    : {change:id},
             dataType: 'json',
             success : function(response){
+                
                 if(response.msg == 'true'){
-                    $(\"[name='category']\").val(response.category);
-                    $(\"[name='parent']\").append(response.parent).trigger('chosen:updated');
+                    $('[name=\"category\"]').val(response.category);
+                    $('[name=\"parent\"]').append(response.parent);
+
 
                     $('#meditca').modal('show').on('shown.bs.modal');
                 }else{
                     toastr.error('Data '+response.msg+' !');
                 }
-                $(\"[name='parent']\").chosen({ width: '100%' });
+                $(\"[name='parent']\").chosen({ width: '100%' }).trigger('chosen:updated');
                 
             }
         });
