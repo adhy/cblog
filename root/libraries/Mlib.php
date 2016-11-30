@@ -96,6 +96,16 @@ class Mlib {
         $decrypttext = mcrypt_decrypt(MCRYPT_RC2, $this->skey, $crypttext, MCRYPT_MODE_ECB);
         return trim($decrypttext);
     }
+
+    public function templatepublic($view=null,$data=null){
+        $zeroview =& get_instance();
+        $zeroview->load->view('cwb_template/tsp_ix/tpub_top',$data);
+        $zeroview->load->view('cwb_template/tsp_ix/tpub_header',$data);
+        $zeroview->load->view($view,$data);
+        $zeroview->load->view('cwb_template/tsp_ix/tpub_aside',$data);
+        $zeroview->load->view('cwb_template/tsp_ix/tpub_footer',$data);
+        
+    }
     
     public function templatelogin($view=null,$data=null){
         $zeroview =& get_instance();

@@ -100,4 +100,8 @@ class Mrtcwb_template extends CI_Model {
                                         "toastr.css","dataTables.bootstrap.css","thesu/default/css/uniform.default.min.css","bootstrap-select.css","dataTables.responsive.css","bootstrap-chosen.css","jquery.fancybox.css","sb-admin-2.css",
                                         "imageload.css","font-awesome.min.css");
     }
+    function css_toppub(){
+               return $jquery =array("style.css", "bootstrap.css","mediaelementplayer.css","animate.min.css",
+                                        "magnific-popup.css","icon-fonts.css");
+    }
 }
