@@ -115,6 +115,7 @@ class Rtcwb_contents extends MX_Controller {
 						'content' =>  $this->data['content'],
 						'c_date' =>  date('Y-m-d H:i:s',now()),
 						'u_date' =>  date('Y-m-d H:i:s',now()),
+						'views'	=>'0',
 						'status' => '0',
 						'creator' => $this->session->userdata('wormood')
 					);
