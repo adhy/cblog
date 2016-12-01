@@ -2,11 +2,23 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Mrtcwb_template extends CI_Model {
-	function __constuct()
-	{
+	function __constuct(){
 		parent::__constuct();  // Call the Model constructor 
 		loader::database();    // Connect to current database setting.froco
 	}
+    function is_navigasi() {
+    // Get current CodeIgniter instance
+        $this->db->where('status','1');
+        return $this->db->get('cb_categories');
+    }
+    function is_tags() {
+    // Get current CodeIgniter instance
+        $this->db->select('cb_tagsrelation.id_tag,cb_tagsrelation.status,cb_tags.id,cb_tags.nm_t,cb_tags.slg_t');
+        $this->db->join('cb_tagsrelation','cb_tagsrelation.id_tag=cb_tags.id');
+        $this->db->where('cb_tagsrelation.status','1');
+        $this->db->group_by("cb_tags.nm_t");
+        return $this->db->get('cb_tags');
+    }
 	function fr_input($n=null,$p=null,$t=null,$s=null){
 		$data = array(
             'name'          => $n,

@@ -22,6 +22,7 @@
                         </div>
                     </div>
                     <span class="top_login">
+
                         <i class="icon ico-key3"></i><a class="popup-with-move-anim" href="#login-popup">Login</a>
                     </span>
                     <div class="zoom-anim-dialog small-dialog mfp-hide login_popup" id="login-popup">
@@ -131,25 +132,14 @@
                         </span>     
                         <ul id="navy" class="clearfix">
                             <li class="normal_menu mobile_menu_toggle current_page_item">
-                                <a href="index.html"><span>Home</span></a>
+                            <?=anchor('', '<span>Home</span>');?>
                             </li>
                             <li class="normal_menu mobile_menu_toggle">
-                                <a href="#"><span>Pages</span></a>
+                                <?=anchor('category', '<span>Category</span>');?>
                                 <ul>
-                                    <li class="normal_menu"><a href="page-about-us.html">About Us</a></li>
-                                    <li class="normal_menu"><a href="page-about-me.html">About Me</a></li>
-                                    <li class="normal_menu"><a href="page-team-members.html">Team Members</a></li>
-                                    <li class="normal_menu"><a href="page-services.html">Services</a></li>
-                                    <li class="normal_menu"><a href="#">Portfolio</a></li>
-                                    <li class="normal_menu"><a href="page-contact-us.html">Contact Us</a></li>
-                                    <li class="normal_menu"><a href="page-faq.html">FAQ</a></li>
-                                    <li class="normal_menu"><a href="page-careers.html">Careers</a></li>
-                                    <li class="normal_menu"><a href="page-404.html">404</a></li>
-                                    <li class="normal_menu"><a href="page-coming-soon.html">Coming Soon</a></li>
-                                    <li class="normal_menu"><a href="page-under-construction.html">Under Structure</a></li>
-                                    <li class="normal_menu"><a href="page-sitemap.html">sitemap</a></li>
-                                    <li class="normal_menu"><a href="portfolio-single-gallery.html">Project Details</a></li>
-                                    <li class="normal_menu"><a href="#"><span class="menu_special_color">More Pages Soon ...</span></a></li>
+                                <?php foreach ($is_nav->result() as $row){
+                                    echo '<li class="normal_menu"><a href="'.site_url('category/'.$row->slg_c).'">'.$row->nm_c.'</a></li>';
+                                };?>
                                 </ul>
                             </li>
                         </ul>

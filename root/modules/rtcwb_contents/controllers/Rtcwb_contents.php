@@ -182,6 +182,7 @@ class Rtcwb_contents extends MX_Controller {
 				$msg    = 'Enable';
 			}
             $this->db->set('status',$status)->where('id',$row->id)->update('cb_contents');
+            $this->db->set('status',$status)->where('id_cont',$row->id)->update('cb_tagsrelation');
             echo json_encode(array('msg'=>$msg,'over'=>$status,'cont'=>$cont));	
         }		
 	}

@@ -191,10 +191,11 @@ function edit_modalt(id){
                
                 if(response.msg == 'true'){
                     $('[name=\"category\"]').val(response.category);
+                    $(\".chzn-select-deselect\").chosen({allow_single_deselect:true});
                     selectop.find('option').remove().end();
                       selectop.append(response.parent);
                       $('Select').trigger('chosen:updated');
-                      $(\".chzn-select-deselect\").chosen({allow_single_deselect:true});
+                      
                     
 
 

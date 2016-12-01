@@ -158,12 +158,13 @@
                     <div class="widget_block">
                         <h6 class="widget_title">Tag Cloud</h6>
                         <div class="tagcloud style2 clearfix">
-                            <a href="#"><span class="tag">Responnsive</span><span class="num">12</span></a>
-                            <a href="#"><span class="tag">Creative</span><span class="num">24</span></a>
-                            <a href="#"><span class="tag">CSS3</span><span class="num">8</span></a>
-                            <a href="#"><span class="tag">Design</span><span class="num">12</span></a>
-                            <a href="#"><span class="tag">Graphic</span><span class="num">4</span></a>
-                            <a href="#"><span class="tag">HTML5</span><span class="num">56</span></a>
+                        <?php 
+                            $total = 0;
+                            foreach ($is_tag->result() as $row){
+                            $total+=$row->status;
+                            echo '<a href="'.site_url('tag/'.$row->slg_t).'"><span class="tag">'.$row->nm_t.'</span><span class="num">'.$total.'</span></a>';
+                        };?>
+                            
                         </div>
                     </div>
                     <!-- End Tag Cloud -->  
