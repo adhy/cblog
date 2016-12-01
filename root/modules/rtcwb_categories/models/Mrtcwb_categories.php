@@ -188,18 +188,21 @@ function edit_modalt(id){
             data    : {change:id},
             dataType: 'json',
             success : function(response){
-                $('.chosen-select').chosen();
+               
                 if(response.msg == 'true'){
                     $('[name=\"category\"]').val(response.category);
+                    selectop.find('option').remove().end();
                       selectop.append(response.parent);
                       $('Select').trigger('chosen:updated');
+                      $(\".chzn-select-deselect\").chosen({allow_single_deselect:true});
                     
 
 
                     $('#meditca').modal('show').on('shown.bs.modal');
                 }else{
                     toastr.error('Data '+response.msg+' !');
-                }                
+                }   
+                 $('.chosen-select').chosen();             
             }
         });
 }
@@ -260,7 +263,11 @@ $(document).ready(function() {
                 }
             },
             parent:{
-
+                validators: {
+                        notEmpty: {
+                            //message: 'The address is required'
+                        }
+                    }
             }
         }
     })

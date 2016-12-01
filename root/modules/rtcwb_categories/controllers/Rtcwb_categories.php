@@ -230,6 +230,9 @@ class Rtcwb_categories extends MX_Controller {
 				$this->data['category']	=	$this->db->escape_str($this->input->post('category', TRUE));
 				$id_p	=	$this->db->escape_str($this->input->post('parent', TRUE));
 				$this->data['parent']   = $this->mlib->dehex($id_p);
+				if (empty($id_p)){
+					$this->data['parent'] = '0';
+				}
 				$save=str_replace('\\','', $this->data['category']	);
 				$toslg=$this->mlib->slugify($this->data['category']);
 				//$toslg=url_title($this->data['category'],'dash',TRUE);
