@@ -179,26 +179,27 @@ function prodel(myid) {
 }
 
 function edit_modalt(id){
+    var selectop = $('[name=\"parent\"]');
     $('#meditca').find('form')[0].reset();
     $('#meditcafo').formValidation('resetForm', true);
-        $.ajax({
+            $.ajax({
             type    : 'POST',
             url     : 'categories/change',
             data    : {change:id},
             dataType: 'json',
             success : function(response){
-                
+                $('.chosen-select').chosen();
                 if(response.msg == 'true'){
                     $('[name=\"category\"]').val(response.category);
-                    $('[name=\"parent\"]').append(response.parent);
+                      selectop.append(response.parent);
+                      $('Select').trigger('chosen:updated');
+                    
 
 
                     $('#meditca').modal('show').on('shown.bs.modal');
                 }else{
                     toastr.error('Data '+response.msg+' !');
-                }
-                $(\"[name='parent']\").chosen({ width: '100%' }).trigger('chosen:updated');
-                
+                }                
             }
         });
 }
