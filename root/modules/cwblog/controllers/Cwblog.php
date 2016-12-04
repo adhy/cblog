@@ -6,8 +6,10 @@ class Cwblog extends MX_Controller {
 		);
 	public function __construct(){
         parent::__construct();
-        $this->data['is_nav']= $this->template->is_navigasi();
+        $this->data['leaft_cat']= $this->template->is_leaftcat();
+        $this->data['is_navv']= $this->template->is_navrek($this->template->parent,$this->template->hasil);
         $this->data['is_tag']= $this->template->is_tags();
+        $this->data['is_leafpop']= $this->template->is_leafpop();
     }
 	public function index(){		
 		$this->data['css_topp']=$this->template->css_toppub();

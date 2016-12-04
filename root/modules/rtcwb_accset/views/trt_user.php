@@ -10,10 +10,14 @@
                 <div class="col-lg-12">
                 <?php foreach ($profile->result() as $row){ ?>
 
-                <?php if(file_exists($row->img))
-                      $image = "$artist_name.jpg";
-                      else
-                      $image = "assets/img/not-available.png";
+                <?php if(file_exists($row->img)){
+                        $image = $row->img;
+                  }
+                      
+                      else{
+                        $image = "assets/img/not-available.png";
+                      }
+                      
                       ?>
                     <div class="card hovercard cardb">
                         <div class="card-background">

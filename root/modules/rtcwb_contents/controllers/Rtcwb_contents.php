@@ -112,6 +112,7 @@ class Rtcwb_contents extends MX_Controller {
 						'slug'=> $slg,
 						'meta_content'=> $metahead,
 						'imgheader'=> $this->data['headimg'],
+						'id_cat' =>  $this->data['category'],
 						'content' =>  $this->data['content'],
 						'c_date' =>  date('Y-m-d H:i:s',now()),
 						'u_date' =>  date('Y-m-d H:i:s',now()),
@@ -129,7 +130,7 @@ class Rtcwb_contents extends MX_Controller {
         	$id_content= $this->contents->getidcont($slg);
         	$getidcont=$id_content->row();
 			$idc 	= $getidcont->id;
-			       	$datacatrel= array(
+			       	/*$datacatrel= array(
 				    'id_c' => $this->data['category'],
 				    'id_cont' => $idc,
 				    'c_date' =>  date('Y-m-d H:i:s',now()),
@@ -141,7 +142,7 @@ class Rtcwb_contents extends MX_Controller {
                 $msg    = "success";
         	}else{
         		$msg    = "error insert to table tag relation";
-        	}
+        	}*/
 
         	foreach($tags as $row) {
 				$datatagrel= array(
@@ -182,6 +183,7 @@ class Rtcwb_contents extends MX_Controller {
 				$msg    = 'Enable';
 			}
             $this->db->set('status',$status)->where('id',$row->id)->update('cb_contents');
+            $this->db->set('status',$status)->where('id_cont',$row->id)->update('cb_catrelation');
             $this->db->set('status',$status)->where('id_cont',$row->id)->update('cb_tagsrelation');
             echo json_encode(array('msg'=>$msg,'over'=>$status,'cont'=>$cont));	
         }		
@@ -291,6 +293,7 @@ class Rtcwb_contents extends MX_Controller {
 						'slug'=> $slg,
 						'meta_content'=> $metahead,
 						'imgheader'=> $this->data['headimg'],
+						'id_cat' => $this->data['category'],
 						'content' =>  $this->data['content'],
 						'c_date' =>  date('Y-m-d H:i:s',now()),
 						'u_date' =>  date('Y-m-d H:i:s',now()),
@@ -305,7 +308,7 @@ class Rtcwb_contents extends MX_Controller {
         		$msg    = "error Update to table content";
         	}
 
-			       	$datacatrel= array(
+			       	/*$datacatrel= array(
 				    'id_c' => $this->data['category'],
 				    'c_date' =>  date('Y-m-d H:i:s',now()),
 					'u_date' =>  date('Y-m-d H:i:s',now()),
@@ -316,7 +319,7 @@ class Rtcwb_contents extends MX_Controller {
                 $msg    = "success";
         	}else{
         		$msg    = "error Update to table tag relation";
-        	}
+        	}*/
         	$delete=$this->db->where_in('id_cont',$this->data['id'])->delete('cb_tagsrelation');
         	foreach($tags as $row) {
 				$datatagrel= array(

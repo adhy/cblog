@@ -6,14 +6,34 @@
                         <div class="tabs1">
                             <nav>
                                 <ul class="tabs-navi">
-                                    <li><a data-content="inbox" class="selected" href="#"><span></span>Popular</a></li>
-                                    <li><a data-content="new" href="#"><span></span>Recent</a></li>
+                                <li><a data-content="new" class="selected"  href="#"><span></span>Recent</a></li>
+                                    <li><a data-content="inbox" href="#"><span></span>Popular</a></li>
+                                    
                                     <li><a data-content="gallery" href="#"><i class="icon_alone ico-comment-o"></i></a></li>
                                 </ul>
                             </nav>
                             
                             <ul class="tabs-body">
-                                <li data-content="inbox" class="selected">
+                                <li data-content="new" class="selected">
+                                    <ul class="posts_widget_list2">
+                                <?php 
+                                
+                            foreach ($is_leafpop->result() as $row){
+                                if(file_exists($row->imgheader)){
+                                    $image = $row->imgheader;
+                                }
+                                else{
+                                    $image = "assets/img/not-available.png";
+                                }
+                                $row->c_date = '%Y/%m/%d';
+                                $time = time();
+                                $rewat= mdate($row->c_date, $time);
+                            echo '<li class="clearfix"><a href="'.site_url('page/'.$row->slug).'"><img alt="" title="" src="'.base_url($image).'"><span>'.$row->title.'</span></a><span class="post_date">'.$rewat.'</span> </li> <li class="clearfix">';
+                                } ;?>
+                                    </ul>
+                                </li>
+
+                                <li data-content="inbox" >
                                     <ul class="posts_widget_list2">
                                         <li class="clearfix">
                                             <a href="#">
@@ -45,40 +65,7 @@
                                         </li>
                                     </ul>
                                 </li>
-                            
-                                <li data-content="new">
-                                    <ul class="posts_widget_list2">
-                                        <li class="clearfix">
-                                            <a href="#">
-                                                <img alt="" title="" src="assets/images/blog/thumb1.jpg">
-                                                <span>Barbour Jacket</span>
-                                            </a>
-                                            <span class="post_date">2015/01/23</span> 
-                                        </li>
-                                        <li class="clearfix">
-                                            <a href="#">
-                                                <img alt="" title="" src="assets/images/blog/thumb2.jpg">
-                                                <span>Visvim Gornergrat</span>
-                                            </a>
-                                            <span class="post_date">2015/01/23</span> 
-                                        </li>
-                                        <li class="clearfix">
-                                            <a href="#">
-                                                <img alt="" title="" src="assets/images/blog/thumb3.jpg">
-                                                <span>Nanamica Graphic Tee</span>
-                                            </a>
-                                            <span class="post_date">2015/01/23</span> 
-                                        </li>
-                                        <li class="clearfix">
-                                            <a href="#">
-                                                <img alt="" title="" src="assets/images/blog/thumb4.jpg">
-                                                <span>Adidas Hoodie</span>
-                                            </a>
-                                            <span class="post_date">2015/02/12</span>  
-                                        </li>
-                                    </ul>
-                                </li>
-                            
+                                                        
                                 <li data-content="gallery">
                                     <ul class="posts_widget_list2">
                                         <li class="clearfix">
@@ -120,37 +107,10 @@
                     <div class="widget_block">
                         <h6 class="widget_title">Categories</h6>
                         <ul class="cat_list_widget">
-                            <li>
-                                <a href="#">Media</a>
-                                <span class="num_posts">61</span>
-                            </li>
-                            <li>
-                                <a href="#">Movies</a>
-                                <span class="num_posts">22</span>
-                            </li>
-                            <li>
-                                <a href="#">News</a>
-                                <span class="num_posts">78</span>
-                            </li>
-                            <li>
-                                <a href="#">Sound</a>
-                                <span class="num_posts">12</span>
-                            </li>
-                            <li>
-                                <a href="#">Tutorials</a>
-                                <span class="num_posts">7</span></li>
-                            <li>
-                                <a href="#">Tweets</a>
-                                <span class="num_posts">28</span>
-                            </li>
-                            <li>
-                                <a href="#">Uncategorized</a>
-                                <span class="num_posts">9</span>
-                            </li>
-                            <li>
-                                <a href="#">Wordpress</a>
-                                <span class="num_posts">32</span>
-                            </li>
+                        <?php foreach ($leaft_cat->result() as $row){
+                                echo '<li><a href="'.site_url('category/'.$row->slg_c).'">'.$row->nm_c.'</a><span class="num_posts">'.$row->status.'</span></li>';
+                              }
+                        ;?>
                         </ul>
                     </div>
                     <!-- End Categories -->
@@ -161,8 +121,7 @@
                         <?php 
                             $total = 0;
                             foreach ($is_tag->result() as $row){
-                            $total+=$row->status;
-                            echo '<a href="'.site_url('tag/'.$row->slg_t).'"><span class="tag">'.$row->nm_t.'</span><span class="num">'.$total.'</span></a>';
+                            echo '<a href="'.site_url('tag/'.$row->slg_t).'"><span class="tag">'.$row->nm_t.'</span><span class="num">'.$row->status.'</span></a>';
                         };?>
                             
                         </div>

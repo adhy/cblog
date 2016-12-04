@@ -2,18 +2,49 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Mrtcwb_template extends CI_Model {
+    var $parent = '0';
+    var $hasil  = '';
 	function __constuct(){
 		parent::__constuct();  // Call the Model constructor 
 		loader::database();    // Connect to current database setting.froco
 	}
-    function is_navigasi() {
-    // Get current CodeIgniter instance
-        $this->db->where('status','1');
+    function is_leaftcat() {
+        $this->db->select_sum('cb_contents.status');
+        $this->db->select('cb_contents.id_cat,cb_categories.id,cb_categories.nm_c,cb_categories.slg_c');
+        $this->db->join('cb_contents','cb_contents.id_cat=cb_categories.id');
+        $this->db->where_not_in('cb_categories.id_parent','0');
+        $this->db->where('cb_contents.status','1');
+        $this->db->group_by("cb_categories.nm_c");
         return $this->db->get('cb_categories');
+    }
+    function is_leafpop() {
+        $this->db->select('*');
+        $this->db->where('status','1');
+        $this->db->order_by("title",'ASC');
+        $this->db->limit(10);
+        return $this->db->get('cb_contents');
+    }
+    function is_navrek($parent=0,$hasil){
+        $this->db->where('status','1');
+        $this->db->where('id_parent',$parent);
+        $menu = $this->db->get('cb_categories');
+        if(($menu->num_rows())>0){    
+            $hasil .= "<ul>";                
+        }
+        foreach($menu->result() as $h){
+            $hasil .= "<li class='normal_menu'><a href='".site_url("category/".$h->slg_c)."'>".$h->nm_c;
+            $hasil = $this->is_navrek($h->id,$hasil);
+            $hasil .= "</a></li>";
+        }
+        if(($menu->num_rows)>0){
+            $hasil .= "</ul>";
+        }
+        return $hasil;
     }
     function is_tags() {
     // Get current CodeIgniter instance
-        $this->db->select('cb_tagsrelation.id_tag,cb_tagsrelation.status,cb_tags.id,cb_tags.nm_t,cb_tags.slg_t');
+        $this->db->select_sum('cb_tagsrelation.status');
+        $this->db->select('cb_tagsrelation.id_tag,cb_tags.id,cb_tags.nm_t,cb_tags.slg_t');
         $this->db->join('cb_tagsrelation','cb_tagsrelation.id_tag=cb_tags.id');
         $this->db->where('cb_tagsrelation.status','1');
         $this->db->group_by("cb_tags.nm_t");

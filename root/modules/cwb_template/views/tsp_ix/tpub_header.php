@@ -129,18 +129,14 @@
                     <div id="nav_menu">
                         <span class="mobile_menu_trigger">
                             <a href="#" class="nav_trigger"><span></span></a>
-                        </span>     
+                        </span>
                         <ul id="navy" class="clearfix">
                             <li class="normal_menu mobile_menu_toggle current_page_item">
                             <?=anchor('', '<span>Home</span>');?>
                             </li>
                             <li class="normal_menu mobile_menu_toggle">
                                 <?=anchor('category', '<span>Category</span>');?>
-                                <ul>
-                                <?php foreach ($is_nav->result() as $row){
-                                    echo '<li class="normal_menu"><a href="'.site_url('category/'.$row->slg_c).'">'.$row->nm_c.'</a></li>';
-                                };?>
-                                </ul>
+                        <?=$is_navv;?>
                             </li>
                         </ul>
                     </div>

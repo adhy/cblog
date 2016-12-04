@@ -82,8 +82,9 @@ class Mrtcwb_contents extends CI_Model {
 
 
     function getselectcategories($data){
-        $this->db->where('id_cont',$data['id']);
-        return $this->db->get('cb_catrelation');
+        $this->db->where('id',$data['id']);
+        //return $this->db->get('cb_catrelation');
+        return $this->db->get('cb_contents');
     }
     function editcontent ($data){
         $this->db->where('id', $data['id']);
