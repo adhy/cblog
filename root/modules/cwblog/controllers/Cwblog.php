@@ -10,6 +10,7 @@ class Cwblog extends MX_Controller {
         $this->data['is_navv']= $this->template->is_navrek($this->template->parent,$this->template->hasil);
         $this->data['is_tag']= $this->template->is_tags();
         $this->data['is_leafpop']= $this->template->is_leafpop();
+        $this->data['is_leafrec']= $this->template->is_leafrec();
     }
 	public function index(){		
 		$this->data['css_topp']=$this->template->css_toppub();

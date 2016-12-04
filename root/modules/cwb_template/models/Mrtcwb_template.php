@@ -17,10 +17,17 @@ class Mrtcwb_template extends CI_Model {
         $this->db->group_by("cb_categories.nm_c");
         return $this->db->get('cb_categories');
     }
+    function is_leafrec() {
+        $this->db->select('*');
+        $this->db->where('status','1');
+        $this->db->order_by("c_date",'DESC');
+        $this->db->limit(10);
+        return $this->db->get('cb_contents');
+    }
     function is_leafpop() {
         $this->db->select('*');
         $this->db->where('status','1');
-        $this->db->order_by("title",'ASC');
+        $this->db->order_by("views",'DESC');
         $this->db->limit(10);
         return $this->db->get('cb_contents');
     }

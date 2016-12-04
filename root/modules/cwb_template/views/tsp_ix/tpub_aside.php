@@ -3,66 +3,52 @@
                                         
     <!-- Tabs -->
                     <div class="widget_block">
-                        <div class="tabs1">
+                        <div class="hm-tabs tabs1">
                             <nav>
                                 <ul class="tabs-navi">
-                                <li><a data-content="new" class="selected"  href="#"><span></span>Recent</a></li>
-                                    <li><a data-content="inbox" href="#"><span></span>Popular</a></li>
-                                    
-                                    <li><a data-content="gallery" href="#"><i class="icon_alone ico-comment-o"></i></a></li>
+                                    <li><a data-content="new" class="selected"  href="#"><span></span>Recent</a></li>
+                                    <li><a data-content="populer" href="#"><span></span>Popular</a></li>
                                 </ul>
                             </nav>
                             
                             <ul class="tabs-body">
                                 <li data-content="new" class="selected">
                                     <ul class="posts_widget_list2">
-                                <?php 
-                                
-                            foreach ($is_leafpop->result() as $row){
-                                if(file_exists($row->imgheader)){
-                                    $image = $row->imgheader;
-                                }
-                                else{
-                                    $image = "assets/img/not-available.png";
-                                }
-                                $row->c_date = '%Y/%m/%d';
-                                $time = time();
-                                $rewat= mdate($row->c_date, $time);
-                            echo '<li class="clearfix"><a href="'.site_url('page/'.$row->slug).'"><img alt="" title="" src="'.base_url($image).'"><span>'.$row->title.'</span></a><span class="post_date">'.$rewat.'</span> </li> <li class="clearfix">';
-                                } ;?>
+                                    <?php 
+                                    foreach ($is_leafpop->result() as $row){
+                                    if(file_exists($row->imgheader)){
+                                        $image = $row->imgheader;
+                                    }else{
+                                        $image = "assets/img/gimg_not_available.jpg";
+                                    }
+                                    $row->c_date = '%Y/%m/%d';
+                                    $time = time();
+                                    $text= character_limiter($row->title,30);
+                                    $text= word_limiter($text,5);
+                                    $rewat= mdate($row->c_date, $time);
+                                    echo '<li class="clearfix"><a href="'.site_url('page/'.$row->slug).'" title="'.$row->title.'"><img alt="'.$row->title.'" title="'.$row->title.'" src="'.base_url($image).'"><span>'.$text.'</span></a><span class="post_date">'.$rewat.'</span> </li> <li class="clearfix">';
+                                        }
+                                    ;?>
                                     </ul>
                                 </li>
 
-                                <li data-content="inbox" >
+                                <li data-content="populer" >
                                     <ul class="posts_widget_list2">
-                                        <li class="clearfix">
-                                            <a href="#">
-                                                <img alt="" title="" src="assets/images/blog/thumb1.jpg">
-                                                <span>Barbour Jacket</span>
-                                            </a>
-                                            <span class="post_date"><i class="ico-comments-o"></i>123 Comments</span> 
-                                        </li>
-                                        <li class="clearfix">
-                                            <a href="#">
-                                                <img alt="" title="" src="assets/images/blog/thumb2.jpg">
-                                                <span>Visvim Gornergrat</span>
-                                            </a>
-                                            <span class="post_date"><i class="ico-comments-o"></i>57 Comments</span> 
-                                        </li>
-                                        <li class="clearfix">
-                                            <a href="#">
-                                                <img alt="" title="" src="assets/images/blog/thumb3.jpg">
-                                                <span>Nanamica Graphic Tee</span>
-                                            </a>
-                                            <span class="post_date"><i class="ico-comments-o"></i>25 Comments</span> 
-                                        </li>
-                                        <li class="clearfix">
-                                            <a href="#">
-                                                <img alt="" title="" src="assets/images/blog/thumb4.jpg">
-                                                <span>Adidas Hoodie</span>
-                                            </a>
-                                            <span class="post_date"><i class="ico-comments-o"></i>14 Comments</span>   
-                                        </li>
+                                    <?php 
+                                        foreach ($is_leafrec->result() as $row){
+                                            if(file_exists($row->imgheader)){
+                                                $image = $row->imgheader;
+                                            }else{
+                                                $image = "assets/img/gimg_not_available.jpg";
+                                            }
+                                        $row->c_date = '%Y/%m/%d';
+                                        $time = time();
+                                        $text= character_limiter($row->title,30);
+                                        $text= word_limiter($text,5);
+                                        $rewat= mdate($row->c_date, $time);
+                                        echo '<li class="clearfix"><a href="'.site_url('page/'.$row->slug).'" title="'.$row->title.'"><img alt="'.$row->title.'" title="'.$row->title.'" src="'.base_url($image).'"><span>'.$text.'</span></a><span class="post_date">'.$rewat.'</span> </li> <li class="clearfix">';
+                                        }
+                                    ;?>
                                     </ul>
                                 </li>
                                                         
