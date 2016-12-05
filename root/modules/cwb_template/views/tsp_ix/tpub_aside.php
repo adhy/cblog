@@ -1,20 +1,12 @@
 <!-- sidebar -->
                 <aside id="sidebar" class="col-md-3 right_sidebar">
-                                        
-    <!-- Tabs -->
+                
+                      <!-- Popular Posts -->
                     <div class="widget_block">
-                        <div class="hm-tabs tabs1">
-                            <nav>
-                                <ul class="tabs-navi">
-                                    <li><a data-content="new" class="selected"  href="#"><span></span>Recent</a></li>
-                                    <li><a data-content="populer" href="#"><span></span>Popular</a></li>
-                                </ul>
-                            </nav>
-                            
-                            <ul class="tabs-body">
-                                <li data-content="new" class="selected">
-                                    <ul class="posts_widget_list2">
-                                    <?php 
+                        <h6 class="widget_title">Popular Posts</h6>
+                        <div class="posts_widget">
+                            <ul class="posts_widget_list2">
+                            <?php 
                                     foreach ($is_leafpop->result() as $row){
                                     if(file_exists($row->imgheader)){
                                         $image = $row->imgheader;
@@ -26,69 +18,13 @@
                                     $text= character_limiter($row->title,30);
                                     $text= word_limiter($text,5);
                                     $rewat= mdate($row->c_date, $time);
-                                    echo '<li class="clearfix"><a href="'.site_url('page/'.$row->slug).'" title="'.$row->title.'"><img alt="'.$row->title.'" title="'.$row->title.'" src="'.base_url($image).'"><span>'.$text.'</span></a><span class="post_date">'.$rewat.'</span> </li> <li class="clearfix">';
+                                    echo '<li class="clearfix"><a href="'.site_url('page/'.$row->slug).'" title="'.$row->title.'"><img alt="'.$row->title.'" title="'.$row->title.'" src="'.base_url($image).'"><span>'.$text.'</span></a><span class="post_date">'.$rewat.'</span> </li>';
                                         }
                                     ;?>
-                                    </ul>
-                                </li>
-
-                                <li data-content="populer" >
-                                    <ul class="posts_widget_list2">
-                                    <?php 
-                                        foreach ($is_leafrec->result() as $row){
-                                            if(file_exists($row->imgheader)){
-                                                $image = $row->imgheader;
-                                            }else{
-                                                $image = "assets/img/gimg_not_available.jpg";
-                                            }
-                                        $row->c_date = '%Y/%m/%d';
-                                        $time = time();
-                                        $text= character_limiter($row->title,30);
-                                        $text= word_limiter($text,5);
-                                        $rewat= mdate($row->c_date, $time);
-                                        echo '<li class="clearfix"><a href="'.site_url('page/'.$row->slug).'" title="'.$row->title.'"><img alt="'.$row->title.'" title="'.$row->title.'" src="'.base_url($image).'"><span>'.$text.'</span></a><span class="post_date">'.$rewat.'</span> </li> <li class="clearfix">';
-                                        }
-                                    ;?>
-                                    </ul>
-                                </li>
-                                                        
-                                <li data-content="gallery">
-                                    <ul class="posts_widget_list2">
-                                        <li class="clearfix">
-                                            <a href="#">
-                                                <img alt="" title="" src="assets/images/blog/thumb1.jpg">
-                                                <span>Alan Snow:</span>
-                                            </a>
-                                            <span class="post_comment">There are many variations of passages of Lorem.</span> 
-                                        </li>
-                                        <li class="clearfix">
-                                            <a href="#">
-                                                <img alt="" title="" src="assets/images/blog/thumb2.jpg">
-                                                <span>John Doe:</span>
-                                            </a>
-                                            <span class="post_comment">There are many variations of passages of Lorem.</span> 
-                                        </li>
-                                        <li class="clearfix">
-                                            <a href="#">
-                                                <img alt="" title="" src="assets/images/blog/thumb3.jpg">
-                                                <span>Mary Loe:</span>
-                                            </a>
-                                            <span class="post_comment">Lorem Ipsum available, but the majority.</span> 
-                                        </li>
-                                        <li class="clearfix">
-                                            <a href="#">
-                                                <img alt="" title="" src="assets/images/blog/thumb4.jpg">
-                                                <span>Harry John:</span>
-                                            </a>
-                                            <span class="post_comment">Lorem Ipsum available, but the majority.</span>  
-                                        </li>
-                                    </ul>
-                                </li>
                             </ul>
                         </div>
                     </div>
-                    <!-- End Tabs -->
-                    
+                    <!-- Popular Posts -->                                      
                     <!-- Categories -->
                     <div class="widget_block">
                         <h6 class="widget_title">Categories</h6>
@@ -113,7 +49,44 @@
                         </div>
                     </div>
                     <!-- End Tag Cloud -->  
-                                    
+                      <!-- Related Posts Slider -->
+                    <div class="widget_block">
+                        <h6 class="widget_title">Related Posts</h6>
+                        <div class="related_slider_widget centered">
+
+                                <?php 
+                                       /* foreach ($is_leafrec->result() as $row){
+                                            if(file_exists($row->imgheader)){
+                                                $image = $row->imgheader;
+                                            }else{
+                                                $image = "assets/img/gimg_not_available.jpg";
+                                            }
+                                        $row->c_date = '%Y/%m/%d';
+                                        $time = time();
+                                        $text= character_limiter($row->title,30);
+                                        $text= word_limiter($text,5);
+                                        $rewat= mdate($row->c_date, $time);
+                                        echo '<li class="clearfix"><a href="'.site_url('page/'.$row->slug).'" title="'.$row->title.'"><img alt="'.$row->title.'" title="'.$row->title.'" src="'.base_url($image).'"><span>'.$text.'</span></a><span class="post_date">'.$rewat.'</span> </li> <li class="clearfix">';
+                                        }*/
+                                    ;?>
+                            <?php 
+                                        foreach ($is_leafrec->result() as $row){
+                                            if(file_exists($row->imgheader)){
+                                                $image = $row->imgheader;
+                                            }else{
+                                                $image = "assets/img/gimg_not_available.jpg";
+                                            }
+                                        $row->c_date = '%Y/%m/%d';
+                                        $time = time();
+                                        $text= character_limiter($row->title,30);
+                                        $text= word_limiter($text,5);
+                                        $rewat= mdate($row->c_date, $time);
+                            echo '<div class="related_posts_slide"><div class="related_img_con"><a href="'.site_url('page/'.$row->slug).'" class="related_img" title="'.$row->title.'"><img alt="'.$row->title.'" title="'.$row->title.'" src="'.base_url($image).'"><span><i class="ico-link3"></i></span></a></div><a class="related_title" title="'.$row->title.'" href="'.site_url('page/'.$row->slug).'">'.$text.'</a><span class="post_date">'.$rewat.'</span></div>';
+                            }
+                                    ;?>
+                        </div>
+                    </div>
+                    <!-- End Related Posts Slider -->              
                 </aside>
                 <!-- End sidebar -->
             </div>

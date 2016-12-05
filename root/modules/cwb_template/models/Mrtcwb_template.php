@@ -19,10 +19,32 @@ class Mrtcwb_template extends CI_Model {
     }
     function is_leafrec() {
         $this->db->select('*');
-        $this->db->where('status','1');
-        $this->db->order_by("c_date",'DESC');
+        $this->db->where('cb_contents.status','1');
+        $this->db->join('cb_tagsrelation','cb_tagsrelation.id_cont=cb_contents.id');
+        //$this->db->join('cb_tags','cb_tagsrelation.id_cont=cb_tags.id');
+        $this->db->order_by("cb_contents.c_date",'DESC');
+        $this->db->group_by("cb_tagsrelation.id");
         $this->db->limit(10);
         return $this->db->get('cb_contents');
+    }
+    function is_buttrec() {
+        $this->db->select('*');
+        $this->db->where('cb_contents.status','1');
+        $this->db->join('cb_tagsrelation','cb_tagsrelation.id_cont=cb_contents.id');
+        $this->db->join('cb_tags','cb_tagsrelation.id_cont=cb_tags.id');
+        $this->db->order_by("cb_contents.c_date",'DESC');
+        $this->db->group_by("cb_tagsrelation.id");
+        $this->db->limit(10);
+        return $this->db->get('cb_contents');
+    }
+    function is_footrectag() {
+        $this->db->select('cb_tags.status,cb_tags.nm_t,cb_tags.slg_t,cb_tags.id,cb_tagsrelation.id_cont,cb_tagsrelation.id_tag');
+        
+        $this->db->join('cb_tags','cb_tagsrelation.id_tag=cb_tags.id');
+        $this->db->where('cb_tags.status','1');
+        $this->db->order_by("cb_tags.c_date",'DESC');
+        //$this->db->group_by("cb_tagsrelation.id_cont");
+        return $this->db->get('cb_tagsrelation');
     }
     function is_leafpop() {
         $this->db->select('*');

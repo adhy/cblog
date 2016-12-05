@@ -35,38 +35,36 @@
                     <div class="footer_row">
                         <h6 class="footer_title">Recent Posts</h6>
                         <ul class="recent_posts_list">
-                            <li class="clearfix">
-                                <a href="#">
-                                    <span class="recent_posts_img"><img src="assets/images/blog/thumb1.jpg" alt="Post Title"></span>
-                                    <span>Best HTML5 Theme</span>
-                                </a>
-                                <span class="recent_post_detail">2015/01/23</span>
-                                <span class="recent_post_detail">Tutorials, Videos</span> 
-                            </li>
-                            <li class="clearfix">
-                                <a href="#">
-                                    <span class="recent_posts_img"><img src="assets/images/blog/thumb2.jpg" alt="Post Title"></span>
-                                    <span>Responseve Design</span>
-                                </a>
-                                <span class="recent_post_detail">2015/02/17</span>
-                                <span class="recent_post_detail">Audio, Videos</span> 
-                            </li>
-                            <li class="clearfix">
-                                <a href="#">
-                                    <span class="recent_posts_img"><img src="assets/images/blog/thumb3.jpg" alt="Post Title"></span>
-                                    <span>Many Home Pages</span>
-                                </a>
-                                <span class="recent_post_detail">2015/02/17</span>
-                                <span class="recent_post_detail">Tutorials, Design</span> 
-                            </li>
-                            <li class="clearfix">
-                                <a href="#">
-                                    <span class="recent_posts_img"><img src="assets/images/blog/thumb4.jpg" alt="Post Title"></span>
-                                    <span>Best HTML5 Theme</span>
-                                </a>
-                                <span class="recent_post_detail">2015/01/23</span>
-                                <span class="recent_post_detail">Tutorials, Videos</span> 
-                            </li>
+                        
+                        <?php 
+                                        foreach ($is_buttrec->result() as $row){
+                                            if(file_exists($row->imgheader)){
+                                                $image = $row->imgheader;
+                                            }else{
+                                                $image = "assets/img/gimg_not_available.jpg";
+                                            }
+                                        $row->c_date = '%Y/%m/%d';
+                                        $time = time();
+                                        $text= character_limiter($row->title,30);
+                                        $text= word_limiter($text,5);
+                                        $rewat= mdate($row->c_date, $time);
+                            echo '<li class="clearfix">
+                            <a href="'.site_url('page/'.$row->slug).'" class="related_img" title="'.$row->title.'">
+                            <span class="recent_posts_img">
+                            <img alt="'.$row->title.'" title="'.$row->title.'" src="'.base_url($image).'" style="width:90px;height:60px;">
+                            </span>
+                            <span>'.$text.'</span>
+                            </a>
+                            <span class="recent_post_detail">'.$rewat.'</span>';
+                            //foreach ($is_buttrectag->result() as $rowt){
+                                //if($row->id_tag == $rowt->id){
+                                //    echo '<span class="recent_post_detail">'.$row->id_tag.'</span>';
+                               //}
+                            
+                         //  }
+                            echo '</li>';
+                            }
+                                    ;?>
                         </ul>
                         <a href="#" class="arrow_button full_width">
                             <span>
