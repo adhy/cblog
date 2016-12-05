@@ -12,7 +12,7 @@ class Cwblog extends MX_Controller {
         $this->data['is_leafpop']= $this->template->is_leafpop();
         $this->data['is_leafrec']= $this->template->is_leafrec();
         $this->data['is_buttrec']= $this->template->is_buttrec();
-        $this->data['is_buttrectag']= $this->template->is_footrectag();
+        //$this->data['is_buttrectag']= $this->template->is_footrectag();
     }
 	public function index(){		
 		$this->data['css_topp']=$this->template->css_toppub();

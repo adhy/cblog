@@ -45,7 +45,7 @@
                                             }
                                         $row->c_date = '%Y/%m/%d';
                                         $time = time();
-                                        $text= character_limiter($row->title,30);
+                                        $text= character_limiter($row->title,7);
                                         $text= word_limiter($text,5);
                                         $rewat= mdate($row->c_date, $time);
                             echo '<li class="clearfix">
@@ -56,12 +56,15 @@
                             <span>'.$text.'</span>
                             </a>
                             <span class="recent_post_detail">'.$rewat.'</span>';
-                            //foreach ($is_buttrectag->result() as $rowt){
-                                //if($row->id_tag == $rowt->id){
-                                //    echo '<span class="recent_post_detail">'.$row->id_tag.'</span>';
-                               //}
-                            
-                         //  }
+                            echo '<span class="recent_post_detail"><i class="ico-folder-open-o"></i> '.$row->nm_c.'</span>';
+                            /*$data_aw=explode(',', $row->idiot);//apabila menggunakan tag
+                            foreach ($is_tag->result() as $rowt){
+                                foreach ($data_aw as $key) {
+                                    if($rowt->id == $key){
+                                        echo '<span class="recent_post_detail">'.$rowt->nm_t.'</span>';
+                                    }
+                                }                            
+                           }*/
                             echo '</li>';
                             }
                                     ;?>
@@ -80,15 +83,11 @@
                     <div class="footer_row">
                         <h6 class="footer_title">Cloud Tags</h6>
                         <div class="tagcloud clearfix">
-                            <a href="#"><span class="tag">Wordpress</span></a>
-                            <a href="#"><span class="tag">Creative</span></a>
-                            <a href="#"><span class="tag">CSS3</span></a>
-                            <a href="#"><span class="tag">Design</span></a>
-                            <a href="#"><span class="tag">Graphic</span></a>
-                            <a href="#"><span class="tag">HTML5</span></a>
-                            <a href="#"><span class="tag">SEO</span></a>
-                            <a href="#"><span class="tag">CSS3</span></a>
-                                                        <a href="#"><span class="tag">Web Design</span></a>
+                         <?php 
+                            $total = 0;
+                            foreach ($is_tag->result() as $row){
+                            echo '<a href="'.site_url('tag/'.$row->slg_t).'"><span class="tag">'.$row->nm_t.'</span></a>';
+                        };?>
                         </div>
                     </div>
                     <div class="footer_row">
