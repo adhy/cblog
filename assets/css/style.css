@@ -12497,6 +12497,7 @@ to {
 	max-width: 90px;
 	float: left;
 	margin: 5px 15px 0 0;
+	height: 60px;
 }
 .posts_widget_list2 li > a span:hover {
 	color: #CD2122;
