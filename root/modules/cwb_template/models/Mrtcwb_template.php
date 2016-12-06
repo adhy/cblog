@@ -8,6 +8,12 @@ class Mrtcwb_template extends CI_Model {
 		parent::__constuct();  // Call the Model constructor 
 		loader::database();    // Connect to current database setting.froco
 	}
+    function is_me() {
+        $this->db->select('*');
+        $this->db->join('cb_profile','cb_profile.id_user=cb_log.id_user');
+        $this->db->where('cb_log.id_level','1');
+        return $this->db->get('cb_log');
+    }
     function is_leaftcat() {
         $this->db->select_sum('cb_contents.status');
         $this->db->select('cb_contents.id_cat,cb_categories.id,cb_categories.nm_c,cb_categories.slg_c');

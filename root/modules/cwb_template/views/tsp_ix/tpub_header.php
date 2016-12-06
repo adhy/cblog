@@ -12,56 +12,6 @@
             <div class="content clearfix">
             
                 <div class="top_details clearfix f_left">
-                    <div class="languages-select languages-drop">
-                        <span><i class="ico-globe4"></i><span>English</span></span>
-                        <div class="languages-panel">
-                            <ul class="languages-panel-con">
-                                <li class="active"><a href="#">English <i class="ico-check lang_checked"></i></a></li>
-                                <li><a href="#">RTL</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <span class="top_login">
-
-                        <i class="icon ico-key3"></i><a class="popup-with-move-anim" href="#login-popup">Login</a>
-                    </span>
-                    <div class="zoom-anim-dialog small-dialog mfp-hide login_popup" id="login-popup">
-                        <form class="login_form_colored">
-                            <div class="lfc_user_row">
-                                <span class="lfc_header">Login to your Account</span>
-                            </div>
-                            <div class="lfc_user_row">
-                                <label for="login_user_name">
-                                    <span class="lfc_alert"></span>
-                                    <i class="lfc_icon ico-user5"></i>
-                                    <input type="text" name="login_user_name" id="login_user_name">
-                                </label>
-                            </div>
-                            <div class="lfc_user_row">
-                                <label for="login_password">
-                                    <span class="lfc_alert"></span>
-                                    <i class="lfc_icon ico-key3"></i>
-                                    <input type="password" name="login_password" id="login_password">
-                                </label>    
-                            </div>
-                            <div class="lfc_user_row clearfix">
-                                <div class="my_col_half">
-                                    <label for="rememberme">
-                                        <span class="remember-box">
-                                            <input type="checkbox" id="rememberme" name="rememberme">
-                                            <span>Remember me</span>
-                                        </span>
-                                    </label>
-                                </div>
-                                <div class="my_col_half clearfix">
-                                    <button type="submit" name="login" class="send_button f_right upper">
-                                        Sign in
-                                    </button>
-                                </div>
-                            </div>
-                            <a class="lfc_forget_pass" href="#">Forgot Your Password?</a>
-                        </form>
-                    </div>
                     <span><i class="icon ico-phone5"></i><span class="title">Call Us :</span> (123) 456 - 7890</span>
                     <span><i class="icon ico-comment2"></i><span class="title">Support :</span> (123) 456 - 7890</span>
                 </div>
@@ -131,12 +81,16 @@
                             <a href="#" class="nav_trigger"><span></span></a>
                         </span>
                         <ul id="navy" class="clearfix">
-                            <li class="normal_menu mobile_menu_toggle current_page_item">
+                            <!--current_page_item-->
+                            <li class="normal_menu mobile_menu_toggle">
                             <?=anchor('', '<span>Home</span>');?>
                             </li>
                             <li class="normal_menu mobile_menu_toggle">
                                 <?=anchor('category', '<span>Category</span>');?>
-                        <?=$is_navv;?>
+                        <?php echo is_cuswid('is_navv');?>
+                            </li>
+                            <li class="normal_menu mobile_menu_toggle">
+                            <?=anchor('about-us', '<span>About Us</span>');?>
                             </li>
                         </ul>
                     </div>

@@ -6,7 +6,7 @@
                         <h6 class="widget_title">Popular Posts</h6>
                         <div class="posts_widget">
                             <ul class="posts_widget_list2">
-                            <?php 
+                            <?php   $is_leafpop=is_cuswid('is_leafpop');
                                     foreach ($is_leafpop->result() as $row){
                                     if(file_exists($row->imgheader)){
                                         $image = $row->imgheader;
@@ -29,7 +29,8 @@
                     <div class="widget_block">
                         <h6 class="widget_title">Categories</h6>
                         <ul class="cat_list_widget">
-                        <?php foreach ($leaft_cat->result() as $row){
+                        <?php $leaft_cat=is_cuswid('leaft_cat');
+                            foreach ($leaft_cat->result() as $row){
                                 echo '<li><a href="'.site_url('category/'.$row->slg_c).'">'.$row->nm_c.'</a><span class="num_posts">'.$row->status.'</span></li>';
                               }
                         ;?>
@@ -42,6 +43,7 @@
                         <div class="tagcloud style2 clearfix">
                         <?php 
                             $total = 0;
+                            $is_tag=is_cuswid('is_tag');
                             foreach ($is_tag->result() as $row){
                             echo '<a href="'.site_url('tag/'.$row->slg_t).'"><span class="tag">'.$row->nm_t.'</span><span class="num">'.$row->status.'</span></a>';
                         };?>
@@ -69,7 +71,7 @@
                                         echo '<li class="clearfix"><a href="'.site_url('page/'.$row->slug).'" title="'.$row->title.'"><img alt="'.$row->title.'" title="'.$row->title.'" src="'.base_url($image).'"><span>'.$text.'</span></a><span class="post_date">'.$rewat.'</span> </li> <li class="clearfix">';
                                         }*/
                                     ;?>
-                            <?php 
+                            <?php $is_leafrec=is_cuswid('is_leafrec');
                                         foreach ($is_leafrec->result() as $row){
                                             if(file_exists($row->imgheader)){
                                                 $image = $row->imgheader;

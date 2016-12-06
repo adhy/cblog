@@ -2,16 +2,22 @@
         <div class="container row_spacer clearfix">
             <div class="rows_container clearfix">
                 <div class="col-md-3">
+
                     <div class="footer_row">
-                        <h6 class="footer_title">Company Info</h6>
-                        <img alt="Enar" src="assets/images/logo-light.png">
-                        <span class="footer_desc">
-                            There are many  Purchase Now There are many variations of passages of Lorem Ipsum available, but the majority.
+                    <h6 class="footer_title">Info</h6>
+                    <img alt="Enar" src="assets/images/logo-light.png">
+                    <span class="footer_desc">
+                        <?php   $is_me=is_cuswid('');
+                                foreach ($is_me->result() as $row) {
+                                    $text_descript=character_limiter($row->decript,100);
+                                    echo $text_descript;;
+                                } ?>
                         </span>
-                        <a href="#" class="black_button">
+                        <a href="<?=site_url("about-me")?>" class="black_button">
                             <i class="ico-angle-right"></i><span>Read More</span>
                         </a>
                     </div>
+
                     <div class="footer_row">
                         <h6 class="footer_title">Newsletter Signup</h6>
                         <span class="footer_desc">
@@ -36,7 +42,7 @@
                         <h6 class="footer_title">Recent Posts</h6>
                         <ul class="recent_posts_list">
                         
-                        <?php 
+                        <?php $is_buttrec=is_cuswid('is_buttrec');
                                         foreach ($is_buttrec->result() as $row){
                                             if(file_exists($row->imgheader)){
                                                 $image = $row->imgheader;
@@ -69,7 +75,7 @@
                             }
                                     ;?>
                         </ul>
-                        <a href="#" class="arrow_button full_width">
+                        <a href="<?=site_url("recent")?>" class="arrow_button full_width">
                             <span>
                                 <i class="ico-arrow-forward"></i>
                                 <span>Read More Posts</span>
@@ -84,6 +90,7 @@
                         <h6 class="footer_title">Cloud Tags</h6>
                         <div class="tagcloud clearfix">
                          <?php 
+                            $is_tag=is_cuswid('is_tag');
                             $total = 0;
                             foreach ($is_tag->result() as $row){
                             echo '<a href="'.site_url('tag/'.$row->slg_t).'"><span class="tag">'.$row->nm_t.'</span></a>';
@@ -129,13 +136,14 @@
                 
                 <div class="col-md-3">
                     <div class="footer_row">
-                        <h6 class="footer_title">Best Author</h6>
+                        <h6 class="footer_title">About Me</h6>
                         <div class="about_author clearfix">
-                            <a href="#" class="about_author_link">
-                                <img src="assets/images/clients/team2-medium.jpg" alt="Author Name">
-                                <span>John Doe</span>
-                            </a>
-                            <div class="social_media clearfix">
+                        <?php   $is_me=is_cuswid('');
+                                foreach ($is_me->result() as $row) {
+                                    echo '<a href="'.site_url("about-me").'" class="about_author_link">
+                                        <img src="'.base_url($row->img).'" alt="'.$row->nm_user.'" style="height=100px;width=100px;">
+                                        <span>'.$row->nm_user.'</span>
+                                <div class="social_media clearfix">
                                 <a class="twitter" target="_blank" href="#">
                                     <i class="ico-twitter4"></i>
                                 </a>
@@ -148,16 +156,11 @@
                                 <a class="linkedin" target="_blank" href="#">
                                     <i class="ico-linkedin3"></i>
                                 </a>
-                            </div>
+                            </div>';
+                                }
+
+                        ?>
                         </div>
-                    </div>
-                    
-                    <div class="footer_row">
-                        <h6 class="footer_title">Custom Video</h6>
-                        <a class="hm_vid_con popup-vimeo" href="http://vimeo.com/29193046">
-                            <span class="vid_icon"><i class="ico-play5"></i></span>
-                            <img alt="Video Title" src="assets/images/blog/blog5.jpg">
-                        </a>
                     </div>
                 </div><!-- Grid -->
             </div>
