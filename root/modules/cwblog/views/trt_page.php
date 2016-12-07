@@ -10,7 +10,9 @@
             <div class="content_spacer clearfix">
                 <div class="content_block col-md-9 f_left">
                     <div class="hm_blog_list clearfix">
-                       <?php foreach ($view_cont->result() as $row){
+                       <?php 
+                       //echo $view_cont()->num_rows();
+                       foreach ($view_cont->result() as $row){
                         if(file_exists($row->imgheader)){
                                         $image = $row->imgheader;
                                     }else{
@@ -31,13 +33,13 @@
                                         <a href="#" class="expand_image"><i class="ico-maximize"></i></a>
                                         <a href="#" class="icon_link"><i class="ico-link3"></i></a>
                                     </div>
-                                    <a href="'.$image.'" class="feature_inner_ling" data-rel="magnific-popup">
-                                        <img src="'.$image.'" alt="Post Title">
+                                    <a href="'.base_url($image).'" class="feature_inner_ling" data-rel="magnific-popup">
+                                        <img src="'.base_url($image).'" alt="Post Title">
                                     </a>
                                 </div>
                             </div>
                             <div class="blog_grid_con">
-                                <h6 class="title"><a href="'.site_url('page/'.$row->slug).'">'.$row->title.'</a></h6>
+                                <h6 class="title"><a href="'.site_url('read/'.$row->slug).'">'.$row->title.'</a></h6>
                                 <span class="meta">
                                     <span class="meta_part">
                                         <a href="#">
@@ -59,7 +61,7 @@
                                     </span>
                                 </span>
                                 <p class="desc">'.$text.'</p>
-                                <a class="btn_a" href="'.site_url('page/'.$row->slug).'">
+                                <a class="btn_a" href="'.site_url('read/'.$row->slug).'">
                                     <span>
                                         <i class="in_left ico-angle-right"></i>
                                         <span>Details</span>

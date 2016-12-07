@@ -61,8 +61,8 @@
             <div class="content">
                 <div id="logo">
                     <a href="index.html">
-                        <img class="logo_dark" src="assets/images/logo-dark.png" alt="Enar Logo">
-                        <img class="logo_light" src="assets/images/logo-light.png" alt="Enar Logo">
+                        <img class="logo_dark" src="<?=base_url('assets/images/logo-dark.png')?>" alt="Enar Logo">
+                        <img class="logo_light" src="<?=base_url('assets/images/logo-light.png')?>" alt="Enar Logo">
                     </a>
                 </div>
                                 

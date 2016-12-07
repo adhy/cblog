@@ -36,15 +36,22 @@ class Mrtcwb_template extends CI_Model {
             'per_page'              => $data['uri'],
                 'use_page_numbers'      => TRUE,
                 'display_pages' => TRUE,
-            'next_link'             => 'Newer &rarr;',
-            'next_tag_open'         => '<li class="next_pagination">',
-            'next_tag_close'        => '</li>',
-            'prev_link'             => '&larr; Older',
-                'prev_tag_open'         => '<li class="prev_pagination">',
-                'prev_tag_close'        => '</li>',
+            'first_url'             => $base_url.'.html',
+            'num_tag_open'             => ' <li>',
+            'num_tag_close'             => ' </li>',
+            'cur_tag_open'             => ' <li class="active"><a href="">',
+            'cur_tag_close'             => ' </a></li>',
+            'first_link'             => 'Newer &rarr;',
+            'first_tag_open'         => '<li class="next_pagination">',
+            'first_tag_close'        => '</li>',
+            'last_link'             => '&larr; Older',
+                'last_tag_open'         => '<li class="prev_pagination">',
+                'last_tag_close'        => '</li>',
                 'full_tag_open'         => '<ul class="clearfix">',
                 'full_tag_close'        => '</ul>',
-                'suffix'                => '.html'
+                'suffix'                => '.html',
+                'next_link'                => '',
+                'prev_link'                => ''
         );
 
         $this->pagination->initialize($config);
@@ -72,7 +79,7 @@ class Mrtcwb_template extends CI_Model {
         //$this->db->join('cb_tags','cb_tagsrelation.id_cont=cb_tags.id');
         $this->db->order_by("cb_contents.c_date",'DESC');
         $this->db->group_by("cb_tagsrelation.id");
-        $this->db->limit(10);
+        $this->db->limit(4);
         return $this->db->get('cb_contents');
     }
     /*function is_buttrec() { //penggunaan tag
@@ -91,6 +98,7 @@ class Mrtcwb_template extends CI_Model {
         $this->db->join('cb_categories','cb_categories.id=cb_contents.id_cat');
         $this->db->where('cb_contents.status','1');
         $this->db->order_by("cb_contents.c_date",'DESC');
+        $this->db->limit(4);
         //$this->db->group_by("cb_tagsrelation.id_cont");
         return $this->db->get('cb_contents');
     }
@@ -98,7 +106,7 @@ class Mrtcwb_template extends CI_Model {
         $this->db->select('*');
         $this->db->where('status','1');
         $this->db->order_by("views",'DESC');
-        $this->db->limit(10);
+        $this->db->limit(4);
         return $this->db->get('cb_contents');
     }
     function is_navrek($parent=0,$hasil){

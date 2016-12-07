@@ -69,7 +69,7 @@ class CI_Pagination {
 	 *
 	 * @var	string
 	 */
-	protected $suffix = '';
+	protected $suffix = '.html';
 
 	/**
 	 * Total number of items

@@ -8,20 +8,20 @@ class Cwblog extends MX_Controller {
         parent::__construct();
         //$this->data['is_buttrectag']= $this->template->is_footrectag();
     }
-	public function index($num1=0){
-		$data['limit']=1;
-		$data['offset']=$num1;
-		if (is_null($data['offset']) || empty($data['offset'])){
-            $data['offset'] = 0;
+	public function index(){
+		$this->data['limit']=2;
+		$this->data['offset']=$this->uri->segment(2);
+		if (is_null($this->data['offset']) || empty($this->data['offset'])){
+            $this->data['offset'] = 0;
         }
-        /*else{
-            $data['offset'] = ( $data['offset'] * $data['limit']) - $data['limit'];
-        }*/
-        $data['uri'] = 1;
-		$this->data['view_cont']	=	$this->template->cw_home_limit($data);
+        else{
+            $this->data['offset'] = ( $this->data['offset'] * $this->data['limit']) - $this->data['limit'];
+        }
+        $this->data['uri'] = 2;
+		$this->data['view_cont']	=	$this->template->cw_home_limit($this->data);
 		if($this->data['view_cont']->num_rows()>0) {
-			$data['jumlah_cat'] = $this->template->is_sum_home($data);
-			$this->data['pager_links'] = $this->template->paging(base_url('page/'),$data);
+			$this->data['jumlah_cat'] = $this->template->is_sum_home($this->data);
+			$this->data['pager_links'] = $this->template->paging(base_url('page/'),$this->data);
 		}	
 		$this->data['css_topp']=$this->template->css_toppub();
 		$view='cwblog/trt_page';
