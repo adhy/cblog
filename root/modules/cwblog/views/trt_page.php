@@ -10,6 +10,17 @@
             <div class="content_spacer clearfix">
                 <div class="content_block col-md-9 f_left">
                     <div class="hm_blog_list clearfix">
+                       <?php foreach ($view_cont->result() as $row){
+                        if(file_exists($row->imgheader)){
+                                        $image = $row->imgheader;
+                                    }else{
+                                        $image = "assets/img/gimg_not_available.jpg";
+                                    }
+                                     $row->c_date = '%Y/%m/%d';
+                                     $time = time();
+                                     $rewat= mdate($row->c_date, $time);
+                                     $text= word_limiter($row->content,5);
+                        echo '
                         <div class="blog_grid_block clearfix">
                             <div class="feature_inner">
                                 <!-- <a href="#" class="blog_list_format">
@@ -20,35 +31,35 @@
                                         <a href="#" class="expand_image"><i class="ico-maximize"></i></a>
                                         <a href="#" class="icon_link"><i class="ico-link3"></i></a>
                                     </div>
-                                    <a href="assets/images/blog/blog4.jpg" class="feature_inner_ling" data-rel="magnific-popup">
-                                        <img src="assets/images/blog/blog4.jpg" alt="Post Title">
+                                    <a href="'.$image.'" class="feature_inner_ling" data-rel="magnific-popup">
+                                        <img src="'.$image.'" alt="Post Title">
                                     </a>
                                 </div>
                             </div>
                             <div class="blog_grid_con">
-                                <h6 class="title"><a href="#">Fly Into The Future</a></h6>
+                                <h6 class="title"><a href="'.site_url('page/'.$row->slug).'">'.$row->title.'</a></h6>
                                 <span class="meta">
                                     <span class="meta_part">
                                         <a href="#">
                                             <i class="ico-clock7"></i>
-                                            <span>April 15, 2015</span>
+                                            <span>'.$rewat.'</span>
                                         </a>
                                     </span>
                                     <span class="meta_part">
                                         <i class="ico-folder-open-o"></i>
                                         <span>
-                                            <a href="#">Photography</a>
+                                            <a href="#">'.$row->nm_c.'</a>
                                         </span>
                                     </span>
                                     <span class="meta_part">
                                         <a href="#">
                                             <i class="ico-user5"></i>
-                                            <span>John Doe</span>
+                                            <span>'.$row->nm_user.'</span>
                                         </a>
                                     </span>
                                 </span>
-                                <p class="desc">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour.</p>
-                                <a class="btn_a" href="#">
+                                <p class="desc">'.$text.'</p>
+                                <a class="btn_a" href="'.site_url('page/'.$row->slug).'">
                                     <span>
                                         <i class="in_left ico-angle-right"></i>
                                         <span>Details</span>
@@ -56,20 +67,24 @@
                                     </span>
                                 </a>
                             </div>
-                        </div>
-                
+                        </div>';
+                    }
+                ?>
+
+
                     </div>
                     <!-- End blog List -->
         
                     <!-- Pagination -->
                     <div id="pagination" class="pagination">
-                        <ul class="clearfix">
+                    <?=$pager_links?>
+                        <!--<ul class="clearfix">
                             <li class="prev_pagination"><a href="#"><i class="ico-arrow-left4"></i></a></li>
                             <li class="active"><a href="#">1</a></li>
                             <li><a href="#">2</a></li>
                             <li><a href="#">3</a></li>
                             <li class="next_pagination"><a href="#"><i class="ico-arrow-right4"></i></a></li>
-                        </ul>
+                        </ul>-->
                     </div>
                     <!-- End Pagination -->
                 </div>

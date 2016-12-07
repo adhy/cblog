@@ -37,8 +37,8 @@
 );
 echo meta($meta);?>
 
-    <?=link_tag('assets/images/favicon/favicon.ico', 'shortcut icon', 'image/x-icon')?>    
-    <?php foreach($css_topp as $urlcss){echo link_tag('assets/css/'.$urlcss);}?>
+    <link href="<?=base_url('assets/images/favicon/favicon.ico')?>" rel="shortcut icon" type="image/ico" />  
+    <?php foreach($css_topp as $urlcss){echo '<link href="'.base_url('assets/css/'.$urlcss).'" rel="stylesheet" type="text/css" />';}?>
 
 </head>
 

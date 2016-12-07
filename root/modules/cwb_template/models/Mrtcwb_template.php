@@ -8,6 +8,48 @@ class Mrtcwb_template extends CI_Model {
 		parent::__constuct();  // Call the Model constructor 
 		loader::database();    // Connect to current database setting.froco
 	}
+    function cw_home_limit($data){
+        $this->db->select('*'); 
+        $this->db->join('cb_categories','cb_categories.id = cb_contents.id_cat','inner');
+        $this->db->join('cb_profile','cb_profile.id_user = cb_contents.creator','inner');     
+        $this->db->where('cb_contents.status','1');
+        $this->db->limit($data['limit'],$data['offset']);
+        $this->db->order_by('cb_contents.id', 'DESC');   
+        $result = $this->db->get('cb_contents');;
+        return $result;
+    }
+    public function is_sum_home(){
+        $this->db->select('*'); 
+        $this->db->from('cb_contents');
+        $this->db->join('cb_categories','cb_categories.id = cb_contents.id_cat','inner');
+        $this->db->join('cb_profile','cb_profile.id_user = cb_contents.creator','inner');     
+        $this->db->where('cb_contents.status','1');
+        $result=$this->db->count_all_results();
+        return $result;
+    }
+    function paging($base_url,$data){   
+       $this->load->library('pagination');
+        $config = array(
+            'uri_segment'           => $data['uri'],
+            'base_url'              => $base_url,
+            'total_rows'             => $data['jumlah_cat'],
+            'per_page'              => $data['uri'],
+                'use_page_numbers'      => TRUE,
+                'display_pages' => TRUE,
+            'next_link'             => 'Newer &rarr;',
+            'next_tag_open'         => '<li class="next_pagination">',
+            'next_tag_close'        => '</li>',
+            'prev_link'             => '&larr; Older',
+                'prev_tag_open'         => '<li class="prev_pagination">',
+                'prev_tag_close'        => '</li>',
+                'full_tag_open'         => '<ul class="clearfix">',
+                'full_tag_close'        => '</ul>',
+                'suffix'                => '.html'
+        );
+
+        $this->pagination->initialize($config);
+        return $this->pagination->create_links();
+    }   
     function is_me() {
         $this->db->select('*');
         $this->db->join('cb_profile','cb_profile.id_user=cb_log.id_user');
