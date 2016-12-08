@@ -1,5 +1,5 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-class Cwblog extends MX_Controller {
+class Cwblog_categories extends MX_Controller {
 	public $data = array(
 			'title'     => 'CL-System || ',
 			'author'    => 'ADW',
