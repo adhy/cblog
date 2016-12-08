@@ -1,6 +1,3 @@
 <?php
-$route['recent'] 	= "cwblog/is_recent";
-$route['page'] 	= "cwblog/index";
-$route['page/(:any)'] 	= "cwblog/index";
-$route['recent/(:any)'] 	= "cwblog/is_recent";
+$route['(:any)/(:any)/(:any)/(:any)'] 	= "cwblog_search/index";
 ?>

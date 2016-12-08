@@ -1,17 +1,41 @@
 
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Mrtcwb_template extends CI_Model {
+class Mrtcwb_search extends CI_Model {
     var $parent = '0';
     var $hasil  = '';
+    var $table = $this->uri->segment(1);
 	function __constuct(){
 		parent::__constuct();  // Call the Model constructor 
 		loader::database();    // Connect to current database setting.froco
 	}
     function cw_home_limit($data){
+        if($table=='tags'){
+            $table='cb_tags';
+            $slug='slg_t';
+        }elseif ($table=='category') {
+            $table=='cb_categories'
+            $slug='slg_c';
+        }else{
+            $this->cw_home_limitsearch($data);
+        }
         $this->db->select('*'); 
-        $this->db->join('cb_categories','cb_categories.id = cb_contents.id_cat','inner');
+        $this->db->join($table,$table.'.id = cb_contents.id_cat','inner');
         $this->db->join('cb_profile','cb_profile.id_user = cb_contents.creator','inner');     
+        $this->db->where($table'.'$slug,$data['search']);
+        $this->db->where('cb_contents.status','1');
+        $this->db->limit($data['limit'],$data['offset']);
+        $this->db->order_by('cb_contents.id', 'DESC');   
+        $result = $this->db->get('cb_contents');;
+        return $result;
+    }
+    function cw_home_limitsearch($data){
+        $table=='categories';
+        $slug='content';
+        $this->db->select('*'); 
+        $this->db->join($table,$table.'.id = cb_contents.id_cat','inner');
+        $this->db->join('cb_profile','cb_profile.id_user = cb_contents.creator','inner');     
+        $this->db->like('cb_contents.content',$data['search']);
         $this->db->where('cb_contents.status','1');
         $this->db->limit($data['limit'],$data['offset']);
         $this->db->order_by('cb_contents.id', 'DESC');   
@@ -19,6 +43,13 @@ class Mrtcwb_template extends CI_Model {
         return $result;
     }
     public function is_sum_home(){
+        if($table=='tags'){
+            $slug='slg_t';
+        }elseif ($table=='category') {
+            $slug='slg_c';
+        }else{
+            $this->is_sum_homesearch($data);
+        }
         $this->db->select('*'); 
         $this->db->from('cb_contents');
         $this->db->join('cb_categories','cb_categories.id = cb_contents.id_cat','inner');
