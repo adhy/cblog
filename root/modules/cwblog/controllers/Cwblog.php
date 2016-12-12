@@ -29,7 +29,7 @@ class Cwblog extends MX_Controller {
 	}
 	function is_recent(){
 		$this->data['limit']=2;
-		$this->data['offset']=$this->uri->segment(2);
+		$this->data['offset']=$this->uri->segment(3);
 		if (is_null($this->data['offset']) || empty($this->data['offset'])){
             $this->data['offset'] = 0;
         }
@@ -40,7 +40,7 @@ class Cwblog extends MX_Controller {
 		$this->data['view_cont']	=	$this->template->cw_home_limit($this->data);
 		if($this->data['view_cont']->num_rows()>0) {
 			$this->data['jumlah_cat'] = $this->template->is_sum_home($this->data);
-			$this->data['pager_links'] = $this->template->paging(base_url('recent/'),$this->data);
+			$this->data['pager_links'] = $this->template->paging(base_url('recent/page/'),$this->data);
 		}	
 		$this->data['css_topp']=$this->template->css_toppub();
 		$view='cwblog/trt_page';
