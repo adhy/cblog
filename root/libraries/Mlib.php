@@ -154,6 +154,25 @@ class Mlib {
         }
         return $msg;
     }
+    function image_re(){
+        $script='     <script type="text/javascript">
+        $(document).ready(function(){ 
+        var oldimg = $(\'div.blog_grid_con p img\');
+        var newimg = $(\'div.blog_grid_con p img\');
+        $.each(oldimg, function(index){
+            if(index == newimg.length)
+                return false;
+            $(newimg[index]).replaceWith(\'<div class="feature_inner"><div class="feature_inner_corners"><div class="feature_inner_btns"><a href="#" class="expand_image"><i class="ico-maximize"></i></a><a href="#" class="icon_link"><i class="ico-link3"></i></a></div><a href="\'+$(this).attr(\'src\')+\'" class="feature_inner_ling" data-rel="magnific-popup"><img src="\'+$(this).attr(\'src\')+\'" alt="Post Title"></a></div></div>\');
+        });
+        var holdimg = $(\'div.post-1 img\');
+        var hnewimg = $(\'div.post-1 img\');
+        $.each(holdimg, function(index){
+            if(index == hnewimg.length)
+                return false;
+            $(hnewimg[index]).replaceWith(\'<div class="feature_inner"><div class="feature_inner_corners"><div class="feature_inner_btns"><a href="#" class="expand_image"><i class="ico-maximize"></i></a><a href="#" class="icon_link"><i class="ico-link3"></i></a></div><a href="\'+$(this).attr(\'src\')+\'" class="feature_inner_ling" data-rel="magnific-popup"><img src="\'+$(this).attr(\'src\')+\'" alt="Post Title"></a></div></div>\');
+        });});</script>';
+        return $script;
+    }
 
 }
 ?>

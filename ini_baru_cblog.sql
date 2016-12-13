@@ -1,9 +1,9 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.2
+-- version 4.5.1
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: Dec 04, 2016 at 07:27 
+-- Host: 127.0.0.1
+-- Generation Time: Dec 13, 2016 at 09:55 AM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 7.0.9
 
@@ -116,7 +116,39 @@ INSERT INTO `cb_contents` (`id`, `imgheader`, `title`, `slug`, `meta_content`, `
 (1, '/assets/img/style_abstract_dragon_74494_2560x1600.jpg', 'conaltmasuk = coab   + sa  coba    () coba lagi **&()manusia ++ && lagi', 'conaltmasuk-coab-sa-coba-coba-lagi-manusia-lagi', 'masuk', '<p>masuk</p>', '2016-11-16 14:39:42', '2016-12-03 15:48:45', '0', '1', 1, 9),
 (2, '/assets/img/patterns_lines_light_bright_glow_85560_2560x1600.jpg', 'gsaajha 780 *&* ok', 'gsaajha-780-ok', 'asa', '<p>asw</p>', '2016-09-26 15:48:23', '2016-12-03 16:09:53', '0', '1', 1, 8),
 (3, '', 'uue)@#_jwiue)(*$&)$@we', 'uue-jwiue-we', 'sds', '', '2016-09-26 17:08:31', '2016-12-03 16:10:11', '0', '1', 1, 9),
-(4, '/assets/img/style_abstract_dragon_74494_2560x1600.jpg', 'LL~!*oo \\\\\\''', 'll-oo', 'sd', '<p>csc sf<img src=\\"http://localhost/cblog/assets/public/img/angel_wings_white_black_girl_3563_2560x1600.jpg?1477576545639\\" alt=\\"km jh\\" width=\\"560\\" height=\\"350\\" /></p>', '2016-10-27 15:56:04', '2016-12-03 16:10:20', '0', '1', 1, 9);
+(4, '/assets/img/style_abstract_dragon_74494_2560x1600.jpg', 'LL~!*oo \\\\\\''', 'll-oo', 'sd', '<p>csc sf<img src=\\"http://localhost/cblog/assets/public/img/angel_wings_white_black_girl_3563_2560x1600.jpg?1477576545639\\" alt=\\"km jh\\" width=\\"560\\" height=\\"350\\" /></p>', '2016-10-27 15:56:04', '2016-12-03 16:10:20', '0', '1', 1, 9),
+(5, '/assets/img/profile/anonymous.png', 'ini page user pertama', 'ini-page-user-pertama', 'Menampilkan input dari textarea menggunakan javascript/jquery, jika secara langsung maka enter tidak akan tampak. Sehingga hanya akan seperti spasi saja. Untuk dapat menampilkannya maka perlu membuat ', '<p>Menampilkan input dari textarea menggunakan javascript/jquery, jika secara langsung maka enter tidak akan tampak. Sehingga hanya akan seperti spasi saja. Untuk dapat menampilkannya maka perlu membuat sebuah fungsi nl2br seperti halnya pada pemrograman PHP.</p>\\r\\n<p><img src=\\"http://localhost/cblog/assets/img/profile/stock-photo-176222859.jpg?1481616281746\\" alt=\\"\\" width=\\"398\\" height=\\"224\\" /></p>\\r\\n<p>&nbsp;i don\\''t now what you want ?</p>\\r\\n<p style=\\"text-align: justify;\\">Menampilkan input dari textarea menggunakan javascript/jquery, jika secara langsung maka enter tidak akan tampak. Sehingga hanya akan seperti spasi saja. Untuk dapat menampilkannya maka perlu membuat sebuah fungsi nl2br seperti halnya pada pemrograman PHP.</p>\\r\\n<p><img src=\\"http://localhost/cblog/assets/img/profile/stock-photo-185952297.jpg?1481616342191\\" alt=\\"\\" width=\\"200\\" height=\\"125\\" /></p>', '2016-12-13 09:06:27', '2016-12-13 08:06:40', '0', '1', 1, 9),
+(6, '/assets/img/patterns_lines_light_bright_glow_85560_2560x1600.jpg', '2', 'gsaajha-780-ok', 'asa', '<p>asw</p>', '2016-09-26 15:48:23', '2016-12-03 16:09:53', '0', '1', 1, 8),
+(7, '', '3', 'uue-jwiue-we', 'sds', '', '2016-09-26 17:08:31', '2016-12-03 16:10:11', '0', '1', 1, 9),
+(8, '/assets/img/style_abstract_dragon_74494_2560x1600.jpg', '4', 'll-oo', 'sd', '<p>csc sf<img src=\\"http://localhost/cblog/assets/public/img/angel_wings_white_black_girl_3563_2560x1600.jpg?1477576545639\\" alt=\\"km jh\\" width=\\"560\\" height=\\"350\\" /></p>', '2016-10-27 15:56:04', '2016-12-03 16:10:20', '0', '1', 1, 9),
+(9, '/assets/img/style_abstract_dragon_74494_2560x1600.jpg', '5', 'conaltmasuk-coab-sa-coba-coba-lagi-manusia-lagi', 'masuk', '<p>masuk</p>', '2016-11-16 14:39:42', '2016-12-03 15:48:45', '0', '1', 1, 9),
+(10, '/assets/img/patterns_lines_light_bright_glow_85560_2560x1600.jpg', '6', 'gsaajha-780-ok', 'asa', '<p>asw</p>', '2016-09-26 15:48:23', '2016-12-03 16:09:53', '0', '1', 1, 8),
+(11, '', '7', 'uue-jwiue-we', 'sds', '', '2016-09-26 17:08:31', '2016-12-03 16:10:11', '0', '1', 1, 9),
+(12, '/assets/img/style_abstract_dragon_74494_2560x1600.jpg', '8', 'll-oo', 'sd', '<p>csc sf<img src=\\"http://localhost/cblog/assets/public/img/angel_wings_white_black_girl_3563_2560x1600.jpg?1477576545639\\" alt=\\"km jh\\" width=\\"560\\" height=\\"350\\" /></p>', '2016-10-27 15:56:04', '2016-12-03 16:10:20', '0', '1', 1, 9),
+(13, '/assets/img/style_abstract_dragon_74494_2560x1600.jpg', '9', 'conaltmasuk-coab-sa-coba-coba-lagi-manusia-lagi', 'masuk', '<p>masuk</p>', '2016-11-16 14:39:42', '2016-12-03 15:48:45', '10', '1', 1, 9),
+(14, '/assets/img/patterns_lines_light_bright_glow_85560_2560x1600.jpg', '11', 'gsaajha-780-ok', 'asa', '<p>asw</p>', '2016-09-26 15:48:23', '2016-12-03 16:09:53', '0', '1', 1, 8),
+(15, '', '12', 'uue-jwiue-we', 'sds', '', '2016-09-26 17:08:31', '2016-12-03 16:10:11', '0', '1', 1, 9),
+(16, '/assets/img/style_abstract_dragon_74494_2560x1600.jpg', '13', 'll-oo', 'sd', '<p>csc sf<img src=\\"http://localhost/cblog/assets/public/img/angel_wings_white_black_girl_3563_2560x1600.jpg?1477576545639\\" alt=\\"km jh\\" width=\\"560\\" height=\\"350\\" /></p>', '2016-10-27 15:56:04', '2016-12-03 16:10:20', '0', '1', 1, 9),
+(17, '/assets/img/style_abstract_dragon_74494_2560x1600.jpg', '14', 'conaltmasuk-coab-sa-coba-coba-lagi-manusia-lagi', 'masuk', '<p>masuk</p>', '2016-11-16 14:39:42', '2016-12-03 15:48:45', '0', '1', 1, 9),
+(18, '/assets/img/patterns_lines_light_bright_glow_85560_2560x1600.jpg', '15', 'gsaajha-780-ok', 'asa', '<p>asw</p>', '2016-09-26 15:48:23', '2016-12-03 16:09:53', '0', '1', 1, 8),
+(19, '', '16', 'uue-jwiue-we', 'sds', '', '2016-09-26 17:08:31', '2016-12-03 16:10:11', '0', '1', 1, 9),
+(20, '/assets/img/style_abstract_dragon_74494_2560x1600.jpg', '17', 'll-oo', 'sd', '<p>csc sf<img src=\\"http://localhost/cblog/assets/public/img/angel_wings_white_black_girl_3563_2560x1600.jpg?1477576545639\\" alt=\\"km jh\\" width=\\"560\\" height=\\"350\\" /></p>', '2016-10-27 15:56:04', '2016-12-03 16:10:20', '0', '1', 1, 9),
+(21, '/assets/img/style_abstract_dragon_74494_2560x1600.jpg', '1', 'conaltmasuk-coab-sa-coba-coba-lagi-manusia-lagi', 'masuk', '<p>masuk</p>', '2016-11-16 14:39:42', '2016-12-03 15:48:45', '0', '1', 1, 9),
+(22, '/assets/img/patterns_lines_light_bright_glow_85560_2560x1600.jpg', '2', 'gsaajha-780-ok', 'asa', '<p>asw</p>', '2016-09-26 15:48:23', '2016-12-03 16:09:53', '0', '1', 1, 8),
+(23, '', '3', 'uue-jwiue-we', 'sds', '', '2016-09-26 17:08:31', '2016-12-03 16:10:11', '0', '1', 1, 9),
+(24, '/assets/img/style_abstract_dragon_74494_2560x1600.jpg', '4', 'll-oo', 'sd', '<p>csc sf<img src=\\"http://localhost/cblog/assets/public/img/angel_wings_white_black_girl_3563_2560x1600.jpg?1477576545639\\" alt=\\"km jh\\" width=\\"560\\" height=\\"350\\" /></p>', '2016-10-27 15:56:04', '2016-12-03 16:10:20', '0', '1', 1, 9),
+(25, '/assets/img/style_abstract_dragon_74494_2560x1600.jpg', '5', 'conaltmasuk-coab-sa-coba-coba-lagi-manusia-lagi', 'masuk', '<p>masuk</p>', '2016-11-16 14:39:42', '2016-12-03 15:48:45', '0', '1', 1, 9),
+(26, '/assets/img/patterns_lines_light_bright_glow_85560_2560x1600.jpg', '6', 'gsaajha-780-ok', 'asa', '<p>asw</p>', '2016-09-26 15:48:23', '2016-12-03 16:09:53', '0', '1', 1, 8),
+(27, '', '7', 'uue-jwiue-we', 'sds', '', '2016-09-26 17:08:31', '2016-12-03 16:10:11', '0', '1', 1, 9),
+(28, '/assets/img/style_abstract_dragon_74494_2560x1600.jpg', '8', 'll-oo', 'sd', '<p>csc sf<img src=\\"http://localhost/cblog/assets/public/img/angel_wings_white_black_girl_3563_2560x1600.jpg?1477576545639\\" alt=\\"km jh\\" width=\\"560\\" height=\\"350\\" /></p>', '2016-10-27 15:56:04', '2016-12-03 16:10:20', '0', '1', 1, 9),
+(29, '/assets/img/style_abstract_dragon_74494_2560x1600.jpg', '9', 'conaltmasuk-coab-sa-coba-coba-lagi-manusia-lagi', 'masuk', '<p>masuk</p>', '2016-11-16 14:39:42', '2016-12-03 15:48:45', '10', '1', 1, 9),
+(30, '/assets/img/patterns_lines_light_bright_glow_85560_2560x1600.jpg', '11', 'gsaajha-780-ok', 'asa', '<p>asw</p>', '2016-09-26 15:48:23', '2016-12-03 16:09:53', '0', '1', 1, 8),
+(31, '', '12', 'uue-jwiue-we', 'sds', '', '2016-09-26 17:08:31', '2016-12-03 16:10:11', '0', '1', 1, 9),
+(32, '/assets/img/style_abstract_dragon_74494_2560x1600.jpg', '13', 'll-oo', 'sd', '<p>csc sf<img src=\\"http://localhost/cblog/assets/public/img/angel_wings_white_black_girl_3563_2560x1600.jpg?1477576545639\\" alt=\\"km jh\\" width=\\"560\\" height=\\"350\\" /></p>', '2016-10-27 15:56:04', '2016-12-03 16:10:20', '0', '1', 1, 9),
+(33, '/assets/img/style_abstract_dragon_74494_2560x1600.jpg', '14', 'conaltmasuk-coab-sa-coba-coba-lagi-manusia-lagi', 'masuk', '<p>masuk</p>', '2016-11-16 14:39:42', '2016-12-03 15:48:45', '0', '1', 1, 9),
+(34, '/assets/img/patterns_lines_light_bright_glow_85560_2560x1600.jpg', '15', 'gsaajha-780-ok', 'asa', '<p>asw</p>', '2016-09-26 15:48:23', '2016-12-03 16:09:53', '0', '1', 1, 8),
+(35, '', '16', 'uue-jwiue-we', 'sds', '', '2016-09-26 17:08:31', '2016-12-03 16:10:11', '0', '1', 1, 9),
+(36, '/assets/img/style_abstract_dragon_74494_2560x1600.jpg', '17', 'll-oo', 'sd', '<p>csc sf<img src=\\"http://localhost/cblog/assets/public/img/angel_wings_white_black_girl_3563_2560x1600.jpg?1477576545639\\" alt=\\"km jh\\" width=\\"560\\" height=\\"350\\" /></p>', '2016-10-27 15:56:04', '2016-12-03 16:10:20', '0', '1', 1, 9);
 
 -- --------------------------------------------------------
 
@@ -291,7 +323,40 @@ INSERT INTO `cb_tagsrelation` (`id`, `id_tag`, `id_cont`, `c_date`, `u_date`, `s
 (45, 9, 3, '2016-09-26 17:08:32', '2016-12-02 16:19:46', '1'),
 (48, 9, 4, '2016-10-27 15:56:05', '2016-12-01 15:03:24', '1'),
 (49, 17, 1, '2016-11-16 14:39:42', '2016-12-02 16:46:27', '1'),
-(50, 10, 1, '2016-11-16 14:39:43', '2016-12-02 16:46:27', '1');
+(50, 10, 1, '2016-11-16 14:39:43', '2016-12-02 16:46:27', '1'),
+(52, 17, 6, '2016-09-26 17:08:32', '2016-12-02 16:38:40', '1'),
+(53, 9, 7, '2016-09-26 17:08:32', '2016-12-02 16:19:46', '1'),
+(54, 9, 8, '2016-10-27 15:56:05', '2016-12-01 15:03:24', '1'),
+(55, 17, 9, '2016-11-16 14:39:42', '2016-12-02 16:46:27', '1'),
+(56, 10, 10, '2016-11-16 14:39:43', '2016-12-02 16:46:27', '1'),
+(57, 9, 11, '2016-09-26 15:48:24', '2016-12-02 16:20:26', '1'),
+(58, 9, 12, '2016-09-26 17:08:32', '2016-12-02 16:38:40', '1'),
+(59, 9, 13, '2016-09-26 17:08:32', '2016-12-02 16:19:46', '1'),
+(60, 9, 14, '2016-10-27 15:56:05', '2016-12-01 15:03:24', '1'),
+(61, 9, 15, '2016-11-16 14:39:42', '2016-12-02 16:46:27', '1'),
+(62, 9, 16, '2016-11-16 14:39:43', '2016-12-02 16:46:27', '1'),
+(63, 9, 17, '2016-09-26 15:48:24', '2016-12-02 16:20:26', '1'),
+(64, 9, 18, '2016-09-26 17:08:32', '2016-12-02 16:38:40', '1'),
+(65, 9, 19, '2016-09-26 17:08:32', '2016-12-02 16:19:46', '1'),
+(66, 9, 20, '2016-10-27 15:56:05', '2016-12-01 15:03:24', '1'),
+(67, 9, 21, '2016-11-16 14:39:42', '2016-12-02 16:46:27', '1'),
+(68, 9, 22, '2016-09-26 17:08:32', '2016-12-02 16:38:40', '1'),
+(69, 9, 23, '2016-09-26 17:08:32', '2016-12-02 16:19:46', '1'),
+(70, 9, 24, '2016-10-27 15:56:05', '2016-12-01 15:03:24', '1'),
+(71, 9, 25, '2016-11-16 14:39:42', '2016-12-02 16:46:27', '1'),
+(72, 9, 26, '2016-11-16 14:39:43', '2016-12-02 16:46:27', '1'),
+(73, 9, 27, '2016-09-26 15:48:24', '2016-12-02 16:20:26', '1'),
+(74, 9, 28, '2016-09-26 17:08:32', '2016-12-02 16:38:40', '1'),
+(75, 9, 29, '2016-09-26 17:08:32', '2016-12-02 16:19:46', '1'),
+(76, 9, 30, '2016-10-27 15:56:05', '2016-12-01 15:03:24', '1'),
+(77, 9, 31, '2016-11-16 14:39:42', '2016-12-02 16:46:27', '1'),
+(78, 9, 32, '2016-11-16 14:39:43', '2016-12-02 16:46:27', '1'),
+(79, 9, 33, '2016-09-26 17:08:32', '2016-12-02 16:19:46', '1'),
+(80, 9, 34, '2016-10-27 15:56:05', '2016-12-01 15:03:24', '1'),
+(81, 9, 35, '2016-11-16 14:39:42', '2016-12-02 16:46:27', '1'),
+(82, 9, 36, '2016-11-16 14:39:43', '2016-12-02 16:46:27', '1'),
+(83, 9, 5, '2016-12-13 09:06:27', '2016-12-13 08:06:40', '1'),
+(84, 17, 5, '2016-12-13 09:06:27', '2016-12-13 08:06:40', '1');
 
 -- --------------------------------------------------------
 
@@ -489,7 +554,7 @@ ALTER TABLE `cb_catrelation`
 -- AUTO_INCREMENT for table `cb_contents`
 --
 ALTER TABLE `cb_contents`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 --
 -- AUTO_INCREMENT for table `cb_img`
 --
@@ -524,7 +589,7 @@ ALTER TABLE `cb_tags`
 -- AUTO_INCREMENT for table `cb_tagsrelation`
 --
 ALTER TABLE `cb_tagsrelation`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
 --
 -- AUTO_INCREMENT for table `mailing`
 --

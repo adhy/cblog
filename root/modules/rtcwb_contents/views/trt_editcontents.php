@@ -53,7 +53,7 @@
                             <?php if($selcategories->num_rows()>0){
                                 foreach ($selcategories->result() as $rows){
                                     foreach($categories->result() as $rowc):?>
-                                    <option  value="<?php echo $rowc->id;?>"<?=$rows->id_c==$rowc->id ? ' selected="selected"' : '';?>><?php echo $rowc->nm_c; ?></option>
+                                    <option  value="<?php echo $rowc->id;?>"<?=$rows->id_cat==$rowc->id ? ' selected="selected"' : '';?>><?php echo $rowc->nm_c; ?></option>
                                    <?php endforeach;
                                 }
                             }else{
@@ -161,11 +161,4 @@
         <!-- /#page-wrapper -->
 
     </div>
-<<<<<<< HEAD
     <!-- /#wrapper -->
-    <script type="text/javascript">
-       
-    </script>
-=======
-    <!-- /#wrapper -->
->>>>>>> 55b7faa8bc1039d88cb10fd9d59963e4a5c177bd

@@ -196,6 +196,7 @@
 <script src="<?=base_url('assets/js/mediaelement-and-player.min.js')?>"></script>
 <script src="<?=base_url('assets/js/isotope.pkgd.min.js')?>"></script>
 <!-- this is where we put our custom functions -->
+<?php if(!empty($code)){echo $code;} ?>
 <script type="text/javascript" src="<?=base_url('assets/js/functions.js')?>"></script>
 </body>
 

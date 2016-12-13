@@ -49,26 +49,43 @@ class Mcwblog extends CI_Model {
         return $result;
     }
     function cw_tag_limit($data){
-        $this->db->select('cb_contents.id, cb_contents.title, cb_contents.slug, cb_contents.imgheader, cb_tagsrelation.id_cont, GROUP_CONCAT(cb_tagsrelation.slg_t) as idiot');
-        $this->db->from('cb_contents');
+        $this->db->select('*'); 
+        $this->db->join('cb_tags','cb_tagsrelation.id_tag = cb_tags.id','inner');
+        $this->db->join('cb_contents','cb_tagsrelation.id_cont = cb_contents.id','inner');
+        $this->db->join('cb_categories','cb_contents.id_cat = cb_categories.id','inner');  
+        $this->db->join('cb_profile','cb_contents.creator = cb_profile.id_user','inner');     
         $this->db->where('cb_contents.status','1');
-        $this->db->join('cb_tagsrelation','cb_tagsrelation.id_cont=cb_contents.id');
-        //$this->db->join('cb_tags','cb_tagsrelation.id_cont=cb_tags.id');
-        $this->db->order_by("cb_contents.c_date",'DESC');
-        $this->db->group_by(" cb_tagsrelation.id_cont, cb_contents.id, cb_contents.title, cb_contents.slug, cb_contents.imgheader");
+        $this->db->where('cb_tags.slg_t',$data['is_c']);
         $this->db->limit($data['limit'],$data['offset']);
-        return $this->db->get();
+        $this->db->order_by('cb_contents.id', 'DESC');   
+        $result = $this->db->get('cb_tagsrelation');;
+        return $result;
     }
+
     function is_sum_tag($data){
-        $this->db->select('cb_contents.id, cb_contents.title, cb_contents.slug, cb_contents.imgheader, cb_tagsrelation.id_cont, GROUP_CONCAT(cb_tagsrelation.slg_t) as idiot');
-        $this->db->from('cb_contents');
+        $this->db->select('*'); 
+        $this->db->from('cb_tagsrelation');
+        $this->db->join('cb_tags','cb_tagsrelation.id_tag = cb_tags.id','inner');
+        $this->db->join('cb_contents','cb_tagsrelation.id_cont = cb_contents.id','inner');
+        $this->db->join('cb_categories','cb_contents.id_cat = cb_categories.id','inner');  
+        $this->db->join('cb_profile','cb_contents.creator = cb_profile.id_user','inner');     
         $this->db->where('cb_contents.status','1');
-        $this->db->join('cb_tagsrelation','cb_tagsrelation.id_cont=cb_contents.id');
-        //$this->db->join('cb_tags','cb_tagsrelation.id_cont=cb_tags.id');
-        $this->db->order_by("cb_contents.c_date",'DESC');
-        $this->db->group_by(" cb_tagsrelation.id_cont, cb_contents.id, cb_contents.title, cb_contents.slug, cb_contents.imgheader");
-        $this->db->limit($data['limit'],$data['offset']);
+        $this->db->where('cb_tags.slg_t',$data['is_c']); 
         $result=$this->db->count_all_results();
+        return $result;
+    } 
+
+    function is_reading($data){
+        $this->db->select('*'); 
+        $this->db->join('cb_tagsrelation','cb_tagsrelation.id_cont = cb_contents.id','inner');
+        $this->db->join('cb_tags','cb_tagsrelation.id_tag = cb_tags.id','inner');
+        $this->db->join('cb_profile','cb_contents.creator = cb_profile.id_user','inner');  
+        $this->db->join('cb_categories','cb_contents.id_cat = cb_categories.id','inner');     
+        $this->db->where('cb_contents.status','1');
+        $this->db->where('cb_contents.slug',$data['is_c']);
+        //$this->db->limit($data['limit'],$data['offset']);
+        $this->db->group_by('cb_contents.slug', 'DESC');   
+        $result = $this->db->get('cb_contents');;
         return $result;
     }
     function paging($base_url,$data){   

@@ -1,439 +1,384 @@
-<!-- Content Wrapper. Contains page content -->
-      <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
-        <section class="content-header">
-          <h1>
-            Dashboard
-            <small>Control panel</small>
-          </h1>
-          <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li class="active">Dashboard</li>
-          </ol>
-        </section>
-
-        <!-- Main content -->
-        <section class="content">
-          <!-- Small boxes (Stat box) -->
-          <div class="row">
-            <div class="col-lg-3 col-xs-6">
-              <!-- small box -->
-              <div class="small-box bg-aqua">
-                <div class="inner">
-                  <h3>150</h3>
-                  <p>New Orders</p>
-                </div>
-                <div class="icon">
-                  <i class="ion ion-bag"></i>
-                </div>
-                <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+  <!-- Our Blog Grids -->
+  <section class="content_section">
+    <div class="content">
+      <div class="internal_post_con clearfix">
+        <!-- All Content -->
+        <div class="content_block col-md-9 f_left">
+          <div class="hm_blog_full_list hm_blog_list clearfix">
+            <?php foreach ($view_cont->result() as $row){ 
+                  if(file_exists($row->imgheader)){
+                                        $image = $row->imgheader;
+                                    }else{
+                                        $image = "assets/img/gimg_not_available.jpg";
+                                    }
+                                     $row->c_date = '%Y/%m/%d';
+                                     $time = time();
+                                     $rewat= mdate($row->c_date, $time);
+                                     $content = str_replace('\"','"',$row->content);
+                                     $content = str_replace('\r',' ',$content);
+                                     $content = str_replace('\n',' ',$content);
+              ?>
+            <!-- Post Container -->
+            <div id="post-1" class="post-1 post type-post status-publish format-gallery has-post-thumbnail category-media tag-photos clearfix">
+              <div class="post_title_con">
+                <h6 class="title"><a href="#"><?=$row->title?></a></h6>
+                <span class="meta">
+                  <span class="meta_part">
+                    <a href="#">
+                      <i class="ico-clock7"></i>
+                      <span><?=$rewat?></span>
+                    </a>
+                  </span>
+                  <!--<span class="meta_part">
+                    <a href="#">
+                      <i class="ico-comment-o"></i>
+                      <span>34 Comments</span>
+                    </a>
+                  </span>-->
+                  <span class="meta_part">
+                    <i class="ico-folder-open-o"></i>
+                    <span>
+                      <a href="<?=site_url($row->slg_c)?>"><?=$row->nm_c?></a> <!--<a href="#">Tutorials</a>-->
+                    </span>
+                  </span>
+                  <span class="meta_part">
+                    <a href="<?=site_url('about')?>"ico-user5"></i>
+                      <span>John Doe</span>
+                    </a>
+                  </span>
+                </span>
               </div>
-            </div><!-- ./col -->
-            <div class="col-lg-3 col-xs-6">
-              <!-- small box -->
-              <div class="small-box bg-green">
-                <div class="inner">
-                  <h3>53<sup style="font-size: 20px">%</sup></h3>
-                  <p>Bounce Rate</p>
-                </div>
-                <div class="icon">
-                  <i class="ion ion-stats-bars"></i>
-                </div>
-                <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+  
+                    <img src="<?=base_url($image)?>" alt="Post Title">
+              <div class="blog_grid_con"><?=$content?>
+                
+                <!--<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris non laoreet dui. Morbi lacus massa, euismod ut turpis molestie, tristique sodales est. Integer sit amet mi id sapien tempor molestie in nec massa.</p>
+                <p>Fusce non ante sed lorem rutrum feugiat. Vestibulum pellentesque, purus ut dignissim consectetur, nulla erat ultrices purus, <img class="conimg" src="assets/images/bg4.jpg" alt="Post Title">ut consequat sem elit non sem. Morbi lacus massa, euismod ut turpis molestie, tristique sodales est. Integer sit amet mi id sapien tempor molestie in nec massa. Fusce non ante sed lorem rutrum feugiat.</p>
+                
+                <blockquote>
+                  <i class="ico-quote"></i>
+                  <span class="quote_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit Mauris non laoreet dui, Morbi lacus massa, euismod ut turpis molestie, tristique sodales est There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration.</span>
+                </blockquote>
+                <p>Lorem ipsum dolor sit amet, consectetur<img class="conimg" src="assets/images/bg3.jpg" alt="Post Title"> adipiscing elit Mauris non laoreet dui, Morbi lacus massa, euismod ut turpis molestie, tristique sodales est. Integer sit amet mi id sapien tempor molestie in nec massa Fusce non ante sed lorem rutrum feugiat, Vestibulum pellentesque, purus ut dignissim consectetur, nulla erat ultrices purus, ut consequat sem elit non sem. Morbi lacus massa, euismod ut turpis molestie, tristique sodales est.</p>-->
               </div>
-            </div><!-- ./col -->
-            <div class="col-lg-3 col-xs-6">
-              <!-- small box -->
-              <div class="small-box bg-yellow">
-                <div class="inner">
-                  <h3>44</h3>
-                  <p>User Registrations</p>
+              
+              <!-- Next / Prev and Social Share-->
+              <div class="post_next_prev_con clearfix">
+                <!-- Next and Prev Post-->
+                <div class="post_next_prev clearfix">
+                  <a href="#"><i class="ico-arrow-back"></i><span class="t">Prev</span></a>
+                  <!--<a href="#" class="th_icon" title="All Posts"><i class="ico-apps"></i></a> -->
+                  <a href="#"><span class="t">Next</span><i class="ico-arrow-forward"></i></a>
                 </div>
-                <div class="icon">
-                  <i class="ion ion-person-add"></i>
-                </div>
-                <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-              </div>
-            </div><!-- ./col -->
-            <div class="col-lg-3 col-xs-6">
-              <!-- small box -->
-              <div class="small-box bg-red">
-                <div class="inner">
-                  <h3>65</h3>
-                  <p>Unique Visitors</p>
-                </div>
-                <div class="icon">
-                  <i class="ion ion-pie-graph"></i>
-                </div>
-                <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-              </div>
-            </div><!-- ./col -->
-          </div><!-- /.row -->
-          <!-- Main row -->
-          <div class="row">
-            <!-- Left col -->
-            <section class="col-lg-7 connectedSortable">
-              <!-- Custom tabs (Charts with tabs)-->
-              <div class="nav-tabs-custom">
-                <!-- Tabs within a box -->
-                <ul class="nav nav-tabs pull-right">
-                  <li class="active"><a href="#revenue-chart" data-toggle="tab">Area</a></li>
-                  <li><a href="#sales-chart" data-toggle="tab">Donut</a></li>
-                  <li class="pull-left header"><i class="fa fa-inbox"></i> Sales</li>
-                </ul>
-                <div class="tab-content no-padding">
-                  <!-- Morris chart - Sales -->
-                  <div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 300px;"></div>
-                  <div class="chart tab-pane" id="sales-chart" style="position: relative; height: 300px;"></div>
-                </div>
-              </div><!-- /.nav-tabs-custom -->
-
-              <!-- Chat box -->
-              <div class="box box-success">
-                <div class="box-header">
-                  <i class="fa fa-comments-o"></i>
-                  <h3 class="box-title">Chat</h3>
-                  <div class="box-tools pull-right" data-toggle="tooltip" title="Status">
-                    <div class="btn-group" data-toggle="btn-toggle" >
-                      <button type="button" class="btn btn-default btn-sm active"><i class="fa fa-square text-green"></i></button>
-                      <button type="button" class="btn btn-default btn-sm"><i class="fa fa-square text-red"></i></button>
-                    </div>
+                <!-- End Next and Prev Post-->
+                
+                <!-- Social Share-->
+                <div class="single_pro_row">
+                  <div id="share_on_socials">
+                    <!-- <h6>Share:</h6> -->
+                    <a class="facebook" href="https://www.facebook.com/login.php?next=https%3A%2F%2Fwww.facebook.com%2Fsharer.php%3Fs%3D100%26p%255Burl%255D%3Dhttp%253A%252F%252Fwww.yourlink.com%26p%255Btitle%255D%3Dyour-post-title%26p%255Bsummary%255D%3Dyour-content-here%26p%255Bimages%255D%255B0%255D%3Dhttp%253A%252F%252Fwww.yourlink.com%252Fimage.jpg&amp;display=popup" target="_blank"><i class="ico-facebook4"></i></a>
+                    <a class="twitter" href="http://twitter.com/home?status=your-post-title+http://www.yourlink.com" target="_blank"><i class="ico-twitter4"></i></a>
+                    <a class="googleplus" href="https://plus.google.com/share?url=http://www.yourlink.com" target="_blank"><i class="ico-google-plus"></i></a>
+                    <a class="pinterest" href="http://pinterest.com/pin/create/bookmarklet/?media=http://www.yourlink.com/image.jpg&amp;url=http://www.yourlink.com&amp;is_video=false&amp;description=your-post-title" target="_blank"><i class="ico-pinterest-p"></i></a>
+                    
+                    <a class="linkedin" href="http://www.linkedin.com/shareArticle?mini=true&amp;url=http://www.yourlink.com&amp;title=your-post-title&amp;source=http://www.yourlink.com" target="_blank"><i class="ico-linkedin3"></i></a>
+                    
                   </div>
                 </div>
-                <div class="box-body chat" id="chat-box">
-                  <!-- chat item -->
-                  <div class="item">
-                    <img src="dist/img/user4-128x128.jpg" alt="user image" class="online">
-                    <p class="message">
-                      <a href="#" class="name">
-                        <small class="text-muted pull-right"><i class="fa fa-clock-o"></i> 2:15</small>
-                        Mike Doe
+                <!-- End Social Share-->
+              </div>
+              <!-- End Next / Prev and Social Share-->
+              
+              <!-- Tags -->
+              <div class="small_title">
+                <span class="small_title_con">
+                  <span class="s_icon"><i class="ico-tag4"></i></span>
+                  <span class="s_text">Tags</span>
+                </span>
+              </div>
+              <div class="tags_con">
+                <!-- <h6>Tags:</h6> -->
+                <a href="<?=$row->slg_t?>" rel="tag"><?=$row->nm_t?></a>
+              </div>
+              <!-- End Tags -->
+              
+              <!-- About the author -->
+              <div class="about_auther">
+                <div class="small_title">
+                  <span class="small_title_con">
+                    <span class="s_icon"><i class="ico-user5"></i></span>
+                    <span class="s_text">About the author</span>
+                  </span>
+                </div>
+                
+                <div class="about_auther_con clearfix">
+                  <span class="avatar_img">
+                    <img alt="client name" src="<?=base_url($row->img)?>">
+                  </span>
+                  <div class="about_auther_details">
+                    <a href="#" class="auther_link">Harry John</a>
+                    <span class="desc">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.
+                    </span>
+                    <div class="social_media clearfix">
+                      <a href="#" target="_blank" class="twitter">
+                        <i class="ico-twitter4"></i>
                       </a>
-                      I would like to meet you to discuss the latest news about
-                      the arrival of the new theme. They say it is going to be one the
-                      best themes on the market
-                    </p>
-                    <div class="attachment">
-                      <h4>Attachments:</h4>
-                      <p class="filename">
-                        Theme-thumbnail-image.jpg
-                      </p>
-                      <div class="pull-right">
-                        <button class="btn btn-primary btn-sm btn-flat">Open</button>
-                      </div>
-                    </div><!-- /.attachment -->
-                  </div><!-- /.item -->
-                  <!-- chat item -->
-                  <div class="item">
-                    <img src="dist/img/user3-128x128.jpg" alt="user image" class="offline">
-                    <p class="message">
-                      <a href="#" class="name">
-                        <small class="text-muted pull-right"><i class="fa fa-clock-o"></i> 5:15</small>
-                        Alexander Pierce
+                      <a href="#" target="_blank" class="facebook">
+                        <i class="ico-facebook4"></i>
+                      </a>        
+                      <a href="#" target="_blank" class="googleplus">
+                        <i class="ico-google-plus"></i>
+                      </a>     
+                      <a href="#" target="_blank" class="linkedin">
+                        <i class="ico-linkedin3"></i>
                       </a>
-                      I would like to meet you to discuss the latest news about
-                      the arrival of the new theme. They say it is going to be one the
-                      best themes on the market
-                    </p>
-                  </div><!-- /.item -->
-                  <!-- chat item -->
-                  <div class="item">
-                    <img src="dist/img/user2-160x160.jpg" alt="user image" class="offline">
-                    <p class="message">
-                      <a href="#" class="name">
-                        <small class="text-muted pull-right"><i class="fa fa-clock-o"></i> 5:30</small>
-                        Susan Doe
-                      </a>
-                      I would like to meet you to discuss the latest news about
-                      the arrival of the new theme. They say it is going to be one the
-                      best themes on the market
-                    </p>
-                  </div><!-- /.item -->
-                </div><!-- /.chat -->
-                <div class="box-footer">
-                  <div class="input-group">
-                    <input class="form-control" placeholder="Type message...">
-                    <div class="input-group-btn">
-                      <button class="btn btn-success"><i class="fa fa-plus"></i></button>
                     </div>
                   </div>
+                  
                 </div>
-              </div><!-- /.box (chat box) -->
-
-              <!-- TO DO List -->
-              <div class="box box-primary">
-                <div class="box-header">
-                  <i class="ion ion-clipboard"></i>
-                  <h3 class="box-title">To Do List</h3>
-                  <div class="box-tools pull-right">
-                    <ul class="pagination pagination-sm inline">
-                      <li><a href="#">&laquo;</a></li>
-                      <li><a href="#">1</a></li>
-                      <li><a href="#">2</a></li>
-                      <li><a href="#">3</a></li>
-                      <li><a href="#">&raquo;</a></li>
-                    </ul>
+              </div>
+              <!-- End About the author -->
+            </div>
+            <!-- End Post Container -->
+            <?php } ?>
+            <!-- Related Posts -->
+            <div class="related_posts">
+              <div class="small_title">
+                <span class="small_title_con">
+                  <span class="s_icon"><i class="ico-laptop4"></i></span>
+                  <span class="s_text">You might also like</span>
+                </span>
+              </div>
+              
+              <div class="related_posts_con">
+                <div class="related_posts_slide">
+                  <div class="related_img_con">
+                    <a href="#" class="related_img">
+                      <img alt="" src="assets/images/blog/blog1.jpg">
+                      <span><i class="ico-pencil4"></i></span>
+                    </a>
                   </div>
-                </div><!-- /.box-header -->
-                <div class="box-body">
-                  <ul class="todo-list">
-                    <li>
-                      <!-- drag handle -->
-                      <span class="handle">
-                        <i class="fa fa-ellipsis-v"></i>
-                        <i class="fa fa-ellipsis-v"></i>
-                      </span>
-                      <!-- checkbox -->
-                      <input type="checkbox" value="" name="">
-                      <!-- todo text -->
-                      <span class="text">Design a nice theme</span>
-                      <!-- Emphasis label -->
-                      <small class="label label-danger"><i class="fa fa-clock-o"></i> 2 mins</small>
-                      <!-- General tools such as edit or delete-->
-                      <div class="tools">
-                        <i class="fa fa-edit"></i>
-                        <i class="fa fa-trash-o"></i>
-                      </div>
-                    </li>
-                    <li>
-                      <span class="handle">
-                        <i class="fa fa-ellipsis-v"></i>
-                        <i class="fa fa-ellipsis-v"></i>
-                      </span>
-                      <input type="checkbox" value="" name="">
-                      <span class="text">Make the theme responsive</span>
-                      <small class="label label-info"><i class="fa fa-clock-o"></i> 4 hours</small>
-                      <div class="tools">
-                        <i class="fa fa-edit"></i>
-                        <i class="fa fa-trash-o"></i>
-                      </div>
-                    </li>
-                    <li>
-                      <span class="handle">
-                        <i class="fa fa-ellipsis-v"></i>
-                        <i class="fa fa-ellipsis-v"></i>
-                      </span>
-                      <input type="checkbox" value="" name="">
-                      <span class="text">Let theme shine like a star</span>
-                      <small class="label label-warning"><i class="fa fa-clock-o"></i> 1 day</small>
-                      <div class="tools">
-                        <i class="fa fa-edit"></i>
-                        <i class="fa fa-trash-o"></i>
-                      </div>
-                    </li>
-                    <li>
-                      <span class="handle">
-                        <i class="fa fa-ellipsis-v"></i>
-                        <i class="fa fa-ellipsis-v"></i>
-                      </span>
-                      <input type="checkbox" value="" name="">
-                      <span class="text">Let theme shine like a star</span>
-                      <small class="label label-success"><i class="fa fa-clock-o"></i> 3 days</small>
-                      <div class="tools">
-                        <i class="fa fa-edit"></i>
-                        <i class="fa fa-trash-o"></i>
-                      </div>
-                    </li>
-                    <li>
-                      <span class="handle">
-                        <i class="fa fa-ellipsis-v"></i>
-                        <i class="fa fa-ellipsis-v"></i>
-                      </span>
-                      <input type="checkbox" value="" name="">
-                      <span class="text">Check your messages and notifications</span>
-                      <small class="label label-primary"><i class="fa fa-clock-o"></i> 1 week</small>
-                      <div class="tools">
-                        <i class="fa fa-edit"></i>
-                        <i class="fa fa-trash-o"></i>
-                      </div>
-                    </li>
-                    <li>
-                      <span class="handle">
-                        <i class="fa fa-ellipsis-v"></i>
-                        <i class="fa fa-ellipsis-v"></i>
-                      </span>
-                      <input type="checkbox" value="" name="">
-                      <span class="text">Let theme shine like a star</span>
-                      <small class="label label-default"><i class="fa fa-clock-o"></i> 1 month</small>
-                      <div class="tools">
-                        <i class="fa fa-edit"></i>
-                        <i class="fa fa-trash-o"></i>
-                      </div>
-                    </li>
-                  </ul>
-                </div><!-- /.box-body -->
-                <div class="box-footer clearfix no-border">
-                  <button class="btn btn-default pull-right"><i class="fa fa-plus"></i> Add item</button>
+                  <a class="related_title" href="#">Edge of The Road</a>
+                  <span class="post_date">2015/04/12</span>
                 </div>
-              </div><!-- /.box -->
-
-              <!-- quick email widget -->
-              <div class="box box-info">
-                <div class="box-header">
-                  <i class="fa fa-envelope"></i>
-                  <h3 class="box-title">Quick Email</h3>
-                  <!-- tools box -->
-                  <div class="pull-right box-tools">
-                    <button class="btn btn-info btn-sm" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
-                  </div><!-- /. tools -->
+                <div class="related_posts_slide">
+                  <div class="related_img_con">
+                    <a href="#" class="related_img">
+                      <img alt="" src="assets/images/blog/blog2.jpg">
+                      <span><i class="ico-image4"></i></span>
+                    </a>
+                  </div>
+                  <a class="related_title" href="#">Train Your Self</a>
+                  <span class="post_date">2015/04/13</span>
                 </div>
-                <div class="box-body">
-                  <form action="#" method="post">
-                    <div class="form-group">
-                      <input type="email" class="form-control" name="emailto" placeholder="Email to:">
+                <div class="related_posts_slide">
+                  <div class="related_img_con">
+                    <a href="#" class="related_img">
+                      <img alt="" src="assets/images/blog/blog3.jpg">
+                      <span><i class="ico-sound3"></i></span>
+                    </a>
+                  </div>
+                  <a class="related_title" href="#">Most Beautiful Girl</a>
+                  <span class="post_date">2015/04/14</span>
+                </div>
+                <div class="related_posts_slide">
+                  <div class="related_img_con">
+                    <a href="#" class="related_img">
+                      <img alt="" src="assets/images/blog/blog4.jpg">
+                      <span><i class="ico-quote-right"></i></span>
+                    </a>
+                  </div>
+                  <a class="related_title" href="#">Fly Into The Future</a>
+                  <span class="post_date">2015/04/15</span>
+                </div>
+                <div class="related_posts_slide">
+                  <div class="related_img_con">
+                    <a href="#" class="related_img">
+                      <img alt="" src="assets/images/blog/blog5.jpg">
+                      <span><i class="ico-gallery"></i></span>
+                    </a>
+                  </div>
+                  <a class="related_title" href="#">Dawn of Justice</a>
+                  <span class="post_date">2015/04/16</span>
+                </div>
+                <div class="related_posts_slide">
+                  <div class="related_img_con">
+                    <a href="#" class="related_img">
+                      <img alt="" src="assets/images/blog/blog6.jpg">
+                      <span><i class="ico-comment2"></i></span>
+                    </a>
+                  </div>
+                  <a class="related_title" href="#">Guardians of the Earth</a>
+                  <span class="post_date">2015/04/17</span>
+                </div>
+              </div>
+            </div>
+            <!-- End Related Posts -->
+            
+            <!-- Comments Container -->
+            <div id="comments" class="comments-area">
+              <div class="small_title">
+                <span class="small_title_con">
+                  <span class="s_icon"><i class="ico-comment-o"></i></span>
+                  <span class="s_text">Leave Comment</span>
+                </span>
+              </div>
+              <?php 
+              /*echo '              <!-- Comments Tree -->
+              <ol class="comments_list clearfix">
+                <li class="comment single_comment">
+                <!-- Comment -->
+                <div class="comment-container comment-box">
+                  <div class="trees_number">1</div>
+                  <a href="#" class="avatar">
+                    <img width="75" height="75" src="assets/images/user2.jpg" alt="John Doe">
+                  </a>
+                  <div class="comment_content">
+                    <h4 class="author_name"><a href="#">John Doe</a></h4>
+                    <span class="comment_meta">
+                      <a href="#">
+                          <time datetime="2015-10-01T19:56:36+00:00">October 1, 2015 at 7:56 pm</time>
+                      </a>
+                    </span>
+                    <div class="comment_said_text">
+                      <p>There are many variations of passages of Lorem Ipsum available but the majority have suffered alteration in some form by injected humour or randomised.</p>
                     </div>
-                    <div class="form-group">
-                      <input type="text" class="form-control" name="subject" placeholder="Subject">
+                    <a href="#commentform" class="comment-reply-link">Reply</a> 
+                  </div>
+                </div>
+                <!-- End Comment -->
+                  
+                <ol class="children">
+                  <li class="comment single_comment">
+                    <!-- Comment -->
+                    <div class="comment-container comment-box">
+                      <div class="trees_number">1.1</div>
+                      <a href="#" class="avatar">
+                        <img width="75" height="75" src="assets/images/user1.jpg" alt="Jane Smith">
+                      </a>
+                      <div class="comment_content">
+                        <h4 class="author_name"><a href="#">Jane Smith</a></h4>
+                        <span class="comment_meta">
+                          <a href="#">
+                              <time datetime="2015-10-01T19:56:36+00:00">October 1, 2015 at 7:56 pm</time>
+                          </a>
+                        </span>
+                        <div class="comment_said_text">
+                          <p>There are many variations of passages of Lorem Ipsum available but the majority have suffered alteration in some form by injected humour or randomised.</p>
+                        </div>
+                        <a href="#commentform" class="comment-reply-link">Reply</a> 
+                      </div>
                     </div>
-                    <div>
-                      <textarea class="textarea" placeholder="Message" style="width: 100%; height: 125px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                    <!-- End Comment -->
+                
+                    <ol class="children">
+                      <li class="comment single_comment">
+                        <!-- Comment -->
+                        <div class="comment-container comment-box">
+                          <div class="trees_number">1.1.1</div>
+                          <a href="#" class="avatar">
+                            <img width="75" height="75" src="assets/images/user3.jpg" alt="Tommy Horton">
+                          </a>
+                          <div class="comment_content">
+                            <h4 class="author_name"><a href="#">Tommy Horton</a></h4>
+                            <span class="comment_meta">
+                              <a href="#">
+                                <time datetime="2015-10-01T19:56:36+00:00">October 1, 2015 at 7:56 pm</time>
+                              </a>
+                            </span>
+                            <div class="comment_said_text">
+                              <p>There are many variations of passages of Lorem Ipsum available but the majority have suffered alteration in some form by injected humour or randomised.</p>
+                            </div>
+                            <a href="#commentform" class="comment-reply-link">Reply</a>  
+                          </div>
+                        </div>
+                        <!-- End Comment -->   
+                           
+                        <ol class="children">
+                          <li class="comment single_comment">
+                            <!-- Comment -->
+                            <div class="comment-container comment-box">
+                              <div class="trees_number">1.1.1.1</div>
+                              <a href="#" class="avatar">
+                                <img width="75" height="75" src="assets/images/user4.jpg" alt="Alan Snow">
+                              </a>
+                              <div class="comment_content">
+                                <h4 class="author_name"><a href="#">Alan Snow</a></h4>
+                                <span class="comment_meta">
+                                  <a href="#">
+                                      <time datetime="2015-10-01T19:56:36+00:00">October 1, 2015 at 7:56 pm</time>
+                                  </a>
+                                </span>
+                                <div class="comment_said_text">
+                                    <p>There are many variations of passages of Lorem Ipsum available but the majority have suffered alteration in some form by injected humour or randomised.</p>
+                                </div>
+                                <a href="#commentform" class="comment-reply-link">Reply</a>  
+                              </div>
+                            </div>
+                            <!-- End Comment -->
+                          </li>
+                        </ol>
+              
+                      </li>
+                    </ol>
+              
+                  </li>
+                </ol>
+              
+                </li>
+                <li class="comment single_comment">
+                  <!-- Comment -->
+                  <div class="comment-container comment-box">
+                    <div class="trees_number">2</div>
+                    <a href="#" class="avatar">
+                      <img width="75" height="75" src="assets/images/user5.jpg" alt="Harry John">
+                    </a>
+                    <div class="comment_content">
+                      <h4 class="author_name"><a href="#">Harry John</a></h4>
+                      <span class="comment_meta">
+                        <a href="#">
+                          <time datetime="2015-10-01T19:56:36+00:00">October 1, 2015 at 7:56 pm</time>
+                        </a>
+                      </span>
+                      <div class="comment_said_text">
+                        <p>There are many variations of passages of Lorem Ipsum available but the majority have suffered alteration in some form by injected humour or randomised.</p>
+                      </div>
+                      <a href="#commentform" class="comment-reply-link">Reply</a>  
                     </div>
+                  </div>
+                  <!-- End Comment -->
+                </li>
+              </ol>
+              <!-- End Comments Tree -->
+              
+              <!-- Comments Form -->
+            <div class="comments-form-area" id="comments-form">
+                <div class="comment-respond" id="respond">
+                  
+                  <div class="small_title">
+                    <span class="small_title_con">
+                      <span class="s_icon"><i class="ico-pencil6"></i></span>
+                      <span class="s_text">Leave a Reply</span>
+                    </span>
+                  </div>
+                  <form class="comment-form" id="commentform" method="post" action="#">
+                    <!-- <p class="comment-notes">Your email address will not be published. Required fields are marked <span class="required">*</span></p> -->
+                    <input type="text" aria-required="true" size="30" value="" placeholder="Name (required)" name="author" id="author">
+                    <input type="text" aria-required="true" size="30" value="" placeholder="Email (required)" name="email" id="email">
+                    <input type="text" size="30" value="" placeholder="Website" name="url" id="url">
+                    <p class="comment-form-comment">
+                      <textarea aria-required="true" rows="8" cols="45" name="comment" placeholder="Comment..." id="comment"></textarea>
+                    </p>
+                    <p class="form-submit">
+                      <input class="send_button" type="submit" value="Post Comment" id="submit-comment" name="submit">
+                    </p>
                   </form>
                 </div>
-                <div class="box-footer clearfix">
-                  <button class="pull-right btn btn-default" id="sendEmail">Send <i class="fa fa-arrow-circle-right"></i></button>
-                </div>
-              </div>
-
-            </section><!-- /.Left col -->
-            <!-- right col (We are only adding the ID to make the widgets sortable)-->
-            <section class="col-lg-5 connectedSortable">
-
-              <!-- Map box -->
-              <div class="box box-solid bg-light-blue-gradient">
-                <div class="box-header">
-                  <!-- tools box -->
-                  <div class="pull-right box-tools">
-                    <button class="btn btn-primary btn-sm daterange pull-right" data-toggle="tooltip" title="Date range"><i class="fa fa-calendar"></i></button>
-                    <button class="btn btn-primary btn-sm pull-right" data-widget="collapse" data-toggle="tooltip" title="Collapse" style="margin-right: 5px;"><i class="fa fa-minus"></i></button>
-                  </div><!-- /. tools -->
-
-                  <i class="fa fa-map-marker"></i>
-                  <h3 class="box-title">
-                    Visitors
-                  </h3>
-                </div>
-                <div class="box-body">
-                  <div id="world-map" style="height: 250px; width: 100%;"></div>
-                </div><!-- /.box-body-->
-                <div class="box-footer no-border">
-                  <div class="row">
-                    <div class="col-xs-4 text-center" style="border-right: 1px solid #f4f4f4">
-                      <div id="sparkline-1"></div>
-                      <div class="knob-label">Visitors</div>
-                    </div><!-- ./col -->
-                    <div class="col-xs-4 text-center" style="border-right: 1px solid #f4f4f4">
-                      <div id="sparkline-2"></div>
-                      <div class="knob-label">Online</div>
-                    </div><!-- ./col -->
-                    <div class="col-xs-4 text-center">
-                      <div id="sparkline-3"></div>
-                      <div class="knob-label">Exists</div>
-                    </div><!-- ./col -->
-                  </div><!-- /.row -->
-                </div>
-              </div>
-              <!-- /.box -->
-
-              <!-- solid sales graph -->
-              <div class="box box-solid bg-teal-gradient">
-                <div class="box-header">
-                  <i class="fa fa-th"></i>
-                  <h3 class="box-title">Sales Graph</h3>
-                  <div class="box-tools pull-right">
-                    <button class="btn bg-teal btn-sm" data-widget="collapse"><i class="fa fa-minus"></i></button>
-                    <button class="btn bg-teal btn-sm" data-widget="remove"><i class="fa fa-times"></i></button>
-                  </div>
-                </div>
-                <div class="box-body border-radius-none">
-                  <div class="chart" id="line-chart" style="height: 250px;"></div>
-                </div><!-- /.box-body -->
-                <div class="box-footer no-border">
-                  <div class="row">
-                    <div class="col-xs-4 text-center" style="border-right: 1px solid #f4f4f4">
-                      <input type="text" class="knob" data-readonly="true" value="20" data-width="60" data-height="60" data-fgColor="#39CCCC">
-                      <div class="knob-label">Mail-Orders</div>
-                    </div><!-- ./col -->
-                    <div class="col-xs-4 text-center" style="border-right: 1px solid #f4f4f4">
-                      <input type="text" class="knob" data-readonly="true" value="50" data-width="60" data-height="60" data-fgColor="#39CCCC">
-                      <div class="knob-label">Online</div>
-                    </div><!-- ./col -->
-                    <div class="col-xs-4 text-center">
-                      <input type="text" class="knob" data-readonly="true" value="30" data-width="60" data-height="60" data-fgColor="#39CCCC">
-                      <div class="knob-label">In-Store</div>
-                    </div><!-- ./col -->
-                  </div><!-- /.row -->
-                </div><!-- /.box-footer -->
-              </div><!-- /.box -->
-
-              <!-- Calendar -->
-              <div class="box box-solid bg-green-gradient">
-                <div class="box-header">
-                  <i class="fa fa-calendar"></i>
-                  <h3 class="box-title">Calendar</h3>
-                  <!-- tools box -->
-                  <div class="pull-right box-tools">
-                    <!-- button with a dropdown -->
-                    <div class="btn-group">
-                      <button class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bars"></i></button>
-                      <ul class="dropdown-menu pull-right" role="menu">
-                        <li><a href="#">Add new event</a></li>
-                        <li><a href="#">Clear events</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#">View calendar</a></li>
-                      </ul>
-                    </div>
-                    <button class="btn btn-success btn-sm" data-widget="collapse"><i class="fa fa-minus"></i></button>
-                    <button class="btn btn-success btn-sm" data-widget="remove"><i class="fa fa-times"></i></button>
-                  </div><!-- /. tools -->
-                </div><!-- /.box-header -->
-                <div class="box-body no-padding">
-                  <!--The calendar -->
-                  <div id="calendar" style="width: 100%"></div>
-                </div><!-- /.box-body -->
-                <div class="box-footer text-black">
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <!-- Progress bars -->
-                      <div class="clearfix">
-                        <span class="pull-left">Task #1</span>
-                        <small class="pull-right">90%</small>
-                      </div>
-                      <div class="progress xs">
-                        <div class="progress-bar progress-bar-green" style="width: 90%;"></div>
-                      </div>
-
-                      <div class="clearfix">
-                        <span class="pull-left">Task #2</span>
-                        <small class="pull-right">70%</small>
-                      </div>
-                      <div class="progress xs">
-                        <div class="progress-bar progress-bar-green" style="width: 70%;"></div>
-                      </div>
-                    </div><!-- /.col -->
-                    <div class="col-sm-6">
-                      <div class="clearfix">
-                        <span class="pull-left">Task #3</span>
-                        <small class="pull-right">60%</small>
-                      </div>
-                      <div class="progress xs">
-                        <div class="progress-bar progress-bar-green" style="width: 60%;"></div>
-                      </div>
-
-                      <div class="clearfix">
-                        <span class="pull-left">Task #4</span>
-                        <small class="pull-right">40%</small>
-                      </div>
-                      <div class="progress xs">
-                        <div class="progress-bar progress-bar-green" style="width: 40%;"></div>
-                      </div>
-                    </div><!-- /.col -->
-                  </div><!-- /.row -->
-                </div>
-              </div><!-- /.box -->
-
-            </section><!-- right col -->
-          </div><!-- /.row (main row) -->
-
-        </section><!-- /.content -->
-      </div><!-- /.content-wrapper -->
+              </div>';*/ ?>
+              <!-- End Comments Form -->
+            </div>
+            <!-- End Comments Container -->
+          </div>
+          <!-- End blog List -->
+        </div>
+        <!-- End All Content -->

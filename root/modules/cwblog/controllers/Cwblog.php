@@ -30,7 +30,7 @@ class Cwblog extends MX_Controller {
     break;
 
     case 'read':
-      $this->profil_web();
+      $this->is_read();
     break;
     
     default:
@@ -72,10 +72,7 @@ class Cwblog extends MX_Controller {
 		if($this->data['view_cont']->num_rows()>0) {
 			$this->data['jumlah_cat'] = $this->mcwblog->is_sum_home($this->data);
 			$this->data['pager_links'] = $this->mcwblog->paging(base_url('recent/page'),$this->data);
-		}	
-        var_dump($this->data['pager_links']);
-        var_dump($this->data['jumlah_cat']);
-        var_dump($this->data['offset']);
+		}
 		$this->data['css_topp']=$this->template->css_toppub();
 		$view='cwblog/trt_page';
 		$this->mlib->templatepublic($view,$this->data);
@@ -97,9 +94,6 @@ class Cwblog extends MX_Controller {
       $this->data['jumlah_cat'] = $this->mcwblog->is_sum_cat($this->data);
       $this->data['pager_links'] = $this->mcwblog->paging(base_url('category/'.$this->data['is_c'].'/page'),$this->data);
     } 
-        var_dump($this->data['pager_links']);
-        var_dump($this->data['jumlah_cat']);
-        var_dump($this->data['is_c']);
     $this->data['css_topp']=$this->template->css_toppub();
     $view='cwblog/trt_page';
     $this->mlib->templatepublic($view,$this->data);
@@ -121,12 +115,17 @@ class Cwblog extends MX_Controller {
       $this->data['jumlah_cat'] = $this->mcwblog->is_sum_tag($this->data);
       $this->data['pager_links'] = $this->mcwblog->paging(base_url('tag/'.$this->data['is_c'].'/page'),$this->data);
     } 
-        var_dump($this->data['pager_links']);
-        var_dump($this->data['jumlah_cat']);
-        var_dump($this->data['is_c']);
     $this->data['css_topp']=$this->template->css_toppub();
     $view='cwblog/trt_page';
     $this->mlib->templatepublic($view,$this->data);
+  }
+  function is_read(){
+    $this->data['is_c']=$this->uri->segment(2);
+    $this->data['view_cont']=$this->mcwblog->is_reading($this->data);
+     $this->data['css_topp']=$this->template->css_toppub();
+     $this->data['code']=$this->mlib->image_re();
+    $view='cwblog/trt_content';
+     $this->mlib->templatepublic($view,$this->data);
   }
 	/*function index($offset=0)
 {
