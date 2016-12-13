@@ -1,7 +1,7 @@
 <?php
-//$route['recent'] 	= "cwblog/is_recent";
-$route['page'] 	= "cwblog/index";
-$route['page/(:any)'] 	= "cwblog/index";
-$route['recent/(:any)'] 	= "cwblog/is_recent";
-$route['recent/page/(:any)']="cwblog/is_recent";
+$default_controller = "cwblog";
+$controller_exceptions = array('page','page/(:any)','recent','recent/(:any)','recent/page/(:any)','category','category/(:any)','category/(:any)/page/(:any)','tag','tag/(:any)','tag/(:any)/page/(:any)','read/(:any)');
+foreach($controller_exceptions as $page):
+$route[$page] = $default_controller.'/index/$1/$2/$3/$4';
+endforeach;
 ?>

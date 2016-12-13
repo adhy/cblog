@@ -36,12 +36,13 @@ class Mrtcwb_template extends CI_Model {
             'per_page'              => $data['uri'],
                 'use_page_numbers'      => TRUE,
                 'display_pages' => TRUE,
+                //'uri_segment'       => $data['offset'],
             'first_url'             => $base_url.'.html',
-            'num_tag_open'             => ' <li>',
-            'num_tag_close'             => ' </li>',
-            'cur_tag_open'             => ' <li class="active"><a href="">',
-            'cur_tag_close'             => ' </a></li>',
-            'first_link'             => 'Newer &rarr;',
+            //'num_tag_open'             => ' <li>',
+            //'num_tag_close'             => ' </li>',
+            //'cur_tag_open'             => ' <li class="active"><a href="">',
+            //'cur_tag_close'             => ' </a></li>',
+            /*'first_link'             => 'Newer &rarr;',
             'first_tag_open'         => '<li class="next_pagination">',
             'first_tag_close'        => '</li>',
             'last_link'             => '&larr; Older',
@@ -49,9 +50,17 @@ class Mrtcwb_template extends CI_Model {
                 'last_tag_close'        => '</li>',
                 'full_tag_open'         => '<ul class="clearfix">',
                 'full_tag_close'        => '</ul>',
-                'suffix'                => '.html',
-                'next_link'                => '',
-                'prev_link'                => ''
+                'suffix'                => '.html',*/
+                //'next_link'                => '',
+                //'prev_link'                => ''
+            'next_link'             => 'Newer &rarr;',
+            'next_tag_open'         => '<li class="next_pagination">',
+            'next_tag_close'        => '</li>',
+            'prev_link'             => '&larr; Older',
+                'prev_tag_open'         => '<li class="prev_pagination">',
+                'prev_tag_close'        => '</li>',
+                'full_tag_open'         => '<ul class="clearfix">',
+                'full_tag_close'        => '</ul>'
         );
 
         $this->pagination->initialize($config);
