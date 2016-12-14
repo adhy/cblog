@@ -17,7 +17,7 @@
 				<div class="my_col_third on_the_center">
 					<div class="search_block large_search">
 						<form class="widget_search" method="get" action="#">
-							<input type="search" class="serch_input" name="s" id="s" placeholder="Search for Other Pages...">
+							<input type="search" class="serch_input" name="search" id="s" placeholder="Search for Other Pages...">
 							<button type="submit" id="searchsubmit" class="search_btn">
 								<i class="ico-search2"></i>
 							</button>

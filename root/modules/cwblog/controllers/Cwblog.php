@@ -14,6 +14,9 @@ class Cwblog extends MX_Controller {
     switch ($segment_1) {
     case null:
     case false:
+    case '':
+        $this->index();
+    break;
     case 'page':
         $this->index();
     break;
@@ -32,9 +35,13 @@ class Cwblog extends MX_Controller {
     case 'read':
       $this->is_read();
     break;
+
+    case 'search':
+      $this->is_search();
+    break;
     
     default:
-      show_404();
+      $this->is_404();
     break;
     }
   } 
@@ -57,6 +64,35 @@ class Cwblog extends MX_Controller {
 		$view='cwblog/trt_page';
 		$this->mlib->templatepublic($view,$this->data);
 	}
+  public function is_search(){
+    $this->data['limit']=2;
+    $this->data['offset']=$this->uri->segment(4);
+    $this->data['is_c']=$this->uri->segment(2);
+    $this->data['css_topp']=$this->template->css_toppub();
+    if (is_null($this->data['is_c']) || empty($this->data['is_c'])){
+            $this->data['is_c'] =$this->db->escape_str($this->input->post('search', TRUE));
+        }else{
+          $this->data['is_c']=$this->uri->segment(2);
+        }
+    if (is_null($this->data['offset']) || empty($this->data['offset'])){
+            $this->data['offset'] = 0;
+        }
+        else{
+            $this->data['offset'] = ( $this->data['offset'] * $this->data['limit']) - $this->data['limit'];
+        }
+        $this->data['uri'] = 2;
+    $this->data['view_cont']  = $this->mcwblog->cw_search_limit($this->data);
+    if($this->data['view_cont']->num_rows()>0) {
+      $this->data['jumlah_cat'] = $this->mcwblog->is_sum_search($this->data);
+      $this->data['pager_links'] = $this->mcwblog->paging(base_url('page/'),$this->data);
+      $view='cwblog/trt_page';
+    } else{
+      $view='cwblog/trt_page404';
+    }
+    
+    
+    $this->mlib->templatepublic($view,$this->data);
+  }
 	function is_recent(){
 		$this->data['limit']=6;
 		$this->data['offset']=$this->uri->segment(3);
@@ -175,5 +211,11 @@ class Cwblog extends MX_Controller {
     ));
 
 } */
+function is_404(){
+  $this->data['css_topp']=$this->template->css_toppub();
+  $view='cwblog/trt_page404';
+  $this->mlib->templatepublic($view,$this->data);
+
+}
 
 }

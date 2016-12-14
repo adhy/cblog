@@ -69,7 +69,7 @@
                 <!-- Top Search -->
                 <form class="top_search clearfix small_top_search">
                     <div class="top_search_con">
-                        <input type="text" class="s" placeholder="Search Here ...">
+                        <input type="text" class="s" name="search" placeholder="Search Here ...">
                         <span class="top_search_icon"><i class="ico-search4"></i></span>
                         <input type="submit" class="top_search_submit" >
                     </div>
