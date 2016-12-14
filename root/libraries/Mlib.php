@@ -159,17 +159,21 @@ class Mlib {
         $(document).ready(function(){ 
         var oldimg = $(\'div.blog_grid_con p img\');
         var newimg = $(\'div.blog_grid_con p img\');
+        //var newimgwidth = newimg.clientWidth;
+        //var newimgheight = newimg.clientHeight;
         $.each(oldimg, function(index){
             if(index == newimg.length)
                 return false;
-            $(newimg[index]).replaceWith(\'<div class="feature_inner"><div class="feature_inner_corners"><div class="feature_inner_btns"><a href="#" class="expand_image"><i class="ico-maximize"></i></a><a href="#" class="icon_link"><i class="ico-link3"></i></a></div><a href="\'+$(this).attr(\'src\')+\'" class="feature_inner_ling" data-rel="magnific-popup"><img src="\'+$(this).attr(\'src\')+\'" alt="Post Title"></a></div></div>\');
+            $(newimg[index]).replaceWith(\'<div class="feature_inner"><div class="feature_inner_corners"><div class="feature_inner_btns"><a href="#" class="expand_image"><i class="ico-maximize"></i></a><a href="#" class="icon_link"><i class="ico-link3"></i></a></div><a href="\'+$(this).attr(\'src\')+\'" class="feature_inner_ling" data-rel="magnific-popup"><img src="\'+$(this).attr(\'src\')+\'" width="\'+$(this).attr("width")+\'" height="\'+$(this).attr("height")+\'" alt="\'+$(this).attr("alt")+\'"></a></div></div>\');
         });
         var holdimg = $(\'div.post-1 img\');
         var hnewimg = $(\'div.post-1 img\');
+        //var hnewimgwidth = hnewimg.clientWidth;
+        //var hnewimgheight = hnewimg.clientHeight;
         $.each(holdimg, function(index){
             if(index == hnewimg.length)
                 return false;
-            $(hnewimg[index]).replaceWith(\'<div class="feature_inner"><div class="feature_inner_corners"><div class="feature_inner_btns"><a href="#" class="expand_image"><i class="ico-maximize"></i></a><a href="#" class="icon_link"><i class="ico-link3"></i></a></div><a href="\'+$(this).attr(\'src\')+\'" class="feature_inner_ling" data-rel="magnific-popup"><img src="\'+$(this).attr(\'src\')+\'" alt="Post Title"></a></div></div>\');
+            $(hnewimg[index]).replaceWith(\'<div class="feature_inner"><div class="feature_inner_corners"><div class="feature_inner_btns"><a href="#" class="expand_image"><i class="ico-maximize"></i></a><a href="#" class="icon_link"><i class="ico-link3"></i></a></div><a href="\'+$(this).attr(\'src\')+\'" class="feature_inner_ling" data-rel="magnific-popup"><img src="\'+$(this).attr(\'src\')+\'" alt="\'+$(this).attr("alt")+\'"></a></div></div>\');
         });});</script>';
         return $script;
     }

@@ -11,12 +11,14 @@
                                     }else{
                                         $image = "assets/img/gimg_not_available.jpg";
                                     }
-                                     $row->c_date = '%Y/%m/%d';
+                                     $row->c_date = '%d/%m/%Y';
                                      $time = time();
                                      $rewat= mdate($row->c_date, $time);
                                      $content = str_replace('\"','"',$row->content);
                                      $content = str_replace('\r',' ',$content);
                                      $content = str_replace('\n',' ',$content);
+                                     $nm_t    = explode(',', $row->nm_t);
+                                     $slg_t    = explode(',', $row->slg_t);
               ?>
             <!-- Post Container -->
             <div id="post-1" class="post-1 post type-post status-publish format-gallery has-post-thumbnail category-media tag-photos clearfix">
@@ -38,12 +40,13 @@
                   <span class="meta_part">
                     <i class="ico-folder-open-o"></i>
                     <span>
-                      <a href="<?=site_url($row->slg_c)?>"><?=$row->nm_c?></a> <!--<a href="#">Tutorials</a>-->
+                      <a href="<?=site_url('category/'.$row->slg_c)?>"><?=$row->nm_c?></a> <!--<a href="#">Tutorials</a>-->
                     </span>
                   </span>
+
                   <span class="meta_part">
-                    <a href="<?=site_url('about')?>"ico-user5"></i>
-                      <span>John Doe</span>
+                    <a href="<?=site_url('about')?>"><i class="ico-user5"></i>
+                      <span><?=$row->nm_user?></span>
                     </a>
                   </span>
                 </span>
@@ -98,7 +101,10 @@
               </div>
               <div class="tags_con">
                 <!-- <h6>Tags:</h6> -->
-                <a href="<?=$row->slg_t?>" rel="tag"><?=$row->nm_t?></a>
+                <?php foreach ($slg_t as $shell => $shellname) {
+                 echo '<a href="'.$shellname.'" rel="tag">'.$nm_t[$shell].'</a>';
+                } ?>
+                
               </div>
               <!-- End Tags -->
               
@@ -151,66 +157,20 @@
               </div>
               
               <div class="related_posts_con">
-                <div class="related_posts_slide">
-                  <div class="related_img_con">
-                    <a href="#" class="related_img">
-                      <img alt="" src="assets/images/blog/blog1.jpg">
-                      <span><i class="ico-pencil4"></i></span>
-                    </a>
-                  </div>
-                  <a class="related_title" href="#">Edge of The Road</a>
-                  <span class="post_date">2015/04/12</span>
-                </div>
-                <div class="related_posts_slide">
-                  <div class="related_img_con">
-                    <a href="#" class="related_img">
-                      <img alt="" src="assets/images/blog/blog2.jpg">
-                      <span><i class="ico-image4"></i></span>
-                    </a>
-                  </div>
-                  <a class="related_title" href="#">Train Your Self</a>
-                  <span class="post_date">2015/04/13</span>
-                </div>
-                <div class="related_posts_slide">
-                  <div class="related_img_con">
-                    <a href="#" class="related_img">
-                      <img alt="" src="assets/images/blog/blog3.jpg">
-                      <span><i class="ico-sound3"></i></span>
-                    </a>
-                  </div>
-                  <a class="related_title" href="#">Most Beautiful Girl</a>
-                  <span class="post_date">2015/04/14</span>
-                </div>
-                <div class="related_posts_slide">
-                  <div class="related_img_con">
-                    <a href="#" class="related_img">
-                      <img alt="" src="assets/images/blog/blog4.jpg">
-                      <span><i class="ico-quote-right"></i></span>
-                    </a>
-                  </div>
-                  <a class="related_title" href="#">Fly Into The Future</a>
-                  <span class="post_date">2015/04/15</span>
-                </div>
-                <div class="related_posts_slide">
-                  <div class="related_img_con">
-                    <a href="#" class="related_img">
-                      <img alt="" src="assets/images/blog/blog5.jpg">
-                      <span><i class="ico-gallery"></i></span>
-                    </a>
-                  </div>
-                  <a class="related_title" href="#">Dawn of Justice</a>
-                  <span class="post_date">2015/04/16</span>
-                </div>
-                <div class="related_posts_slide">
-                  <div class="related_img_con">
-                    <a href="#" class="related_img">
-                      <img alt="" src="assets/images/blog/blog6.jpg">
-                      <span><i class="ico-comment2"></i></span>
-                    </a>
-                  </div>
-                  <a class="related_title" href="#">Guardians of the Earth</a>
-                  <span class="post_date">2015/04/17</span>
-                </div>
+              <?php   $is_rand=is_cuswid('is_rand');
+                                foreach ($is_rand->result() as $row) {
+                                     if(file_exists($row->imgheader)){
+                                        $image = $row->imgheader;
+                                    }else{
+                                        $image = "assets/img/gimg_not_available.jpg";
+                                    }
+                                    $row->c_date = '%d/%m/%Y';
+                                    $time = time();
+                                    $text= character_limiter($row->title,30);
+                                    $text= word_limiter($text,5);
+                                    $rewat= mdate($row->c_date, $time);
+                                    echo '<div class="related_posts_slide"><div class="related_img_con"><a href="'.site_url('read/'.$row->slug).'" class="related_img"><img alt="" src="'.base_url($image).'"><span><i class="ico-link3"></i></span></a></div><a class="related_title" href="'.site_url('read/'.$row->slug).'">'.$text.'</a><span class="post_date">'.$rewat.'</span></div>';
+                                } ?>
               </div>
             </div>
             <!-- End Related Posts -->

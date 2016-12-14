@@ -81,6 +81,7 @@ class Cwblog extends MX_Controller {
     $this->data['limit']=6;
     $this->data['offset']=$this->uri->segment(4);
     $this->data['is_c']=$this->uri->segment(2);
+    $this->data['css_topp']=$this->template->css_toppub();
 
     if (is_null($this->data['offset']) || empty($this->data['offset'])){
             $this->data['offset'] = 0;
@@ -90,12 +91,29 @@ class Cwblog extends MX_Controller {
         }
         $this->data['uri'] = 4;
     $this->data['view_cont']  = $this->mcwblog->cw_cat_limit($this->data);
-    if($this->data['view_cont']->num_rows()>0) {
+    $view_cont=$this->data['view_cont']->num_rows();
+    if($view_cont>0) {
       $this->data['jumlah_cat'] = $this->mcwblog->is_sum_cat($this->data);
       $this->data['pager_links'] = $this->mcwblog->paging(base_url('category/'.$this->data['is_c'].'/page'),$this->data);
+      $view='cwblog/trt_page';
+    }else{
+      $query = $this->db->get_where('cb_categories', array('slg_c' => $this->data['is_c']));
+      if($query->num_rows()>0){
+        $result = $query->row();
+        $this->data['is_parent']=$result->id;
+        $this->data['view_cont']  = $this->mcwblog->cw_cat_limitp($this->data);
+          if($this->data['view_cont']->num_rows()>0) {
+          $this->data['jumlah_cat'] = $this->mcwblog->is_sum_catp($this->data);
+          $this->data['pager_links'] = $this->mcwblog->paging(base_url('category/'.$this->data['is_c'].'/page'),$this->data);
+          $view='cwblog/trt_page';
+          }else{
+            $view='cwblog/trt_page404';
+          }
+      }else{
+        $view='cwblog/trt_page404';
+      }
+      
     } 
-    $this->data['css_topp']=$this->template->css_toppub();
-    $view='cwblog/trt_page';
     $this->mlib->templatepublic($view,$this->data);
   }
   function is_tag(){

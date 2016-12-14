@@ -34,6 +34,10 @@
 	    		$CI->data['is_buttrec']= $CI->template->is_buttrec();
 	    		return $CI->data['is_buttrec'];
 	    		break;
+	    	case 'is_rand':
+	    		$CI->data['is_rand']= $CI->template->is_rand();
+	    		return $CI->data['is_rand'];
+	    		break;
 	    	default:
 				$defautl_system='null';
 				return $defautl_system;

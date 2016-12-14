@@ -66,6 +66,14 @@ class Mrtcwb_template extends CI_Model {
         $this->pagination->initialize($config);
         return $this->pagination->create_links();
     }   
+    function is_rand() {
+        $this->db->select('*');
+        $this->db->order_by('title', 'RANDOM');
+        $this->db->limit(7);
+        //$this->db->join('cb_profile','cb_profile.id_user=cb_log.id_user');
+        //$this->db->where('cb_log.id_level','1');
+        return $this->db->get('cb_contents');
+    }
     function is_me() {
         $this->db->select('*');
         $this->db->join('cb_profile','cb_profile.id_user=cb_log.id_user');

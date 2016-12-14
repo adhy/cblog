@@ -13,12 +13,12 @@
                                     }else{
                                         $image = "assets/img/gimg_not_available.jpg";
                                     }
-                                    $row->c_date = '%Y/%m/%d';
+                                    $row->c_date = '%d/%m/%Y';
                                     $time = time();
                                     $text= character_limiter($row->title,30);
                                     $text= word_limiter($text,5);
                                     $rewat= mdate($row->c_date, $time);
-                                    echo '<li class="clearfix"><a href="'.site_url('page/'.$row->slug).'" title="'.$row->title.'"><img alt="'.$row->title.'" title="'.$row->title.'" src="'.base_url($image).'"><span>'.$text.'</span></a><span class="post_date">'.$rewat.'</span> </li>';
+                                    echo '<li class="clearfix"><a href="'.site_url('read/'.$row->slug).'" title="'.$row->title.'"><img alt="'.$row->title.'" title="'.$row->title.'" src="'.base_url($image).'"><span>'.$text.'</span></a><span class="post_date">'.$rewat.'</span> </li>';
                                         }
                                     ;?>
                             </ul>
@@ -63,7 +63,7 @@
                                             }else{
                                                 $image = "assets/img/gimg_not_available.jpg";
                                             }
-                                        $row->c_date = '%Y/%m/%d';
+                                        $row->c_date = '%d/%m/%Y';
                                         $time = time();
                                         $text= character_limiter($row->title,30);
                                         $text= word_limiter($text,5);
@@ -78,12 +78,12 @@
                                             }else{
                                                 $image = "assets/img/gimg_not_available.jpg";
                                             }
-                                        $row->c_date = '%Y/%m/%d';
+                                        $row->c_date = '%d/%m/%Y';
                                         $time = time();
                                         $text= character_limiter($row->title,30);
                                         $text= word_limiter($text,5);
                                         $rewat= mdate($row->c_date, $time);
-                            echo '<div class="related_posts_slide"><div class="related_img_con"><a href="'.site_url('page/'.$row->slug).'" class="related_img" title="'.$row->title.'"><img alt="'.$row->title.'" title="'.$row->title.'" src="'.base_url($image).'" style="height: 170px; width: 265px;"><span><i class="ico-link3"></i></span></a></div><a class="related_title" title="'.$row->title.'" href="'.site_url('page/'.$row->slug).'">'.$text.'</a><span class="post_date">'.$rewat.'</span></div>';
+                            echo '<div class="related_posts_slide"><div class="related_img_con"><a href="'.site_url('read/'.$row->slug).'" class="related_img" title="'.$row->title.'"><img alt="'.$row->title.'" title="'.$row->title.'" src="'.base_url($image).'" style="height: 170px; width: 265px;"><span><i class="ico-link3"></i></span></a></div><a class="related_title" title="'.$row->title.'" href="'.site_url('read/'.$row->slug).'">'.$text.'</a><span class="post_date">'.$rewat.'</span></div>';
                             }
                                     ;?>
                         </div>

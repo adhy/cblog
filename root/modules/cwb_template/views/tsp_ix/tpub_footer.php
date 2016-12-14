@@ -49,7 +49,7 @@
                                             }else{
                                                 $image = "assets/img/gimg_not_available.jpg";
                                             }
-                                        $row->c_date = '%Y/%m/%d';
+                                        $row->c_date = '%d/%m/%Y';
                                         $time = time();
                                         $text= character_limiter($row->title,7);
                                         $text= word_limiter($text,5);

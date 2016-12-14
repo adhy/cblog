@@ -18,7 +18,7 @@
                                     }else{
                                         $image = "assets/img/gimg_not_available.jpg";
                                     }
-                                     $row->c_date = '%Y/%m/%d';
+                                     $row->c_date = '%d/%m/%Y';
                                      $time = time();
                                      $rewat= mdate($row->c_date, $time);
                                      $text= word_limiter($row->content,5);

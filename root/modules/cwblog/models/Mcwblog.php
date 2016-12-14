@@ -48,6 +48,27 @@ class Mcwblog extends CI_Model {
         $result=$this->db->count_all_results();
         return $result;
     }
+    function cw_cat_limitp($data){
+        $this->db->select('*'); 
+        $this->db->join('cb_categories','cb_categories.id = cb_contents.id_cat','inner');
+        $this->db->join('cb_profile','cb_profile.id_user = cb_contents.creator','inner');     
+        $this->db->where('cb_contents.status','1');
+        $this->db->where('cb_categories.id_parent',$data['is_parent']);
+        $this->db->limit($data['limit'],$data['offset']);
+        $this->db->order_by('cb_contents.id', 'DESC');   
+        $result = $this->db->get('cb_contents');;
+        return $result;
+    }
+    function is_sum_catp($data){
+        $this->db->select('*'); 
+        $this->db->from('cb_contents');
+        $this->db->join('cb_categories','cb_categories.id = cb_contents.id_cat','inner');
+        $this->db->join('cb_profile','cb_profile.id_user = cb_contents.creator','inner');     
+        $this->db->where('cb_contents.status','1');
+        $this->db->where('cb_categories.id_parent',$data['is_parent']);
+        $result=$this->db->count_all_results();
+        return $result;
+    }
     function cw_tag_limit($data){
         $this->db->select('*'); 
         $this->db->join('cb_tags','cb_tagsrelation.id_tag = cb_tags.id','inner');
@@ -76,7 +97,7 @@ class Mcwblog extends CI_Model {
     } 
 
     function is_reading($data){
-        $this->db->select('*'); 
+        $this->db->select('cb_contents.imgheader, cb_contents.title, cb_contents.slug, cb_contents.meta_content, cb_contents.content, cb_contents.c_date, cb_categories.nm_c, cb_categories.slg_c, GROUP_CONCAT(DISTINCT cb_tags.nm_t) AS nm_t, GROUP_CONCAT(DISTINCT cb_tags.slg_t) AS slg_t, cb_profile.nm_user, cb_profile.img, cb_profile.decript'); 
         $this->db->join('cb_tagsrelation','cb_tagsrelation.id_cont = cb_contents.id','inner');
         $this->db->join('cb_tags','cb_tagsrelation.id_tag = cb_tags.id','inner');
         $this->db->join('cb_profile','cb_contents.creator = cb_profile.id_user','inner');  
