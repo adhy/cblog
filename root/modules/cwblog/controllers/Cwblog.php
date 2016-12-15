@@ -71,25 +71,19 @@ class Cwblog extends MX_Controller {
 		$this->mlib->templatepublic($view,$this->data);
 	}
   function is_search(){
-    if(!$_POST){
-      $this->data['is_se']=$this->uri->segment(2);
-      if(is_null($this->data['is_se']) || empty($this->data['is_se'])){
-       // echo json_encode(array("msg"=>'null'));
-        $this->_is_null_sea($this->data);
-      }else{
-         $this->_search($this->data);
-      }
+    $linkk=$this->uri->segment(3);
+    $link=$this->uri->segment(4);
+    if($linkk=='page'){
+      $this->data['is_se']=$this->session->userdata('is_se');
+      $this->_search($this->data);
     }else{
-      $this->data['is_se'] =$this->db->escape_str($this->input->post('search', TRUE));
-      if(is_null($this->data['is_se']) || empty($this->data['is_se'])){
-        //echo json_encode(array("msg"=>'null'));
-        $this->_is_null_sea($this->data);
-      }else{
-         $this->_search($this->data);
-      }
+      $sess_data['is_se'] =$this->db->escape_str($this->input->post('search', TRUE));
+      $this->session->set_userdata($sess_data);
+      $this->data['is_se'] = $this->session->userdata('is_se');
+      $this->_search($this->data);
     }
   }
-  private function _is_null_sea($data){
+  private function _is_null_sea(){
     $this->data['css_topp']=$this->template->css_toppub();
     $view='cwblog/trt_page404';
      $this->mlib->templatepublic($view,$this->data);
@@ -101,7 +95,7 @@ class Cwblog extends MX_Controller {
      $this->mlib->templatepublic($view,$this->data);
   }
   private function _search($data){
-    $this->data['limit']=2;
+    $this->data['limit']=6;
     $this->data['offset']=$this->uri->segment(4);
     $this->data['is_c']=$data['is_se'];
     $this->data['css_topp']=$this->template->css_toppub();
@@ -117,10 +111,11 @@ class Cwblog extends MX_Controller {
       $this->data['jumlah_cat'] = $this->mcwblog->is_sum_search($this->data);
       $this->data['pager_links'] = $this->mcwblog->paging(base_url('search/'.$this->data['is_c'].'/page'),$this->data);
       $view='cwblog/trt_page';
+      $this->mlib->templatepublic($view,$this->data);
     } else{
-      $view='cwblog/trt_page404';
+      $this->_is_null_sea();
     }
-    $this->mlib->templatepublic($view,$this->data);
+    
   }
 	function is_recent(){
 		$this->data['limit']=6;

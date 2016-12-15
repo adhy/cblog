@@ -21,7 +21,10 @@
                                      $row->c_date = '%d/%m/%Y';
                                      $time = time();
                                      $rewat= mdate($row->c_date, $time);
-                                     $text= word_limiter($row->content,5);
+                                     $content = str_replace('\r',' ',$row->content);
+                                     $content = str_replace('\n',' ',$content);
+                                     $content = stripslashes($content);
+                                     $text= word_limiter($content,5);
                         echo '
                         <div class="blog_grid_block clearfix">
                             <div class="feature_inner">
@@ -39,7 +42,7 @@
                                 </div>
                             </div>
                             <div class="blog_grid_con">
-                                <h6 class="title"><a href="'.site_url('read/'.$row->slug).'">'.$row->title.'</a></h6>
+                                <h6 class="title"><a href="'.site_url('read/'.$row->slug).'">'.stripslashes($row->title).'</a></h6>
                                 <span class="meta">
                                     <span class="meta_part">
                                         <a href="#">

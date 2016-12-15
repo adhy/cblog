@@ -135,7 +135,7 @@ class Mrtcwb_template extends CI_Model {
             $hasil .= "<ul>";                
         }
         foreach($menu->result() as $h){
-            $hasil .= "<li class='normal_menu'><a href='".site_url("category/".$h->slg_c)."'>".$h->nm_c;
+            $hasil .= "<li class='normal_menu'><a href='".site_url("category/".$h->slg_c)."'>".stripslashes($h->nm_c);
             $hasil = $this->is_navrek($h->id,$hasil);
             $hasil .= "</a></li>";
         }

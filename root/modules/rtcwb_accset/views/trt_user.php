@@ -44,7 +44,7 @@
                             <?php echo form_close(); ?>
                             </div>
                         </div>
-                        <div class="card-info"> <span class="card-title"><?=ucwords($row->nm_user)?></span> </div>
+                        <div class="card-info"> <span class="card-title"><?=ucwords(stripslashes($row->nm_user)))?></span> </div>
                     </div>
                     <?php }?>
                     <div class="btn-pref btn-group btn-group-justified btn-group-lg" role="group" aria-label="...">
