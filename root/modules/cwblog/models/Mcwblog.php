@@ -32,7 +32,7 @@ class Mcwblog extends CI_Model {
         $this->db->join('cb_categories','cb_categories.id = cb_contents.id_cat','inner');
         $this->db->join('cb_profile','cb_profile.id_user = cb_contents.creator','inner');     
         $this->db->where('cb_contents.status','1');
-        $this->db->like('cb_categories.content',$data['is_c']);
+        $this->db->like('cb_contents.content',$data['is_c']);
         $this->db->limit($data['limit'],$data['offset']);
         $this->db->order_by('cb_contents.id', 'DESC');   
         $result = $this->db->get('cb_contents');;
@@ -44,7 +44,7 @@ class Mcwblog extends CI_Model {
         $this->db->join('cb_categories','cb_categories.id = cb_contents.id_cat','inner');
         $this->db->join('cb_profile','cb_profile.id_user = cb_contents.creator','inner');     
         $this->db->where('cb_contents.status','1');
-        $this->db->like('cb_categories.content',$data['is_c']);
+        $this->db->like('cb_contents.content',$data['is_c']);
         $result=$this->db->count_all_results();
         return $result;
     }

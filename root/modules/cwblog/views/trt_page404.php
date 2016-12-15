@@ -16,7 +16,11 @@
 				</div>
 				<div class="my_col_third on_the_center">
 					<div class="search_block large_search">
-						<form class="widget_search" method="get" action="#">
+					                 <?php 
+                 $urlaction=base_url('search');
+                 $attributes = array('id'=>'top_search','class'=>'widget_search','action'=>$urlaction);
+                    echo form_open('',$attributes);
+                 ?>
 							<input type="search" class="serch_input" name="search" id="s" placeholder="Search for Other Pages...">
 							<button type="submit" id="searchsubmit" class="search_btn">
 								<i class="ico-search2"></i>

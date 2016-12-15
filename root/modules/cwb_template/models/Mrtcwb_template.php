@@ -247,6 +247,6 @@ class Mrtcwb_template extends CI_Model {
     }
     function css_toppub(){
                return $jquery =array("style.css", "bootstrap.css","mediaelementplayer.css","animate.min.css",
-                                        "magnific-popup.css","icon-fonts.css");
+                                        "magnific-popup.css","icon-fonts.css","toastr.js.map","toastr.min.css");
     }
 }

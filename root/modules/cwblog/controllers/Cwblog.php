@@ -64,33 +64,50 @@ class Cwblog extends MX_Controller {
 		$view='cwblog/trt_page';
 		$this->mlib->templatepublic($view,$this->data);
 	}
-  public function is_search(){
+  function is_search(){
+    if(!$_POST){
+      $this->data['is_se']=$this->uri->segment(2);
+      if(is_null($this->data['is_se']) || empty($this->data['is_se'])){
+       // echo json_encode(array("msg"=>'null'));
+        $this->_is_null_sea();
+      }else{
+         $this->_search($this->data);
+      }
+    }else{
+      $this->data['is_se'] =$this->db->escape_str($this->input->post('search', TRUE));
+      if(is_null($this->data['is_se']) || empty($this->data['is_se'])){
+        //echo json_encode(array("msg"=>'null'));
+        $this->_is_null_sea();
+      }else{
+         $this->_search($this->data);
+      }
+    }
+  }
+  private function _is_null_sea(){
+    $this->data['css_topp']=$this->template->css_toppub();
+    $view='cwblog/trt_page404';
+     $this->mlib->templatepublic($view,$this->data);
+  }
+  private function _search($data){
     $this->data['limit']=2;
     $this->data['offset']=$this->uri->segment(4);
-    $this->data['is_c']=$this->uri->segment(2);
+    $this->data['is_c']=$data['is_se'];
     $this->data['css_topp']=$this->template->css_toppub();
-    if (is_null($this->data['is_c']) || empty($this->data['is_c'])){
-            $this->data['is_c'] =$this->db->escape_str($this->input->post('search', TRUE));
-        }else{
-          $this->data['is_c']=$this->uri->segment(2);
-        }
     if (is_null($this->data['offset']) || empty($this->data['offset'])){
             $this->data['offset'] = 0;
         }
         else{
             $this->data['offset'] = ( $this->data['offset'] * $this->data['limit']) - $this->data['limit'];
         }
-        $this->data['uri'] = 2;
+        $this->data['uri'] = 4;
     $this->data['view_cont']  = $this->mcwblog->cw_search_limit($this->data);
     if($this->data['view_cont']->num_rows()>0) {
       $this->data['jumlah_cat'] = $this->mcwblog->is_sum_search($this->data);
-      $this->data['pager_links'] = $this->mcwblog->paging(base_url('page/'),$this->data);
+      $this->data['pager_links'] = $this->mcwblog->paging(base_url('search/'.$this->data['is_c'].'/page'),$this->data);
       $view='cwblog/trt_page';
     } else{
       $view='cwblog/trt_page404';
     }
-    
-    
     $this->mlib->templatepublic($view,$this->data);
   }
 	function is_recent(){
@@ -103,14 +120,16 @@ class Cwblog extends MX_Controller {
         else{
             $this->data['offset'] = ( $this->data['offset'] * $this->data['limit']) - $this->data['limit'];
         }
-        $this->data['uri'] = 3;
+    $this->data['uri'] = 3;
 		$this->data['view_cont']	=	$this->mcwblog->cw_home_limit($this->data);
 		if($this->data['view_cont']->num_rows()>0) {
 			$this->data['jumlah_cat'] = $this->mcwblog->is_sum_home($this->data);
 			$this->data['pager_links'] = $this->mcwblog->paging(base_url('recent/page'),$this->data);
-		}
+      $view='cwblog/trt_page';
+		}else{
+      $view='cwblog/trt_page404';
+    }
 		$this->data['css_topp']=$this->template->css_toppub();
-		$view='cwblog/trt_page';
 		$this->mlib->templatepublic($view,$this->data);
 	}
   function is_category(){
@@ -168,49 +187,21 @@ class Cwblog extends MX_Controller {
     if($this->data['view_cont']->num_rows()>0) {
       $this->data['jumlah_cat'] = $this->mcwblog->is_sum_tag($this->data);
       $this->data['pager_links'] = $this->mcwblog->paging(base_url('tag/'.$this->data['is_c'].'/page'),$this->data);
-    } 
-    $this->data['css_topp']=$this->template->css_toppub();
     $view='cwblog/trt_page';
+    }else{
+      $view='cwblog/trt_page';
+    }
+    $this->data['css_topp']=$this->template->css_toppub();
     $this->mlib->templatepublic($view,$this->data);
   }
   function is_read(){
     $this->data['is_c']=$this->uri->segment(2);
     $this->data['view_cont']=$this->mcwblog->is_reading($this->data);
-     $this->data['css_topp']=$this->template->css_toppub();
-     $this->data['code']=$this->mlib->image_re();
+    $this->data['css_topp']=$this->template->css_toppub();
+    $this->data['code']=$this->mlib->image_re();
     $view='cwblog/trt_content';
-     $this->mlib->templatepublic($view,$this->data);
+    $this->mlib->templatepublic($view,$this->data);
   }
-	/*function index($offset=0)
-{
-
-   //set a limit of 10 per result
-   $limit = 10;
-
-   //query the database
-   $q = "SELECT * FROM {table_name} LIMIT={limit} OFFSET={offset} ORDER BY {date} desc";
-
-   //count the results
-   $count = count({query results});
-
-   //setup pagination config
-   $config = array(
-        'base_url' => site_url('controller/'),
-        'total_rows' => $count,
-        'per_page' => $limit,
-        'uri_segment' => 2
-   );
-
-   //init the pagigination
-   $this->pagination->initialize($config);
-
-   //load the view and pagination data
-    $this->load->view('link_to_template', array(
-            'pagination'  =>  $this->pagination->create_links(),
-            'results'  =>  {query results}
-    ));
-
-} */
 function is_404(){
   $this->data['css_topp']=$this->template->css_toppub();
   $view='cwblog/trt_page404';

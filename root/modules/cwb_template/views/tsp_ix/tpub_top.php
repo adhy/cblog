@@ -5,7 +5,9 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
     <title><?=$title;?></title>
-    <?php $meta = array(
+    <?php 
+
+    $meta = array(
         array(
                 'name' => 'robots',
                 'content' => 'no-cache'
