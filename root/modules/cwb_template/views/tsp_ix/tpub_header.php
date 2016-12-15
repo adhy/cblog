@@ -72,8 +72,8 @@
                  $attributes = array('id'=>'top_search','class'=>'top_search clearfix small_top_search','action'=>$urlaction);
                     echo form_open('',$attributes);
                  ?>
-                 <form id="top_search" class="top_search clearfix" method="post" accept-charset="utf-8" action="search">
-                    <input name="st3rben" value="ecd8acdd455d3ed0515107f8e8401a58" style="display:none;" type="hidden">
+                <!-- <form id="top_search" class="top_search clearfix" method="post" accept-charset="utf-8" action="search">
+                    <input name="st3rben" value="ecd8acdd455d3ed0515107f8e8401a58" style="display:none;" type="hidden">-->
                     <div class="top_search_con">
                         <input type="text" class="s" name="search" placeholder="Search Here ...">
                         <span class="top_search_icon"><i class="ico-search4"></i></span>
