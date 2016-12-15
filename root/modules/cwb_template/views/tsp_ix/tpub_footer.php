@@ -184,6 +184,7 @@
 <!-- this is where we put our custom functions -->
 <?php if(!empty($code)){echo $code;} ?>
 <script type="text/javascript" src="<?=base_url('assets/js/functions.js')?>"></script>
+<script type="text/javascript" src="<?=base_url('assets/js/prism.js')?>"></script>
 </body>
 
 </html>

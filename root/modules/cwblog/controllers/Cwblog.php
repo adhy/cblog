@@ -209,11 +209,17 @@ class Cwblog extends MX_Controller {
   function is_read(){
     $this->data['is_c']=$this->uri->segment(2);
     $this->db->set('views','views'+'1')->where('slug',$this->data['is_c'])->update('cb_contents');
-    $this->data['view_cont']=$this->mcwblog->is_reading($this->data);
+    $this->data['view_contt']=$this->mcwblog->is_reading($this->data);
+    if($this->data['view_contt']->num_rows()>0){
+      $this->data['view_cont']= $this->data['view_contt'];
+      $view='cwblog/trt_content';
+    }else{
+      $view='cwblog/trt_page404';
+    }
     $this->data['css_topp']=$this->template->css_toppub();
     $this->data['code']=$this->mlib->image_re();
-    $view='cwblog/trt_content';
     $this->mlib->templatepublic($view,$this->data);
+    
   }
 function is_404(){
   $this->data['css_topp']=$this->template->css_toppub();

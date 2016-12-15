@@ -271,10 +271,22 @@ $('[name=\"title\"]').keyup(function(){
     plugins: [
          'advlist autolink link image lists charmap print preview hr anchor pagebreak',
          'searchreplace wordcount visualblocks visualchars insertdatetime media nonbreaking',
-         'table contextmenu directionality emoticons paste textcolor appex code'
+         'table contextmenu directionality emoticons paste textcolor appex code codesample'
    ],
+     codesample_languages: [
+        {text: 'HTML/XML', value: 'markup'},
+        {text: 'JavaScript', value: 'javascript'},
+        {text: 'CSS', value: 'css'},
+        {text: 'PHP', value: 'php'},
+        {text: 'Ruby', value: 'ruby'},
+        {text: 'Python', value: 'python'},
+        {text: 'Java', value: 'java'},
+        {text: 'C', value: 'c'},
+        {text: 'C#', value: 'csharp'},
+        {text: 'C++', value: 'cpp'}
+    ],
    toolbar1: 'undo redo | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | styleselect',
-   toolbar2: '| appex | link unlink anchor | image media | forecolor backcolor  | print preview code ',
+   toolbar2: '| appex | link unlink anchor | image media | forecolor backcolor  | print preview code | codesample',
    image_advtab: false,
    
    external_filemanager_path:url+'/appex/',
@@ -467,10 +479,22 @@ remove_script_host:false,
     plugins: [
          'advlist autolink link image lists charmap print preview hr anchor pagebreak',
          'searchreplace wordcount visualblocks visualchars insertdatetime media nonbreaking',
-         'table contextmenu directionality emoticons paste textcolor appex code'
+         'table contextmenu directionality emoticons paste textcolor appex code codesample'
    ],
+    codesample_languages: [
+        {text: 'HTML/XML', value: 'markup'},
+        {text: 'JavaScript', value: 'javascript'},
+        {text: 'CSS', value: 'css'},
+        {text: 'PHP', value: 'php'},
+        {text: 'Ruby', value: 'ruby'},
+        {text: 'Python', value: 'python'},
+        {text: 'Java', value: 'java'},
+        {text: 'C', value: 'c'},
+        {text: 'C#', value: 'csharp'},
+        {text: 'C++', value: 'cpp'}
+    ],
    toolbar1: 'undo redo | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | styleselect',
-   toolbar2: '| appex | link unlink anchor | image media | forecolor backcolor  | print preview code ',
+   toolbar2: '| appex | link unlink anchor | image media | forecolor backcolor  | print preview code | codesample',
    image_advtab: false,
    
    external_filemanager_path:url+'/appex/',

@@ -14,9 +14,10 @@
                                      $row->c_date = '%d/%m/%Y';
                                      $time = time();
                                      $rewat= mdate($row->c_date, $time);
-                                     $content = str_replace('\"','"',$row->content);
-                                     $content = str_replace('\r',' ',$content);
-                                     $content = str_replace('\n',' ',$content);
+                                     $content = str_replace('\\','',$row->content);
+                                     //$content = trim(preg_replace('/\s+/', ' ', $content));
+                                     $content = str_replace('/\s\s+/','',$content);
+                                     $content = str_replace('\n','7',$content);
                                      $nm_t    = explode(',', $row->nm_t);
                                      $slg_t    = explode(',', $row->slg_t);
               ?>
