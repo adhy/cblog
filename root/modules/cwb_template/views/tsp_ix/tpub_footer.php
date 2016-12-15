@@ -100,36 +100,21 @@
                     <div class="footer_row">
                         <h6 class="footer_title">Flicker Widget</h6>
                         <div class="flickr_widget_block clearfix">
+                        <?php $is_rand=is_cuswid('is_rand');
+                                foreach ($is_rand->result() as $row) {
+                                     if(file_exists($row->imgheader)){
+                                        $image = $row->imgheader;
+                                    }else{
+                                        $image = "assets/img/gimg_not_available.jpg";
+                                    }
+                                    echo '
                             <span class="flickr_badge_image">
-                                <a href="#">
-                                    <img src="assets/images/flicker/flicker1.jpg" alt="Image Name" title="Flicker Image">
+                                <a href="'.$row->slug.'">
+                                    <img src="'.base_url($image).'" alt="'.$row->title.'" title="'.$row->title.'">
                                 </a>
-                            </span>
-                            <span class="flickr_badge_image">
-                                <a href="#">
-                                    <img src="assets/images/flicker/flicker2.jpg" alt="Image Name" title="Flicker Image">
-                                </a>
-                            </span>
-                            <span class="flickr_badge_image">
-                                <a href="#">
-                                    <img src="assets/images/flicker/flicker3.jpg" alt="Image Name" title="Flicker Image">
-                                </a>
-                            </span>
-                            <span class="flickr_badge_image">
-                                <a href="#">
-                                    <img src="assets/images/flicker/flicker4.jpg" alt="Image Name" title="Flicker Image">
-                                </a>
-                            </span>
-                            <span class="flickr_badge_image">
-                                <a href="#">
-                                    <img src="assets/images/flicker/flicker5.jpg" alt="Image Name" title="Flicker Image">
-                                </a>
-                            </span>
-                            <span class="flickr_badge_image">
-                                <a href="#">
-                                    <img src="assets/images/flicker/flicker6.jpg" alt="Image Name" title="Flicker Image">
-                                </a>
-                            </span>
+                            </span>';
+                        }
+                        ?>
                         </div>
                     </div>
                 </div><!-- Grid -->

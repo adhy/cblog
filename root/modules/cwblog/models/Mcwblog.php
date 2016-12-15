@@ -8,6 +8,13 @@ class Mcwblog extends CI_Model {
 		parent::__constuct();  // Call the Model constructor 
 		loader::database();    // Connect to current database setting.froco
 	}
+    function is_me(){
+        $this->db->select('*'); 
+        $this->db->join('cb_profile','cb_profile.id_user = cb_log.id_user','inner');     
+        $this->db->where('cb_log.id_level','1');
+        $result = $this->db->get('cb_log');;
+        return $result;
+    }
     function cw_home_limit($data){
         $this->db->select('*'); 
         $this->db->join('cb_categories','cb_categories.id = cb_contents.id_cat','inner');

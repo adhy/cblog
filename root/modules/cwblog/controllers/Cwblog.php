@@ -2,7 +2,9 @@
 class Cwblog extends MX_Controller {
 	public $data = array(
 			'title'     => 'CL-System || ',
-			'author'    => 'ADW',
+			'author'    => 'SS',
+      'is_se'    => ' ',
+      'is_c'    => ' ',
 		);
 	public function __construct(){
         parent::__construct();
@@ -39,6 +41,10 @@ class Cwblog extends MX_Controller {
     case 'search':
       $this->is_search();
     break;
+
+    case 'about-us':
+      $this->is_about();
+    break;
     
     default:
       $this->is_404();
@@ -69,7 +75,7 @@ class Cwblog extends MX_Controller {
       $this->data['is_se']=$this->uri->segment(2);
       if(is_null($this->data['is_se']) || empty($this->data['is_se'])){
        // echo json_encode(array("msg"=>'null'));
-        $this->_is_null_sea();
+        $this->_is_null_sea($this->data);
       }else{
          $this->_search($this->data);
       }
@@ -77,15 +83,21 @@ class Cwblog extends MX_Controller {
       $this->data['is_se'] =$this->db->escape_str($this->input->post('search', TRUE));
       if(is_null($this->data['is_se']) || empty($this->data['is_se'])){
         //echo json_encode(array("msg"=>'null'));
-        $this->_is_null_sea();
+        $this->_is_null_sea($this->data);
       }else{
          $this->_search($this->data);
       }
     }
   }
-  private function _is_null_sea(){
+  private function _is_null_sea($data){
     $this->data['css_topp']=$this->template->css_toppub();
     $view='cwblog/trt_page404';
+     $this->mlib->templatepublic($view,$this->data);
+  }  
+  function is_about(){
+    $this->data['author'] = $this->mcwblog->is_me();
+    $this->data['css_topp']=$this->template->css_toppub();
+    $view='cwblog/trt_pageme';
      $this->mlib->templatepublic($view,$this->data);
   }
   private function _search($data){
@@ -189,13 +201,14 @@ class Cwblog extends MX_Controller {
       $this->data['pager_links'] = $this->mcwblog->paging(base_url('tag/'.$this->data['is_c'].'/page'),$this->data);
     $view='cwblog/trt_page';
     }else{
-      $view='cwblog/trt_page';
+      $view='cwblog/trt_page404';
     }
     $this->data['css_topp']=$this->template->css_toppub();
     $this->mlib->templatepublic($view,$this->data);
   }
   function is_read(){
     $this->data['is_c']=$this->uri->segment(2);
+    $this->db->set('views','views'+'1')->where('slug',$this->data['is_c'])->update('cb_contents');
     $this->data['view_cont']=$this->mcwblog->is_reading($this->data);
     $this->data['css_topp']=$this->template->css_toppub();
     $this->data['code']=$this->mlib->image_re();

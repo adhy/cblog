@@ -27,6 +27,7 @@ class Mrtcwb_template extends CI_Model {
         $result=$this->db->count_all_results();
         return $result;
     }
+
     function paging($base_url,$data){   
        $this->load->library('pagination');
         $config = array(
@@ -69,7 +70,7 @@ class Mrtcwb_template extends CI_Model {
     function is_rand() {
         $this->db->select('*');
         $this->db->order_by('title', 'RANDOM');
-        $this->db->limit(7);
+        $this->db->limit(9);
         //$this->db->join('cb_profile','cb_profile.id_user=cb_log.id_user');
         //$this->db->where('cb_log.id_level','1');
         return $this->db->get('cb_contents');

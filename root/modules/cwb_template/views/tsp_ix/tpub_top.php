@@ -3,9 +3,27 @@
 <head>
 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-
-    <title><?=$title;?></title>
     <?php 
+    //$sub_titile=$is_c;
+    if(empty($is_c)){
+         $sub_titile=$is_se;
+    }elseif(empty($is_se) || is_null($is_se) || isset($is_se)){
+        $sub_titile='404';
+    }else{
+        $sub_titile=$is_c;
+    }
+    ?>
+    <title><?php echo $title.$sub_titile;?></title>
+    <?php 
+    $all_description=array();
+if (!empty($view_cont)){
+foreach ($view_cont->result() as $key) {
+    $all_description[] =$key->title;
+}
+$all_description=implode(',', $all_description);
+}else{
+    $all_description='System is Down';
+}
 
     $meta = array(
         array(
@@ -14,7 +32,7 @@
         ),
         array(
                 'name' => 'description',
-                'content' => 'My 1st3rben'
+                'content' => $all_description
         ),
         array(
                 'name' => 'csrf-token',
@@ -30,7 +48,7 @@
         ),
         array(
                 'name' => 'author',
-                'content' => ''
+                'content' => $author
         ),
         array(
                 'name' => 'X-UA-Compatible',
