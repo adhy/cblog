@@ -68,9 +68,9 @@
                                 
                 <!-- Top Search -->
                  <?php 
-                 $urlaction=base_url('search');
+                 $urlaction=base_url('searching');
                  $attributes = array('id'=>'top_search','class'=>'top_search clearfix small_top_search','action'=>$urlaction);
-                    echo form_open('',$attributes);
+                    echo form_open_multipart('',$attributes);
                  ?>
                     <div class="top_search_con">
                         <input type="text" class="s" name="search" placeholder="Search Here ...">

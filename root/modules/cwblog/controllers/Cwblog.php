@@ -38,8 +38,12 @@ class Cwblog extends MX_Controller {
       $this->is_read();
     break;
 
-    case 'search':
+    case 'searching':
       $this->is_search();
+    break;
+
+    case 'search':
+      $this->search();
     break;
 
     case 'about-us':
@@ -73,15 +77,28 @@ class Cwblog extends MX_Controller {
   function is_search(){
     $linkk=$this->uri->segment(3);
     $link=$this->uri->segment(4);
-    if($linkk=='page'){
+    if(!$_POST){
       $this->data['is_se']=$this->session->userdata('is_se');
-      $this->_search($this->data);
+      redirect('search', 'location', 303);
+    }else{
+      $sess_data['is_se'] =$this->db->escape_str($this->input->post('search', TRUE));
+        $this->session->set_userdata($sess_data);
+        $this->data['is_se'] = $this->session->userdata('is_se');
+          if (is_null($this->data['is_se']) || empty($this->data['is_se'])){
+            redirect('search', 'location', 303);
+          }else{
+            redirect('search', 'location', 303);
+          }
+    }
+   /* if($linkk=='page'){
+      $this->data['is_se']=$this->session->userdata('is_se');
+      redirect('search', 'location', 303);
     }else{
       $sess_data['is_se'] =$this->db->escape_str($this->input->post('search', TRUE));
       $this->session->set_userdata($sess_data);
       $this->data['is_se'] = $this->session->userdata('is_se');
-      $this->_search($this->data);
-    }
+      redirect('search', 'location', 303);
+    }*/
   }
   private function _is_null_sea(){
     $this->data['css_topp']=$this->template->css_toppub();
@@ -94,15 +111,14 @@ class Cwblog extends MX_Controller {
     $view='cwblog/trt_pageme';
      $this->mlib->templatepublic($view,$this->data);
   }
-  private function _search($data){
+  function search(){
     $this->data['limit']=6;
     $this->data['offset']=$this->uri->segment(4);
-    $this->data['is_c']=$data['is_se'];
+    $this->data['is_c']=$this->session->userdata('is_se');
     $this->data['css_topp']=$this->template->css_toppub();
     if (is_null($this->data['offset']) || empty($this->data['offset'])){
             $this->data['offset'] = 0;
-        }
-        else{
+        }else{
             $this->data['offset'] = ( $this->data['offset'] * $this->data['limit']) - $this->data['limit'];
         }
         $this->data['uri'] = 4;
