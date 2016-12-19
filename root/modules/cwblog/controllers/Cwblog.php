@@ -87,12 +87,7 @@ class Cwblog extends MX_Controller {
       redirect('search', 'location', 303);
           
     }
-  }
-  private function _is_null_sea(){
-    $this->data['css_topp']=$this->template->css_toppub();
-    $view='cwblog/trt_page404';
-     $this->mlib->templatepublic($view,$this->data);
-  }  
+  } 
   function is_about(){
     $this->data['author'] = $this->mcwblog->is_me();
     $this->data['css_topp']=$this->template->css_toppub();
