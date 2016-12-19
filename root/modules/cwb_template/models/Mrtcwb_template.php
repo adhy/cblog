@@ -8,7 +8,7 @@ class Mrtcwb_template extends CI_Model {
 		parent::__constuct();  // Call the Model constructor 
 		loader::database();    // Connect to current database setting.froco
 	}
-    function cw_home_limit($data){
+    /*function cw_home_limit($data){
         $this->db->select('*'); 
         $this->db->join('cb_categories','cb_categories.id = cb_contents.id_cat','inner');
         $this->db->join('cb_profile','cb_profile.id_user = cb_contents.creator','inner');     
@@ -51,7 +51,7 @@ class Mrtcwb_template extends CI_Model {
                 'last_tag_close'        => '</li>',
                 'full_tag_open'         => '<ul class="clearfix">',
                 'full_tag_close'        => '</ul>',
-                'suffix'                => '.html',*/
+                'suffix'                => '.html',
                 //'next_link'                => '',
                 //'prev_link'                => ''
             'next_link'             => 'Newer &rarr;',
@@ -66,7 +66,7 @@ class Mrtcwb_template extends CI_Model {
 
         $this->pagination->initialize($config);
         return $this->pagination->create_links();
-    }   
+    }   */
     function is_rand() {
         $this->db->select('*');
         $this->db->order_by('title', 'RANDOM');
@@ -129,18 +129,31 @@ class Mrtcwb_template extends CI_Model {
     }
     function is_navrek($parent=0,$hasil){
         $this->db->where('status','1');
-        $this->db->where('id_parent',$parent);
+        $this->db->where('id_parent','0');
         $menu = $this->db->get('cb_categories');
+        $this->db->where('cb_categories.status','1');
+        $this->db->where('cb_categories.id_parent !=','0');
+        $this->db->join('cb_contents','cb_categories.id=cb_contents.id_cat');
+        $this->db->group_by('cb_categories.id');
+        $submenu = $this->db->get('cb_categories');
+        
+
         if(($menu->num_rows())>0){    
-            $hasil .= "<ul>";                
-        }
-        foreach($menu->result() as $h){
-            $hasil .= "<li class='normal_menu'><a href='".site_url("category/".$h->slg_c)."'>".stripslashes($h->nm_c);
-            $hasil = $this->is_navrek($h->id,$hasil);
-            $hasil .= "</a></li>";
-        }
-        if(($menu->num_rows)>0){
-            $hasil .= "</ul>";
+            foreach($menu->result() as $h){
+                $hasil .='<li class="normal_menu mobile_menu_toggle"><a href="'.site_url('category/'.$h->slg_c).'"><span>'.stripslashes($h->nm_c).'</span></a><ul>';
+                foreach ($submenu->result() as $subm) {
+                    if($h->id === $subm->id_parent){
+                        $viewsubmenu="<li class='normal_menu'><a href='".site_url("category/".$subm->slg_c)."'>".stripslashes($subm->nm_c);
+                    }else{
+                        $viewsubmenu='';
+                    }
+                    $hasil .= $viewsubmenu;
+
+                }
+                $hasil .= "</ul></li>";
+            }               
+        }else{
+            $hasil='';
         }
         return $hasil;
     }

@@ -89,10 +89,11 @@
                             <li class="normal_menu mobile_menu_toggle">
                             <?=anchor('', '<span>Home</span>');?>
                             </li>
-                            <li class="normal_menu mobile_menu_toggle">
+                            <!--<li class="normal_menu mobile_menu_toggle">
                                 <?=anchor('category', '<span>Category</span>');?>
-                        <?php echo is_cuswid('is_navv');?>
-                            </li>
+                        
+                            </li>-->
+                            <?php echo is_cuswid('is_navv');?>
                             <li class="normal_menu mobile_menu_toggle">
                             <?=anchor('about-us', '<span>About Us</span>');?>
                             </li>
