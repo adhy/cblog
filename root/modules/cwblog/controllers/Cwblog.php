@@ -38,8 +38,12 @@ class Cwblog extends MX_Controller {
       $this->is_read();
     break;
 
-    case 'search':
+    case 'searching':
       $this->is_search();
+    break;
+
+    case 'search':
+      $this->search();
     break;
 
     case 'about-us':
@@ -71,56 +75,61 @@ class Cwblog extends MX_Controller {
 		$this->mlib->templatepublic($view,$this->data);
 	}
   function is_search(){
+    $linkk=$this->uri->segment(3);
+    $link=$this->uri->segment(4);
     if(!$_POST){
-      $this->data['is_se']=$this->uri->segment(2);
-      if(is_null($this->data['is_se']) || empty($this->data['is_se'])){
-       // echo json_encode(array("msg"=>'null'));
-        $this->_is_null_sea($this->data);
-      }else{
-         $this->_search($this->data);
-      }
+      $this->data['is_se']=$this->session->userdata('is_se');
+      redirect('search', 'location', 303);
     }else{
-      $this->data['is_se'] =$this->db->escape_str($this->input->post('search', TRUE));
-      if(is_null($this->data['is_se']) || empty($this->data['is_se'])){
-        //echo json_encode(array("msg"=>'null'));
-        $this->_is_null_sea($this->data);
-      }else{
-         $this->_search($this->data);
-      }
+      $sess_data['is_se'] =$this->db->escape_str($this->input->post('search', TRUE));
+      $this->session->set_userdata($sess_data);
+      $this->data['is_se'] = $this->session->userdata('is_se');
+      redirect('search', 'location', 303);
+          
     }
-  }
-  private function _is_null_sea($data){
-    $this->data['css_topp']=$this->template->css_toppub();
-    $view='cwblog/trt_page404';
-     $this->mlib->templatepublic($view,$this->data);
-  }  
+  } 
   function is_about(){
     $this->data['author'] = $this->mcwblog->is_me();
     $this->data['css_topp']=$this->template->css_toppub();
     $view='cwblog/trt_pageme';
      $this->mlib->templatepublic($view,$this->data);
   }
-  private function _search($data){
-    $this->data['limit']=2;
+  function search(){
+    $this->data['limit']=6;
     $this->data['offset']=$this->uri->segment(4);
-    $this->data['is_c']=$data['is_se'];
+    $this->data['is_c']=$this->session->userdata('is_se');
+    $this->data['is_url']=$this->uri->segment(2);
+    $this->data['uri'] = 4;
     $this->data['css_topp']=$this->template->css_toppub();
-    if (is_null($this->data['offset']) || empty($this->data['offset'])){
-            $this->data['offset'] = 0;
-        }
-        else{
-            $this->data['offset'] = ( $this->data['offset'] * $this->data['limit']) - $this->data['limit'];
-        }
-        $this->data['uri'] = 4;
-    $this->data['view_cont']  = $this->mcwblog->cw_search_limit($this->data);
-    if($this->data['view_cont']->num_rows()>0) {
-      $this->data['jumlah_cat'] = $this->mcwblog->is_sum_search($this->data);
-      $this->data['pager_links'] = $this->mcwblog->paging(base_url('search/'.$this->data['is_c'].'/page'),$this->data);
-      $view='cwblog/trt_page';
-    } else{
-      $view='cwblog/trt_page404';
+    if (is_null($this->data['offset']) || empty($this->data['offset']) || !isset($this->data['offset'])){
+      $this->data['offset'] = 0;
+    }else{
+      $this->data['offset'] = ( $this->data['offset'] * $this->data['limit']) - $this->data['limit'];
     }
-    $this->mlib->templatepublic($view,$this->data);
+    if (is_null($this->data['is_c']) || empty($this->data['is_c']) || !isset($this->data['is_c'])){
+      $view='cwblog/trt_page404';
+    }elseif(is_null($this->data['is_url']) || empty($this->data['is_url']) || !isset($this->data['is_url'])){
+      $this->data['is_c']=$this->session->userdata('is_se');
+      $this->data['view_cont']  = $this->mcwblog->cw_search_limit($this->data);
+      if($this->data['view_cont']->num_rows()>0) {
+        $this->data['jumlah_cat'] = $this->mcwblog->is_sum_search($this->data);
+        $this->data['pager_links'] = $this->mcwblog->paging(base_url('search/'.$this->data['is_c'].'/page'),$this->data);
+        $view='cwblog/trt_page';
+      }else{
+        $view='cwblog/trt_page404';
+      }
+    }else{
+      $this->data['is_c']=$this->uri->segment(2);
+      $this->data['view_cont']  = $this->mcwblog->cw_search_limit($this->data);
+      if($this->data['view_cont']->num_rows()>0) {
+        $this->data['jumlah_cat'] = $this->mcwblog->is_sum_search($this->data);
+        $this->data['pager_links'] = $this->mcwblog->paging(base_url('search/'.$this->data['is_c'].'/page'),$this->data);
+        $view='cwblog/trt_page';
+      }else{
+        $view='cwblog/trt_page404';
+      }
+    }
+  $this->mlib->templatepublic($view,$this->data);
   }
 	function is_recent(){
 		$this->data['limit']=6;

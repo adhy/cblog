@@ -14,16 +14,9 @@
                                      $row->c_date = '%d/%m/%Y';
                                      $time = time();
                                      $rewat= mdate($row->c_date, $time);
-                                     //$content=nl2br($row->content);
-                                     //$content = str_replace('\\','',$row->content);
-                                     //$content = trim(preg_replace('/\s+/', ' ', $content));
-                                     //$content = str_replace('/\s\s+/','',$content);
-                                     //$content = str_replace('\r\n','<br />',$content);
-                                    // $content = preg_replace('/\r\n|\r|\n/','<br />',$content);
-                                      
-                     $content = str_replace('\r',' ',$row->content);
-                     $content = str_replace('\n',' ',$content);
-                     $content = stripslashes($content);
+                                     $content = str_replace('\r',' ',$row->content);
+                                     $content = str_replace('\n',' ',$content);
+                                     $content = stripslashes($content);
                                      $nm_t    = explode(',', $row->nm_t);
                                      $slg_t    = explode(',', $row->slg_t);
               ?>

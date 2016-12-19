@@ -103,7 +103,7 @@ class Rtcwb_contents extends MX_Controller {
 			$tags	=	$this->input->post('tags', TRUE);
 			$this->data['headimg']	=	$this->db->escape_str($this->input->post('headimg', TRUE));
 			$this->data['metad']	=	$this->db->escape_str($this->input->post('metad', TRUE));
-			$this->data['content']	=	$this->db->escape_str($this->input->post('content',FALSE));
+			$this->data['content']	=	$this->db->escape_str($this->input->post('content',TRUE));
 			$slg = $this->mlib->slugify($this->data['title']);
 			//$slg = url_title($this->data['title'],'dash',TRUE);
 			$metahead=substr($this->data['metad'],0,200);

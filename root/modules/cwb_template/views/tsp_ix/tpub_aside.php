@@ -15,7 +15,7 @@
                                     }
                                     $row->c_date = '%d/%m/%Y';
                                     $time = time();
-                                    $text= character_limiter($row->title,30);
+                                    $text= character_limiter(stripslashes($row->title),30);
                                     $text= word_limiter($text,5);
                                     $rewat= mdate($row->c_date, $time);
                                     echo '<li class="clearfix"><a href="'.site_url('read/'.$row->slug).'" title="'.$row->title.'"><img alt="'.$row->title.'" title="'.$row->title.'" src="'.base_url($image).'"><span>'.$text.'</span></a><span class="post_date">'.$rewat.'</span> </li>';
@@ -31,7 +31,7 @@
                         <ul class="cat_list_widget">
                         <?php $leaft_cat=is_cuswid('leaft_cat');
                             foreach ($leaft_cat->result() as $row){
-                                echo '<li><a href="'.site_url('category/'.$row->slg_c).'">'.$row->nm_c.'</a><span class="num_posts">'.$row->status.'</span></li>';
+                                echo '<li><a href="'.site_url('category/'.$row->slg_c).'">'.stripslashes($row->nm_c).'</a><span class="num_posts">'.$row->status.'</span></li>';
                               }
                         ;?>
                         </ul>
@@ -45,7 +45,7 @@
                             $total = 0;
                             $is_tag=is_cuswid('is_tag');
                             foreach ($is_tag->result() as $row){
-                            echo '<a href="'.site_url('tag/'.$row->slg_t).'"><span class="tag">'.$row->nm_t.'</span><span class="num">'.$row->status.'</span></a>';
+                            echo '<a href="'.site_url('tag/'.$row->slg_t).'"><span class="tag">'.stripslashes($row->nm_t).'</span><span class="num">'.$row->status.'</span></a>';
                         };?>
                             
                         </div>
@@ -80,7 +80,7 @@
                                             }
                                         $row->c_date = '%d/%m/%Y';
                                         $time = time();
-                                        $text= character_limiter($row->title,30);
+                                        $text= character_limiter(stripslashes($row->title),30);
                                         $text= word_limiter($text,5);
                                         $rewat= mdate($row->c_date, $time);
                             echo '<div class="related_posts_slide"><div class="related_img_con"><a href="'.site_url('read/'.$row->slug).'" class="related_img" title="'.$row->title.'"><img alt="'.$row->title.'" title="'.$row->title.'" src="'.base_url($image).'" style="height: 170px; width: 265px;"><span><i class="ico-link3"></i></span></a></div><a class="related_title" title="'.$row->title.'" href="'.site_url('read/'.$row->slug).'">'.$text.'</a><span class="post_date">'.$rewat.'</span></div>';

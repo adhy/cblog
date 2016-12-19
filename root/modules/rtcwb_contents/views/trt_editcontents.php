@@ -40,7 +40,7 @@
             <div class="form-group">
                 <label class="col-xs-3 control-label">Title</label>
                 <div class="col-xs-5">
-                    <?php echo '<input type="text" class="form-control ipt-prof" name="title" value="'.$row->title.'"/>';?>
+                    <?php echo '<input type="text" class="form-control ipt-prof" name="title" value="'.stripslashes($row->title).'"/>';?>
                     <span>url :</span> <span class="url" style="color": rgb(255, 0, 0); font-style: italic;">.../<?=$row->slug?>.html</span>
                 </div>
             </div>
@@ -53,12 +53,12 @@
                             <?php if($selcategories->num_rows()>0){
                                 foreach ($selcategories->result() as $rows){
                                     foreach($categories->result() as $rowc):?>
-                                    <option  value="<?php echo $rowc->id;?>"<?=$rows->id_cat==$rowc->id ? ' selected="selected"' : '';?>><?php echo $rowc->nm_c; ?></option>
+                                    <option  value="<?php echo $rowc->id;?>"<?=$rows->id_cat==$rowc->id ? ' selected="selected"' : '';?>><?php echo stripslashes($rowc->nm_c); ?></option>
                                    <?php endforeach;
                                 }
                             }else{
                                 foreach($categories->result() as $rowc):                                                                          
-                                echo '<option value="'.$rowc->id.'">'.$rowc->nm_c.'</option>';
+                                echo '<option value="'.$rowc->id.'">'.stripslashes($rowc->nm_c).'</option>';
                                 endforeach;
                             }
                              ?>
@@ -76,18 +76,18 @@
                                     if(!empty($seltags)){
                                     foreach($seltags->result() as $rows):
                                         if($rowt->id==$rows->id_tag){
-                                            echo '<option value="'.$rowt->id.'" selected="selected">'.$rowt->nm_t.'</option>';
+                                            echo '<option value="'.$rowt->id.'" selected="selected">'.stripslashes($rowt->nm_t).'</option>';
                                             $i=1;
                                             break;
                                         }
                                     endforeach;
                                     if($i==0){
-                                        echo '<option value="'.$rowt->id.'">'.$rowt->nm_t.'</option>';
+                                        echo '<option value="'.$rowt->id.'">'.stripslashes($rowt->nm_t).'</option>';
                                     }
                                 
                             }else{
                                                                                                       
-                               echo '<option value="'.$rowt->id.'">'.$rowt->nm_t.'</option>';
+                               echo '<option value="'.$rowt->id.'">'.stripslashes($rowt->nm_t).'</option>';
                           
                             }
                         }
@@ -115,10 +115,10 @@
                 <label class="col-xs-3 control-label">Meta Description</label>
                 <div class="col-xs-5">
                     <?php 
-                    //$order   = array("\r\n", "\n", "\r");
-                   //$meta = preg_replace( "/\r|\n/", "", $row->meta_content );
-                    $meta = str_replace('\r\n','',$row->meta_content);
-                    $meta = str_replace('\\','',$meta);
+
+                    $meta = str_replace('\r',' ',$row->meta_content);
+                    $meta = str_replace('\n',' ',$meta);
+                    $meta = stripslashes($meta);
 
                     echo '<textarea class="form-control ipt-prof" name="metaed" rows="2">'.$meta.'</textarea>';?>
                     <?php //echo ' <input type="text" class="form-control" name="metad" value="'.$row->meta_content.'"/>';?>
@@ -129,7 +129,6 @@
                 <label class="col-xs-3 control-label">content</label>
                 <div class="col-xs-8">
                      <?php 
-                     
                      $content = str_replace('\r',' ',$row->content);
                      $content = str_replace('\n',' ',$content);
                      $content = stripslashes($content);

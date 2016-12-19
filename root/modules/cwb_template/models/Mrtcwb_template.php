@@ -8,65 +8,7 @@ class Mrtcwb_template extends CI_Model {
 		parent::__constuct();  // Call the Model constructor 
 		loader::database();    // Connect to current database setting.froco
 	}
-    function cw_home_limit($data){
-        $this->db->select('*'); 
-        $this->db->join('cb_categories','cb_categories.id = cb_contents.id_cat','inner');
-        $this->db->join('cb_profile','cb_profile.id_user = cb_contents.creator','inner');     
-        $this->db->where('cb_contents.status','1');
-        $this->db->limit($data['limit'],$data['offset']);
-        $this->db->order_by('cb_contents.id', 'DESC');   
-        $result = $this->db->get('cb_contents');;
-        return $result;
-    }
-    public function is_sum_home(){
-        $this->db->select('*'); 
-        $this->db->from('cb_contents');
-        $this->db->join('cb_categories','cb_categories.id = cb_contents.id_cat','inner');
-        $this->db->join('cb_profile','cb_profile.id_user = cb_contents.creator','inner');     
-        $this->db->where('cb_contents.status','1');
-        $result=$this->db->count_all_results();
-        return $result;
-    }
-
-    function paging($base_url,$data){   
-       $this->load->library('pagination');
-        $config = array(
-            'uri_segment'           => $data['uri'],
-            'base_url'              => $base_url,
-            'total_rows'             => $data['jumlah_cat'],
-            'per_page'              => $data['uri'],
-                'use_page_numbers'      => TRUE,
-                'display_pages' => TRUE,
-                //'uri_segment'       => $data['offset'],
-            'first_url'             => $base_url.'.html',
-            //'num_tag_open'             => ' <li>',
-            //'num_tag_close'             => ' </li>',
-            //'cur_tag_open'             => ' <li class="active"><a href="">',
-            //'cur_tag_close'             => ' </a></li>',
-            /*'first_link'             => 'Newer &rarr;',
-            'first_tag_open'         => '<li class="next_pagination">',
-            'first_tag_close'        => '</li>',
-            'last_link'             => '&larr; Older',
-                'last_tag_open'         => '<li class="prev_pagination">',
-                'last_tag_close'        => '</li>',
-                'full_tag_open'         => '<ul class="clearfix">',
-                'full_tag_close'        => '</ul>',
-                'suffix'                => '.html',*/
-                //'next_link'                => '',
-                //'prev_link'                => ''
-            'next_link'             => 'Newer &rarr;',
-            'next_tag_open'         => '<li class="next_pagination">',
-            'next_tag_close'        => '</li>',
-            'prev_link'             => '&larr; Older',
-                'prev_tag_open'         => '<li class="prev_pagination">',
-                'prev_tag_close'        => '</li>',
-                'full_tag_open'         => '<ul class="clearfix">',
-                'full_tag_close'        => '</ul>'
-        );
-
-        $this->pagination->initialize($config);
-        return $this->pagination->create_links();
-    }   
+   
     function is_rand() {
         $this->db->select('*');
         $this->db->order_by('title', 'RANDOM');
@@ -129,18 +71,31 @@ class Mrtcwb_template extends CI_Model {
     }
     function is_navrek($parent=0,$hasil){
         $this->db->where('status','1');
-        $this->db->where('id_parent',$parent);
+        $this->db->where('id_parent','0');
         $menu = $this->db->get('cb_categories');
+        $this->db->where('cb_categories.status','1');
+        $this->db->where('cb_categories.id_parent !=','0');
+        $this->db->join('cb_contents','cb_categories.id=cb_contents.id_cat');
+        $this->db->group_by('cb_categories.id');
+        $submenu = $this->db->get('cb_categories');
+        
+
         if(($menu->num_rows())>0){    
-            $hasil .= "<ul>";                
-        }
-        foreach($menu->result() as $h){
-            $hasil .= "<li class='normal_menu'><a href='".site_url("category/".$h->slg_c)."'>".$h->nm_c;
-            $hasil = $this->is_navrek($h->id,$hasil);
-            $hasil .= "</a></li>";
-        }
-        if(($menu->num_rows)>0){
-            $hasil .= "</ul>";
+            foreach($menu->result() as $h){
+                $hasil .='<li class="normal_menu mobile_menu_toggle"><a href="'.site_url('category/'.$h->slg_c).'"><span>'.stripslashes($h->nm_c).'</span></a><ul>';
+                foreach ($submenu->result() as $subm) {
+                    if($h->id === $subm->id_parent){
+                        $viewsubmenu="<li class='normal_menu'><a href='".site_url("category/".$subm->slg_c)."'>".stripslashes($subm->nm_c);
+                    }else{
+                        $viewsubmenu='';
+                    }
+                    $hasil .= $viewsubmenu;
+
+                }
+                $hasil .= "</ul></li>";
+            }               
+        }else{
+            $hasil='';
         }
         return $hasil;
     }

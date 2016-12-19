@@ -50,7 +50,7 @@
                         <select class="form-control chosen-select ipt-prof" name="category" data-placeholder="-- Select a Category --">
                             <option></option>
                             <?php foreach($categories->result() as $row):                                                                          
-                               echo '<option value="'.$row->id.'">'.$row->nm_c.'</option>';
+                               echo '<option value="'.$row->id.'">'.stripslashes($row->nm_c).'</option>';
                            endforeach; ?>
                         </select>
                     </div>
@@ -61,7 +61,7 @@
                     <div class="col-xs-5 chosenContainer">
                         <select class="form-control chosen-select ipt-prof" name="tags[]" multiple="multiple" data-placeholder="-- Select a tags --">
                             <?php foreach($tags->result() as $row):                                                                          
-                               echo '<option value="'.$row->id.'">'.$row->nm_t.'</option>';
+                               echo '<option value="'.$row->id.'">'.stripslashes($row->nm_t).'</option>';
                            endforeach; ?>
                         </select>
                     </div>

@@ -35,7 +35,7 @@ class Rtcwb_tags extends MX_Controller {
 	            
 	            $row = array();
 	            $row[] = $no++;
-	            $row[] = $person->nm_t;
+	            $row[] = stripslashes($person->nm_t);
 	            $row[] = $person->slg_t;
 	            $datec  = date('d M Y [H:i:s]', strtotime($person->c_date));
 	            $dateu  = date('d M Y [H:i:s]', strtotime($person->u_date));
@@ -127,7 +127,7 @@ class Rtcwb_tags extends MX_Controller {
 				$sess_data['id_tag']	=	$this->data['id'] ;
         		$this->session->set_userdata($sess_data);
 				$send=$cekidt->row();
-				$sendnm=$send->nm_t;
+				$sendnm=stripslashes($send->nm_t);
 			}else{
 				$msg = 'false';
 				$sendnm='error';
@@ -164,12 +164,12 @@ class Rtcwb_tags extends MX_Controller {
 			//$nm_t=$this->input->post('tags', TRUE);
 			foreach ($nm_t as $row) {
 				$tag []= $row;
-				$clear=str_replace('\\','', $row);
+				//$clear=str_replace('\\','', $row);
 				$slg=$this->mlib->slugify($row);
 				//$slg=url_title($row,'dash',TRUE);
 				
 				$input = array(
-							'nm_t' => $clear,
+							'nm_t' => $row,
 							'slg_t'=> $slg,
 							'c_date' =>  date('Y-m-d H:i:s',now()),
 							'u_date' =>  date('Y-m-d H:i:s',now()),

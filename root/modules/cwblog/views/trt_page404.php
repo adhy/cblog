@@ -19,7 +19,7 @@
 					                 <?php 
                  $urlaction=base_url('search');
                  $attributes = array('id'=>'top_search','class'=>'widget_search','action'=>$urlaction);
-                    echo form_open('',$attributes);
+                    echo form_open_multipart('',$attributes);
                  ?>
 							<input type="search" class="serch_input" name="search" id="s" placeholder="Search for Other Pages...">
 							<button type="submit" id="searchsubmit" class="search_btn">

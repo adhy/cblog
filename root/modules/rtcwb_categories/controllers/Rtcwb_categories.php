@@ -35,7 +35,7 @@ class Rtcwb_categories extends MX_Controller {
 	            
 	            $row = array();
 	            $row[] = $no++;
-	            $row[] = $person->nm_c;
+	            $row[] = stripslashes($person->nm_c);
 	            $row[] = $person->slg_c;
 	            $datec  = date('d M Y [H:i:s]', strtotime($person->c_date));
 	            $dateu  = date('d M Y [H:i:s]', strtotime($person->u_date));
@@ -135,7 +135,7 @@ class Rtcwb_categories extends MX_Controller {
 				$sess_data['id_cat']	=	$this->data['id'] ;
         		$this->session->set_userdata($sess_data);
 				$send=$cekidc->row();
-				$sendnm=$send->nm_c;
+				$sendnm=stripslashes($send->nm_c);
 				$cekidparzero=$this->categories->getcatidpar($this->data);
 				$cekidparnoze=$this->categories->getcatidparnoze($this->data);
 				 if($cekidparnoze->num_rows()>0){
@@ -186,10 +186,10 @@ class Rtcwb_categories extends MX_Controller {
 			$nm_c=$this->db->escape_str($this->input->post('categories',TRUE));
 			foreach ($nm_c as $row) {
 				$cat []= $row;
-				$clear=str_replace('\\','', $row);
+				//$clear=str_replace('\\','', $row);
 				$toslg = $this->mlib->slugify($row);	
 				$input = array(
-							'nm_c' => $clear,
+							'nm_c' => $row,
 							'slg_c'=> $toslg,
 							'id_parent'=>'0',
 							'c_date' =>  date('Y-m-d H:i:s',now()),
@@ -233,11 +233,11 @@ class Rtcwb_categories extends MX_Controller {
 				if (empty($id_p)){
 					$this->data['parent'] = '0';
 				}
-				$save=str_replace('\\','', $this->data['category']	);
+				//$save=str_replace('\\','', $this->data['category']	);
 				$toslg=$this->mlib->slugify($this->data['category']);
 				//$toslg=url_title($this->data['category'],'dash',TRUE);
 				$data_edit = array(
-							'nm_c' => $save,
+							'nm_c' => $this->data['category'],
 							'id_parent'=> $this->data['parent'],
 							'slg_c'=> $toslg,
 							'u_date' =>  date('Y-m-d H:i:s',now()),

@@ -68,12 +68,10 @@
                                 
                 <!-- Top Search -->
                  <?php 
-                 $urlaction=base_url('search');
+                 $urlaction=base_url('searching');
                  $attributes = array('id'=>'top_search','class'=>'top_search clearfix small_top_search','action'=>$urlaction);
-                    echo form_open('',$attributes);
+                    echo form_open_multipart('',$attributes);
                  ?>
-                <!-- <form id="top_search" class="top_search clearfix" method="post" accept-charset="utf-8" action="search">
-                    <input name="st3rben" value="ecd8acdd455d3ed0515107f8e8401a58" style="display:none;" type="hidden">-->
                     <div class="top_search_con">
                         <input type="text" class="s" name="search" placeholder="Search Here ...">
                         <span class="top_search_icon"><i class="ico-search4"></i></span>
@@ -91,10 +89,11 @@
                             <li class="normal_menu mobile_menu_toggle">
                             <?=anchor('', '<span>Home</span>');?>
                             </li>
-                            <li class="normal_menu mobile_menu_toggle">
+                            <!--<li class="normal_menu mobile_menu_toggle">
                                 <?=anchor('category', '<span>Category</span>');?>
-                        <?php echo is_cuswid('is_navv');?>
-                            </li>
+                        
+                            </li>-->
+                            <?php echo is_cuswid('is_navv');?>
                             <li class="normal_menu mobile_menu_toggle">
                             <?=anchor('about-us', '<span>About Us</span>');?>
                             </li>

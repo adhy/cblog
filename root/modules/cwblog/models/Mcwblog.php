@@ -146,7 +146,6 @@ class Mcwblog extends CI_Model {
             'per_page'              => $data['limit'],
                 'use_page_numbers'      => TRUE,
                 'display_pages' => TRUE,
-                //'uri_segment'       => $data['offset'],
             'first_url'             => $base_url.'.html',
             'num_tag_open'             => ' <li>',
             'num_tag_close'             => ' </li>',
