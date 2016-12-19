@@ -279,12 +279,12 @@ class Rtcwb_contents extends MX_Controller {
 		$this->form_validation->set_rules('edcontent', '', '');
 		$msg    = "error1";
 		if ($this->form_validation->run() == TRUE){
-			$this->data['title']	=	$this->db->escape_str($this->input->post('title', TRUE));
+			$this->data['title']	=	stripslashes($this->db->escape_str($this->input->post('title', TRUE)));
 			$this->data['category']	=	$this->db->escape_str($this->input->post('category', TRUE));
 			$tags	=	$this->input->post('tags', TRUE);
 			$this->data['headimg']	=	$this->db->escape_str($this->input->post('headimg', TRUE));
 			$this->data['metad']	=	$this->db->escape_str($this->input->post('metaed', TRUE));
-			$this->data['content']	=	$this->db->escape_str($this->input->post('edcontent',FALSE));
+			$this->data['content']	=	$this->db->escape_str($this->input->post('edcontent',TRUE));
 			$slg = $this->mlib->slugify($this->data['title']);
 			//$slg = url_title($this->data['title'],'dash',TRUE);
 			$metahead=substr($this->data['metad'],0,200);

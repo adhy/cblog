@@ -129,9 +129,10 @@
                 <label class="col-xs-3 control-label">content</label>
                 <div class="col-xs-8">
                      <?php 
-                     $content = str_replace('\"','"',$row->content);
-                     $content = str_replace('\r',' ',$content);
+                     
+                     $content = str_replace('\r',' ',$row->content);
                      $content = str_replace('\n',' ',$content);
+                     $content = stripslashes($content);
 
 
                      echo '<textarea class="form-control" name="edcontent" rows="7">'.$content.'</textarea>';?>
