@@ -115,11 +115,8 @@
                 <label class="col-xs-3 control-label">Meta Description</label>
                 <div class="col-xs-5">
                     <?php 
-
-                    $meta = str_replace('\r',' ',$row->meta_content);
-                    $meta = str_replace('\n',' ',$meta);
+                    $meta = preg_replace('/\v+|\\\r\\\n/', "<br />", $row->meta_content);
                     $meta = stripslashes($meta);
-
                     echo '<textarea class="form-control ipt-prof" name="metaed" rows="2">'.$meta.'</textarea>';?>
                     <?php //echo ' <input type="text" class="form-control" name="metad" value="'.$row->meta_content.'"/>';?>
                 </div>
@@ -129,11 +126,8 @@
                 <label class="col-xs-3 control-label">content</label>
                 <div class="col-xs-8">
                      <?php 
-                     $content = str_replace('\r',' ',$row->content);
-                     $content = str_replace('\n',' ',$content);
+                     $content = preg_replace('/\v+|\\\r\\\n/', "<br />", $row->content);
                      $content = stripslashes($content);
-
-
                      echo '<textarea class="form-control" name="edcontent" rows="7">'.$content.'</textarea>';?>
                 </div>
             </div>

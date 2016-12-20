@@ -14,9 +14,8 @@
                                      $row->c_date = '%d/%m/%Y';
                                      $time = time();
                                      $rewat= mdate($row->c_date, $time);
-                                     $content = str_replace('\r',' ',$row->content);
-                                     $content = str_replace('\n',' ',$content);
-                                     $content = stripslashes($content);
+                                     $content = nl2br($row->content);
+                                     $content = stripcslashes($content);                                    
                                      $nm_t    = explode(',', $row->nm_t);
                                      $slg_t    = explode(',', $row->slg_t);
               ?>
@@ -53,7 +52,7 @@
               </div>
   
                     <img src="<?=base_url($image)?>" alt="Post Title">
-              <div class="blog_grid_con"><?=$content?>
+              <div class="blog_grid_con"><?php echo $content;?>
                 
                 <!--<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris non laoreet dui. Morbi lacus massa, euismod ut turpis molestie, tristique sodales est. Integer sit amet mi id sapien tempor molestie in nec massa.</p>
                 <p>Fusce non ante sed lorem rutrum feugiat. Vestibulum pellentesque, purus ut dignissim consectetur, nulla erat ultrices purus, <img class="conimg" src="assets/images/bg4.jpg" alt="Post Title">ut consequat sem elit non sem. Morbi lacus massa, euismod ut turpis molestie, tristique sodales est. Integer sit amet mi id sapien tempor molestie in nec massa. Fusce non ante sed lorem rutrum feugiat.</p>
