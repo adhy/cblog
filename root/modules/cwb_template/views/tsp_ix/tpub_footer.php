@@ -183,24 +183,9 @@
 <script src="<?=base_url('assets/js/toastr.min.js')?>"></script>
 <!-- this is where we put our custom functions -->
 <?php if(!empty($code)){echo $code;} ?>
-<script type="text/javascript">
-/*
-var http = location.protocol;
-var slashes = http.concat("//");
-var host = slashes.concat(window.location.hostname);
-SyntaxHighlighter.autoloader(
-    ['js','jscript','javascript',host+'assets/plugins/syntaxhighlighter/scripts/shBrushJScript.js'],
-    ['bash','shell',host+'assets/plugins/syntaxhighlighter/scripts/shBrushBash.js'],
-    ['css',host+'assets/plugins/syntaxhighlighter/scripts/shBrushCss.js'],
-    ['xml',host+'assets/plugins/syntaxhighlighter/scripts/shBrushXml.js'],
-    ['sql',host+'assets/plugins/syntaxhighlighter/scripts/shBrushSql.js'],
-    ['php',host+'assets/plugins/syntaxhighlighter/scripts/shBrushPhp.js']
-    );*/
-     SyntaxHighlighter.all()
-</script>
 <script type="text/javascript" src="<?=base_url('assets/js/functions.js')?>"></script>
 <script type="text/javascript" src="<?=base_url('assets/js/prism.js')?>"></script>
-<script type="text/javascript" src="<?=base_url('assets/js/prism-line-numbers.js')?>"></script>
+<!--<script type="text/javascript" src="<?=base_url('assets/js/prism-line-numbers.js')?>"></script>-->
 </body>
 
 </html>

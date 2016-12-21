@@ -15,6 +15,7 @@
      <?php foreach($js_fott as $urljs){echo "<script src='".base_url('assets')."/private/js/".$urljs."'></script>";}?>
 
     <script type="text/javascript">
+    var e = ' ';
     var url = '<?php echo base_url();?>';
     var weburi = window.location.origin;
         var csfrData = {};
@@ -28,6 +29,7 @@ function set_tok(csfrData){
 }
 
     <?php if (!empty($js_from)){echo $js_from;}?>
+
   </script>
 
   <?php echo $this->session->flashdata('notif');?>
