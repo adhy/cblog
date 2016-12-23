@@ -132,7 +132,7 @@ $config = array(
 	| in Megabytes
 	|
 	*/
-	'MaxSizeUpload' => 1,
+	'MaxSizeUpload' => 2000000,
 
 
 	/*
@@ -155,9 +155,9 @@ $config = array(
 
 
 	//Show or not total size in filemanager (is possible to greatly increase the calculations)
-	'show_total_size'						=> false,
+	'show_total_size'						=> true,
 	//Show or not show folder size in list view feature in filemanager (is possible, if there is a large folder, to greatly increase the calculations)
-	'show_folder_size'						=> false,
+	'show_folder_size'						=> true,
 	//Show or not show sorting feature in filemanager
 	'show_sorting_bar'						=> true,
 	//Show or not show filters button in filemanager
@@ -260,10 +260,10 @@ $config = array(
 
 	// defines size limit for paste in MB / operation
 	// set 'FALSE' for no limit
-	'copy_cut_max_size'                       => 100,
+	'copy_cut_max_size'                       => 1000,
 	// defines file count limit for paste / operation
 	// set 'FALSE' for no limit
-	'copy_cut_max_count'                      => 200,
+	'copy_cut_max_count'                      => 2000,
 	//IF any of these limits reached, operation won't start and generate warning
 
 	//**********************
