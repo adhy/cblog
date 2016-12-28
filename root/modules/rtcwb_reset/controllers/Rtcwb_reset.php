@@ -20,6 +20,17 @@ class Rtcwb_reset extends MX_Controller {
 		$this->data['css_top']=$this->template->css_top();
 		$view='rtcwb_reset/trt_resetsend';
 		$this->mlib->templatelogin($view, $this->data);
+		$datestring 			= 	"%Y-%m-%d %h:%i:%s";
+		$time 					= 	time();
+		$email='coba@mail.com';
+		$hexc=$this->mlib->safe_hexc($email);
+		$activation_key			= 	$this->mlib->encode(rand(0,1000).','.mdate($datestring, $time).','.$hexc);
+		$decode=$this->mlib->decode($activation_key);
+		var_dump($email);
+		var_dump(rand(0,1000)) ;
+		var_dump($hexc);
+		var_dump($activation_key);
+		var_dump($decode);
 		}else{
 			redirect('mailworm');
 		}
@@ -40,7 +51,12 @@ class Rtcwb_reset extends MX_Controller {
 				$msg    = "success";
 				$judul='Reset Password';
 				$tujuan=$this->data['email'] ;
-				$pesan= 'ini pesan 1';
+				$datestring 			= 	"%Y-%m-%d %h:%i:%s";
+				$time 					= 	time();
+				$email 					=   $this->mlib->safe_hexc($this->data['email']);
+				$activation_key			= 	$this->mlib->encode(rand(0,1000).','.mdate($datestring, $time).','.$email);
+				$time_now				=	date('Y-m-d H:i:s',time());
+				$pesan= 'ini pesan 1 klik http://localhost/cblog/mailworm/conf/'.$activation_key.' untuk aktivasi';
 				$snma=$this->mlib->send_email($pesan,$judul,$tujuan,$psuc,$pro);
 				$this->session->set_flashdata('notif',$snma);
 			}else{
@@ -49,6 +65,28 @@ class Rtcwb_reset extends MX_Controller {
 			}
 		}
 		echo json_encode(array("msg"=>$msg,"pesan"=>$snma));
+		}else{
+			redirect('mailworm');
+		}
+	}
+	function cnf_reset(){
+		if(!is_logged_in()){ // if you add in constructor no need write each function in above controller. 
+			$key=$this->uri->segment(3);
+			$decode=$this->mlib->decode($key);
+			$explode_data= explode(",", $decode);
+			var_dump($explode_data);
+			$mail = $this->mlib->safe_hexd($explode_data[2]);
+			echo $explode_data[0];
+			echo $explode_data[1];
+			echo $mail;
+				$time1					=	strtotime($explode_data[1]);
+				$time_now				=	date('Y-m-d H:i:s',time());
+				$time2					=	strtotime($time_now);
+				$sum					=	$time2-$time1;
+				echo $sum;
+			//if (is_null($this->data['offset']) || empty($this->data['offset']) || !isset($this->data['offset'])){
+
+			//}
 		}else{
 			redirect('mailworm');
 		}
