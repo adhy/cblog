@@ -10,8 +10,20 @@ class Mrtcwb_reset extends CI_Model {
 		loader::database();    // Connect to current database setting.
 	}
 	function getemail($data){
-		$this->db->where('email', $data['email']);
-		return $this->db->get($this->table);
+        $this->db->join('cb_log', 'cb_profile.id_user = cb_log.id_user');
+        $this->db->where('cb_profile.email', $data['email']);
+        return $this->db->get($this->table);
+    }
+    function valdesi($data){
+        $this->db->join('cb_log', 'cb_profile.id_user = cb_log.id_user');
+        $this->db->where('cb_profile.email', $data['email']);
+        $this->db->where('cb_log.key_uppass', $data['key_uppass']);
+        $this->db->where('cb_log.u_date', $data['date']);
+        return $this->db->get($this->table);
+    }
+    function valdesi_key($data){
+        $this->db->where('act_key', $data['key']);
+		return $this->db->get('cb_log');
 	}
 		function js_frlogin(){
 		return $script = "$(document).ready(function() {
@@ -94,6 +106,85 @@ class Mrtcwb_reset extends CI_Model {
     
 });";
 	}
+    function fr_reset(){
+        return $script = "$(document).ready(function() {
+    $('#newpass_form')
+        .formValidation({
+            //message: 'This value is not valid',
+        framework: 'bootstrap',
+       // live: 'enable',
+        icon: {
+            //valid: 'glyphicon glyphicon-ok',
+            //invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        row: {
+            valid: 'field-success',
+            invalid: 'field-error'
+        },
+        locale: 'id_ID',
+            fields: {
+                password: {
+                    enabled: false,
+                    validators: {
+                        notEmpty: {
+                        },
+                        stringLength: {
+                        min: 6,
+                        max: 30,
+                        
+                        }
+                    }
+                },
+                confirm_password: {
+                    enabled: false,
+                    validators: {
+                        notEmpty: {
+                        },
+                        identical: {
+                            field: 'password',
+                        }
+                    }
+                }
+            }
+        })
+        // Enable the password/confirm password validators if the password is not empty
+        .on('keyup', '[name=\"password\"]', function() {
+            var isEmpty = $(this).val() == '';
+            $('#enableForm')
+                    .formValidation('enableFieldValidators', 'password', !isEmpty)
+                    .formValidation('enableFieldValidators', 'confirm_password', !isEmpty);
+
+            // Revalidate the field when user start typing in the password field
+            if ($(this).val().length == 1) {
+                $('#enableForm').formValidation('validateField', 'password')
+                                .formValidation('validateField', 'confirm_password');
+            }
+        })
+               .on('success.form.fv', function(e) {
+        // Prevent form submission
+        e.preventDefault();
+        // Use Ajax to submit form data
+        $.ajax({
+            type    : 'POST',
+            url     : 'new-password',
+            data    : $('#newpass_form').serialize(),
+            dataType: 'json',
+            success : function(response){
+                if(response.msg == 'success'){
+                    //toastr.success('ok !');
+                   window.location.href = 'login.html';
+                }else{
+                    toastr.warning('Ulangi password yang anda masukkan');
+                    //toastr.success('username atau password yang anda masukkan salah !');
+                    //window.location.href = 'dashboard.html';
+
+                }
+            }
+        });
+    });
+});";
+    }
 	function fr_input($n=null,$p=null,$t=null){
 		$data = array(
             'name'          => $n,
