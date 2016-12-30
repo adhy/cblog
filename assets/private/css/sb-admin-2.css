@@ -597,7 +597,7 @@ background-position:center;
 }
 .setpr{
     background-color: #fff;
-    border: 1px solid #337ab7;
+    /*border: 1px solid #337ab7;*/
 }
 .cardb{
     box-shadow: 10px 10px 5px rgba(0,0,0,1);

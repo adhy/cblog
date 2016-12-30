@@ -25,7 +25,7 @@ class Mrtcwb_reset extends CI_Model {
         $this->db->where('act_key', $data['key']);
 		return $this->db->get('cb_log');
 	}
-		function js_frlogin(){
+	function js_frlogin(){
 		return $script = "$(document).ready(function() {
     $('#reset_form').formValidation({
         //message: 'This value is not valid',
@@ -108,9 +108,8 @@ class Mrtcwb_reset extends CI_Model {
 	}
     function fr_reset(){
         return $script = "$(document).ready(function() {
-    $('#newpass_form')
-        .formValidation({
-            //message: 'This value is not valid',
+    $('#newpass_form').formValidation({
+        //message: 'This value is not valid',
         framework: 'bootstrap',
        // live: 'enable',
         icon: {
@@ -123,59 +122,47 @@ class Mrtcwb_reset extends CI_Model {
             invalid: 'field-error'
         },
         locale: 'id_ID',
-            fields: {
-                password: {
-                    enabled: false,
-                    validators: {
-                        notEmpty: {
-                        },
-                        stringLength: {
+        fields: {
+            password: {
+                validators: {
+                    notEmpty: {
+                        
+                    },
+                    stringLength: {
                         min: 6,
                         max: 30,
                         
-                        }
                     }
-                },
-                confirm_password: {
-                    enabled: false,
-                    validators: {
-                        notEmpty: {
-                        },
-                        identical: {
-                            field: 'password',
-                        }
+                }
+            },
+            confirmPassword: {
+                validators: {
+                    identical: {
+                        field: 'password',
                     }
                 }
             }
-        })
-        // Enable the password/confirm password validators if the password is not empty
-        .on('keyup', '[name=\"password\"]', function() {
-            var isEmpty = $(this).val() == '';
-            $('#enableForm')
-                    .formValidation('enableFieldValidators', 'password', !isEmpty)
-                    .formValidation('enableFieldValidators', 'confirm_password', !isEmpty);
 
-            // Revalidate the field when user start typing in the password field
-            if ($(this).val().length == 1) {
-                $('#enableForm').formValidation('validateField', 'password')
-                                .formValidation('validateField', 'confirm_password');
-            }
-        })
-               .on('success.form.fv', function(e) {
+
+        }
+    })
+
+    
+       .on('success.form.fv', function(e) {
         // Prevent form submission
         e.preventDefault();
         // Use Ajax to submit form data
         $.ajax({
             type    : 'POST',
-            url     : 'new-password',
+            url     : url+'mailworm/new-password',
             data    : $('#newpass_form').serialize(),
             dataType: 'json',
             success : function(response){
                 if(response.msg == 'success'){
                     //toastr.success('ok !');
-                   window.location.href = 'login.html';
+                   window.location.href = url+'mailworm/login.html';
                 }else{
-                    toastr.warning('Ulangi password yang anda masukkan');
+                    toastr.warning('Email Yang Anda Masukkan Salah !');
                     //toastr.success('username atau password yang anda masukkan salah !');
                     //window.location.href = 'dashboard.html';
 
@@ -183,6 +170,7 @@ class Mrtcwb_reset extends CI_Model {
             }
         });
     });
+    
 });";
     }
 	function fr_input($n=null,$p=null,$t=null){

@@ -263,6 +263,7 @@ $('[name=\"title\"]').keyup(function(){
   tinymce.init({
     forced_root_block : '',
     selector: '[name=\"content\"]',
+    extended_valid_elements: 'iframe[src|width|height|name|align|frameborder|allowfullscreen]',
         skin: 'lightgray',
         max_height: 800,
         min_height: 600,
@@ -472,6 +473,7 @@ $('[name=\"title\"]').keyup(function(){
   tinymce.init({
     forced_root_block : '',
     selector: '[name=\"edcontent\"]',
+    extended_valid_elements: 'iframe[src|width|height|name|align|frameborder|allowfullscreen]',
         skin: 'lightgray',
         max_height: 800,
         min_height: 600,

@@ -95,7 +95,7 @@ class Rtcwb_reset extends MX_Controller {
 						if($sum<=1800){
 							$this->data['js_frlogin']=$this->mrtcwb_reset->fr_reset();
 							$this->data['fr_newpass']=$this->template->fr_input($n='password',$p='Enter New Password min 6',$t='password',$s='froco');
-							$this->data['fr_newpassconf']=$this->template->fr_input($n='confirm_password',$p='Retype New Password min 6',$t='password',$s='froco');
+							$this->data['fr_newpassconf']=$this->template->fr_input($n='confirmPassword',$p='Retype New Password min 6',$t='password',$s='froco');
 							$this->data['fr_but']=$this->template->fr_but($n='newpass_form',$c='Send');
 							$this->data['js_fott']=$this->template->js_fot();
 							$this->data['css_top']=$this->template->css_top();
@@ -134,8 +134,8 @@ class Rtcwb_reset extends MX_Controller {
 			$this->data['password']    		= md5($this->db->escape_str($this->input->post('password',TRUE)));
 			$this->data['email']=$this->session->userdata('email_re');
 			$query=$this->mrtcwb_reset->getemail($this->data);
-			$psuc = '<script>toastr.success("Silahkan Login");</script>';
-			$pro   = '<script>toastr.error("Ulangi Password anda");</script>';
+			//$psuc = '<script>toastr.success("Silahkan Login");</script>';
+			//$pro   = '<script>toastr.error("Ulangi Password anda");</script>';
 			if($query->num_rows()>0){
 					$msg    = "success";
 					$judul='Reset Password';
@@ -157,13 +157,15 @@ class Rtcwb_reset extends MX_Controller {
 							);
 						$update = $this->db->where("id_user",$value->id_user)->update('cb_log',$data_edit);
 					}
-					$this->session->set_flashdata('notif',$psuc);
+					//var_dump($this->data['password']);
+					$notif='<script>toastr.success("Silahkan Login");</script>';
+					$this->session->set_flashdata('notif',$notif);
 				}else{
 					$msg    = "error";
-					$snma = $pro;
+					$notif = '<script>toastr.error("Ulangi Password anda");</script>';
 			}
 		}
-		echo json_encode(array("msg"=>$msg,"pesan"=>$snma));
+		echo json_encode(array("msg"=>$msg,"pesan"=>$notif));
 	}else{
 			redirect('mailworm');
 		}
