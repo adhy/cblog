@@ -187,7 +187,7 @@ class Mrtcwb_template extends CI_Model {
                             			"toastr.min.js","jquery.uniform.min.js","sb-admin-2.js");
     }
     function js_fotrot(){
-		       return $jquery =array("jquery.min.js","jquery-ui.min.js", "bootstrap.min.js","metisMenu.min.js","pace.min.js",
+		       return $jquery =array("jquery-2.2.4.min.js","jquery-ui.min.js", "bootstrap.min.js","metisMenu.min.js","pace.min.js",
                             			"formValidation.min.js","framework/bootstrap.min.js","language/id_ID.js",
                             			"toastr.min.js","jquery.uniform.min.js","bootstrap-select.min.js","jquery.dataTables.min.js","dataTables.bootstrap.min.js","dataTables.responsive.js","chosen.jquery.min.js","jquery.mousewheel-3.0.6.pack.js","jquery.fancybox.pack.js","jquery.observe_field.js","tinymce/tinymce.min.js","masonry.pkgd.min.js","imagesloaded.pkgd.min.js","prism.js","sb-admin-2.js");
     }
