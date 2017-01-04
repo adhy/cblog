@@ -25,10 +25,8 @@
                 <h6 class="title"><a href="#"><?=$row->title?></a></h6>
                 <span class="meta">
                   <span class="meta_part">
-                    <a href="#">
                       <i class="ico-clock7"></i>
                       <span><?=$rewat?></span>
-                    </a>
                   </span>
                   <!--<span class="meta_part">
                     <a href="#">
@@ -66,13 +64,6 @@
               
               <!-- Next / Prev and Social Share-->
               <div class="post_next_prev_con clearfix">
-                <!-- Next and Prev Post-->
-                <div class="post_next_prev clearfix">
-                  <a href="#"><i class="ico-arrow-back"></i><span class="t">Prev</span></a>
-                  <!--<a href="#" class="th_icon" title="All Posts"><i class="ico-apps"></i></a> -->
-                  <a href="#"><span class="t">Next</span><i class="ico-arrow-forward"></i></a>
-                </div>
-                <!-- End Next and Prev Post-->
                 
                 <!-- Social Share-->
                 <div class="single_pro_row">

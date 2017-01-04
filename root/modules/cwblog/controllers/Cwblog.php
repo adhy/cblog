@@ -98,6 +98,7 @@ class Cwblog extends MX_Controller {
     $this->data['limit']=6;
     $this->data['offset']=$this->uri->segment(4);
     $this->data['is_c']=$this->session->userdata('is_se');
+    $url               = $this->mlib->slugify($this->data['is_c']);
     $this->data['is_url']=$this->uri->segment(2);
     $this->data['uri'] = 4;
     $this->data['css_topp']=$this->template->css_toppub();
