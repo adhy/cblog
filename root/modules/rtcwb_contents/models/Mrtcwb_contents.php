@@ -274,7 +274,7 @@ $('[name=\"title\"]').keyup(function(){
         {text: 'Go', value: 'go'},
         {text: 'Git', value: 'git'},
       ];
-      const prismUrl = url+'assets/private/js/tinymce/plugins/tinymce-prism/prism.min.css';
+      const prismUrl = url+'assets/private/js/tinymce/plugins/tinymce-prism/prism-okaidia.min.css';
     $(document).ready(function() {
   tinymce.init({
     forced_root_block : '',
@@ -490,7 +490,7 @@ $('[name=\"title\"]').keyup(function(){
         {text: 'Go', value: 'go'},
         {text: 'Git', value: 'git'},
       ];
-      const prismUrl = url+'assets/private/js/tinymce/plugins/tinymce-prism/prism.min.css';
+      const prismUrl = url+'assets/private/js/tinymce/plugins/tinymce-prism/prism-okaidia.min.css';
     $(document).ready(function() {
   tinymce.init({
     forced_root_block : '',

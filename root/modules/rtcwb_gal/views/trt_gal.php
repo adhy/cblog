@@ -25,7 +25,7 @@
                         </div>
                         <!-- /.panel-heading -->
                         <div id="panel" class="panel-body collapse in">
-                        <link href="<?php echo base_url('assets');?>/css/imageload.css" rel="stylesheet">
+                        <link href="<?php echo base_url('assets');?>/private/css/imageload.css" rel="stylesheet">
                             <div class="masonry">
                             </div>                            
                         </div>
