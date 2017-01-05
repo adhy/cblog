@@ -189,7 +189,7 @@ class Mrtcwb_template extends CI_Model {
     function js_fotrot(){
 		       return $jquery =array("jquery-2.2.4.min.js","jquery-ui.min.js", "bootstrap.min.js","metisMenu.min.js","pace.min.js",
                             			"formValidation.min.js","framework/bootstrap.min.js","language/id_ID.js",
-                            			"toastr.min.js","jquery.uniform.min.js","bootstrap-select.min.js","jquery.dataTables.min.js","dataTables.bootstrap.min.js","dataTables.responsive.js","chosen.jquery.min.js","jquery.mousewheel-3.0.6.pack.js","jquery.fancybox.pack.js","jquery.observe_field.js","tinymce/tinymce.min.js","masonry.pkgd.min.js","imagesloaded.pkgd.min.js","prism.js","sb-admin-2.js");
+                            			"toastr.min.js","jquery.uniform.min.js","bootstrap-select.min.js","jquery.dataTables.min.js","dataTables.bootstrap.min.js","dataTables.responsive.js","chosen.jquery.min.js","jquery.mousewheel-3.0.6.pack.js","jquery.fancybox.pack.js","jquery.observe_field.js","masonry.pkgd.min.js","imagesloaded.pkgd.min.js","tinymce/tinymce.min.js","tinymce/plugins/tinymce-prism/plugin.js","sb-admin-2.js");
     }
     function css_top(){
 		       return $jquery =array("bootstrap.min.css", "metisMenu.min.css","thepa/blue/pace-theme-minimal.css","formValidation.min.css",
@@ -199,7 +199,7 @@ class Mrtcwb_template extends CI_Model {
     function css_toprot(){
                return $jquery =array("bootstrap.min.css", "metisMenu.min.css","thepa/blue/pace-theme-minimal.css","formValidation.min.css",
                                         "toastr.css","dataTables.bootstrap.css","thesu/default/css/uniform.default.min.css","bootstrap-select.css","dataTables.responsive.css","bootstrap-chosen.css","jquery.fancybox.css","sb-admin-2.css",
-                                        "imageload.css","prism.css","font-awesome.min.css");
+                                        "imageload.css","font-awesome.min.css");
     }
     function css_toppub(){
                return $jquery =array("style.css", "bootstrap.css","mediaelementplayer.css","animate.min.css",

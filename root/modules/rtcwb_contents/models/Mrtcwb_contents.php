@@ -258,21 +258,7 @@ $('[name=\"title\"]').keyup(function(){
     var akh = isi.toLowerCase().replace(/-+/g, '-').replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
     $('.url').css({'color': 'rgb(255, 0, 0)', 'font-style': 'italic'}).html('.../'+akh+'.html');
 });
-    $(document).ready(function() {
-
-  tinymce.init({
-    forced_root_block : '',
-    selector: '[name=\"content\"]',
-    extended_valid_elements: 'iframe[src|width|height|name|align|frameborder|allowfullscreen]',
-        skin: 'lightgray',
-        max_height: 800,
-        min_height: 600,
-        theme: 'modern',
-        convert_urls:true,
-        relative_urls:true,
-        remove_script_host: false,
-    
-    /*codesample_languages: [
+    const prism_languages = [
         {text: 'HTML/XML', value: 'markup'},
         {text: 'JavaScript', value: 'javascript'},
         {text: 'CSS', value: 'css'},
@@ -282,9 +268,28 @@ $('[name=\"title\"]').keyup(function(){
         {text: 'Java', value: 'java'},
         {text: 'C', value: 'c'},
         {text: 'C#', value: 'csharp'},
-        {text: 'C++', value: 'cpp'}
-    ],*/
-    codesample_dialog_height: 400,
+        {text: 'C++', value: 'cpp'},
+        {text: 'Elixir', value: 'elixir'},
+        {text: 'Rust', value: 'rust'},
+        {text: 'Go', value: 'go'},
+        {text: 'Git', value: 'git'},
+      ];
+      const prismUrl = url+'assets/private/js/tinymce/plugins/tinymce-prism/prism.min.css';
+    $(document).ready(function() {
+  tinymce.init({
+    forced_root_block : '',
+    selector: '[name=\"content\"]',
+    extended_valid_elements: 'iframe[src|width|height|name|align|frameborder|allowfullscreen]',
+        skin: 'lightgray',
+        max_height: 800,
+        min_height: 600,
+        theme: 'modern',
+        convert_urls:true,
+relative_urls:false,
+remove_script_host:false,
+        height : 'calc(100vh - 130px)',
+        prism_languages: prism_languages,
+        prism_content_css_list: [prismUrl],
     plugins: [
          'advlist autolink link image lists charmap print preview hr anchor pagebreak',
          'searchreplace wordcount visualblocks visualchars insertdatetime media nonbreaking',
@@ -293,13 +298,14 @@ $('[name=\"title\"]').keyup(function(){
    toolbar1: 'undo redo | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | styleselect',
    toolbar2: '| appex | link unlink anchor | image media | forecolor backcolor  | print preview code | prism',
    image_advtab: false,
+   
    external_filemanager_path:url+'/appex/',
    filemanager_title:'Responsive filemanager' ,
    external_plugins: { 'filemanager' : url+'/appex/plugin.min.js'},
    setup: function(editor) {
             editor.on('keyup', function(e) {
                 // Revalidate the hobbies field
-                $('#contents').formValidation('revalidateField', 'content');
+                $('#edcontents').formValidation('revalidateField', 'edcontent');
             });
         }
  });
@@ -468,7 +474,23 @@ $('[name=\"title\"]').keyup(function(){
     var akh = isi.toLowerCase().replace(/-+/g, '-').replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
     $('.url').css({'color': 'rgb(255, 0, 0)', 'font-style': 'italic'}).html('.../'+akh+'.html');
 });
-
+        const prism_languages = [
+        {text: 'HTML/XML', value: 'markup'},
+        {text: 'JavaScript', value: 'javascript'},
+        {text: 'CSS', value: 'css'},
+        {text: 'PHP', value: 'php'},
+        {text: 'Ruby', value: 'ruby'},
+        {text: 'Python', value: 'python'},
+        {text: 'Java', value: 'java'},
+        {text: 'C', value: 'c'},
+        {text: 'C#', value: 'csharp'},
+        {text: 'C++', value: 'cpp'},
+        {text: 'Elixir', value: 'elixir'},
+        {text: 'Rust', value: 'rust'},
+        {text: 'Go', value: 'go'},
+        {text: 'Git', value: 'git'},
+      ];
+      const prismUrl = url+'assets/private/js/tinymce/plugins/tinymce-prism/prism.min.css';
     $(document).ready(function() {
   tinymce.init({
     forced_root_block : '',
@@ -481,20 +503,9 @@ $('[name=\"title\"]').keyup(function(){
         convert_urls:true,
 relative_urls:false,
 remove_script_host:false,
-/*codesample_languages: [
-        {text: 'HTML/XML', value: 'markup'},
-        {text: 'JavaScript', value: 'javascript'},
-        {text: 'CSS', value: 'css'},
-        {text: 'PHP', value: 'php'},
-        {text: 'Ruby', value: 'ruby'},
-        {text: 'Python', value: 'python'},
-        {text: 'Java', value: 'java'},
-        {text: 'C', value: 'c'},
-        {text: 'C#', value: 'csharp'},
-        {text: 'C++', value: 'cpp'}
-    ],*/
-       //document_base_url:url,
-    //codesample_dialog_height: 400,
+        height : 'calc(100vh - 130px)',
+        prism_languages: prism_languages,
+        prism_content_css_list: [prismUrl],
     plugins: [
          'advlist autolink link image lists charmap print preview hr anchor pagebreak',
          'searchreplace wordcount visualblocks visualchars insertdatetime media nonbreaking',
