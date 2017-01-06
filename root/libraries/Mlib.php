@@ -124,6 +124,10 @@ class Mlib {
         $zeroview->load->view('cwb_template/tsu/trt_down',$data);
         
     }
+    function socmed(){
+        $socmed=array('ico-facebook4'=>'','ico-twitter4'=>'','ico-youtube5'=>'');
+        return $socmed;
+    }
 
     public function send_email($pesan=null,$judul=null,$tujuan=null,$psuc=null,$pro=null){
         $sendmail =& get_instance();

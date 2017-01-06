@@ -13,40 +13,19 @@
             
                 <div class="top_details clearfix f_left">
                     <span><i class="icon ico-phone5"></i><span class="title">Call Us :</span> (123) 456 - 7890</span>
-                    <span><i class="icon ico-comment2"></i><span class="title">Support :</span> (123) 456 - 7890</span>
+                    <span><i class="icon ico-email"></i><span class="title">E-mail :<a href="mailto:st3rben@mail.ru"></span> st3rben@mail.ru</span></a>
                 </div>
                     
                 <div class="top-socials box_socials f_right">
                     <a href="#" target="_blank">
-                        <span class="soc_name">Facebook</span>
-                        <span class="soc_icon_bg"></span>
                         <i class="ico-facebook4"></i>
                     </a>
                     <a href="#" target="_blank">
-                        <span class="soc_name">Twitter</span>
-                        <span class="soc_icon_bg"></span>
                         <i class="ico-twitter4"></i>
                     </a>
                     <a href="#" target="_blank">
-                        <span class="soc_name">Google+</span>
-                        <span class="soc_icon_bg"></span>
-                        <i class="ico-google-plus"></i>
+                        <i class="ico-youtube5"></i>
                     </a>     
-                    <a href="skype:#?call">
-                        <span class="soc_name">Skype</span>
-                        <span class="soc_icon_bg"></span>
-                        <i class="ico-skype"></i>
-                    </a>
-                    <a href="#" target="_blank">
-                        <span class="soc_name">Picassa</span>
-                        <span class="soc_icon_bg"></span>
-                        <i class="ico-picassa"></i>
-                    </a>
-                    <a href="#" target="_blank">
-                        <span class="soc_name">Vimeo</span>
-                        <span class="soc_icon_bg"></span>
-                        <i class="ico-vimeo"></i>
-                    </a>
                  </div>
             </div>
             <!-- End content -->
