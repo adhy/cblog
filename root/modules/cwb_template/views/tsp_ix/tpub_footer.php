@@ -5,7 +5,7 @@
 
                     <div class="footer_row">
                     <h6 class="footer_title">Info</h6>
-                    <img alt="Enar" src="assets/images/logo-light.png">
+                    <img alt="Enar" src="<?=base_url('assets/images/logo-light.png')?>">
                     <span class="footer_desc">
                         <?php   $is_me=is_cuswid('');
                                 foreach ($is_me->result() as $row) {
