@@ -6,36 +6,6 @@
 			  $(this).remove();
 		 }); 
     });	
-/*$('.top_search_submit').bind('click', function(event) {
-    in_search();
-    return false; // dont move to top
-});
-$('#top_search').bind('submit', function(event) {
-    in_search();
-    return false; // dont post it automatically
-});
-
-function in_search() {
-
-    //var link = $('#chat_form').attr('action');
-
-    $.ajax({
-        url: 'search',
-        type: "POST",
-        data: $('#top_search').serialize(),
-        dataType: "JSON",       
-        success: function(response) {
-        	if(response.msg == 'null'){
-        		toastr.info('Please, Enter Your Keyword !','Notification');
-        	}
-        	
-            //$('#chat_thread').load(2 + '/chat_ajax');
-            //$('#loading').hide();
-            //$('#chat_form input').val('');
-        }
-    });
-
-}*/
 	$(document).ready(function(){
 		var site_dark = ( $("body").hasClass("dark") ? "yes" : "no" );
 		var site_dir = "ltr";

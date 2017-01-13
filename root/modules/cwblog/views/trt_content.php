@@ -6,10 +6,12 @@
         <div class="content_block col-md-9 f_left">
           <div class="hm_blog_full_list hm_blog_list clearfix">
             <?php foreach ($view_cont->result() as $row){ 
-                  if(file_exists($row->imgheader)){
-                                        $image = $row->imgheader;
+              $image=base_url($row->imgheader);
+              $thumb_name = $_SERVER['DOCUMENT_ROOT'] .'/cblog/'.$row->imgheader;
+                  if(file_exists($thumb_name)){
+                                        $image = base_url($row->imgheader);
                                     }else{
-                                        $image = "assets/img/gimg_not_available.jpg";
+                                        $image = base_url("assets/img/gimg_not_available.jpg");
                                     }
                                      $row->c_date = '%d/%m/%Y';
                                      $time = time();
@@ -49,7 +51,7 @@
                 </span>
               </div>
   
-                    <img src="<?=base_url($image)?>" alt="Post Title">
+                    <img src="<?=$image?>" alt="Post Title">
               <div class="blog_grid_con"><?php echo $content;?>
                 
                 <!--<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris non laoreet dui. Morbi lacus massa, euismod ut turpis molestie, tristique sodales est. Integer sit amet mi id sapien tempor molestie in nec massa.</p>
