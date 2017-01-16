@@ -82,7 +82,8 @@
         
                     <!-- Pagination -->
                     <div id="pagination" class="pagination">
-                    <?=$pager_links?>
+                    <?php if(empty($pager_links)||is_null($pager_links)){
+                        echo '';}else{echo $pager_links;}?>
                         <!--<ul class="clearfix">
                             <li class="prev_pagination"><a href="#"><i class="ico-arrow-left4"></i></a></li>
                             <li class="active"><a href="#">1</a></li>
