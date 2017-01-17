@@ -3,6 +3,30 @@ $("input:checkbox, input:radio, input:file").not('[data-no-uniform="true"],#unif
         selector: "[data-toggle=tooltip]",
         container: "body"
     })*/
+var weburi = window.location.origin;
+var jqueryscript=weburi+'assets/private/js/tinymce/plugins/tinymce-prism';
+loadLib(jqueryscript+"/plugin.js");
+loadLib(jqueryscript+"prism-markup.min.js");
+loadLib(jqueryscript+"prism-javascript.min.js");
+loadLib(jqueryscript+"prism-css.min.js");
+loadLib(jqueryscript+"prism-php.min.js");
+loadLib(jqueryscript+"prism-ruby.min.js");
+loadLib(jqueryscript+"prism-python.min.js");
+loadLib(jqueryscript+"prism-java.min.js");
+loadLib(jqueryscript+"prism-c.min.js");
+loadLib(jqueryscript+"prism-cpp.min.js");
+loadLib(jqueryscript+"prism-csharp.min.js");
+loadLib(jqueryscript+"prism-elixir.min.js");
+loadLib(jqueryscript+"prism-rust.min.js");
+loadLib(jqueryscript+"prism-go.min.js");
+function loadLib(url)
+{    
+    var head = document.getElementsByTagName('head')[0];
+    var script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = url;
+    head.appendChild(script);
+}
     $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip();  
    /* $('#tooltip').tooltip({

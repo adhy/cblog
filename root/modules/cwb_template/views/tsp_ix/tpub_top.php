@@ -58,7 +58,7 @@ $all_description=implode(',', $all_description);
 );
 echo meta($meta);?>
 
-    <link href="<?=base_url('assets/images/favicon/favicon.ico')?>" rel="shortcut icon" type="image/ico" />  
+    <link href="<?=base_url('assets/images/favicon/favicon.png')?>" rel="shortcut icon" type="image/ico" />  
     <?php foreach($css_topp as $urlcss){echo '<link href="'.base_url('assets/css/'.$urlcss).'" rel="stylesheet" type="text/css" />';}?>
 <link href="<?=base_url('assets/css/prism.css')?>" rel="stylesheet" type="text/css" data-noprefix/>
 <link href="<?=base_url('assets/css/prism-line-numbers.css')?>" rel="stylesheet" type="text/css" data-noprefix/>

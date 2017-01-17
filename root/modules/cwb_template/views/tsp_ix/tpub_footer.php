@@ -5,7 +5,7 @@
 
                     <div class="footer_row">
                     <h6 class="footer_title">Info</h6>
-                    <img alt="Enar" src="assets/images/logo-light.png">
+                    <img alt="Enar" src="<?=base_url('assets/images/logo-light.png')?>">
                     <span class="footer_desc">
                         <?php   $is_me=is_cuswid('');
                                 foreach ($is_me->result() as $row) {
@@ -160,10 +160,6 @@
                         <li><a href="#"><span>Home</span></a></li>
                         <li>/</li>
                         <li><a href="#"><span>About Us</span></a></li>
-                        <li>/</li>
-                        <li><a href="#"><span>Help Center</span></a></li>
-                        <li>/</li>
-                        <li><a href="#"><span>Contact Us</span></a></li>
                     </ul>
                 </div>
             </div>
@@ -180,12 +176,11 @@
 
 <script src="<?=base_url('assets/js/mediaelement-and-player.min.js')?>"></script>
 <script src="<?=base_url('assets/js/isotope.pkgd.min.js')?>"></script>
-<script src="<?=base_url('assets/js/toastr.min.js')?>"></script>
 <!-- this is where we put our custom functions -->
 <?php if(!empty($code)){echo $code;} ?>
 <script type="text/javascript" src="<?=base_url('assets/js/functions.js')?>"></script>
 <script type="text/javascript" src="<?=base_url('assets/js/prism.js')?>"></script>
-<!--<script type="text/javascript" src="<?=base_url('assets/js/prism-line-numbers.js')?>"></script>-->
+<script type="text/javascript" src="<?=base_url('assets/js/prism-line-numbers.js')?>"></script>
 </body>
 
 </html>

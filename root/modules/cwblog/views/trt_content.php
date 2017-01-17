@@ -6,10 +6,12 @@
         <div class="content_block col-md-9 f_left">
           <div class="hm_blog_full_list hm_blog_list clearfix">
             <?php foreach ($view_cont->result() as $row){ 
-                  if(file_exists($row->imgheader)){
-                                        $image = $row->imgheader;
+              $image=base_url($row->imgheader);
+              $thumb_name = $_SERVER['DOCUMENT_ROOT'] .'/cblog/'.$row->imgheader;
+                  if(file_exists($thumb_name)){
+                                        $image = base_url($row->imgheader);
                                     }else{
-                                        $image = "assets/img/gimg_not_available.jpg";
+                                        $image = base_url("assets/img/gimg_not_available.jpg");
                                     }
                                      $row->c_date = '%d/%m/%Y';
                                      $time = time();
@@ -25,10 +27,8 @@
                 <h6 class="title"><a href="#"><?=$row->title?></a></h6>
                 <span class="meta">
                   <span class="meta_part">
-                    <a href="#">
                       <i class="ico-clock7"></i>
                       <span><?=$rewat?></span>
-                    </a>
                   </span>
                   <!--<span class="meta_part">
                     <a href="#">
@@ -51,7 +51,7 @@
                 </span>
               </div>
   
-                    <img src="<?=base_url($image)?>" alt="Post Title">
+                    <img src="<?=$image?>" alt="Post Title">
               <div class="blog_grid_con"><?php echo $content;?>
                 
                 <!--<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris non laoreet dui. Morbi lacus massa, euismod ut turpis molestie, tristique sodales est. Integer sit amet mi id sapien tempor molestie in nec massa.</p>
@@ -66,13 +66,6 @@
               
               <!-- Next / Prev and Social Share-->
               <div class="post_next_prev_con clearfix">
-                <!-- Next and Prev Post-->
-                <div class="post_next_prev clearfix">
-                  <a href="#"><i class="ico-arrow-back"></i><span class="t">Prev</span></a>
-                  <!--<a href="#" class="th_icon" title="All Posts"><i class="ico-apps"></i></a> -->
-                  <a href="#"><span class="t">Next</span><i class="ico-arrow-forward"></i></a>
-                </div>
-                <!-- End Next and Prev Post-->
                 
                 <!-- Social Share-->
                 <div class="single_pro_row">

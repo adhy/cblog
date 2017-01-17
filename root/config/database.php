@@ -72,7 +72,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $active_group = 'default';
 $query_builder = TRUE;
-$typec = 'local';
+$typec = 'WAN';
 if ($typec == 'local'){
 	$hostname = 'localhost';
 	$username = 'epona';
@@ -80,9 +80,9 @@ if ($typec == 'local'){
 	$database = 'cblog';
 }else{
 	$hostname = 'mysql.idhostinger.com';
-	$username = 'u873577078_cbm';
-	$password = 'o8o32o16';
-	$database = 'u873577078_cblog';
+	$username = 'u478035837_pubcb';
+	$password = 'n3C+&cioYU>&@IP@=h';
+	$database = 'u478035837_cblog';
 }
 $db['default'] = array(
 	'dsn'	=> '',

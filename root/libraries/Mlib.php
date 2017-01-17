@@ -124,6 +124,10 @@ class Mlib {
         $zeroview->load->view('cwb_template/tsu/trt_down',$data);
         
     }
+    function socmed(){
+        $socmed=array('ico-facebook4'=>'','ico-twitter4'=>'','ico-youtube5'=>'');
+        return $socmed;
+    }
 
     public function send_email($pesan=null,$judul=null,$tujuan=null,$psuc=null,$pro=null){
         $sendmail =& get_instance();
@@ -174,7 +178,18 @@ class Mlib {
             if(index == hnewimg.length)
                 return false;
             $(hnewimg[index]).replaceWith(\'<div class="feature_inner"><div class="feature_inner_corners"><div class="feature_inner_btns"><a href="#" class="expand_image"><i class="ico-maximize"></i></a><a href="#" class="icon_link"><i class="ico-link3"></i></a></div><a href="\'+$(this).attr(\'src\')+\'" class="feature_inner_ling" data-rel="magnific-popup"><img src="\'+$(this).attr(\'src\')+\'" alt="\'+$(this).attr("alt")+\'"></a></div></div>\');
-        });});</script>';
+        });
+
+        var oldvideo = $(\'div.blog_grid_con iframe\');
+        var newvideo = $(\'div.blog_grid_con iframe\');
+        //var newimgwidth = newvideo.clientWidth;
+        //var newimgheight = newvideo.clientHeight;
+        $.each(oldvideo, function(index){
+            if(index == newvideo.length)
+                return false;
+            $(newvideo[index]).replaceWith(\' <div class="feature_inner"><div class="embed-container"><a href="\'+$(this).attr(\'src\')+\'" data-rel="magnific-popup"></a><iframe width="100%" src="\'+$(this).attr(\'src\')+\'" frameborder="0" allowfullscreen></iframe></div> </div>\');});
+        });
+        </script>';
         return $script;
     }
 

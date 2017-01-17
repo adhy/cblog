@@ -14,6 +14,7 @@
     } ?>
      <?php foreach($js_fott as $urljs){echo "<script src='".base_url('assets')."/private/js/".$urljs."'></script>";}?>
 
+
     <script type="text/javascript">
     var e = ' ';
     var url = '<?php echo base_url();?>';
