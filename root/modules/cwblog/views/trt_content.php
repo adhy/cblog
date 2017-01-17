@@ -182,109 +182,10 @@
                   <span class="s_text">Leave Comment</span>
                 </span>
               </div>
-              <?php 
-              /*echo '              <!-- Comments Tree -->
+              <?php /*echo '
+                         <!-- Comments Tree -->
               <ol class="comments_list clearfix">
-                <li class="comment single_comment">
-                <!-- Comment -->
-                <div class="comment-container comment-box">
-                  <div class="trees_number">1</div>
-                  <a href="#" class="avatar">
-                    <img width="75" height="75" src="assets/images/user2.jpg" alt="John Doe">
-                  </a>
-                  <div class="comment_content">
-                    <h4 class="author_name"><a href="#">John Doe</a></h4>
-                    <span class="comment_meta">
-                      <a href="#">
-                          <time datetime="2015-10-01T19:56:36+00:00">October 1, 2015 at 7:56 pm</time>
-                      </a>
-                    </span>
-                    <div class="comment_said_text">
-                      <p>There are many variations of passages of Lorem Ipsum available but the majority have suffered alteration in some form by injected humour or randomised.</p>
-                    </div>
-                    <a href="#commentform" class="comment-reply-link">Reply</a> 
-                  </div>
-                </div>
-                <!-- End Comment -->
-                  
-                <ol class="children">
-                  <li class="comment single_comment">
-                    <!-- Comment -->
-                    <div class="comment-container comment-box">
-                      <div class="trees_number">1.1</div>
-                      <a href="#" class="avatar">
-                        <img width="75" height="75" src="assets/images/user1.jpg" alt="Jane Smith">
-                      </a>
-                      <div class="comment_content">
-                        <h4 class="author_name"><a href="#">Jane Smith</a></h4>
-                        <span class="comment_meta">
-                          <a href="#">
-                              <time datetime="2015-10-01T19:56:36+00:00">October 1, 2015 at 7:56 pm</time>
-                          </a>
-                        </span>
-                        <div class="comment_said_text">
-                          <p>There are many variations of passages of Lorem Ipsum available but the majority have suffered alteration in some form by injected humour or randomised.</p>
-                        </div>
-                        <a href="#commentform" class="comment-reply-link">Reply</a> 
-                      </div>
-                    </div>
-                    <!-- End Comment -->
                 
-                    <ol class="children">
-                      <li class="comment single_comment">
-                        <!-- Comment -->
-                        <div class="comment-container comment-box">
-                          <div class="trees_number">1.1.1</div>
-                          <a href="#" class="avatar">
-                            <img width="75" height="75" src="assets/images/user3.jpg" alt="Tommy Horton">
-                          </a>
-                          <div class="comment_content">
-                            <h4 class="author_name"><a href="#">Tommy Horton</a></h4>
-                            <span class="comment_meta">
-                              <a href="#">
-                                <time datetime="2015-10-01T19:56:36+00:00">October 1, 2015 at 7:56 pm</time>
-                              </a>
-                            </span>
-                            <div class="comment_said_text">
-                              <p>There are many variations of passages of Lorem Ipsum available but the majority have suffered alteration in some form by injected humour or randomised.</p>
-                            </div>
-                            <a href="#commentform" class="comment-reply-link">Reply</a>  
-                          </div>
-                        </div>
-                        <!-- End Comment -->   
-                           
-                        <ol class="children">
-                          <li class="comment single_comment">
-                            <!-- Comment -->
-                            <div class="comment-container comment-box">
-                              <div class="trees_number">1.1.1.1</div>
-                              <a href="#" class="avatar">
-                                <img width="75" height="75" src="assets/images/user4.jpg" alt="Alan Snow">
-                              </a>
-                              <div class="comment_content">
-                                <h4 class="author_name"><a href="#">Alan Snow</a></h4>
-                                <span class="comment_meta">
-                                  <a href="#">
-                                      <time datetime="2015-10-01T19:56:36+00:00">October 1, 2015 at 7:56 pm</time>
-                                  </a>
-                                </span>
-                                <div class="comment_said_text">
-                                    <p>There are many variations of passages of Lorem Ipsum available but the majority have suffered alteration in some form by injected humour or randomised.</p>
-                                </div>
-                                <a href="#commentform" class="comment-reply-link">Reply</a>  
-                              </div>
-                            </div>
-                            <!-- End Comment -->
-                          </li>
-                        </ol>
-              
-                      </li>
-                    </ol>
-              
-                  </li>
-                </ol>
-              
-                </li>
                 <li class="comment single_comment">
                   <!-- Comment -->
                   <div class="comment-container comment-box">
@@ -334,6 +235,8 @@
                   </form>
                 </div>
               </div>';*/ ?>
+
+
               <!-- End Comments Form -->
             </div>
             <!-- End Comments Container -->
