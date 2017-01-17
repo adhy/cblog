@@ -147,6 +147,59 @@
                   <span class="s_text">Leave Comment</span>
                 </span>
               </div>
+              <?php /*echo '
+                         <!-- Comments Tree -->
+              <ol class="comments_list clearfix">
+                
+                <li class="comment single_comment">
+                  <!-- Comment -->
+                  <div class="comment-container comment-box">
+                    <div class="trees_number">2</div>
+                    <a href="#" class="avatar">
+                      <img width="75" height="75" src="assets/images/user5.jpg" alt="Harry John">
+                    </a>
+                    <div class="comment_content">
+                      <h4 class="author_name"><a href="#">Harry John</a></h4>
+                      <span class="comment_meta">
+                        <a href="#">
+                          <time datetime="2015-10-01T19:56:36+00:00">October 1, 2015 at 7:56 pm</time>
+                        </a>
+                      </span>
+                      <div class="comment_said_text">
+                        <p>There are many variations of passages of Lorem Ipsum available but the majority have suffered alteration in some form by injected humour or randomised.</p>
+                      </div>
+                      <a href="#commentform" class="comment-reply-link">Reply</a>  
+                    </div>
+                  </div>
+                  <!-- End Comment -->
+                </li>
+              </ol>
+              <!-- End Comments Tree -->
+              
+              <!-- Comments Form -->
+            <div class="comments-form-area" id="comments-form">
+                <div class="comment-respond" id="respond">
+                  
+                  <div class="small_title">
+                    <span class="small_title_con">
+                      <span class="s_icon"><i class="ico-pencil6"></i></span>
+                      <span class="s_text">Leave a Reply</span>
+                    </span>
+                  </div>
+                  <form class="comment-form" id="commentform" method="post" action="#">
+                    <!-- <p class="comment-notes">Your email address will not be published. Required fields are marked <span class="required">*</span></p> -->
+                    <input type="text" aria-required="true" size="30" value="" placeholder="Name (required)" name="author" id="author">
+                    <input type="text" aria-required="true" size="30" value="" placeholder="Email (required)" name="email" id="email">
+                    <input type="text" size="30" value="" placeholder="Website" name="url" id="url">
+                    <p class="comment-form-comment">
+                      <textarea aria-required="true" rows="8" cols="45" name="comment" placeholder="Comment..." id="comment"></textarea>
+                    </p>
+                    <p class="form-submit">
+                      <input class="send_button" type="submit" value="Post Comment" id="submit-comment" name="submit">
+                    </p>
+                  </form>
+                </div>
+              </div>';*/ ?>
             </div>
           </div>
         </div>
