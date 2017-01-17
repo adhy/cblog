@@ -98,6 +98,7 @@ class Cwblog extends MX_Controller {
     $this->data['limit']=6;
     $this->data['offset']=$this->uri->segment(4);
     $this->data['is_c']=$this->session->userdata('is_se');
+    $url = $this->mlib->slugify($this->data['is_c']);
     $this->data['is_url']=$this->uri->segment(2);
     $this->data['uri'] = 4;
     $this->data['css_topp']=$this->template->css_toppub();
@@ -113,7 +114,7 @@ class Cwblog extends MX_Controller {
       $this->data['view_cont']  = $this->mcwblog->cw_search_limit($this->data);
       if($this->data['view_cont']->num_rows()>0) {
         $this->data['jumlah_cat'] = $this->mcwblog->is_sum_search($this->data);
-        $this->data['pager_links'] = $this->mcwblog->paging(base_url('search/'.$this->data['is_c'].'/page'),$this->data);
+        $this->data['pager_links'] = $this->mcwblog->paging(base_url('search/'.$url.'/page'),$this->data);
         $view='cwblog/trt_page';
       }else{
         $view='cwblog/trt_page404';
