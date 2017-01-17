@@ -7,35 +7,7 @@
 </div>
 
 <div id="main_wrapper">
-    <header id="site_header">
-        <div class="topbar"><!-- class ( topbar_colored  ) -->
-            <div class="content clearfix">
-            
-                <div class="top_details clearfix f_left">
-                    <span><i class="icon ico-phone5"></i><span class="title">Call Us :</span> (123) 456 - 7890</span>
-                    <span><i class="icon ico-email"></i><span class="title">E-mail :<a href="mailto:st3rben@mail.ru"></span> st3rben@mail.ru</span></a>
-                </div>
-                    
-                <div class="top-socials box_socials f_right">
-                    <a href="#" target="_blank">
-                        <i class="ico-facebook4"></i>
-                    </a>
-                    <a href="#" target="_blank">
-                        <i class="ico-twitter4"></i>
-                    </a>
-                    <a href="#" target="_blank">
-                        <i class="ico-youtube5"></i>
-                    </a>     
-                 </div>
-            </div>
-            <!-- End content -->
-            <span class="top_expande not_expanded">
-                <i class="no_exp ico-angle-double-down"></i>
-                <i class="exp ico-angle-double-up"></i>
-            </span>
-        </div>
-        <!-- End topbar -->
-            
+    <header id="site_header">            
         <div id="navigation_bar">
             <div class="content">
                 <div id="logo">

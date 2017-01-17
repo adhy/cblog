@@ -30,16 +30,10 @@
                       <i class="ico-clock7"></i>
                       <span><?=$rewat?></span>
                   </span>
-                  <!--<span class="meta_part">
-                    <a href="#">
-                      <i class="ico-comment-o"></i>
-                      <span>34 Comments</span>
-                    </a>
-                  </span>-->
                   <span class="meta_part">
                     <i class="ico-folder-open-o"></i>
                     <span>
-                      <a href="<?=site_url('category/'.$row->slg_c)?>"><?=$row->nm_c?></a> <!--<a href="#">Tutorials</a>-->
+                      <a href="<?=site_url('category/'.$row->slg_c)?>"><?=$row->nm_c?></a>
                     </span>
                   </span>
 
@@ -53,24 +47,14 @@
   
                     <img src="<?=$image?>" alt="Post Title">
               <div class="blog_grid_con"><?php echo $content;?>
-                
-                <!--<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris non laoreet dui. Morbi lacus massa, euismod ut turpis molestie, tristique sodales est. Integer sit amet mi id sapien tempor molestie in nec massa.</p>
-                <p>Fusce non ante sed lorem rutrum feugiat. Vestibulum pellentesque, purus ut dignissim consectetur, nulla erat ultrices purus, <img class="conimg" src="assets/images/bg4.jpg" alt="Post Title">ut consequat sem elit non sem. Morbi lacus massa, euismod ut turpis molestie, tristique sodales est. Integer sit amet mi id sapien tempor molestie in nec massa. Fusce non ante sed lorem rutrum feugiat.</p>
-                
-                <blockquote>
-                  <i class="ico-quote"></i>
-                  <span class="quote_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit Mauris non laoreet dui, Morbi lacus massa, euismod ut turpis molestie, tristique sodales est There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration.</span>
-                </blockquote>
-                <p>Lorem ipsum dolor sit amet, consectetur<img class="conimg" src="assets/images/bg3.jpg" alt="Post Title"> adipiscing elit Mauris non laoreet dui, Morbi lacus massa, euismod ut turpis molestie, tristique sodales est. Integer sit amet mi id sapien tempor molestie in nec massa Fusce non ante sed lorem rutrum feugiat, Vestibulum pellentesque, purus ut dignissim consectetur, nulla erat ultrices purus, ut consequat sem elit non sem. Morbi lacus massa, euismod ut turpis molestie, tristique sodales est.</p>-->
               </div>
               
-              <!-- Next / Prev and Social Share-->
               <div class="post_next_prev_con clearfix">
                 
-                <!-- Social Share-->
+                
                 <div class="single_pro_row">
                   <div id="share_on_socials">
-                    <!-- <h6>Share:</h6> -->
+                   
                     <a class="facebook" href="https://www.facebook.com/login.php?next=https%3A%2F%2Fwww.facebook.com%2Fsharer.php%3Fs%3D100%26p%255Burl%255D%3Dhttp%253A%252F%252Fwww.yourlink.com%26p%255Btitle%255D%3Dyour-post-title%26p%255Bsummary%255D%3Dyour-content-here%26p%255Bimages%255D%255B0%255D%3Dhttp%253A%252F%252Fwww.yourlink.com%252Fimage.jpg&amp;display=popup" target="_blank"><i class="ico-facebook4"></i></a>
                     <a class="twitter" href="http://twitter.com/home?status=your-post-title+http://www.yourlink.com" target="_blank"><i class="ico-twitter4"></i></a>
                     <a class="googleplus" href="https://plus.google.com/share?url=http://www.yourlink.com" target="_blank"><i class="ico-google-plus"></i></a>
@@ -80,11 +64,8 @@
                     
                   </div>
                 </div>
-                <!-- End Social Share-->
+                
               </div>
-              <!-- End Next / Prev and Social Share-->
-              
-              <!-- Tags -->
               <div class="small_title">
                 <span class="small_title_con">
                   <span class="s_icon"><i class="ico-tag4"></i></span>
@@ -98,17 +79,13 @@
                 } ?>
                 
               </div>
-              <!-- End Tags -->
-              
-              <!-- About the author -->
               <div class="about_auther">
                 <div class="small_title">
                   <span class="small_title_con">
                     <span class="s_icon"><i class="ico-user5"></i></span>
                     <span class="s_text">About the author</span>
                   </span>
-                </div>
-                
+                </div>                
                 <div class="about_auther_con clearfix">
                   <span class="avatar_img">
                     <img alt="client name" src="<?=base_url($row->img)?>">
@@ -135,9 +112,7 @@
                   
                 </div>
               </div>
-              <!-- End About the author -->
             </div>
-            <!-- End Post Container -->
             <?php } ?>
             <!-- Related Posts -->
             <div class="related_posts">
@@ -165,9 +140,6 @@
                                 } ?>
               </div>
             </div>
-            <!-- End Related Posts -->
-            
-            <!-- Comments Container -->
             <div id="comments" class="comments-area">
               <div class="small_title">
                 <span class="small_title_con">
@@ -175,162 +147,6 @@
                   <span class="s_text">Leave Comment</span>
                 </span>
               </div>
-              <?php 
-              /*echo '              <!-- Comments Tree -->
-              <ol class="comments_list clearfix">
-                <li class="comment single_comment">
-                <!-- Comment -->
-                <div class="comment-container comment-box">
-                  <div class="trees_number">1</div>
-                  <a href="#" class="avatar">
-                    <img width="75" height="75" src="assets/images/user2.jpg" alt="John Doe">
-                  </a>
-                  <div class="comment_content">
-                    <h4 class="author_name"><a href="#">John Doe</a></h4>
-                    <span class="comment_meta">
-                      <a href="#">
-                          <time datetime="2015-10-01T19:56:36+00:00">October 1, 2015 at 7:56 pm</time>
-                      </a>
-                    </span>
-                    <div class="comment_said_text">
-                      <p>There are many variations of passages of Lorem Ipsum available but the majority have suffered alteration in some form by injected humour or randomised.</p>
-                    </div>
-                    <a href="#commentform" class="comment-reply-link">Reply</a> 
-                  </div>
-                </div>
-                <!-- End Comment -->
-                  
-                <ol class="children">
-                  <li class="comment single_comment">
-                    <!-- Comment -->
-                    <div class="comment-container comment-box">
-                      <div class="trees_number">1.1</div>
-                      <a href="#" class="avatar">
-                        <img width="75" height="75" src="assets/images/user1.jpg" alt="Jane Smith">
-                      </a>
-                      <div class="comment_content">
-                        <h4 class="author_name"><a href="#">Jane Smith</a></h4>
-                        <span class="comment_meta">
-                          <a href="#">
-                              <time datetime="2015-10-01T19:56:36+00:00">October 1, 2015 at 7:56 pm</time>
-                          </a>
-                        </span>
-                        <div class="comment_said_text">
-                          <p>There are many variations of passages of Lorem Ipsum available but the majority have suffered alteration in some form by injected humour or randomised.</p>
-                        </div>
-                        <a href="#commentform" class="comment-reply-link">Reply</a> 
-                      </div>
-                    </div>
-                    <!-- End Comment -->
-                
-                    <ol class="children">
-                      <li class="comment single_comment">
-                        <!-- Comment -->
-                        <div class="comment-container comment-box">
-                          <div class="trees_number">1.1.1</div>
-                          <a href="#" class="avatar">
-                            <img width="75" height="75" src="assets/images/user3.jpg" alt="Tommy Horton">
-                          </a>
-                          <div class="comment_content">
-                            <h4 class="author_name"><a href="#">Tommy Horton</a></h4>
-                            <span class="comment_meta">
-                              <a href="#">
-                                <time datetime="2015-10-01T19:56:36+00:00">October 1, 2015 at 7:56 pm</time>
-                              </a>
-                            </span>
-                            <div class="comment_said_text">
-                              <p>There are many variations of passages of Lorem Ipsum available but the majority have suffered alteration in some form by injected humour or randomised.</p>
-                            </div>
-                            <a href="#commentform" class="comment-reply-link">Reply</a>  
-                          </div>
-                        </div>
-                        <!-- End Comment -->   
-                           
-                        <ol class="children">
-                          <li class="comment single_comment">
-                            <!-- Comment -->
-                            <div class="comment-container comment-box">
-                              <div class="trees_number">1.1.1.1</div>
-                              <a href="#" class="avatar">
-                                <img width="75" height="75" src="assets/images/user4.jpg" alt="Alan Snow">
-                              </a>
-                              <div class="comment_content">
-                                <h4 class="author_name"><a href="#">Alan Snow</a></h4>
-                                <span class="comment_meta">
-                                  <a href="#">
-                                      <time datetime="2015-10-01T19:56:36+00:00">October 1, 2015 at 7:56 pm</time>
-                                  </a>
-                                </span>
-                                <div class="comment_said_text">
-                                    <p>There are many variations of passages of Lorem Ipsum available but the majority have suffered alteration in some form by injected humour or randomised.</p>
-                                </div>
-                                <a href="#commentform" class="comment-reply-link">Reply</a>  
-                              </div>
-                            </div>
-                            <!-- End Comment -->
-                          </li>
-                        </ol>
-              
-                      </li>
-                    </ol>
-              
-                  </li>
-                </ol>
-              
-                </li>
-                <li class="comment single_comment">
-                  <!-- Comment -->
-                  <div class="comment-container comment-box">
-                    <div class="trees_number">2</div>
-                    <a href="#" class="avatar">
-                      <img width="75" height="75" src="assets/images/user5.jpg" alt="Harry John">
-                    </a>
-                    <div class="comment_content">
-                      <h4 class="author_name"><a href="#">Harry John</a></h4>
-                      <span class="comment_meta">
-                        <a href="#">
-                          <time datetime="2015-10-01T19:56:36+00:00">October 1, 2015 at 7:56 pm</time>
-                        </a>
-                      </span>
-                      <div class="comment_said_text">
-                        <p>There are many variations of passages of Lorem Ipsum available but the majority have suffered alteration in some form by injected humour or randomised.</p>
-                      </div>
-                      <a href="#commentform" class="comment-reply-link">Reply</a>  
-                    </div>
-                  </div>
-                  <!-- End Comment -->
-                </li>
-              </ol>
-              <!-- End Comments Tree -->
-              
-              <!-- Comments Form -->
-            <div class="comments-form-area" id="comments-form">
-                <div class="comment-respond" id="respond">
-                  
-                  <div class="small_title">
-                    <span class="small_title_con">
-                      <span class="s_icon"><i class="ico-pencil6"></i></span>
-                      <span class="s_text">Leave a Reply</span>
-                    </span>
-                  </div>
-                  <form class="comment-form" id="commentform" method="post" action="#">
-                    <!-- <p class="comment-notes">Your email address will not be published. Required fields are marked <span class="required">*</span></p> -->
-                    <input type="text" aria-required="true" size="30" value="" placeholder="Name (required)" name="author" id="author">
-                    <input type="text" aria-required="true" size="30" value="" placeholder="Email (required)" name="email" id="email">
-                    <input type="text" size="30" value="" placeholder="Website" name="url" id="url">
-                    <p class="comment-form-comment">
-                      <textarea aria-required="true" rows="8" cols="45" name="comment" placeholder="Comment..." id="comment"></textarea>
-                    </p>
-                    <p class="form-submit">
-                      <input class="send_button" type="submit" value="Post Comment" id="submit-comment" name="submit">
-                    </p>
-                  </form>
-                </div>
-              </div>';*/ ?>
-              <!-- End Comments Form -->
             </div>
-            <!-- End Comments Container -->
           </div>
-          <!-- End blog List -->
         </div>
-        <!-- End All Content -->

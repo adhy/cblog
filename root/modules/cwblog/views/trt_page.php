@@ -11,12 +11,13 @@
                 <div class="content_block col-md-9 f_left">
                     <div class="hm_blog_list clearfix">
                        <?php 
-                       //echo $view_cont()->num_rows();
                        foreach ($view_cont->result() as $row){
-                        if(file_exists($row->imgheader)){
-                                        $image = $row->imgheader;
+                        $image=base_url($row->imgheader);
+              $thumb_name = $_SERVER['DOCUMENT_ROOT'] .'/cblog/'.$row->imgheader;
+                        if(file_exists($thumb_name)){
+                                        $image = base_url($row->imgheader);
                                     }else{
-                                        $image = "assets/img/gimg_not_available.jpg";
+                                        $image = base_url("assets/img/gimg_not_available.jpg");
                                     }
                                      $row->c_date = '%d/%m/%Y';
                                      $time = time();
@@ -36,8 +37,8 @@
                                         <a href="#" class="expand_image"><i class="ico-maximize"></i></a>
                                         <a href="#" class="icon_link"><i class="ico-link3"></i></a>
                                     </div>
-                                    <a href="'.base_url($image).'" class="feature_inner_ling" data-rel="magnific-popup">
-                                        <img src="'.base_url($image).'" alt="Post Title">
+                                    <a href="'.$image.'" class="feature_inner_ling" data-rel="magnific-popup">
+                                        <img src="'.$image.'" alt="Post Title">
                                     </a>
                                 </div>
                             </div>
@@ -84,13 +85,6 @@
                     <div id="pagination" class="pagination">
                     <?php if(empty($pager_links)||is_null($pager_links)){
                         echo '';}else{echo $pager_links;}?>
-                        <!--<ul class="clearfix">
-                            <li class="prev_pagination"><a href="#"><i class="ico-arrow-left4"></i></a></li>
-                            <li class="active"><a href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li class="next_pagination"><a href="#"><i class="ico-arrow-right4"></i></a></li>
-                        </ul>-->
                     </div>
                     <!-- End Pagination -->
                 </div>
