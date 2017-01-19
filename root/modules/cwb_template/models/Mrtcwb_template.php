@@ -1,20 +1,16 @@
-
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Mrtcwb_template extends CI_Model {
     var $parent = '0';
     var $hasil  = '';
-	function __constuct(){
-		parent::__constuct();  // Call the Model constructor 
-		loader::database();    // Connect to current database setting.froco
-	}
-   
+    function __constuct(){
+        parent::__constuct();  // Call the Model constructor 
+        loader::database();    // Connect to current database setting.froco
+    }
     function is_rand() {
         $this->db->select('*');
         $this->db->order_by('title', 'RANDOM');
         $this->db->limit(9);
-        //$this->db->join('cb_profile','cb_profile.id_user=cb_log.id_user');
-        //$this->db->where('cb_log.id_level','1');
         return $this->db->get('cb_contents');
     }
     function is_me() {
@@ -42,24 +38,12 @@ class Mrtcwb_template extends CI_Model {
         $this->db->limit(4);
         return $this->db->get('cb_contents');
     }
-    /*function is_buttrec() { //penggunaan tag
-        $this->db->select('cb_contents.id, cb_contents.title, cb_contents.slug, cb_contents.imgheader, cb_tagsrelation.id_cont, GROUP_CONCAT(cb_tagsrelation.id_tag) as idiot');
-        $this->db->from('cb_contents');
-        $this->db->where('cb_contents.status','1');
-        $this->db->join('cb_tagsrelation','cb_tagsrelation.id_cont=cb_contents.id');
-        //$this->db->join('cb_tags','cb_tagsrelation.id_cont=cb_tags.id');
-        $this->db->order_by("cb_contents.c_date",'DESC');
-        $this->db->group_by(" cb_tagsrelation.id_cont, cb_contents.id, cb_contents.title, cb_contents.slug, cb_contents.imgheader");
-        $this->db->limit(5);
-        return $this->db->get();
-    }*/
     function is_buttrec() {
         $this->db->select('*');
         $this->db->join('cb_categories','cb_categories.id=cb_contents.id_cat');
         $this->db->where('cb_contents.status','1');
         $this->db->order_by("cb_contents.c_date",'DESC');
         $this->db->limit(4);
-        //$this->db->group_by("cb_tagsrelation.id_cont");
         return $this->db->get('cb_contents');
     }
     function is_leafpop() {
@@ -78,8 +62,6 @@ class Mrtcwb_template extends CI_Model {
         $this->db->join('cb_contents','cb_categories.id=cb_contents.id_cat');
         $this->db->group_by('cb_categories.id');
         $submenu = $this->db->get('cb_categories');
-        
-
         if(($menu->num_rows())>0){    
             foreach($menu->result() as $h){
                 $hasil .='<li class="normal_menu mobile_menu_toggle"><a href="'.site_url('category/'.$h->slg_c).'"><span>'.stripslashes($h->nm_c).'</span></a><ul>';
@@ -100,7 +82,6 @@ class Mrtcwb_template extends CI_Model {
         return $hasil;
     }
     function is_tags() {
-    // Get current CodeIgniter instance
         $this->db->select_sum('cb_tagsrelation.status');
         $this->db->select('cb_tagsrelation.id_tag,cb_tags.id,cb_tags.nm_t,cb_tags.slg_t');
         $this->db->join('cb_tagsrelation','cb_tagsrelation.id_tag=cb_tags.id');
@@ -108,8 +89,8 @@ class Mrtcwb_template extends CI_Model {
         $this->db->group_by("cb_tags.nm_t");
         return $this->db->get('cb_tags');
     }
-	function fr_input($n=null,$p=null,$t=null,$s=null){
-		$data = array(
+    function fr_input($n=null,$p=null,$t=null,$s=null){
+        $data = array(
             'name'          => $n,
             'id'            => $n,
             'class'         => 'form-control '.$s.' ipt-prof',
@@ -119,12 +100,11 @@ class Mrtcwb_template extends CI_Model {
             'autofocus'     => '',
             );
         return form_input($data) ;
-	}
+    }
     function view_table($data=null){
         $template = array(
                             'table_open' => '<table class="table table-striped table-bordered table-hover dt-responsive display" id="'.$data['idt'].'" cellspacing="0" width="100%">'
         );
-
         $this->table->set_template($template);
         $this->table->set_heading($data['table']);
         return $this->table->generate();
@@ -137,8 +117,8 @@ class Mrtcwb_template extends CI_Model {
         $options= array();
         return form_dropdown($n, $options, '', $data);
     }
-	function fr_but($n=null,$c=null){
-		$data = array(
+    function fr_but($n=null,$c=null){
+        $data = array(
                 'name'          => $n,
                 'id'            => $n,
                 'class'         => 'btn btn-primary btn-block btn-flat',
@@ -146,7 +126,7 @@ class Mrtcwb_template extends CI_Model {
                 'content'       => $c
         );
         return form_button($data);
-	}
+    }
     function end_model(){
         return $end_mod='
         <div id="confdel" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
@@ -181,28 +161,28 @@ class Mrtcwb_template extends CI_Model {
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->';
     }
-	function js_fot(){
-		       return $jquery =array("jquery.min.js", "bootstrap.min.js","metisMenu.min.js","pace.min.js",
-                            			"formValidation.min.js","framework/bootstrap.min.js","language/id_ID.js",
-                            			"toastr.min.js","jquery.uniform.min.js","sb-admin-2.js");
+    function js_fot(){
+               return $jquery =array("jquery.min.js", "bootstrap.min.js","metisMenu.min.js","pace.min.js",
+                                        "formValidation.min.js","framework/bootstrap.min.js","language/id_ID.js",
+                                        "toastr.min.js","jquery.uniform.min.js","confyle.min.js");
     }
     function js_fotrot(){
-		       return $jquery =array("jquery-2.2.4.min.js","jquery-ui.min.js", "bootstrap.min.js","metisMenu.min.js","pace.min.js",
-                            			"formValidation.min.js","framework/bootstrap.min.js","language/id_ID.js",
-                            			"toastr.min.js","jquery.uniform.min.js","bootstrap-select.min.js","jquery.dataTables.min.js","dataTables.bootstrap.min.js","dataTables.responsive.js","chosen.jquery.min.js","jquery.mousewheel-3.0.6.pack.js","jquery.fancybox.pack.js","jquery.observe_field.js","masonry.pkgd.min.js","imagesloaded.pkgd.min.js","tinymce/tinymce.min.js","tinymce/plugins/tinymce-prism/plugin.js","sb-admin-2.js");
+               return $jquery =array("jquery-2.2.4.min.js","jquery-ui.min.js", "bootstrap.min.js","metisMenu.min.js","pace.min.js",
+                                        "formValidation.min.js","framework/bootstrap.min.js","language/id_ID.js",
+                                        "toastr.min.js","jquery.uniform.min.js","bootstrap-select.min.js","jquery.dataTables.min.js","dataTables.bootstrap.min.js","dataTables.responsive.js","chosen.jquery.min.js","jquery.mousewheel-3.0.6.pack.js","jquery.fancybox.pack.js","jquery.observe_field.js","masonry.pkgd.min.js","imagesloaded.pkgd.min.js","tinymce/tinymce.min.js","tinymce/plugins/tinymce-prism/plugin.js","confyle.min.js");
     }
     function css_top(){
-		       return $jquery =array("bootstrap.min.css", "metisMenu.min.css","thepa/blue/pace-theme-minimal.css","formValidation.min.css",
-                            			"toastr.css","thesu/default/css/uniform.default.min.css","sb-admin-2.css",
-                            			"font-awesome.min.css");
+               return $jquery =array("bootstrap.min.css", "metisMenu.min.css","thepa/blue/pace-theme-minimal.css","formValidation.min.css",
+                                        "toastr.css","thesu/default/css/uniform.default.min.css","confyle.min.css",
+                                        "font-awesome.min.css");
     }
     function css_toprot(){
                return $jquery =array("bootstrap.min.css", "metisMenu.min.css","thepa/blue/pace-theme-minimal.css","formValidation.min.css",
-                                        "toastr.css","dataTables.bootstrap.css","thesu/default/css/uniform.default.min.css","bootstrap-select.css","dataTables.responsive.css","bootstrap-chosen.css","jquery.fancybox.css","sb-admin-2.css",
+                                        "toastr.css","dataTables.bootstrap.css","thesu/default/css/uniform.default.min.css","bootstrap-select.css","dataTables.responsive.css","bootstrap-chosen.css","jquery.fancybox.css","confyle.min.css",
                                         "imageload.css","font-awesome.min.css");
     }
     function css_toppub(){
-               return $jquery =array("style.css", "bootstrap.css","mediaelementplayer.css","animate.min.css",
-                                        "magnific-popup.css","icon-fonts.css");
+               return $jquery =array("style.min.css", "bootstrap.min.css","mediaelementplayer.min.css","animate.min.css",
+                                        "magnific-popup.min.css","icon-fonts.min.css","prism-line-numbers.min.css","prism.min.css");
     }
 }

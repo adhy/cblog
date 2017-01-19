@@ -13,10 +13,6 @@
                 'content' => 'My 1st3rben'
         ),
         array(
-                'name' => 'csrf-token',
-                'content' => $this->security->get_csrf_hash()
-        ),
-        array(
                 'name' => 'viewport',
                 'content' => 'width=device-width, initial-scale=1'
         ),

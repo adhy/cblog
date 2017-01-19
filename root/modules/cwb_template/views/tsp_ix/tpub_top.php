@@ -36,10 +36,6 @@ $all_description=implode(',', $all_description);
                 'content' => $all_description
         ),
         array(
-                'name' => 'csrf-token',
-                'content' => $this->security->get_csrf_hash()
-        ),
-        array(
                 'name' => 'viewport',
                 'content' => 'width=device-width, initial-scale=1'
         ),
@@ -60,8 +56,6 @@ echo meta($meta);?>
 
     <link href="<?=base_url('assets/images/favicon/favicon.png')?>" rel="shortcut icon" type="image/ico" />  
     <?php foreach($css_topp as $urlcss){echo '<link href="'.base_url('assets/css/'.$urlcss).'" rel="stylesheet" type="text/css" />';}?>
-<link href="<?=base_url('assets/css/prism.css')?>" rel="stylesheet" type="text/css" data-noprefix/>
-<link href="<?=base_url('assets/css/prism-line-numbers.css')?>" rel="stylesheet" type="text/css" data-noprefix/>
 <script type="text/javascript" src="<?=base_url('assets/js/prefixfree.min.js')?>"></script>
 
 </head>

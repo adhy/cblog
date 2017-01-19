@@ -7,8 +7,6 @@ $this->security->get_csrf_hash(); ?>';
 $.ajaxSetup({
 data: csfrData
 });
-
-
     <?=$js_frlogin?>
   </script>
   <?php echo $this->session->flashdata('notif');?>

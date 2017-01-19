@@ -171,16 +171,16 @@
 <!-- End wrapper -->
 
 <script type="text/javascript" src="<?=base_url('assets/js/jquery.min.js')?>"></script>
-        <script>window.jQuery || document.write('<script src="<?=base_url('assets/js/jquery.js')?>"><\/script>')</script>
-<script src="<?=base_url('assets/js/plugins.js')?>"></script>
+        <script>window.jQuery || document.write('<script src="<?=base_url('assets/js/jquery.min.js')?>"><\/script>')</script>
+<script src="<?=base_url('assets/js/plugins.min.js')?>"></script>
 
 <script src="<?=base_url('assets/js/mediaelement-and-player.min.js')?>"></script>
 <script src="<?=base_url('assets/js/isotope.pkgd.min.js')?>"></script>
 <!-- this is where we put our custom functions -->
 <?php if(!empty($code)){echo $code;} ?>
-<script type="text/javascript" src="<?=base_url('assets/js/functions.js')?>"></script>
-<script type="text/javascript" src="<?=base_url('assets/js/prism.js')?>"></script>
-<script type="text/javascript" src="<?=base_url('assets/js/prism-line-numbers.js')?>"></script>
+<script type="text/javascript" src="<?=base_url('assets/js/functions.min.js')?>"></script>
+<script type="text/javascript" src="<?=base_url('assets/js/prism.min.js')?>"></script>
+<script type="text/javascript" src="<?=base_url('assets/js/prism-line-numbers.min.js')?>"></script>
 </body>
 
 </html>
