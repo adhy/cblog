@@ -72,7 +72,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $active_group = 'default';
 $query_builder = TRUE;
-$typec = 'wan';
+$typec = 'local';
 if ($typec == 'local'){
 	$hostname = 'localhost';
 	$username = 'epona';
