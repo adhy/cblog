@@ -79,10 +79,10 @@ if ($typec == 'local'){
 	$password = 'epona';
 	$database = 'cblog';
 }else{
-	$hostname = 'mysql.idhostinger.com';
-	$username = 'u478035837_pubcb';
-	$password = 'n3C+&cioYU>&@IP@=h';
-	$database = 'u478035837_cblog';
+	$hostname = '107.178.107.114';
+	$username = 'codetnet_sillyso';
+	$password = 'Ic#BC?g(sW=-wob8Th';
+	$database = 'codetnet_silsoblog';
 }
 $db['default'] = array(
 	'dsn'	=> '',
